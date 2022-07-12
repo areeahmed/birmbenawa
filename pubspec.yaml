@@ -15,6 +15,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intro_slider: ^3.0.9
+  introduction_screen: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -24,6 +25,13 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  fonts:
+    - family: KurdBold
+      fonts: 
+        - asset: fonts/K24KurdishBold-Bold.ttf
+    - family: KurdLight
+      fonts: 
+        - asset: fonts/K24KurdishLight-Light.ttf
 
   # Enable generation of localized Strings from arb files.
   generate: true
