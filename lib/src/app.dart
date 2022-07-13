@@ -1,3 +1,5 @@
+import 'package:birmbenawa/src/drawer/about_us.dart';
+import 'package:birmbenawa/src/main_screen.dart';
 import 'package:birmbenawa/src/sample_feature/homeSrc.dart';
 import 'package:birmbenawa/src/sample_feature/sliderScr.dart';
 import 'package:flutter/material.dart';
@@ -28,8 +30,8 @@ class MyApp extends StatelessWidget {
       builder: (BuildContext context, Widget? child) {
         return MaterialApp(
           // ? this single line belowe is to remove the debug banner
-          debugShowCheckedModeBanner : false,
-          home: LandScreenSlides(),
+          debugShowCheckedModeBanner: false,
+          home: AboutUsPage(),
           // Providing a restorationScopeId allows the Navigator built by the
           // MaterialApp to restore the navigation stack when a user leaves and
           // returns to the app after it has been killed while running in the
@@ -53,7 +55,6 @@ class MyApp extends StatelessWidget {
           //
           // The appTitle is defined in .arb files found in the localization
           // directory.
-          
 
           // Define a light and dark color theme. Then, read the user's
           // preferred ThemeMode (light, dark, or system default) from the

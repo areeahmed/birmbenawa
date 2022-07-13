@@ -1,8 +1,10 @@
-# birmbenawa
-
+# birmbenawa is a Flutter Application
+--------------------------------------
+Birmbenawa it is a Reminder for ( Primery resone and daily and shoping-List)
 A new Flutter project.
 
 ## Getting Started
+A few resources to get you started if this is your first Flutter project:
 
 This project is a starting point for a Flutter application that follows the
 [simple app state management
