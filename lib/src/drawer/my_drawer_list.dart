@@ -1,91 +1,21 @@
 import 'package:birmbenawa/src/drawer/about_app.dart';
 import 'package:birmbenawa/src/drawer/about_us.dart';
-import 'package:birmbenawa/src/drawer/my_drawer_header.dart';
 import 'package:birmbenawa/src/drawer/other_apps.dart';
 import 'package:birmbenawa/src/drawer/settigns.dart';
-import 'package:birmbenawa/src/screens/daily_reminder_screen.dart';
-import 'package:birmbenawa/src/screens/reminder_screen.dart';
-import 'package:birmbenawa/src/screens/shoping_list_reminder_screen.dart';
 import 'package:flutter/material.dart';
 
-class MainPageScreen extends StatefulWidget {
-  MainPageScreen({Key? key}) : super(key: key);
+class MyDrawerList extends StatefulWidget {
+  MyDrawerList({Key? key}) : super(key: key);
 
   @override
-  State<MainPageScreen> createState() => _MainPageScreenState();
+  State<MyDrawerList> createState() => _MyDrawerListState();
 }
 
-class _MainPageScreenState extends State<MainPageScreen> {
+class _MyDrawerListState extends State<MyDrawerList> {
   var currentPage = DrawerSections.settings;
-  int currentIndexPage = 0;
-  final screens = [
-    Reminderpage(),
-    DailyReminderPage(),
-    ShopingReminderPage(),
-    SettingsPage(),
-    AboutAppPage(),
-    AboutUsPage(),
-    OtherAppsPage(),
-  ];
+
   @override
   Widget build(BuildContext context) {
-    final String logoPath = 'assets/images/slider/logo.png';
-    return Scaffold(
-      appBar: AppBar(
-        title: Image.asset(
-          logoPath,
-          width: 50,
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.grey,
-      ),
-      body: IndexedStack(
-        index: currentIndexPage,
-        children: screens,
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.pink,
-        unselectedItemColor: Colors.black,
-        backgroundColor: Color.fromARGB(255, 187, 187, 187),
-        onTap: (index) => setState(() => currentIndexPage = index),
-        currentIndex: currentIndexPage,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.notifications,
-            ),
-            label: 'Reminder',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.calendar_month,
-            ),
-            label: 'Daily',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.list,
-            ),
-            label: 'List',
-          ),
-        ],
-      ),
-      drawer: Drawer(
-        child: SingleChildScrollView(
-          child: Container(
-            child: Column(
-              children: [
-                MyHeaderDrawer(),
-                MyDrawerList(),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget MyDrawerList() {
     return Container(
       padding: EdgeInsets.only(
         top: 15,

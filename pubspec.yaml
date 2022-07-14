@@ -17,6 +17,7 @@ dependencies:
   intro_slider: ^3.0.9
   introduction_screen: ^3.0.1
   url_launcher: ^6.1.5
+  font_awesome_flutter: ^10.1.0
 
 dev_dependencies:
   flutter_test:
