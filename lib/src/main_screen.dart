@@ -22,10 +22,6 @@ class _MainPageScreenState extends State<MainPageScreen> {
     Reminderpage(),
     DailyReminderPage(),
     ShopingReminderPage(),
-    SettingsPage(),
-    AboutAppPage(),
-    AboutUsPage(),
-    OtherAppsPage(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -114,13 +110,17 @@ class _MainPageScreenState extends State<MainPageScreen> {
           Navigator.pop(context);
           setState(() {
             if (id == 1) {
-              currentPage = DrawerSections.settings;
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => SettingsPage()));
             } else if (id == 2) {
-              currentPage = DrawerSections.aboutApp;
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => AboutAppPage()));
             } else if (id == 3) {
-              currentPage = DrawerSections.aboutUs;
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => AboutUsPage()));
             } else if (id == 4) {
-              currentPage = DrawerSections.otherApps;
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => OtherAppsPage()));
             }
           });
         },
@@ -151,7 +151,15 @@ class _MainPageScreenState extends State<MainPageScreen> {
       ),
     );
   }
+
+  void goToHome(context) => Navigator.of(context)
+      .push(MaterialPageRoute(builder: (context) => MainPageScreen()));
 }
+
+//     SettingsPage(),
+//     AboutAppPage(),
+//     AboutUsPage(),
+//     OtherAppsPage(),
 
 enum DrawerSections {
   settings,

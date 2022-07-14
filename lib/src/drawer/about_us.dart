@@ -4,6 +4,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AboutUsPage extends StatelessWidget {
+  final String logoPath = 'assets/images/slider/logo.png';
   const AboutUsPage({Key? key}) : super(key: key);
 
   @override
@@ -12,6 +13,14 @@ class AboutUsPage extends StatelessWidget {
     String instagramIconPath = 'assets/icons/favicon.ico';
     String ownerPicturePath = 'assets/images/AriAhmedPic.png';
     return Scaffold(
+      appBar: AppBar(
+        title: Image.asset(
+          logoPath,
+          width: 50,
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.grey,
+      ),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
