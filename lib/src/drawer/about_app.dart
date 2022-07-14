@@ -7,6 +7,7 @@ class AboutAppPage extends StatefulWidget {
   State<AboutAppPage> createState() => _AboutAppPageState();
 }
 
+//* this screen is for information about app like app version and owner and year of developed
 class _AboutAppPageState extends State<AboutAppPage> {
   final String logoPath = 'assets/images/slider/logo.png';
   @override

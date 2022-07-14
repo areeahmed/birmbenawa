@@ -11,6 +11,7 @@ class MyDrawerList extends StatefulWidget {
   State<MyDrawerList> createState() => _MyDrawerListState();
 }
 
+//* this screen is the list of the drawer
 class _MyDrawerListState extends State<MyDrawerList> {
   var currentPage = DrawerSections.settings;
 

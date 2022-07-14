@@ -9,6 +9,7 @@ class MyHeaderDrawer extends StatefulWidget {
   State<MyHeaderDrawer> createState() => _MyHeaderDraweState();
 }
 
+//* this is the header of the drawer that conatiane ProfileImage - Name of the user - phone number
 class _MyHeaderDraweState extends State<MyHeaderDrawer> {
   final String logoPath = 'assets/images/slider/logo.png';
   @override

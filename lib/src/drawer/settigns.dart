@@ -7,6 +7,7 @@ class SettingsPage extends StatefulWidget {
   State<SettingsPage> createState() => _SettingsPageState();
 }
 
+//* this is for settigns screen not builded yet
 class _SettingsPageState extends State<SettingsPage> {
   final String logoPath = 'assets/images/slider/logo.png';
   @override

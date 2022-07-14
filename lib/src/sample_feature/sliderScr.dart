@@ -20,8 +20,8 @@ class LandScreenSlides extends StatelessWidget {
       //? Dear Programmer To Know about ( IntroductionScreen ) you can check https://pub.dev/packages/introduction_screen
       child: IntroductionScreen(
         pages: [
-          //! this is the first slide of my application
-          //! it contains my logo and title and description
+          //! this is the all slides of my application
+          //! it contains my Icons and titles and descriptions
           PageViewModel(
               title: 'Birmbenawa',
               body: 'Birmbenawa بەخێرهاتی بۆ بەرنامەی ',
