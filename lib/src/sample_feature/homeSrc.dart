@@ -13,7 +13,8 @@ class GoHomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<GoHomePage> {
-  TextEditingController userName = new TextEditingController();
+  String userName = '';
+  String phoneNumber = '';
   final String logoPath = 'assets/images/slider/logo.png';
   @override
   Widget build(BuildContext context) {
@@ -45,12 +46,19 @@ class _HomePageState extends State<GoHomePage> {
                 child: Column(
                   children: [
                     TextField(
-                      controller: userName,
                       style: TextStyle(),
                       decoration: InputDecoration(
                           border: InputBorder.none,
                           labelText: 'Enter Name',
                           hintText: 'Enter Your Name'),
+                      onChanged: (text) {
+                        userName = text;
+                        if (userName == null) {
+                          userName = 'Unknown person';
+                        } else {
+                          userName = text;
+                        }
+                      },
                     ),
                     Divider(
                       thickness: 4,
@@ -59,8 +67,15 @@ class _HomePageState extends State<GoHomePage> {
                       style: TextStyle(),
                       decoration: InputDecoration(
                           border: InputBorder.none,
-                          labelText: 'Enter Name',
-                          hintText: 'Enter Your Name'),
+                          labelText: 'Enter Phone Number',
+                          hintText: '#### ### ## ##'),
+                      onChanged: (text) {
+                        if (phoneNumber == null) {
+                          phoneNumber = '0000 000 0000';
+                        } else {
+                          phoneNumber = text;
+                        }
+                      },
                     ),
                   ],
                 ),
@@ -92,6 +107,7 @@ class _HomePageState extends State<GoHomePage> {
     );
   }
 
-  void goToHome(context) => Navigator.of(context)
-      .push(MaterialPageRoute(builder: (context) => MainPageScreen()));
+  void goToHome(context) => Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) =>
+          MainPageScreen(userName: userName, phoneNumber: phoneNumber)));
 }

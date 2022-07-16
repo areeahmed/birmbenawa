@@ -1,3 +1,4 @@
+import 'package:birmbenawa/src/CardWidgets/reminderCards.dart';
 import 'package:birmbenawa/src/drawer/about_app.dart';
 import 'package:birmbenawa/src/drawer/about_us.dart';
 import 'package:birmbenawa/src/drawer/my_drawer_header.dart';
@@ -13,6 +14,7 @@ class Reminderpage extends StatefulWidget {
 }
 
 class _ReminderoageState extends State<Reminderpage> {
+  List<ReminderCardPage> listOfCards = [];
   final String logoPath = 'assets/images/slider/logo.png';
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,10 @@ class _ReminderoageState extends State<Reminderpage> {
           style: TextStyle(fontSize: 40),
         ),
       ),
-      //drawer: Drawer(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {}, // navigate to edit card
+        child: Icon(Icons.add),
+      ),
     );
   }
 }

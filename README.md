@@ -30,3 +30,12 @@ the `lib/src/localization` directory.
 To support additional languages, please visit the tutorial on
 [Internationalizing Flutter
 apps](https://flutter.dev/docs/development/accessibility-and-localization/internationalization)
+
+
+## Roadmap
+- [ ] Set Remionder
+- [x] selecting icon and color for the reminder
+- [ ] TODO List
+- [ ] Daily Reminder
+- [ ] Setting page
+- [x] Nice Categories page screen

@@ -9,13 +9,20 @@ import 'package:birmbenawa/src/screens/shoping_list_reminder_screen.dart';
 import 'package:flutter/material.dart';
 
 class MainPageScreen extends StatefulWidget {
-  MainPageScreen({Key? key}) : super(key: key);
+  String userName;
+  String phoneNumber;
+  MainPageScreen({Key? key, required this.userName, required this.phoneNumber})
+      : super(key: key);
 
   @override
-  State<MainPageScreen> createState() => _MainPageScreenState();
+  State<MainPageScreen> createState() =>
+      _MainPageScreenState(userName: userName, phoneNumber: phoneNumber);
 }
 
 class _MainPageScreenState extends State<MainPageScreen> {
+  String userName;
+  String phoneNumber;
+  _MainPageScreenState({required this.userName, required this.phoneNumber});
   var currentPage = DrawerSections.settings;
   int currentIndexPage = 0;
   final screens = [
@@ -71,7 +78,7 @@ class _MainPageScreenState extends State<MainPageScreen> {
           child: Container(
             child: Column(
               children: [
-                MyHeaderDrawer(),
+                MyHeaderDrawer(userName: userName, phoneNumber: phoneNumber),
                 MyDrawerList(),
               ],
             ),
@@ -152,8 +159,8 @@ class _MainPageScreenState extends State<MainPageScreen> {
     );
   }
 
-  void goToHome(context) => Navigator.of(context)
-      .push(MaterialPageRoute(builder: (context) => MainPageScreen()));
+  // void goToHome(context) => Navigator.of(context)
+  //     .push(MaterialPageRoute(builder: (context) => MainPageScreen()));
 }
 
 //     SettingsPage(),

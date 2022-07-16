@@ -1,7 +1,5 @@
-import 'package:birmbenawa/src/drawer/about_us.dart';
-import 'package:birmbenawa/src/main_screen.dart';
-import 'package:birmbenawa/src/sample_feature/homeSrc.dart';
 import 'package:birmbenawa/src/sample_feature/sliderScr.dart';
+import 'package:birmbenawa/src/screens/reminder_data_card_edit_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -31,7 +29,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           // ? this single line belowe is to remove the debug banner
           debugShowCheckedModeBanner: false,
-          home: LandScreenSlides(),
+          home: ReminderDataEditScreen(),
           // Providing a restorationScopeId allows the Navigator built by the
           // MaterialApp to restore the navigation stack when a user leaves and
           // returns to the app after it has been killed while running in the

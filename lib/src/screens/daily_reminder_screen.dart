@@ -14,6 +14,7 @@ class DailyReminderPage extends StatefulWidget {
 
 class _DailyReminderPageState extends State<DailyReminderPage> {
   final String logoPath = 'assets/images/slider/logo.png';
+  final _cards = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,12 +28,16 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
 
       //* Cards contains ==> ( Title - Description - Time - Icon - color - remining time for reminding)
       body: Center(
-        child: Text(
-          'Daily Reminder Screen',
-          style: TextStyle(fontSize: 30),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [],
+          ),
         ),
       ),
-      //drawer: Drawer(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
+      ),
     );
   }
 }
