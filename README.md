@@ -9,6 +9,32 @@ Birmbenawa is an application used to remind you important things that you need t
 ## Screenshots
 
 ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![1st](https://user-images.githubusercontent.com/59537867/180301626-f662dce1-c80d-4eac-9b08-9f44ee350a9a.png)
+
+![2nd](https://user-images.githubusercontent.com/59537867/180301652-cf92c1e2-6cdf-4521-ad33-c0906c045dca.png)
+
+![3rd](https://user-images.githubusercontent.com/59537867/180301672-8a87e2ac-1a02-46cc-a9b8-1aaaae9a6199.png)
+
+![4th](https://user-images.githubusercontent.com/59537867/180301696-76717be5-e451-437d-b3cd-7dd88b9aadfb.png)
+
+![5th](https://user-images.githubusercontent.com/59537867/180301773-cc989dec-e5cb-4b7f-866c-3d5b16dfb764.png)
+
+![6th](https://user-images.githubusercontent.com/59537867/180301788-5b859360-ad69-4aa0-8658-4cde7848ebba.png)
+
+![7th](https://user-images.githubusercontent.com/59537867/180301807-319320fd-e31e-4b86-88da-69581a1ea6ca.png)
+
+![8th](https://user-images.githubusercontent.com/59537867/180301717-24f572f9-2e2a-4bdb-bbf7-919e0fcf97c2.png)
+
+![9th](https://user-images.githubusercontent.com/59537867/180301842-07093114-287a-4c08-b6c2-6e321838383b.png)
+
+![10th](https://user-images.githubusercontent.com/59537867/180301860-8d8e1283-7ab0-4512-b39b-13110b4fe925.png)
+
+![11th](https://user-images.githubusercontent.com/59537867/180301867-567222a0-9cbf-41c7-92ca-9359508b7142.png)
+
+![12th](https://user-images.githubusercontent.com/59537867/180301879-77588b81-6d3d-4d54-9dda-a7b20bd9bdf9.png)
+
+![13th](https://user-images.githubusercontent.com/59537867/180301891-172c2076-e1d1-4e17-837d-1d4e4a61eebf.png)
+
 
 
 ## Features
