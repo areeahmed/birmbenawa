@@ -26,7 +26,13 @@ class _MainPageScreenState extends State<MainPageScreen> {
   var currentPage = DrawerSections.settings;
   int currentIndexPage = 0;
   final screens = [
-    Reminderpage(),
+    Reminderpage(
+      selectedTime: '',
+      titleOfTheCard: '',
+      icon: Icon(Icons.abc),
+      timeH: 0,
+      timeM: 0,
+    ),
     DailyReminderPage(),
     ShopingReminderPage(),
   ];
@@ -57,7 +63,7 @@ class _MainPageScreenState extends State<MainPageScreen> {
             icon: Icon(
               Icons.notifications,
             ),
-            label: 'Reminder',
+            label: 'Todays',
           ),
           BottomNavigationBarItem(
             icon: Icon(

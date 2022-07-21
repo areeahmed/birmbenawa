@@ -1,18 +1,18 @@
+import 'package:birmbenawa/src/components/checkbox_days.dart';
 import 'package:birmbenawa/src/components/elevated_button.dart';
 import 'package:birmbenawa/src/components/pick_icon.dart';
 import 'package:birmbenawa/src/components/timepicker.dart';
 import 'package:birmbenawa/src/components/title_field.dart';
 import 'package:flutter/material.dart';
 
-class ReminderDataEditScreen extends StatefulWidget {
-  const ReminderDataEditScreen({Key? key}) : super(key: key);
+class DailyReminderDataEdit extends StatefulWidget {
+  DailyReminderDataEdit({Key? key}) : super(key: key);
 
   @override
-  State<ReminderDataEditScreen> createState() => _ReminderDataEditScreenState();
+  State<DailyReminderDataEdit> createState() => _DailyReminderDataEditState();
 }
 
-class _ReminderDataEditScreenState extends State<ReminderDataEditScreen> {
-  String? titleOfTheCard;
+class _DailyReminderDataEditState extends State<DailyReminderDataEdit> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -42,6 +42,10 @@ class _ReminderDataEditScreenState extends State<ReminderDataEditScreen> {
               ),
               //? for selecting ICons ( Icon Picker and showing Icon)
               MyIconpickerWidget(),
+              const SizedBox(
+                height: 10,
+              ),
+              ChechBoxOfDays(),
             ],
           ),
         ),

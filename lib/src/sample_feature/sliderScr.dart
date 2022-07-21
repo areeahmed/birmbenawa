@@ -1,7 +1,5 @@
-import 'dart:math';
 import 'package:birmbenawa/src/sample_feature/homeSrc.dart';
 import 'package:flutter/material.dart';
-import 'package:intro_slider/intro_slider.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 // TODO: Dear Programmer This screen is a land screen and the user will see those screens at first of downloading application
@@ -14,6 +12,7 @@ class LandScreenSlides extends StatelessWidget {
   final String ReminderPath = 'assets/images/slider/REMINDER.png';
   final String ShopPath = 'assets/images/slider/SHOP.png';
   final String WeeklyPath = 'assets/images/slider/Weekly.png';
+  final String backgroundOfSlides = 'assets/images/slider/bgslides.jpg';
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -23,10 +22,11 @@ class LandScreenSlides extends StatelessWidget {
           //! this is the all slides of my application
           //! it contains my Icons and titles and descriptions
           PageViewModel(
-              title: 'Birmbenawa',
-              body: 'Birmbenawa بەخێرهاتی بۆ بەرنامەی ',
-              image: buildImage(LogoPath),
-              decoration: getPageDecoration()),
+            title: 'Birmbenawa',
+            body: 'Birmbenawa بەخێرهاتی بۆ بەرنامەی ',
+            image: buildImage(LogoPath),
+            decoration: getPageDecoration(),
+          ),
           PageViewModel(
               title: 'ئاگادارکردنەوە',
               body: 'دەتوانی ئاگادارکردنەوەیەکی دیاریکراو بنووسی',
@@ -75,7 +75,9 @@ class LandScreenSlides extends StatelessWidget {
 
   // TODO: this is a methode for Returning an Image with centered just by giving a path in String Type.
   Widget buildImage(String path) => Center(
-        child: Image.asset(path),
+        child: Image.asset(
+          path,
+        ),
         widthFactor: 350,
       );
   // TODO: this is a methode for Returning the decoration of title of the slider page

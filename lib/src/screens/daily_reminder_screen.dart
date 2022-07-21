@@ -1,9 +1,7 @@
-import 'package:birmbenawa/src/drawer/about_app.dart';
-import 'package:birmbenawa/src/drawer/about_us.dart';
-import 'package:birmbenawa/src/drawer/my_drawer_header.dart';
-import 'package:birmbenawa/src/drawer/other_apps.dart';
-import 'package:birmbenawa/src/drawer/settigns.dart';
+import 'package:birmbenawa/src/screens/daily_Edit_data.dart';
 import 'package:flutter/material.dart';
+
+import '../CardWidgets/cards.dart';
 
 class DailyReminderPage extends StatefulWidget {
   const DailyReminderPage({Key? key}) : super(key: key);
@@ -27,17 +25,51 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
       //* Button Action to create a Card
 
       //* Cards contains ==> ( Title - Description - Time - Icon - color - remining time for reminding)
-      body: Center(
+      body: Container(
+        color: Colors.grey[300],
         child: SingleChildScrollView(
-          child: Column(
-            children: [],
-          ),
+          padding: EdgeInsets.all(20),
+          child: Column(children: [
+            CardsView(
+              count: 'First',
+            ),
+            CardsView(
+              count: 'Second',
+            ),
+            CardsView(
+              count: 'Third',
+            ),
+            CardsView(
+              count: 'Fourth',
+            ),
+            CardsView(
+              count: 'Fifth',
+            ),
+            CardsView(
+              count: 'Sixth',
+            ),
+          ]),
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () => _askedToLead(),
         child: Icon(Icons.add),
       ),
     );
+  }
+
+  Future _askedToLead() async {
+    switch (await showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return SimpleDialog(
+            backgroundColor: Colors.grey[300],
+            title: const Text('Set an Reminder'),
+            children: <Widget>[
+              DailyReminderDataEdit(),
+            ],
+          );
+        })) {
+    }
   }
 }

@@ -1,7 +1,3 @@
-import 'package:birmbenawa/src/drawer/about_app.dart';
-import 'package:birmbenawa/src/drawer/about_us.dart';
-import 'package:birmbenawa/src/drawer/other_apps.dart';
-import 'package:birmbenawa/src/drawer/settigns.dart';
 import 'package:flutter/material.dart';
 
 class MyDrawerList extends StatefulWidget {

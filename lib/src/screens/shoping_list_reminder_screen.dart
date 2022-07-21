@@ -1,8 +1,3 @@
-import 'package:birmbenawa/src/drawer/about_app.dart';
-import 'package:birmbenawa/src/drawer/about_us.dart';
-import 'package:birmbenawa/src/drawer/my_drawer_header.dart';
-import 'package:birmbenawa/src/drawer/other_apps.dart';
-import 'package:birmbenawa/src/drawer/settigns.dart';
 import 'package:flutter/material.dart';
 
 class ShopingReminderPage extends StatefulWidget {
@@ -22,6 +17,10 @@ class _ShopingReminderPageState extends State<ShopingReminderPage> {
           'List Screen',
           style: TextStyle(fontSize: 40),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
       ),
     );
   }

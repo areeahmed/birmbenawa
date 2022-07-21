@@ -1,5 +1,4 @@
 import 'package:birmbenawa/src/main_screen.dart';
-import 'package:birmbenawa/src/screens/reminder_screen.dart';
 import 'package:flutter/material.dart';
 
 //! this is a registeration screen that containe ( Name and Phone number)
