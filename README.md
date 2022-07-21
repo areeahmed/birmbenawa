@@ -9,7 +9,6 @@ Birmbenawa is an application used to remind you important things that you need t
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 ![1st](https://user-images.githubusercontent.com/59537867/180301626-f662dce1-c80d-4eac-9b08-9f44ee350a9a.png | width= 100)
 
 ![2nd](https://user-images.githubusercontent.com/59537867/180301652-cf92c1e2-6cdf-4521-ad33-c0906c045dca.png)
@@ -17,8 +16,6 @@ Birmbenawa is an application used to remind you important things that you need t
 ![3rd](https://user-images.githubusercontent.com/59537867/180301672-8a87e2ac-1a02-46cc-a9b8-1aaaae9a6199.png)
 
 ![4th](https://user-images.githubusercontent.com/59537867/180301696-76717be5-e451-437d-b3cd-7dd88b9aadfb.png)
-
-![5th](https://user-images.githubusercontent.com/59537867/180301773-cc989dec-e5cb-4b7f-866c-3d5b16dfb764.png)
 
 ![6th](https://user-images.githubusercontent.com/59537867/180301788-5b859360-ad69-4aa0-8658-4cde7848ebba.png)
 
