@@ -1,4 +1,5 @@
 import 'package:birmbenawa/src/CardWidgets/cards.dart';
+import 'package:birmbenawa/src/CardWidgets/reminderCard.dart';
 import 'package:birmbenawa/src/CardWidgets/reminderCards.dart';
 import 'package:birmbenawa/src/screens/reminder_data_card_edit_screen.dart';
 import 'package:flutter/material.dart';
@@ -61,30 +62,30 @@ class _ReminderoageState extends State<Reminderpage> {
       body: Container(
         color: Colors.grey[300],
         child: SingleChildScrollView(
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.only(
+            top: 80,
+            left: 8,
+            right: 8,
+          ),
           child: Column(children: [
-            CardsView(
-              count: 'First',
-            ),
-            CardsView(
-              count: 'Second',
-            ),
-            CardsView(
-              count: 'Third',
-            ),
-            CardsView(
-              count: 'Fourth',
-            ),
-            CardsView(
-              count: 'Fifth',
-            ),
-            CardsView(
-              count: 'Sixth',
-            ),
+            ReminderCardWidget(),
+            ReminderCardWidget(),
+            ReminderCardWidget(),
+            ReminderCardWidget(),
+            ReminderCardWidget(),
+            ReminderCardWidget(),
+            ReminderCardWidget(),
+            ReminderCardWidget(),
+            ReminderCardWidget(),
+            ReminderCardWidget(),
+            ReminderCardWidget(),
+            ReminderCardWidget(),
+            ReminderCardWidget(),
           ]),
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.pink,
         onPressed: () => _askedToLead(), //goToHome(context),
         child: Icon(Icons.add),
       ),

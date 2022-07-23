@@ -12,12 +12,14 @@ class LandScreenSlides extends StatelessWidget {
   final String ReminderPath = 'assets/images/slider/REMINDER.png';
   final String ShopPath = 'assets/images/slider/SHOP.png';
   final String WeeklyPath = 'assets/images/slider/Weekly.png';
-  final String backgroundOfSlides = 'assets/images/slider/bgslides.jpg';
+  final String buyImageSlide = 'assets/images/Buy.png';
+  final String debtListSlideImage = 'assets/images/Dabt_Analyser.png';
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       //? Dear Programmer To Know about ( IntroductionScreen ) you can check https://pub.dev/packages/introduction_screen
       child: IntroductionScreen(
+        rtl: true,
         pages: [
           //! this is the all slides of my application
           //! it contains my Icons and titles and descriptions
@@ -28,34 +30,61 @@ class LandScreenSlides extends StatelessWidget {
             decoration: getPageDecoration(),
           ),
           PageViewModel(
-              title: 'ئاگادارکردنەوە',
-              body: 'دەتوانی ئاگادارکردنەوەیەکی دیاریکراو بنووسی',
-              image: buildImage(ReminderPath),
-              decoration: getPageDecoration()),
+            title: 'ئاگادارکردنەوە',
+            body: 'دەتوانی ئاگادارکردنەوەیەکی دیاریکراو بنووسی',
+            image: buildImage(ReminderPath),
+            decoration: getPageDecoration(),
+          ),
           PageViewModel(
-              title: 'لیستی کڕینەکان',
-              body: 'لیستی کڕینی کەل و پەلت بیردەخاتەوە',
-              image: buildImage(ShopPath),
-              decoration: getPageDecoration()),
+            title: 'لیستی کڕینەکان',
+            body: 'لیستی کڕینی کەل و پەلت بیردەخاتەوە',
+            image: buildImage(ShopPath),
+            decoration: getPageDecoration(),
+          ),
           PageViewModel(
-              title: 'ئادارکرنەوەی ڕۆژانە',
-              body: 'دەتوانی ئاگادارکردنەوەی ڕۆژانە دابنێیت',
-              image: buildImage(WeeklyPath),
-              decoration: getPageDecoration())
+            title: 'ئادارکرنەوەی ڕۆژانە',
+            body: 'دەتوانی ئاگادارکردنەوەی ڕۆژانە دابنێیت',
+            image: buildImage(WeeklyPath),
+            decoration: getPageDecoration(),
+          ),
+          PageViewModel(
+            title: 'داواکاری',
+            body:
+                'ئێستا لە ماڵەوە دەتوانن داوای کەل و پەلەکانتان بکەن لە هاوسەرەکانتان',
+            image: buildImage(buyImageSlide),
+            decoration: getPageDecoration(),
+          ),
+          PageViewModel(
+            title: 'بیرهێنانەوەی قەرز',
+            body: 'لیستی قەرزەکانت بیردێنێتەوە',
+            image: buildImage(debtListSlideImage),
+            decoration: getPageDecoration(),
+          ),
         ],
         // TODO: this is a button to continue the process of the sliding the screen to the new slide
         done: Text(
           'Start',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Color.fromARGB(255, 98, 0, 255),
+          ),
         ),
 
         // TODO navigating to Home page screen
         onDone: () => goToHome(context),
         showSkipButton: true,
-        skip: const Text('Skip'),
+        skip: const Text(
+          'Skip',
+          style: TextStyle(
+            color: Color.fromARGB(255, 98, 0, 255),
+          ),
+        ),
         onSkip: () => goToHome(context),
         showNextButton: true,
-        next: Icon(Icons.arrow_forward),
+        next: Icon(
+          Icons.arrow_back,
+          color: Color.fromARGB(255, 98, 0, 255),
+        ),
         dotsDecorator: getDotDecoration(),
         nextFlex: 0,
         skipOrBackFlex: 0,
@@ -64,6 +93,7 @@ class LandScreenSlides extends StatelessWidget {
   }
 
   DotsDecorator getDotDecoration() => DotsDecorator(
+      activeColor: Color.fromARGB(255, 98, 0, 255),
       color: Color.fromARGB(255, 177, 177, 177),
       size: Size(8, 8),
       activeSize: Size(22, 8),
@@ -84,7 +114,7 @@ class LandScreenSlides extends StatelessWidget {
   PageDecoration getPageDecoration() => const PageDecoration(
         titleTextStyle: TextStyle(
             fontSize: 28, fontWeight: FontWeight.bold, fontFamily: 'KurdBold'),
-        bodyTextStyle: TextStyle(fontSize: 20, fontFamily: 'KurdLight'),
+        bodyTextStyle: TextStyle(fontSize: 20, fontFamily: 'KurdBold'),
         bodyPadding: EdgeInsets.all(16),
         imagePadding: EdgeInsets.all(24),
         pageColor: Colors.white,

@@ -3,7 +3,9 @@ import 'package:birmbenawa/src/drawer/about_us.dart';
 import 'package:birmbenawa/src/drawer/my_drawer_header.dart';
 import 'package:birmbenawa/src/drawer/other_apps.dart';
 import 'package:birmbenawa/src/drawer/settigns.dart';
+import 'package:birmbenawa/src/screens/buying.dart';
 import 'package:birmbenawa/src/screens/daily_reminder_screen.dart';
+import 'package:birmbenawa/src/screens/debtscreen.dart';
 import 'package:birmbenawa/src/screens/reminder_screen.dart';
 import 'package:birmbenawa/src/screens/shoping_list_reminder_screen.dart';
 import 'package:flutter/material.dart';
@@ -35,18 +37,22 @@ class _MainPageScreenState extends State<MainPageScreen> {
     ),
     DailyReminderPage(),
     ShopingReminderPage(),
+    DebtScreenView(),
+    BuyingChatScreenView(),
   ];
   @override
   Widget build(BuildContext context) {
     final String logoPath = 'assets/images/slider/logo.png';
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
+        elevation: 0,
         title: Image.asset(
           logoPath,
           width: 50,
         ),
         centerTitle: true,
-        backgroundColor: Colors.grey,
+        backgroundColor: Color.fromARGB(255, 110, 110, 110).withAlpha(900),
       ),
       body: IndexedStack(
         index: currentIndexPage,
@@ -77,17 +83,27 @@ class _MainPageScreenState extends State<MainPageScreen> {
             ),
             label: 'List',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.attach_money,
+            ),
+            label: 'Debt',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.shopping_bag,
+            ),
+            label: 'Buy',
+          ),
         ],
       ),
       drawer: Drawer(
-        child: SingleChildScrollView(
-          child: Container(
-            child: Column(
-              children: [
-                MyHeaderDrawer(userName: userName, phoneNumber: phoneNumber),
-                MyDrawerList(),
-              ],
-            ),
+        child: Container(
+          child: Column(
+            children: [
+              MyHeaderDrawer(userName: userName, phoneNumber: phoneNumber),
+              MyDrawerList(),
+            ],
           ),
         ),
       ),
@@ -117,7 +133,6 @@ class _MainPageScreenState extends State<MainPageScreen> {
 
   Widget menuItem(int id, String title, IconData icon, bool selected) {
     return Material(
-      color: selected ? Colors.grey[300] : Colors.white,
       child: InkWell(
         onTap: () {
           Navigator.pop(context);

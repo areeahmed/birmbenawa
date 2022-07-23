@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class CardsView extends StatefulWidget {
+class ReminderCardWidget extends StatefulWidget {
   String? time; //! requeared
   bool? pm; //! requeared
   bool? am; //! requeared
   String? title;
   Icon? icon;
   Color? cardColor;
-  CardsView({
+  ReminderCardWidget({
     Key? key,
     this.time, //! requeared
     this.am, //! requeared
@@ -18,7 +18,7 @@ class CardsView extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<CardsView> createState() => _CardsViewState(
+  State<ReminderCardWidget> createState() => _reminderCardWidgetState(
         time: time,
         pm: pm,
         am: am,
@@ -27,13 +27,13 @@ class CardsView extends StatefulWidget {
       );
 }
 
-class _CardsViewState extends State<CardsView> {
+class _reminderCardWidgetState extends State<ReminderCardWidget> {
   String? time; //! requeared
   bool? pm; //! requeared
   bool? am; //! requeared
   String? title;
   Icon? icon;
-  _CardsViewState({
+  _reminderCardWidgetState({
     this.time, //! requeared
     this.am, //! requeared
     this.pm, //! requeared
@@ -42,9 +42,6 @@ class _CardsViewState extends State<CardsView> {
   });
   @override
   Widget build(BuildContext context) {
-    bool isSelected = true;
-    int indexOfdays = 0;
-    final listOfDays = ['SAT', 'SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI'];
     return Container(
       padding: EdgeInsets.only(top: 13),
       child: Row(
@@ -60,7 +57,6 @@ class _CardsViewState extends State<CardsView> {
               width: 376,
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.only(),
                 boxShadow: [
                   BoxShadow(
                     color: Color.fromARGB(255, 66, 66, 66),
@@ -78,78 +74,11 @@ class _CardsViewState extends State<CardsView> {
               ),
               child: Column(
                 children: [
-                  Container(
-                    padding: EdgeInsets.fromLTRB(19, 8, 8, 0),
-                    child: Row(
-                      children: [
-                        Text(
-                          listOfDays[0],
-                          style: TextStyle(
-                            color: isSelected ? Colors.pink : Colors.black,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 2,
-                        ),
-                        Text(
-                          listOfDays[1],
-                          style: TextStyle(
-                            color: isSelected ? Colors.pink : Colors.black,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 2,
-                        ),
-                        Text(
-                          listOfDays[2],
-                          style: TextStyle(
-                            color: isSelected ? Colors.pink : Colors.black,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 2,
-                        ),
-                        Text(
-                          listOfDays[3],
-                          style: TextStyle(
-                            color: isSelected ? Colors.pink : Colors.black,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 2,
-                        ),
-                        Text(
-                          listOfDays[4],
-                          style: TextStyle(
-                            color: isSelected ? Colors.pink : Colors.black,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 2,
-                        ),
-                        Text(
-                          listOfDays[5],
-                          style: TextStyle(
-                            color: isSelected ? Colors.pink : Colors.black,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 2,
-                        ),
-                        Text(
-                          listOfDays[6],
-                          style: TextStyle(
-                            color: isSelected ? Colors.pink : Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
                   Row(
                     textDirection: TextDirection.rtl,
                     children: [
                       Container(
-                        padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                        padding: EdgeInsets.fromLTRB(0, 40, 0, 20),
                         child: Column(
                           children: [
                             Icon(
@@ -187,7 +116,7 @@ class _CardsViewState extends State<CardsView> {
                       Column(
                         children: [
                           Container(
-                            padding: EdgeInsets.fromLTRB(20, 10, 0, 20),
+                            padding: EdgeInsets.fromLTRB(20, 40, 0, 20),
                             child: Column(
                               children: [
                                 Text(

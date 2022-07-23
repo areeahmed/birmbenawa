@@ -23,6 +23,12 @@ Birmbenawa is an application used to remind you important things that you need t
 - [x]  dialog containe 2 Input user ( title and more detail), TimePicker, and IconPicker
 - [x]  Daily Task containe flaoting button showing the dialog
 - [x]  dialog containe 2 Input User ( title & more detail ), timePicker, IconPicker, DaysPicker 
+- [x]  List of task shows a list of tasks that need to be done and this list is a ExpantionTile
+- [x]  the ExpantionTile in the List Screen is have a Title, Description, Icon and list of task ( checkBox and TextField )
+- [x]  Debt Screen this screen is tell you how much you debted from people and how much you gave to them
+- [ ]  Debt screen containe Card ( Name of Person, Price ( Took, gave ), and Unitl when ) and checkBox.
+- [ ]  Buy Screen is containe ( card image - name - last things in screen order - online or not) - ListViewBuilder
+- [ ]  Chat screen ( List - SendButton - Reminder Button - CheckBox )
 - [ ]  settings containe setting of app and profile edit
 - [ ]  about app screen ( information about app).
 - [x]  about us screen show information about app developer

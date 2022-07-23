@@ -22,7 +22,6 @@ dependencies:
   flutter_iconpicker: ^3.1.4+1
 
 dev_dependencies:
-  flutter_launcher_icons: "^0.9.2"
   flutter_test:
     sdk: flutter
 
@@ -51,9 +50,13 @@ flutter:
   assets:
     # Add assets from the images directory to the application.
     - assets/images/slider/logo.png
-    - assets/images/slider/bgslides.jpg
     - assets/images/slider/REMINDER.png
     - assets/images/slider/SHOP.png
     - assets/images/slider/Weekly.png
     - assets/images/AriAhmedPic.png
     - assets/icons/favicon.ico
+    - assets/images/Buy.png
+    - assets/images/Dabt_Analyser.png
+    - assets/images/List_Of_Task.png
+    - assets/images/SignIn.png
+    - assets/images/Developing.png

@@ -28,30 +28,28 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
       body: Container(
         color: Colors.grey[300],
         child: SingleChildScrollView(
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.only(
+            top: 80,
+            left: 8,
+            right: 8,
+          ),
           child: Column(children: [
-            CardsView(
-              count: 'First',
-            ),
-            CardsView(
-              count: 'Second',
-            ),
-            CardsView(
-              count: 'Third',
-            ),
-            CardsView(
-              count: 'Fourth',
-            ),
-            CardsView(
-              count: 'Fifth',
-            ),
-            CardsView(
-              count: 'Sixth',
-            ),
+            CardsView(),
+            CardsView(),
+            CardsView(),
+            CardsView(),
+            CardsView(),
+            CardsView(),
+            CardsView(),
+            CardsView(),
+            CardsView(),
+            CardsView(),
+            CardsView(),
           ]),
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.pink,
         onPressed: () => _askedToLead(),
         child: Icon(Icons.add),
       ),
