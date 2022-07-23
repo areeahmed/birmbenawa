@@ -9,29 +9,25 @@ Birmbenawa is an application used to remind you important things that you need t
 
 ## Screenshots
 
-![1st](https://user-images.githubusercontent.com/59537867/180301626-f662dce1-c80d-4eac-9b08-9f44ee350a9a.png)
+![1](https://user-images.githubusercontent.com/59537867/180621698-0ea767bc-49ce-42d8-9e80-d411f899992e.png) ![2](https://user-images.githubusercontent.com/59537867/180621715-8f1a8651-b80d-4e1a-8654-5c5b311c0186.png)  ![3](https://user-images.githubusercontent.com/59537867/180621721-519b4893-e1ae-40d5-b745-710bd829b66b.png)  ![4](https://user-images.githubusercontent.com/59537867/180621738-4c325343-86cb-4ac1-ac5f-44fe0064674c.png)  ![5](https://user-images.githubusercontent.com/59537867/180621746-d14f8c92-6406-4d0b-91a4-bd935b3684bd.png) ![6](https://user-images.githubusercontent.com/59537867/180621752-42bb7b48-b2b1-46e7-a855-5af292cc977c.png)  ![7](https://user-images.githubusercontent.com/59537867/180621758-831235fa-5753-4763-a8c5-d8d775353e7b.png)  ![8](https://user-images.githubusercontent.com/59537867/180621765-f9be2891-edcd-44f5-9f35-2e84a92b6d6b.png)  ![9](https://user-images.githubusercontent.com/59537867/180621769-12de9882-a2c7-4b7a-9492-886f972ed44c.png)  ![10](https://user-images.githubusercontent.com/59537867/180621773-dcdc867c-0914-4e1f-a9e3-8b9fe23053f9.png)  ![11](https://user-images.githubusercontent.com/59537867/180621774-4e435688-d0dc-408c-9b02-70aba1bfc3ee.png)  ![12](https://user-images.githubusercontent.com/59537867/180621780-305afd6a-6286-4ea8-969c-b77e863b8273.png)  ![13](https://user-images.githubusercontent.com/59537867/180621790-fe6ac56c-7248-44f2-9973-ad39e4fc7e37.png)  ![14](https://user-images.githubusercontent.com/59537867/180621794-3f3aa4ae-dac8-4243-b807-0e98ca03b71a.png)  ![15](https://user-images.githubusercontent.com/59537867/180621798-5e1feecc-2a88-4fc8-bdec-6dc00b0430a1.png)  ![16](https://user-images.githubusercontent.com/59537867/180621800-94256571-b4ad-4195-b2ac-09c39bad9d68.png)  ![17](https://user-images.githubusercontent.com/59537867/180621807-3a5cfb3f-b752-4bd4-abbe-6e59ba75e152.png)  ![18](https://user-images.githubusercontent.com/59537867/180621811-6eaece74-220c-4782-8111-dc3723b2e6be.png)
 
-![2nd](https://user-images.githubusercontent.com/59537867/180301652-cf92c1e2-6cdf-4521-ad33-c0906c045dca.png)
 
-![3rd](https://user-images.githubusercontent.com/59537867/180301672-8a87e2ac-1a02-46cc-a9b8-1aaaae9a6199.png)
 
-![4th](https://user-images.githubusercontent.com/59537867/180301696-76717be5-e451-437d-b3cd-7dd88b9aadfb.png)
 
-![5th](https://user-images.githubusercontent.com/59537867/180303348-92a63b0e-d781-400c-bba4-67475528a057.png)
 
-![7th](https://user-images.githubusercontent.com/59537867/180301807-319320fd-e31e-4b86-88da-69581a1ea6ca.png)
 
-![8th](https://user-images.githubusercontent.com/59537867/180301717-24f572f9-2e2a-4bdb-bbf7-919e0fcf97c2.png)
 
-![9th](https://user-images.githubusercontent.com/59537867/180301842-07093114-287a-4c08-b6c2-6e321838383b.png)
 
-![10th](https://user-images.githubusercontent.com/59537867/180301860-8d8e1283-7ab0-4512-b39b-13110b4fe925.png)
 
-![11th](https://user-images.githubusercontent.com/59537867/180301867-567222a0-9cbf-41c7-92ca-9359508b7142.png)
 
-![12th](https://user-images.githubusercontent.com/59537867/180301879-77588b81-6d3d-4d54-9dda-a7b20bd9bdf9.png)
 
-![13th](https://user-images.githubusercontent.com/59537867/180301891-172c2076-e1d1-4e17-837d-1d4e4a61eebf.png)
+
+
+
+
+
+
+
 
 
 
