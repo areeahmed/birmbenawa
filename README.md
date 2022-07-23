@@ -1,19 +1,40 @@
 
-![Logo]()
+# Birmbenawa
+Birmbenawa is an application used to remind you important things that you need to remember
+
+# Logo
+![Logo](https://user-images.githubusercontent.com/59537867/180202924-9ad5fb18-85c6-49ca-b780-b6b970afea1a.png)
+
 
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![1](https://user-images.githubusercontent.com/59537867/180621698-0ea767bc-49ce-42d8-9e80-d411f899992e.png) ![2](https://user-images.githubusercontent.com/59537867/180621715-8f1a8651-b80d-4e1a-8654-5c5b311c0186.png)  ![3](https://user-images.githubusercontent.com/59537867/180621721-519b4893-e1ae-40d5-b745-710bd829b66b.png)  ![4](https://user-images.githubusercontent.com/59537867/180621738-4c325343-86cb-4ac1-ac5f-44fe0064674c.png)  ![5](https://user-images.githubusercontent.com/59537867/180621746-d14f8c92-6406-4d0b-91a4-bd935b3684bd.png) ![6](https://user-images.githubusercontent.com/59537867/180621752-42bb7b48-b2b1-46e7-a855-5af292cc977c.png)  ![7](https://user-images.githubusercontent.com/59537867/180621758-831235fa-5753-4763-a8c5-d8d775353e7b.png)  ![8](https://user-images.githubusercontent.com/59537867/180621765-f9be2891-edcd-44f5-9f35-2e84a92b6d6b.png)  ![9](https://user-images.githubusercontent.com/59537867/180621769-12de9882-a2c7-4b7a-9492-886f972ed44c.png)  ![10](https://user-images.githubusercontent.com/59537867/180621773-dcdc867c-0914-4e1f-a9e3-8b9fe23053f9.png)  ![11](https://user-images.githubusercontent.com/59537867/180621774-4e435688-d0dc-408c-9b02-70aba1bfc3ee.png)  ![12](https://user-images.githubusercontent.com/59537867/180621780-305afd6a-6286-4ea8-969c-b77e863b8273.png)  ![13](https://user-images.githubusercontent.com/59537867/180621790-fe6ac56c-7248-44f2-9973-ad39e4fc7e37.png)  ![14](https://user-images.githubusercontent.com/59537867/180621794-3f3aa4ae-dac8-4243-b807-0e98ca03b71a.png)  ![15](https://user-images.githubusercontent.com/59537867/180621798-5e1feecc-2a88-4fc8-bdec-6dc00b0430a1.png)  ![16](https://user-images.githubusercontent.com/59537867/180621800-94256571-b4ad-4195-b2ac-09c39bad9d68.png)  ![17](https://user-images.githubusercontent.com/59537867/180621807-3a5cfb3f-b752-4bd4-abbe-6e59ba75e152.png)  ![18](https://user-images.githubusercontent.com/59537867/180621811-6eaece74-220c-4782-8111-dc3723b2e6be.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Features
 
 - Shadowed Toggle Button
 
-
-# Birmbenawa
-Birmbenawa is an application used to remind you important things that you need to remember
 
 ## TODO
 - [x]  Creating some welcome slides.
