@@ -20,6 +20,9 @@ dependencies:
   url_launcher: ^6.1.5
   font_awesome_flutter: ^10.1.0
   flutter_iconpicker: ^3.1.4+1
+  firebase_auth: ^3.6.1
+  firebase_core: ^1.20.0
+  cloud_firestore: ^3.4.1
 
 dev_dependencies:
   flutter_test:
@@ -43,6 +46,9 @@ flutter:
     - family: KurdLight
       fonts: 
         - asset: fonts/K24KurdishLight-Light.ttf
+    - family: PeshangBold
+      fonts: 
+        - asset: fonts/peshangBold.ttf
 
   # Enable generation of localized Strings from arb files.
   generate: true
@@ -60,3 +66,4 @@ flutter:
     - assets/images/List_Of_Task.png
     - assets/images/SignIn.png
     - assets/images/Developing.png
+    - assets/images/slider/SignUp.png

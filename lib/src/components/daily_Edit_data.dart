@@ -1,4 +1,5 @@
 import 'package:birmbenawa/src/components/checkbox_days.dart';
+import 'package:birmbenawa/src/components/collectionOfColorPicker.dart';
 import 'package:birmbenawa/src/components/elevated_button.dart';
 import 'package:birmbenawa/src/components/pick_icon.dart';
 import 'package:birmbenawa/src/components/timepicker.dart';
@@ -20,7 +21,7 @@ class _DailyReminderDataEditState extends State<DailyReminderDataEdit> {
       children: [
         Container(
           margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(8),
           child: Column(
             children: [
               //? Entering a title
@@ -46,6 +47,10 @@ class _DailyReminderDataEditState extends State<DailyReminderDataEdit> {
                 height: 10,
               ),
               ChechBoxOfDays(),
+              const SizedBox(
+                height: 10,
+              ),
+              CollectionOfColorPicker(),
             ],
           ),
         ),

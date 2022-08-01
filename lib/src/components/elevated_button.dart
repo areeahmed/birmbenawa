@@ -14,12 +14,12 @@ class SavedElevatedButton extends StatefulWidget {
 
 class _SavedElevatedButtonState extends State<SavedElevatedButton> {
   _SavedElevatedButtonState({required this.text});
-  bool _isElevated = false;
+  final bool _isElevated = false;
   String text;
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       child: ElevatedButton(
         onPressed: () {
           Navigator.of(context, rootNavigator: true).pop();

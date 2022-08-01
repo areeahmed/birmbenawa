@@ -1,3 +1,4 @@
+import 'package:birmbenawa/src/components/listComponent.dart';
 import 'package:flutter/material.dart';
 
 class ShopingReminderPage extends StatefulWidget {
@@ -14,147 +15,21 @@ class _ShopingReminderPageState extends State<ShopingReminderPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.only(top: 70),
+        padding: const EdgeInsets.only(top: 70),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              ExpansionTile(
-                leading: Icon(
-                  Icons.call,
-                ),
-                title: Text('Title'),
-                subtitle: Text('more detail'),
-                children: [
-                  Container(
-                    child: Row(children: [
-                      buildCheckBox(),
-                      Text(
-                        'Your Task is Here...',
-                        style: TextStyle(
-                          color: value! ? Colors.grey.shade600 : Colors.black,
-                          decorationThickness: 4,
-                          decoration:
-                              value! ? TextDecoration.lineThrough : null,
-                        ),
-                      ),
-                    ]),
-                  ),
-                  Container(
-                    child: Row(children: [
-                      buildCheckBox(),
-                      Text(
-                        'Your Task is Here...',
-                        style: TextStyle(
-                          color: value! ? Colors.grey.shade600 : Colors.black,
-                          decorationThickness: 4,
-                          decoration:
-                              value! ? TextDecoration.lineThrough : null,
-                        ),
-                      ),
-                    ]),
-                  ),
-                ],
-              ),
-              ExpansionTile(
-                leading: Icon(
-                  Icons.call,
-                ),
-                title: Text('Title'),
-                subtitle: Text('more detail'),
-                children: [
-                  Container(
-                    child: Row(children: [
-                      buildCheckBox(),
-                      Text(
-                        'Your Task is Here...',
-                        style: TextStyle(
-                          color: value! ? Colors.grey.shade600 : Colors.black,
-                          decorationThickness: 4,
-                          decoration:
-                              value! ? TextDecoration.lineThrough : null,
-                        ),
-                      ),
-                    ]),
-                  ),
-                  Container(
-                    child: Row(children: [
-                      buildCheckBox(),
-                      Text(
-                        'Your Task is Here...',
-                        style: TextStyle(
-                          color: value! ? Colors.grey.shade600 : Colors.black,
-                          decorationThickness: 4,
-                          decoration:
-                              value! ? TextDecoration.lineThrough : null,
-                        ),
-                      ),
-                    ]),
-                  ),
-                ],
-              ),
-              ExpansionTile(
-                leading: Icon(
-                  Icons.call,
-                ),
-                title: Text('Title'),
-                subtitle: Text('more detail'),
-                children: [
-                  Container(
-                    child: Row(children: [
-                      buildCheckBox(),
-                      Text(
-                        'Your Task is Here...',
-                        style: TextStyle(
-                          color: value! ? Colors.grey.shade600 : Colors.black,
-                          decorationThickness: 4,
-                          decoration:
-                              value! ? TextDecoration.lineThrough : null,
-                        ),
-                      ),
-                    ]),
-                  ),
-                  Container(
-                    child: Row(children: [
-                      buildCheckBox(),
-                      Text(
-                        'Your Task is Here...',
-                        style: TextStyle(
-                          color: value! ? Colors.grey.shade600 : Colors.black,
-                          decorationThickness: 4,
-                          decoration:
-                              value! ? TextDecoration.lineThrough : null,
-                        ),
-                      ),
-                    ]),
-                  ),
-                ],
-              ),
+              ListTileWidgetComponent(),
+              ListTileWidgetComponent(),
             ],
           ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.pink,
+        backgroundColor: const Color.fromARGB(255, 98, 0, 255),
         onPressed: () {},
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
-
-  Widget buildCheckBox() => Checkbox(
-        value: value,
-        onChanged: (value) {
-          setState(() {
-            this.value = value;
-          });
-        },
-      );
-}
-
-class CheckBoxChecked {
-  bool? checked;
-
-  CheckBoxChecked({
-    this.checked,
-  });
 }

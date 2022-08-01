@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_iconpicker/flutter_iconpicker.dart';
 
 class GeneralCustomButtonWidget extends StatefulWidget {
   Icon? itemIcon;
@@ -74,7 +73,11 @@ class _CustomButtonWidgetState extends State<GeneralCustomButtonWidget> {
             child: content == null
                 ? Text(
                     itemText,
-                    style: TextStyle(fontSize: 20, color: Colors.pink),
+                    style: TextStyle(
+                      fontFamily: 'PeshangBold',
+                      fontSize: 20,
+                      color: Color.fromARGB(255, 98, 0, 255),
+                    ),
                   )
                 : itemIcon),
       ),

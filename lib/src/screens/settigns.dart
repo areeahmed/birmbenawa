@@ -19,9 +19,9 @@ class _SettingsPageState extends State<SettingsPage> {
           width: 50,
         ),
         centerTitle: true,
-        backgroundColor: Colors.grey,
+        backgroundColor: const Color.fromARGB(255, 98, 0, 255),
       ),
-      body: Center(
+      body: const Center(
         child: Text('Settigns'),
       ),
     );

@@ -41,13 +41,14 @@ class _TimePickerState extends State<TimePicker> {
         //? for showing the time
         Text(
           getText(), //! Return to reminder screen
-          style: TextStyle(fontSize: 24),
+          style: const TextStyle(fontSize: 24),
         ),
-        SizedBox(
+        const SizedBox(
           width: 100,
         ),
         //? Time Picker
-        IconButton(onPressed: () => pickTime(context), icon: Icon(Icons.watch)),
+        IconButton(
+            onPressed: () => pickTime(context), icon: const Icon(Icons.watch)),
       ],
     );
   }

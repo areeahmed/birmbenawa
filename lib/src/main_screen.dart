@@ -1,20 +1,20 @@
-import 'package:birmbenawa/src/drawer/about_app.dart';
-import 'package:birmbenawa/src/drawer/about_us.dart';
+import 'package:birmbenawa/src/screens/about_app.dart';
+import 'package:birmbenawa/src/screens/about_us.dart';
 import 'package:birmbenawa/src/drawer/my_drawer_header.dart';
-import 'package:birmbenawa/src/drawer/other_apps.dart';
-import 'package:birmbenawa/src/drawer/settigns.dart';
+import 'package:birmbenawa/src/screens/other_apps.dart';
+import 'package:birmbenawa/src/screens/settigns.dart';
 import 'package:birmbenawa/src/screens/buying.dart';
 import 'package:birmbenawa/src/screens/daily_reminder_screen.dart';
 import 'package:birmbenawa/src/screens/debtscreen.dart';
 import 'package:birmbenawa/src/screens/reminder_screen.dart';
 import 'package:birmbenawa/src/screens/shoping_list_reminder_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class MainPageScreen extends StatefulWidget {
-  String userName;
-  String phoneNumber;
-  MainPageScreen({Key? key, required this.userName, required this.phoneNumber})
-      : super(key: key);
+  String? userName;
+  String? phoneNumber;
+  MainPageScreen({Key? key, this.userName, this.phoneNumber}) : super(key: key);
 
   @override
   State<MainPageScreen> createState() =>
@@ -22,9 +22,9 @@ class MainPageScreen extends StatefulWidget {
 }
 
 class _MainPageScreenState extends State<MainPageScreen> {
-  String userName;
-  String phoneNumber;
-  _MainPageScreenState({required this.userName, required this.phoneNumber});
+  String? userName = 'Unknown';
+  String? phoneNumber;
+  _MainPageScreenState({this.userName, this.phoneNumber});
   var currentPage = DrawerSections.settings;
   int currentIndexPage = 0;
   final screens = [
@@ -35,65 +35,67 @@ class _MainPageScreenState extends State<MainPageScreen> {
       timeH: 0,
       timeM: 0,
     ),
-    DailyReminderPage(),
-    ShopingReminderPage(),
+    const DailyReminderPage(),
+    const ShopingReminderPage(),
     DebtScreenView(),
     BuyingChatScreenView(),
   ];
   @override
   Widget build(BuildContext context) {
-    final String logoPath = 'assets/images/slider/logo.png';
+    const String logoPath = 'assets/images/slider/logo.png';
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        elevation: 0,
-        title: Image.asset(
-          logoPath,
-          width: 50,
+        iconTheme: const IconThemeData(
+          color: Color.fromARGB(255, 98, 0, 255),
         ),
+        elevation: 0,
         centerTitle: true,
-        backgroundColor: Color.fromARGB(255, 110, 110, 110).withAlpha(900),
+        backgroundColor: const Color.fromARGB(206, 211, 210, 210).withAlpha(0),
       ),
       body: IndexedStack(
         index: currentIndexPage,
         children: screens,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.pink,
+        selectedLabelStyle: const TextStyle(
+          fontFamily: 'PeshangBold',
+        ),
+        selectedItemColor: const Color.fromARGB(255, 98, 0, 255),
         unselectedItemColor: Colors.black,
-        backgroundColor: Color.fromARGB(255, 187, 187, 187),
+        backgroundColor: const Color.fromARGB(255, 187, 187, 187),
         onTap: (index) => setState(() => currentIndexPage = index),
         currentIndex: currentIndexPage,
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(
               Icons.notifications,
             ),
-            label: 'Todays',
+            label: 'ئەمرۆ',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.calendar_month,
             ),
-            label: 'Daily',
+            label: 'رۆژانە',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.list,
             ),
-            label: 'List',
+            label: 'لیست',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.attach_money,
             ),
-            label: 'Debt',
+            label: 'قەرزەکان',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.shopping_bag,
             ),
-            label: 'Buy',
+            label: 'بۆم بکرە',
           ),
         ],
       ),
@@ -101,7 +103,7 @@ class _MainPageScreenState extends State<MainPageScreen> {
         child: Container(
           child: Column(
             children: [
-              MyHeaderDrawer(userName: userName, phoneNumber: phoneNumber),
+              MyHeaderDrawer(userName: 'Unknown', phoneNumber: 'Unkown'),
               MyDrawerList(),
             ],
           ),
@@ -112,20 +114,22 @@ class _MainPageScreenState extends State<MainPageScreen> {
 
   Widget MyDrawerList() {
     return Container(
-      padding: EdgeInsets.only(
+      padding: const EdgeInsets.only(
         top: 15,
       ),
       child: Column(
         //? showing the list of menu drawer
         children: [
-          menuItem(1, 'Settigns', Icons.settings,
+          menuItem(1, 'دەستکاری کردن', Icons.settings,
               currentPage == DrawerSections.settings ? true : false),
-          menuItem(2, 'About App', Icons.check_circle,
+          menuItem(2, 'دەربارەی بەرنامە', Icons.check_circle,
               currentPage == DrawerSections.aboutApp ? true : false),
-          menuItem(3, 'About Us', Icons.person,
+          menuItem(3, 'دەربارەی ئێمە', Icons.person,
               currentPage == DrawerSections.aboutUs ? true : false),
-          menuItem(4, 'Other Apps', Icons.dashboard,
+          menuItem(4, 'بەرنامەکانی تر', Icons.dashboard,
               currentPage == DrawerSections.otherApps ? true : false),
+          menuItem(5, 'Sign Out', Icons.dashboard,
+              currentPage == DrawerSections.signOut ? true : false),
         ],
       ),
     );
@@ -136,7 +140,7 @@ class _MainPageScreenState extends State<MainPageScreen> {
       child: InkWell(
         onTap: () {
           Navigator.pop(context);
-          setState(() {
+          setState(() async {
             if (id == 1) {
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => SettingsPage()));
@@ -149,25 +153,29 @@ class _MainPageScreenState extends State<MainPageScreen> {
             } else if (id == 4) {
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => OtherAppsPage()));
+            } else if (id == 5) {
+              await FirebaseAuth.instance.signOut();
+              Navigator.of(context).pop();
             }
           });
         },
         child: Padding(
-          padding: EdgeInsets.all(15.0),
+          padding: const EdgeInsets.all(15.0),
           child: Row(
             children: [
               Expanded(
                 child: Icon(
                   icon,
                   size: 20,
-                  color: Colors.black,
+                  color: const Color.fromARGB(255, 98, 0, 255),
                 ),
               ),
               Expanded(
                 flex: 3,
                 child: Text(
                   title,
-                  style: TextStyle(
+                  style: const TextStyle(
+                    fontFamily: 'PeshangBold',
                     color: Colors.black,
                     fontSize: 16,
                   ),
@@ -179,19 +187,12 @@ class _MainPageScreenState extends State<MainPageScreen> {
       ),
     );
   }
-
-  // void goToHome(context) => Navigator.of(context)
-  //     .push(MaterialPageRoute(builder: (context) => MainPageScreen()));
 }
-
-//     SettingsPage(),
-//     AboutAppPage(),
-//     AboutUsPage(),
-//     OtherAppsPage(),
 
 enum DrawerSections {
   settings,
   aboutApp,
   aboutUs,
   otherApps,
+  signOut,
 }

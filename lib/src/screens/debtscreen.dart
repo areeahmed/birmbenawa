@@ -18,7 +18,7 @@ class _DebtScreenViewState extends State<DebtScreenView> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(developModePathImage),
-            Text(
+            const Text(
               'On Developing',
               style: TextStyle(
                 fontSize: 24,

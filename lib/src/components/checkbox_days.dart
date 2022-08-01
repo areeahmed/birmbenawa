@@ -39,9 +39,7 @@ class _ChechBoxOfDaysState extends State<ChechBoxOfDays> {
               customWidth: 50,
               ontap: () {},
             ),
-            SizedBox(
-              width: 8,
-            ),
+            const SizedBox(width: 8),
             //! Sun
             CustomToggleButtonWidget(
               textItem: sun.day,
@@ -49,9 +47,7 @@ class _ChechBoxOfDaysState extends State<ChechBoxOfDays> {
               customWidth: 50,
               ontap: () {},
             ),
-            SizedBox(
-              width: 8,
-            ),
+            const SizedBox(width: 8),
             //! Mon
             CustomToggleButtonWidget(
               textItem: mon.day,
@@ -72,9 +68,7 @@ class _ChechBoxOfDaysState extends State<ChechBoxOfDays> {
               customWidth: 50,
               ontap: () {},
             ),
-            SizedBox(
-              width: 8,
-            ),
+            const SizedBox(width: 8),
             //! Wed
             CustomToggleButtonWidget(
               textItem: wed.day,
@@ -82,9 +76,7 @@ class _ChechBoxOfDaysState extends State<ChechBoxOfDays> {
               customWidth: 50,
               ontap: () {},
             ),
-            SizedBox(
-              width: 8,
-            ),
+            const SizedBox(width: 8),
             //! Thu
             CustomToggleButtonWidget(
               textItem: thu.day,
@@ -92,9 +84,7 @@ class _ChechBoxOfDaysState extends State<ChechBoxOfDays> {
               customWidth: 50,
               ontap: () {},
             ),
-            SizedBox(
-              width: 8,
-            ),
+            const SizedBox(width: 8),
           ],
         ),
         Row(
@@ -108,9 +98,7 @@ class _ChechBoxOfDaysState extends State<ChechBoxOfDays> {
               customWidth: 50,
               ontap: () {},
             ),
-            SizedBox(
-              width: 8,
-            ),
+            const SizedBox(width: 8),
           ],
         ),
       ],

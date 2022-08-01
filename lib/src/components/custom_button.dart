@@ -30,7 +30,7 @@ class CustomButtonWidget extends StatefulWidget {
 }
 
 class _CustomButtonWidgetState extends State<CustomButtonWidget> {
-  Icon? _icon = Icon(Icons.add);
+  Icon? _icon = const Icon(Icons.add);
   Icon? itemIcon;
   Widget? content;
   String? itemText;
@@ -48,7 +48,7 @@ class _CustomButtonWidgetState extends State<CustomButtonWidget> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      highlightColor: Color.fromARGB(255, 167, 167, 167),
+      highlightColor: const Color.fromARGB(255, 167, 167, 167),
       onTap: () {
         _pickIcon();
       },
@@ -63,7 +63,7 @@ class _CustomButtonWidgetState extends State<CustomButtonWidget> {
               color: Colors.grey.shade400,
               spreadRadius: 1,
               blurRadius: 8,
-              offset: Offset(4, 4),
+              offset: const Offset(4, 4),
             ),
             const BoxShadow(
               color: Colors.white,

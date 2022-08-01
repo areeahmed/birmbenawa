@@ -52,11 +52,11 @@ class _ReminderCardPageState extends State<ReminderCardPage> {
           Container(
               height: 150,
               width: 360,
-              color: Color.fromARGB(255, 206, 206, 206),
-              padding: EdgeInsets.all(8),
+              color: const Color.fromARGB(255, 255, 255, 255),
+              padding: const EdgeInsets.all(8),
               child: Row(
                 children: [
-                  Container(
+                  SizedBox(
                     height: 50,
                     width: 280,
                     child: ListTile(
@@ -65,21 +65,21 @@ class _ReminderCardPageState extends State<ReminderCardPage> {
                       title: Text(theTitleOfTheCard),
                       subtitle: Text(
                           '${timeH - time.hour} : ${timeM - time.minute} remain to get a notify'),
-                      trailing: Text('${selectedTime} remaning'),
+                      trailing: Text('$selectedTime remaning'),
                     ),
                   ),
                   Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       IconButton(
                         onPressed: () {}, // edit the card
-                        icon: Icon(Icons.edit),
+                        icon: const Icon(Icons.edit),
                       ),
                       IconButton(
                         onPressed: () {}, // delete the card
-                        icon: Icon(Icons.delete),
+                        icon: const Icon(Icons.delete),
                       ),
                     ],
                   ),

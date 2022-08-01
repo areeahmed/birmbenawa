@@ -1,3 +1,4 @@
+import 'package:birmbenawa/src/components/collectionOfColorPicker.dart';
 import 'package:birmbenawa/src/components/elevated_button.dart';
 import 'package:birmbenawa/src/components/pick_icon.dart';
 import 'package:birmbenawa/src/components/timepicker.dart';
@@ -42,6 +43,10 @@ class _ReminderDataEditScreenState extends State<ReminderDataEditScreen> {
               ),
               //? for selecting ICons ( Icon Picker and showing Icon)
               MyIconpickerWidget(),
+              const SizedBox(
+                height: 30,
+              ),
+              CollectionOfColorPicker(),
             ],
           ),
         ),

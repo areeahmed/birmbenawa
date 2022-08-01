@@ -74,7 +74,7 @@ class _CustomToggleButtonWidgetState extends State<CustomToggleButtonWidget> {
               ? [
                   BoxShadow(
                     color: Colors.grey.shade500,
-                    offset: Offset(4, 4),
+                    offset: const Offset(4, 4),
                     blurRadius: 15,
                     spreadRadius: 1,
                   ),
@@ -89,12 +89,11 @@ class _CustomToggleButtonWidgetState extends State<CustomToggleButtonWidget> {
         ),
         child: Center(
           child: Container(
-            child: content == null
-                ? Text(
-                    textItem ?? 'No Text',
-                    style: TextStyle(color: fstColor),
-                  )
-                : content,
+            child: content ??
+                Text(
+                  textItem ?? 'No Text',
+                  style: TextStyle(color: fstColor),
+                ),
           ),
         ),
       ),

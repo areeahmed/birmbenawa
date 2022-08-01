@@ -59,7 +59,7 @@ class _MyDrawerListState extends State<MyDrawerList> {
                 child: Icon(
                   icon,
                   size: 20,
-                  color: Colors.black,
+                  color: Color.fromARGB(255, 98, 0, 255),
                 ),
               ),
               Expanded(
@@ -67,6 +67,7 @@ class _MyDrawerListState extends State<MyDrawerList> {
                 child: Text(
                   title,
                   style: TextStyle(
+                    fontFamily: 'PeshangBold',
                     color: Colors.black,
                     fontSize: 16,
                   ),

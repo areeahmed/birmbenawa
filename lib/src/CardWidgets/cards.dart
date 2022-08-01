@@ -44,9 +44,12 @@ class _CardsViewState extends State<CardsView> {
   Widget build(BuildContext context) {
     bool isSelected = true;
     int indexOfdays = 0;
-    final listOfDays = ['SAT', 'SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI'];
+
     return Container(
-      padding: EdgeInsets.only(top: 13),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      padding: const EdgeInsets.only(top: 13),
       child: Row(
         children: [
           GestureDetector(
@@ -54,142 +57,55 @@ class _CardsViewState extends State<CardsView> {
               setState(() {});
             },
             child: AnimatedContainer(
-              duration: Duration(milliseconds: 300),
-              padding: EdgeInsets.all(8),
-              height: 155,
+              duration: const Duration(milliseconds: 300),
+              padding: const EdgeInsets.all(8),
+              height: 160,
               width: 376,
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.only(),
-                boxShadow: [
-                  BoxShadow(
-                    color: Color.fromARGB(255, 66, 66, 66),
-                    blurRadius: 1,
-                    spreadRadius: 1,
-                    offset: Offset(2, 2),
-                  ),
-                  BoxShadow(
-                    color: Color.fromARGB(255, 241, 241, 241),
-                    blurRadius: 1,
-                    spreadRadius: 1,
-                    offset: Offset(2, 2),
-                  ),
-                ],
+                borderRadius: BorderRadius.circular(12),
               ),
               child: Column(
                 children: [
-                  Container(
-                    padding: EdgeInsets.fromLTRB(19, 8, 8, 0),
-                    child: Row(
-                      children: [
-                        Text(
-                          listOfDays[0],
-                          style: TextStyle(
-                            color: isSelected ? Colors.pink : Colors.black,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 2,
-                        ),
-                        Text(
-                          listOfDays[1],
-                          style: TextStyle(
-                            color: isSelected ? Colors.pink : Colors.black,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 2,
-                        ),
-                        Text(
-                          listOfDays[2],
-                          style: TextStyle(
-                            color: isSelected ? Colors.pink : Colors.black,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 2,
-                        ),
-                        Text(
-                          listOfDays[3],
-                          style: TextStyle(
-                            color: isSelected ? Colors.pink : Colors.black,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 2,
-                        ),
-                        Text(
-                          listOfDays[4],
-                          style: TextStyle(
-                            color: isSelected ? Colors.pink : Colors.black,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 2,
-                        ),
-                        Text(
-                          listOfDays[5],
-                          style: TextStyle(
-                            color: isSelected ? Colors.pink : Colors.black,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 2,
-                        ),
-                        Text(
-                          listOfDays[6],
-                          style: TextStyle(
-                            color: isSelected ? Colors.pink : Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  //! Days
+                  DaysCheckedView(isSelected: isSelected),
                   Row(
                     textDirection: TextDirection.rtl,
                     children: [
                       Container(
-                        padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
-                        child: Column(
-                          children: [
-                            Icon(
-                              Icons.person,
-                              size: 50,
-                            ),
-                          ],
+                        padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+                        child: Icon(
+                          Icons.person,
+                          size: 50,
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.fromLTRB(110, 0, 20, 10),
+                        padding: const EdgeInsets.fromLTRB(110, 0, 20, 10),
                         child: Column(
-                          children: [
-                            SizedBox(
-                              height: 30,
-                            ),
+                          children: const [
+                            SizedBox(height: 30),
                             Text(
-                              'Title',
+                              'ناونیشان',
                               style: TextStyle(
+                                fontFamily: 'PeshangBold',
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            SizedBox(
-                              height: 20,
-                            ),
+                            SizedBox(height: 20),
                             Text(
                               'More Detail',
                             ),
                           ],
                         ),
                       ),
-
                       //! Time Column
                       Column(
                         children: [
                           Container(
-                            padding: EdgeInsets.fromLTRB(20, 10, 0, 20),
+                            padding: const EdgeInsets.fromLTRB(20, 10, 0, 20),
                             child: Column(
-                              children: [
+                              children: const [
                                 Text(
                                   '12:12',
                                   style: TextStyle(
@@ -213,6 +129,78 @@ class _CardsViewState extends State<CardsView> {
                   ),
                 ],
               ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  //! for the days you need a model class
+  Widget DaysCheckedView({required isSelected}) {
+    final listOfDays = ['SAT', 'SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI'];
+    return Container(
+      padding: const EdgeInsets.fromLTRB(19, 8, 8, 0),
+      child: Row(
+        children: [
+          Text(
+            listOfDays[0],
+            style: TextStyle(
+              color: isSelected ? Colors.pink : Colors.black,
+            ),
+          ),
+          const SizedBox(
+            width: 2,
+          ),
+          Text(
+            listOfDays[1],
+            style: TextStyle(
+              color: isSelected ? Colors.pink : Colors.black,
+            ),
+          ),
+          const SizedBox(
+            width: 2,
+          ),
+          Text(
+            listOfDays[2],
+            style: TextStyle(
+              color: isSelected ? Colors.pink : Colors.black,
+            ),
+          ),
+          const SizedBox(
+            width: 2,
+          ),
+          Text(
+            listOfDays[3],
+            style: TextStyle(
+              color: isSelected ? Colors.pink : Colors.black,
+            ),
+          ),
+          const SizedBox(
+            width: 2,
+          ),
+          Text(
+            listOfDays[4],
+            style: TextStyle(
+              color: isSelected ? Colors.pink : Colors.black,
+            ),
+          ),
+          const SizedBox(
+            width: 2,
+          ),
+          Text(
+            listOfDays[5],
+            style: TextStyle(
+              color: isSelected ? Colors.pink : Colors.black,
+            ),
+          ),
+          const SizedBox(
+            width: 2,
+          ),
+          Text(
+            listOfDays[6],
+            style: TextStyle(
+              color: isSelected ? Colors.pink : Colors.black,
             ),
           ),
         ],

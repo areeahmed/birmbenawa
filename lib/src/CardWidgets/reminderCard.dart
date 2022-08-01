@@ -43,7 +43,7 @@ class _reminderCardWidgetState extends State<ReminderCardWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 13),
+      padding: const EdgeInsets.only(top: 10),
       child: Row(
         children: [
           GestureDetector(
@@ -51,26 +51,13 @@ class _reminderCardWidgetState extends State<ReminderCardWidget> {
               setState(() {});
             },
             child: AnimatedContainer(
-              duration: Duration(milliseconds: 300),
-              padding: EdgeInsets.all(8),
-              height: 155,
+              duration: const Duration(milliseconds: 300),
+              padding: const EdgeInsets.all(8),
+              height: 133,
               width: 376,
               decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
                 color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Color.fromARGB(255, 66, 66, 66),
-                    blurRadius: 1,
-                    spreadRadius: 1,
-                    offset: Offset(2, 2),
-                  ),
-                  BoxShadow(
-                    color: Color.fromARGB(255, 241, 241, 241),
-                    blurRadius: 1,
-                    spreadRadius: 1,
-                    offset: Offset(2, 2),
-                  ),
-                ],
               ),
               child: Column(
                 children: [
@@ -78,9 +65,9 @@ class _reminderCardWidgetState extends State<ReminderCardWidget> {
                     textDirection: TextDirection.rtl,
                     children: [
                       Container(
-                        padding: EdgeInsets.fromLTRB(0, 40, 0, 20),
+                        padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
                         child: Column(
-                          children: [
+                          children: const [
                             Icon(
                               Icons.person,
                               size: 50,
@@ -89,11 +76,11 @@ class _reminderCardWidgetState extends State<ReminderCardWidget> {
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.fromLTRB(110, 0, 20, 10),
+                        padding: EdgeInsets.fromLTRB(110, 8, 20, 10),
                         child: Column(
-                          children: [
+                          children: const [
                             SizedBox(
-                              height: 30,
+                              height: 10,
                             ),
                             Text(
                               'Title',
@@ -111,14 +98,13 @@ class _reminderCardWidgetState extends State<ReminderCardWidget> {
                           ],
                         ),
                       ),
-
                       //! Time Column
                       Column(
                         children: [
                           Container(
-                            padding: EdgeInsets.fromLTRB(20, 40, 0, 20),
+                            padding: const EdgeInsets.fromLTRB(20, 30, 0, 20),
                             child: Column(
-                              children: [
+                              children: const [
                                 Text(
                                   '12:12',
                                   style: TextStyle(

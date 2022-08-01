@@ -1,4 +1,4 @@
-import 'package:birmbenawa/src/screens/daily_Edit_data.dart';
+import 'package:birmbenawa/src/components/daily_Edit_data.dart';
 import 'package:flutter/material.dart';
 
 import '../CardWidgets/cards.dart';
@@ -26,14 +26,15 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
 
       //* Cards contains ==> ( Title - Description - Time - Icon - color - remining time for reminding)
       body: Container(
-        color: Colors.grey[300],
+        color: Colors.grey[200],
         child: SingleChildScrollView(
-          padding: EdgeInsets.only(
+          padding: const EdgeInsets.only(
             top: 80,
             left: 8,
             right: 8,
           ),
           child: Column(children: [
+            //! those cards most not be here it will be add by user
             CardsView(),
             CardsView(),
             CardsView(),
@@ -49,13 +50,14 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.pink,
+        backgroundColor: const Color.fromARGB(255, 98, 0, 255),
         onPressed: () => _askedToLead(),
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
 
+// to show dailog that contain lots of component
   Future _askedToLead() async {
     switch (await showDialog(
         context: context,
