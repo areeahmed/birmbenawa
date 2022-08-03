@@ -1,3 +1,4 @@
+import 'package:birmbenawa/src/models/reminder_screen_model.dart';
 import 'package:flutter/material.dart';
 
 class ReminderCardWidget extends StatefulWidget {
@@ -42,6 +43,7 @@ class _reminderCardWidgetState extends State<ReminderCardWidget> {
   });
   @override
   Widget build(BuildContext context) {
+    ReminderScreenModel reminderScreenComponentModel = ReminderScreenModel();
     return Container(
       padding: const EdgeInsets.only(top: 10),
       child: Row(

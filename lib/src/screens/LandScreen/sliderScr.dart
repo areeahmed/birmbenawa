@@ -1,4 +1,4 @@
-import 'package:birmbenawa/src/screens/registeration.dart';
+import 'package:birmbenawa/src/screens/Auth/registeration.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 

@@ -1,6 +1,7 @@
-import 'package:birmbenawa/src/CardWidgets/reminderCard.dart';
-import 'package:birmbenawa/src/CardWidgets/reminderCards.dart';
 import 'package:birmbenawa/src/components/reminder_data_card_edit_screen.dart';
+import 'package:birmbenawa/src/models/navigating_between_screens.dart';
+import 'package:birmbenawa/src/models/reminder_screen_model.dart';
+import 'package:birmbenawa/src/models/used_too_mutch.dart';
 import 'package:flutter/material.dart';
 
 class Reminderpage extends StatefulWidget {
@@ -28,6 +29,7 @@ class Reminderpage extends StatefulWidget {
 }
 
 class _ReminderoageState extends State<Reminderpage> {
+  NaviagtingBetweenScreens navigateBetweenScreens = NaviagtingBetweenScreens();
   _ReminderoageState({
     required this.titleOfTheCard,
     required this.selectedTime,
@@ -35,13 +37,14 @@ class _ReminderoageState extends State<Reminderpage> {
     required this.timeH,
     required this.timeM,
   });
+  UsedTooMutch usedTooMutch = UsedTooMutch();
   String? titleOfTheCard;
   String? selectedTime;
   Icon? icon;
   int? timeH;
   int? timeM;
-  List<ReminderCardPage> listOfCards = [];
-  final String logoPath = 'assets/images/slider/logo.png';
+  List<ReminderScreenModel> listOfCards = [];
+  ReminderScreenModel reminderScreenComponentModel = ReminderScreenModel();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,44 +59,44 @@ class _ReminderoageState extends State<Reminderpage> {
           child: Column(children: [
             //! this cards here is wrong the user must add the cards by pressing button
             //! and this will be by using firebase and StreamBuilder and ListViewBuilder and Futurs
-            ReminderCardWidget(),
-            ReminderCardWidget(),
-            ReminderCardWidget(),
-            ReminderCardWidget(),
-            ReminderCardWidget(),
-            ReminderCardWidget(),
-            ReminderCardWidget(),
-            ReminderCardWidget(),
-            ReminderCardWidget(),
-            ReminderCardWidget(),
-            ReminderCardWidget(),
-            ReminderCardWidget(),
-            ReminderCardWidget(),
+            reminderScreenComponentModel.CardBodyRemiderScreen(),
+            reminderScreenComponentModel.CardBodyRemiderScreen(),
+            reminderScreenComponentModel.CardBodyRemiderScreen(),
+            reminderScreenComponentModel.CardBodyRemiderScreen(),
+            reminderScreenComponentModel.CardBodyRemiderScreen(),
+            reminderScreenComponentModel.CardBodyRemiderScreen(),
+            reminderScreenComponentModel.CardBodyRemiderScreen(),
+            reminderScreenComponentModel.CardBodyRemiderScreen(),
+            reminderScreenComponentModel.CardBodyRemiderScreen(),
+            reminderScreenComponentModel.CardBodyRemiderScreen(),
+            reminderScreenComponentModel.CardBodyRemiderScreen(),
+            reminderScreenComponentModel.CardBodyRemiderScreen(),
+            reminderScreenComponentModel.CardBodyRemiderScreen(),
+            reminderScreenComponentModel.CardBodyRemiderScreen(),
           ]),
         ),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color.fromARGB(255, 98, 0, 255),
-        onPressed: () => _askedToLead(), //goToHome(context),
+        onPressed: () => usedTooMutch.askedToLead(
+            ReminderDataEditScreen, context), //goToHome(context),
         child: const Icon(Icons.add),
       ),
     );
   }
 
-  void goToHome(context) => Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => const ReminderDataEditScreen()));
-
-  Future _askedToLead() async {
-    switch (await showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return const SimpleDialog(
-            title: Text('Set an Reminder'),
-            children: <Widget>[
-              ReminderDataEditScreen(),
-            ],
-          );
-        })) {
-    }
-  }
+  // Future _askedToLead() async {
+  //   switch (await showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return const SimpleDialog(
+  //         title: Text('Set an Reminder'),
+  //         children: <Widget>[
+  //           ReminderDataEditScreen(),
+  //         ],
+  //       );
+  //     },
+  //   )) {
+  //   }
+  // }
 }

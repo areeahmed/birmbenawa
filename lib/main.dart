@@ -10,5 +10,5 @@ void main() async {
     //? Solving Black Screen on Emulator
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  runApp(MyApp());
 }

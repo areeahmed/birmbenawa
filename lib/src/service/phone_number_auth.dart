@@ -1,5 +1,5 @@
-import 'package:birmbenawa/src/main_screen.dart';
-import 'package:birmbenawa/src/screens/phone_number_verification.dart';
+import 'package:birmbenawa/src/screens/LandScreen/main_screen.dart';
+import 'package:birmbenawa/src/provider/phone_number_verification.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 

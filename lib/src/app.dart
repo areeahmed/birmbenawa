@@ -1,4 +1,6 @@
-import 'package:birmbenawa/src/screens/sliderScr.dart';
+import 'package:birmbenawa/src/screens/LandScreen/main_screen.dart';
+import 'package:birmbenawa/src/screens/LandScreen/sliderScr.dart';
+import 'package:birmbenawa/src/screens/reminder_screen.dart';
 import 'package:flutter/material.dart';
 
 /// The Widget that configures your application.
@@ -12,10 +14,10 @@ class MyApp extends StatelessWidget {
     // The AnimatedBuilder Widget listens to the SettingsController for changes.
     // Whenever the user updates their settings, the MaterialApp is rebuilt.
 
-    return const MaterialApp(
+    return MaterialApp(
       // ? this single line belowe is to remove the debug banner
       debugShowCheckedModeBanner: false,
-      home: LandScreenSlides(),
+      home: MainPageScreen(),
     );
   }
 }

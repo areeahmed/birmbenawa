@@ -1,8 +1,8 @@
-import 'package:birmbenawa/src/screens/about_app.dart';
-import 'package:birmbenawa/src/screens/about_us.dart';
+import 'package:birmbenawa/src/screens/DrawerScreens/about_app.dart';
+import 'package:birmbenawa/src/screens/DrawerScreens/about_us.dart';
 import 'package:birmbenawa/src/drawer/my_drawer_header.dart';
-import 'package:birmbenawa/src/screens/other_apps.dart';
-import 'package:birmbenawa/src/screens/settigns.dart';
+import 'package:birmbenawa/src/screens/DrawerScreens/other_apps.dart';
+import 'package:birmbenawa/src/screens/DrawerScreens/settigns.dart';
 import 'package:birmbenawa/src/screens/buying.dart';
 import 'package:birmbenawa/src/screens/daily_reminder_screen.dart';
 import 'package:birmbenawa/src/screens/debtscreen.dart';
