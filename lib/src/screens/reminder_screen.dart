@@ -1,4 +1,4 @@
-import 'package:birmbenawa/src/components/reminder_data_card_edit_screen.dart';
+import 'package:birmbenawa/src/models/dialog_component_model.dart';
 import 'package:birmbenawa/src/models/navigating_between_screens.dart';
 import 'package:birmbenawa/src/models/reminder_screen_model.dart';
 import 'package:birmbenawa/src/models/used_too_mutch.dart';
@@ -45,6 +45,8 @@ class _ReminderoageState extends State<Reminderpage> {
   int? timeM;
   List<ReminderScreenModel> listOfCards = [];
   ReminderScreenModel reminderScreenComponentModel = ReminderScreenModel();
+  DialogComponentModelWidgets dialogComponentModelWidgets =
+      DialogComponentModelWidgets();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,24 +81,10 @@ class _ReminderoageState extends State<Reminderpage> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color.fromARGB(255, 98, 0, 255),
         onPressed: () => usedTooMutch.askedToLead(
-            ReminderDataEditScreen, context), //goToHome(context),
+            dialogComponentModelWidgets.dialogBody(),
+            context), //goToHome(context),
         child: const Icon(Icons.add),
       ),
     );
   }
-
-  // Future _askedToLead() async {
-  //   switch (await showDialog(
-  //     context: context,
-  //     builder: (BuildContext context) {
-  //       return const SimpleDialog(
-  //         title: Text('Set an Reminder'),
-  //         children: <Widget>[
-  //           ReminderDataEditScreen(),
-  //         ],
-  //       );
-  //     },
-  //   )) {
-  //   }
-  // }
 }
