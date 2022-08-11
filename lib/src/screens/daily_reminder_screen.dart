@@ -1,6 +1,6 @@
-import 'package:birmbenawa/src/models/daily_remider_model.dart';
-import 'package:birmbenawa/src/models/dialog_component_model.dart';
-import 'package:birmbenawa/src/models/used_too_mutch.dart';
+import 'package:birmbenawa/src/provider/daily_remider_model.dart';
+import 'package:birmbenawa/src/provider/dialog_component_model.dart';
+import 'package:birmbenawa/src/provider/used_too_mutch.dart';
 import 'package:flutter/material.dart';
 
 class DailyReminderPage extends StatefulWidget {
@@ -11,7 +11,8 @@ class DailyReminderPage extends StatefulWidget {
 }
 
 class _DailyReminderPageState extends State<DailyReminderPage> {
-  DialogComponentModelWidgets dialogBody = DialogComponentModelWidgets();
+  DialogComponentModelWidgets dialogBody =
+      DialogComponentModelWidgets(isDailyReminder: true);
   DailyReminderScreenModel dailyReminderCard = DailyReminderScreenModel();
   UsedTooMutch userTooMutch = UsedTooMutch();
   @override
@@ -26,33 +27,9 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
         //* Button Action to create a Card
 
         //* Cards contains ==> ( Title - Description - Time - Icon - color - remining time for reminding)
-        body: Container(
-          color: Colors.grey[200],
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.only(
-              top: 80,
-              left: 8,
-              right: 8,
-            ),
-            child: Column(children: [
-              //! those cards most not be here it will be add by user
-              dailyReminderCard.CardShowDailyReminderWidget(),
-              dailyReminderCard.CardShowDailyReminderWidget(),
-              dailyReminderCard.CardShowDailyReminderWidget(),
-              dailyReminderCard.CardShowDailyReminderWidget(),
-              dailyReminderCard.CardShowDailyReminderWidget(),
-              dailyReminderCard.CardShowDailyReminderWidget(),
-              dailyReminderCard.CardShowDailyReminderWidget(),
-              dailyReminderCard.CardShowDailyReminderWidget(),
-              dailyReminderCard.CardShowDailyReminderWidget(),
-              dailyReminderCard.CardShowDailyReminderWidget(),
-              dailyReminderCard.CardShowDailyReminderWidget(),
-              dailyReminderCard.CardShowDailyReminderWidget(),
-            ]),
-          ),
-        ),
         floatingActionButton: userTooMutch.FloatingActionButtonTooMutchUsed(
-          () => userTooMutch.askedToLead(dialogBody.dialogBody(), context),
-        ));
+      () => userTooMutch.askedToLead(
+          dialogBody.dialogBody(context: context), context),
+    ));
   }
 }

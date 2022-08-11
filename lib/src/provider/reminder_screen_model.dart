@@ -24,6 +24,12 @@ class ReminderScreenModel {
   //! the GestureDetector isn't do any thing for now...
   Widget CardBodyRemiderScreen() {
     return Container(
+      height: 135,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(borderRadiusOfGestureDetector),
+          boxShadow: [
+            BoxShadow(color: Colors.grey.shade300, offset: Offset(0, 10))
+          ]),
       padding: EdgeInsets.only(top: paddingTopContainer),
       child: Row(
         children: [
@@ -84,17 +90,17 @@ class ReminderScreenModel {
             height: 10,
           ),
           Text(
-            'Title',
+            'ناونیشان',
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
             ),
           ),
           SizedBox(
-            height: 20,
+            height: 15,
           ),
           Text(
-            'More Detail',
+            'زانیاری زیاتر',
           ),
         ],
       ),

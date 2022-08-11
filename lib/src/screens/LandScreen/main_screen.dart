@@ -1,8 +1,10 @@
+import 'package:birmbenawa/src/app.dart';
 import 'package:birmbenawa/src/screens/DrawerScreens/about_app.dart';
 import 'package:birmbenawa/src/screens/DrawerScreens/about_us.dart';
 import 'package:birmbenawa/src/drawer/my_drawer_header.dart';
 import 'package:birmbenawa/src/screens/DrawerScreens/other_apps.dart';
 import 'package:birmbenawa/src/screens/DrawerScreens/settigns.dart';
+import 'package:birmbenawa/src/screens/LandScreen/sliderScr.dart';
 import 'package:birmbenawa/src/screens/buying.dart';
 import 'package:birmbenawa/src/screens/daily_reminder_screen.dart';
 import 'package:birmbenawa/src/screens/debtscreen.dart';
@@ -155,7 +157,8 @@ class _MainPageScreenState extends State<MainPageScreen> {
                   MaterialPageRoute(builder: (context) => OtherAppsPage()));
             } else if (id == 5) {
               await FirebaseAuth.instance.signOut();
-              Navigator.of(context).pop();
+              await Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => MyApp()));
             }
           });
         },

@@ -14,10 +14,7 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset(
-          logoPath,
-          width: 50,
-        ),
+        title: Text('Settings'),
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 98, 0, 255),
       ),

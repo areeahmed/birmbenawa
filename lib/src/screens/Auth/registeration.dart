@@ -1,4 +1,4 @@
-import 'package:birmbenawa/src/components/general_custom_button.dart';
+import 'package:birmbenawa/src/widgets/general_custom_button.dart';
 import 'package:birmbenawa/src/service/phone_number_auth.dart';
 import 'package:flutter/material.dart';
 

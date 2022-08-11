@@ -14,10 +14,7 @@ class AboutUsPage extends StatelessWidget {
     String ownerPicturePath = 'assets/images/AriAhmedPic.png';
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset(
-          logoPath,
-          width: 50,
-        ),
+        title: Text('About Us'),
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 98, 0, 255),
       ),

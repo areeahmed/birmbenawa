@@ -1,4 +1,4 @@
-import 'package:birmbenawa/src/components/checkboxlist.dart';
+import 'package:birmbenawa/src/widgets/checkboxlist.dart';
 import 'package:flutter/material.dart';
 
 class ShopingListRemiderModelClass {
