@@ -1,3 +1,4 @@
+import 'package:birmbenawa/src/models/time_provider.dart';
 import 'package:birmbenawa/src/provider/colorPicker.dart';
 import 'package:birmbenawa/src/provider/days_button_data.dart';
 import 'package:birmbenawa/src/widgets/custom_toggle_button.dart';
@@ -5,6 +6,7 @@ import 'package:birmbenawa/src/widgets/icon_picker.dart';
 import 'package:birmbenawa/src/widgets/time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconpicker/flutter_iconpicker.dart';
+import 'package:provider/provider.dart';
 
 class DialogComponentModelWidgets {
   DialogComponentModelWidgets({required this.isDailyReminder});
@@ -60,6 +62,8 @@ class DialogComponentModelWidgets {
                 //TODO: Call the function that will be inside PickTime Class, define PickTime Class here
                 onPressed: () {
                   //! Give Data to Database
+                  debugPrint(
+                      '${context.read<TimeProvider>().hour} : ${context.read<TimeProvider>().minute}');
                 },
                 child: Text(
                   'Save',
@@ -70,7 +74,6 @@ class DialogComponentModelWidgets {
               ),
               ElevatedButton(
                 onPressed: () {
-                  //! Poping Dialog
                   popDialog(context);
                 },
                 child: Text(

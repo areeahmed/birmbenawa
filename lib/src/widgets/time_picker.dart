@@ -1,4 +1,6 @@
+import 'package:birmbenawa/src/models/time_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class TimePicker extends StatefulWidget {
   TimePicker({Key? key}) : super(key: key);
@@ -15,6 +17,7 @@ class _TimePickerState extends State<TimePicker> {
   String getText() {
     hours = time.hour.toString().padLeft(2, '0');
     minute = time.minute.toString().padLeft(2, '0');
+    context.read<TimeProvider>().changeTime(time.hour, time.minute);
     return '${hours}:${minute}';
   }
 
@@ -30,9 +33,12 @@ class _TimePickerState extends State<TimePicker> {
       initialTime: time,
     );
     if (newDate == null) return;
-    setState(() {
-      time = newDate!;
-    });
+    setState(
+      () {
+        time = newDate!;
+        //! check the result of provider
+      },
+    );
   }
 
   //TODO: Return Hour and Minute to dialog
