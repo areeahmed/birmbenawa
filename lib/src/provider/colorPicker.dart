@@ -11,6 +11,7 @@ class ColorPicker extends StatefulWidget {
   State<ColorPicker> createState() => _ColorPickerState(color: color);
 }
 
+//TODO: if user selected one color other colors must be unselectable
 class _ColorPickerState extends State<ColorPicker> {
   _ColorPickerState({
     this.color,

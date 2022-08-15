@@ -13,6 +13,7 @@ class DailyReminderScreenModel {
     );
   }
 
+  //TODO show the cards in the screen using hive database
   Widget CardShowDailyReminderWidget() {
     return Container(
       decoration: BoxDecoration(

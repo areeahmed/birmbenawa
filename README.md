@@ -40,7 +40,7 @@ Birmbenawa is an application used to remind you important things that you need t
 
 ## TODO
 - [x]  Creating some welcome slides.
-- [ ]  creating regiter screen and connect it to a firebase ( name & PhoneNumber)
+- [x]  creating register screen and connect it to a firebase ( name & PhoneNumber)
 - [x]  In Reminder screen showing cards and flaoting button
 - [x]  flaoting button will show a dialog
 - [x]  dialog containe 2 Input user ( title and more detail), TimePicker, and IconPicker
@@ -55,6 +55,8 @@ Birmbenawa is an application used to remind you important things that you need t
 - [ ]  settings containe setting of app and profile edit
 - [ ]  about app screen ( information about app).
 - [x]  about us screen show information about app developer
+- [x]  add provider to the project.
+- [ ]  change the drawer type to the new type.
 A brief description of what this project does and who it's for
 
 
@@ -88,7 +90,7 @@ this is my first Flutter & Dart project that i have learned in Rwanga BootCamp.
 
 
 ## Other Common Github Profile Sections
-👩‍💻 I'm currently working on Birmbenawa ( Wecode BootCap Rwanga)
+👩‍💻 I'm currently working on Birmbenawa ( Wecode BootCap Rwanga )
 
 🧠 I'm currently learning Dart and Flutter and Python
 

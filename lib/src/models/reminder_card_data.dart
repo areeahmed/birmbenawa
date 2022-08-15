@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
+//* this model is for the data of the cards, you will use provider for the cards
 class ReminderCardData {
   String title;
   String descriptionOfCard;

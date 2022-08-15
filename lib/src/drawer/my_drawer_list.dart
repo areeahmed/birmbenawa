@@ -7,6 +7,7 @@ class MyDrawerList extends StatefulWidget {
   State<MyDrawerList> createState() => _MyDrawerListState();
 }
 
+//TODO: change the type of showing screen
 //* this screen is the list of the drawer
 class _MyDrawerListState extends State<MyDrawerList> {
   var currentPage = DrawerSections.settings;

@@ -58,6 +58,7 @@ class DialogComponentModelWidgets {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              //TODO when we pressed the save button it should do 2 things store the date to hive database and then pop dialog
               ElevatedButton(
                 //TODO: Call the function that will be inside PickTime Class, define PickTime Class here
                 onPressed: () {

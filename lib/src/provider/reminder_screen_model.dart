@@ -22,6 +22,7 @@ class ReminderScreenModel {
 
   //* the Card Body of the reminder screen
   //! the GestureDetector isn't do any thing for now...
+  //TODO store data to hive and add cards to screen using hive database
   Widget CardBodyRemiderScreen() {
     return Container(
       height: 135,
