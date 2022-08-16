@@ -6,6 +6,7 @@ class AboutUsPage extends StatelessWidget {
   final String logoPath = 'assets/images/slider/logo.png';
   const AboutUsPage({Key? key}) : super(key: key);
 
+//* About us screen for now is completed
 //* this screen is for information about developer of the application and his social media
   @override
   Widget build(BuildContext context) {

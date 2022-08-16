@@ -1,6 +1,4 @@
 import 'package:birmbenawa/src/widgets/general_custom_button.dart';
-import 'package:birmbenawa/src/screens/LandScreen/main_screen.dart';
-import 'package:birmbenawa/src/screens/reminder_screen.dart';
 import 'package:birmbenawa/src/service/phone_number_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
