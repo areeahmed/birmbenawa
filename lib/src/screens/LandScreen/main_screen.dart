@@ -1,7 +1,7 @@
 import 'package:birmbenawa/src/app.dart';
 import 'package:birmbenawa/src/screens/DrawerScreens/about_app.dart';
 import 'package:birmbenawa/src/screens/DrawerScreens/about_us.dart';
-import 'package:birmbenawa/src/drawer/my_drawer_header.dart';
+import 'package:birmbenawa/src/drawer/head_of_drawer.dart';
 import 'package:birmbenawa/src/screens/DrawerScreens/other_apps.dart';
 import 'package:birmbenawa/src/screens/DrawerScreens/settigns.dart';
 import 'package:birmbenawa/src/screens/buying.dart';
