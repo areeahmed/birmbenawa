@@ -27,6 +27,7 @@ dependencies:
   hive_flutter: ^1.1.0
   path_provider: ^2.0.11
   provider: ^6.0.3
+  hidden_drawer_menu: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -73,3 +74,4 @@ flutter:
     - assets/images/SignIn.png
     - assets/images/Developing.png
     - assets/images/slider/SignUp.png
+    - assets/images/slider/logoNoBackground.png
