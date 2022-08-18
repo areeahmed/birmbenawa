@@ -56,6 +56,7 @@ Birmbenawa is an application used to remind you important things that you need t
 - [ ]  about app screen ( information about app).
 - [x]  about us screen show information about app developer
 - [x]  add provider to the project.
+- [ ]  use provider and class to make your code cleaner and remove Constructor
 - [ ]  change the drawer type to the new type.
 A brief description of what this project does and who it's for
 
@@ -78,11 +79,11 @@ Insert gif or link to demo
 
 
 ## 🚀 About Me
-I' am a flutter & Dart leaner, Web Designer, and having basic knowledge about C++, C#, Python
+I' am a flutter & Dart Full Stack Developer, Web Designer, and having basic knowledge about C++, C#, Python
 
 
 # Hi, I'm Ari! 👋
-this is my first Flutter & Dart project that i have learned in Rwanga BootCamp.
+this is my first Flutter & Dart project that i have learned in Rwanga BootCamp, and our Caoch Mr. Hoshyar, he is the best Caoch i have seens.
 
 ## 🔗 Links
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ari-ahmed-b78b761ab/)
