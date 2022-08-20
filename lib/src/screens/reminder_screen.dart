@@ -1,6 +1,6 @@
 import 'package:birmbenawa/src/provider/dialog_component_model.dart';
 import 'package:birmbenawa/src/provider/navigating_between_screens.dart';
-import 'package:birmbenawa/src/provider/reminder_screen_model.dart';
+import 'package:birmbenawa/src/provider/reminder_screen_models.dart';
 import 'package:birmbenawa/src/provider/used_too_mutch.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -8,14 +8,12 @@ import 'package:hive_flutter/hive_flutter.dart';
 class Reminderpage extends StatefulWidget {
   String? titleOfTheCard;
   String? selectedTime;
-  Icon? icon;
   int? timeH;
   int? timeM;
   Reminderpage({
     Key? key,
     this.titleOfTheCard,
     this.selectedTime,
-    this.icon,
     this.timeH,
     this.timeM,
   }) : super(key: key);
@@ -23,7 +21,6 @@ class Reminderpage extends StatefulWidget {
   State<Reminderpage> createState() => _ReminderoageState(
         titleOfTheCard: titleOfTheCard,
         selectedTime: selectedTime,
-        icon: icon,
         timeH: timeH,
         timeM: timeM,
       );
@@ -34,14 +31,13 @@ class _ReminderoageState extends State<Reminderpage> {
   _ReminderoageState({
     required this.titleOfTheCard,
     required this.selectedTime,
-    required this.icon,
     required this.timeH,
     required this.timeM,
   });
   UsedTooMutch usedTooMutch = UsedTooMutch();
   String? titleOfTheCard;
   String? selectedTime;
-  Icon? icon;
+  IconData? icon;
   int? timeH;
   int? timeM;
   DialogComponentModelWidgets dialogComponentModelWidgets =
@@ -49,6 +45,20 @@ class _ReminderoageState extends State<Reminderpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: SingleChildScrollView(
+        reverse: true,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 60,
+              ),
+              ReminderScreenModel(),
+            ],
+          ),
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color.fromARGB(255, 98, 0, 255),
         onPressed: () => usedTooMutch.askedToLead(

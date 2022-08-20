@@ -1,21 +1,26 @@
 import 'package:birmbenawa/src/provider/colorPicker.dart';
-import 'package:birmbenawa/src/widgets/icon_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconpicker/flutter_iconpicker.dart';
 
-class ReminderScreenModel {
-  Icon? _icon;
+class ReminderScreenModel extends StatefulWidget {
+  ReminderScreenModel({Key? key}) : super(key: key);
+
+  @override
+  State<ReminderScreenModel> createState() => _ReminderScreenModelState();
+}
+
+class _ReminderScreenModelState extends State<ReminderScreenModel> {
+  IconData? icon = Icons.person;
   String? time; //! requeared
   bool? pm; //! requeared
   bool? am; //! requeared
   String? title;
-  Icon? icon;
+  Icon? _icon;
   String? titleOfTheCard;
   String? selectedTime;
   int? timeH;
   int? timeM;
 
-  //* Some Valiable for Style of the card:
   double paddingTopContainer = 10.0;
   int durationOfGestureDetector = 300;
   double paddingOfGestureDetector = 8;
@@ -23,46 +28,51 @@ class ReminderScreenModel {
   double? widthOfGestureDetector = 376;
   double borderRadiusOfGestureDetector = 12;
   Color? colorOfestureDetector = Colors.white;
-
-  //* the Card Body of the reminder screen
-  //! the GestureDetector isn't do any thing for now...
-  //TODO store data to hive and add cards to screen using hive database
-  Widget CardBodyRemiderScreen() {
+  @override
+  Widget build(BuildContext context) {
     return Container(
       height: 135,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(borderRadiusOfGestureDetector),
-          boxShadow: [
-            BoxShadow(color: Colors.grey.shade300, offset: Offset(0, 10))
-          ]),
+        borderRadius: BorderRadius.circular(borderRadiusOfGestureDetector),
+      ),
       padding: EdgeInsets.only(top: paddingTopContainer),
       child: Row(
         children: [
-          GestureDetector(
-            onTap: () {},
-            child: AnimatedContainer(
-              duration: Duration(milliseconds: durationOfGestureDetector),
-              padding: EdgeInsets.all(paddingOfGestureDetector),
-              height: heightOfGestureDetector,
-              width: widthOfGestureDetector,
-              decoration: BoxDecoration(
-                borderRadius:
-                    BorderRadius.circular(borderRadiusOfGestureDetector),
-                color: colorOfestureDetector,
-              ),
-              child: Column(
-                children: [
-                  Row(
-                    textDirection: TextDirection.rtl,
-                    children: [
-                      PickedIconCard(),
-                      TitleAndDiscriptionOfTheCardWidget(),
-                      //! Time Column
-                      CardTimeAndPMOrAM(),
-                    ],
-                  ),
-                ],
-              ),
+          Container(
+            padding: EdgeInsets.all(paddingOfGestureDetector),
+            margin: EdgeInsets.only(left: 8),
+            height: heightOfGestureDetector,
+            width: widthOfGestureDetector,
+            decoration: BoxDecoration(
+              borderRadius:
+                  BorderRadius.circular(borderRadiusOfGestureDetector),
+              color: colorOfestureDetector,
+            ),
+            child: Column(
+              children: [
+                Row(
+                  textDirection: TextDirection.rtl,
+                  children: [
+                    IconButton(
+                      onPressed: () async {
+                        IconData? iconData =
+                            await FlutterIconPicker.showIconPicker(
+                          iconSize: 30,
+                          context,
+                          iconPackModes: [IconPack.cupertino],
+                        );
+                        setState(() {
+                          icon = iconData;
+                        });
+                      },
+                      icon: Icon(icon),
+                      iconSize: 50,
+                    ),
+                    TitleAndDiscriptionOfTheCardWidget(),
+                    CardTimeAndPMOrAM(),
+                  ],
+                ),
+              ],
             ),
           ),
         ],
@@ -70,7 +80,7 @@ class ReminderScreenModel {
     );
   }
 
-//* the picked icon will be showen here
+  /* SHOW the picked icon will be showen here
   Widget PickedIconCard() {
     return Container(
       padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
@@ -83,7 +93,7 @@ class ReminderScreenModel {
         ],
       ),
     );
-  }
+  }*/
 
 //* SHOW a title and a discription of the card that the user want to be reminded
   Widget TitleAndDiscriptionOfTheCardWidget() {
@@ -190,27 +200,5 @@ class ReminderScreenModel {
         ),
       ],
     );
-  }
-
-  Widget pickIconForMe(BuildContext context) {
-    return CustomButtonWidget(
-      content: _icon,
-      customHeight: 50,
-      customWidth: 50,
-      ontap: () => _pickIcon(context),
-    );
-  }
-
-  _pickIcon(context) async {
-    IconData? icon = await FlutterIconPicker.showIconPicker(
-      iconSize: 30,
-      context,
-      iconPackModes: [IconPack.cupertino],
-    );
-    _icon = Icon(
-      icon,
-      size: 40,
-    );
-    _icon = Icon(icon);
   }
 }

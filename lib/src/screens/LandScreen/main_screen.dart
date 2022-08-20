@@ -32,7 +32,6 @@ class _MainPageScreenState extends State<MainPageScreen> {
     Reminderpage(
       selectedTime: '',
       titleOfTheCard: '',
-      icon: Icon(Icons.abc),
       timeH: 0,
       timeM: 0,
     ),
