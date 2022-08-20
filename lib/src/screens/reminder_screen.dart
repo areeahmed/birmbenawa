@@ -44,8 +44,6 @@ class _ReminderoageState extends State<Reminderpage> {
   Icon? icon;
   int? timeH;
   int? timeM;
-  List<ReminderScreenModel> listOfCards = [];
-  ReminderScreenModel reminderScreenComponentModel = ReminderScreenModel();
   DialogComponentModelWidgets dialogComponentModelWidgets =
       DialogComponentModelWidgets(isDailyReminder: false);
   @override

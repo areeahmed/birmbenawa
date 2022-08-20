@@ -1,11 +1,8 @@
 import 'package:birmbenawa/src/models/time_provider.dart';
-import 'package:birmbenawa/src/provider/colorPicker.dart';
 import 'package:birmbenawa/src/provider/days_button_data.dart';
 import 'package:birmbenawa/src/widgets/custom_toggle_button.dart';
-import 'package:birmbenawa/src/widgets/icon_picker.dart';
 import 'package:birmbenawa/src/widgets/time_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_iconpicker/flutter_iconpicker.dart';
 import 'package:provider/provider.dart';
 
 class DialogComponentModelWidgets {
@@ -13,7 +10,7 @@ class DialogComponentModelWidgets {
   bool isDailyReminder = false;
   TextEditingController titleOfCard = TextEditingController();
   TextEditingController descriptionOfCard = TextEditingController();
-  Icon? _icon;
+
   String? text;
   Widget dialogBody({bool? daysOnOFF, required BuildContext context}) {
     return Container(
@@ -37,12 +34,11 @@ class DialogComponentModelWidgets {
                 const SizedBox(
                   height: 10,
                 ),
-                TimePicker(), //! this is a problem ???
+                TimePicker(), //* Time is fixed
                 const SizedBox(
                   height: 10,
                 ),
                 //? for selecting ICons ( Icon Picker and showing Icon)
-                pickIconForMe(context),
                 const SizedBox(
                   height: 30,
                 ),
@@ -51,24 +47,22 @@ class DialogComponentModelWidgets {
                 const SizedBox(
                   height: 30,
                 ),
-                pickCustomColorOfTheCardDialogCompWidget(),
               ],
             ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              //TODO when we pressed the save button it should do 2 things store the date to hive database and then pop dialog
               ElevatedButton(
-                //TODO: Call the function that will be inside PickTime Class, define PickTime Class here
                 onPressed: () {
-                  //! Give Data to Database
+                  //TODO when we pressed the save button it should do 2 things store the date to hive database and then pop dialog
+                  //TODO Give data to the data base
                   debugPrint(
-                      '${context.read<TimeProvider>().hour} : ${context.read<TimeProvider>().minute}');
+                      'Time: ${context.read<TimeProvider>().hour} : ${context.read<TimeProvider>().minute} \n Title: ${titleOfCard.text} \n Description: ${descriptionOfCard.text}');
                 },
                 child: Text(
                   'Save',
-                ), // saveing and creating a card i reminder screen
+                ),
               ),
               SizedBox(
                 width: 15,
@@ -79,7 +73,7 @@ class DialogComponentModelWidgets {
                 },
                 child: Text(
                   'Cancle',
-                ), // saveing and creating a card i reminder screen
+                ),
               ),
             ],
           )
@@ -100,80 +94,6 @@ class DialogComponentModelWidgets {
         hintText: hintedText,
       ),
     );
-  }
-
-  Widget pickCustomColorOfTheCardDialogCompWidget() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ColorPicker(
-              color: const Color.fromARGB(255, 146, 242, 255),
-            ),
-            const SizedBox(width: 10),
-            ColorPicker(
-              color: const Color.fromARGB(255, 255, 135, 175),
-            ),
-            const SizedBox(width: 10),
-            ColorPicker(
-              color: const Color.fromARGB(255, 255, 118, 118),
-            ),
-            const SizedBox(width: 10),
-            ColorPicker(
-              color: const Color.fromARGB(255, 119, 61, 255),
-            ),
-          ],
-        ),
-        const SizedBox(height: 10),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ColorPicker(
-              color: const Color.fromARGB(255, 129, 255, 133),
-            ),
-            const SizedBox(width: 10),
-            ColorPicker(
-              color: Colors.yellow,
-            ),
-            const SizedBox(width: 10),
-            ColorPicker(
-              color: const Color.fromARGB(255, 255, 190, 92),
-            ),
-            const SizedBox(width: 10),
-            ColorPicker(
-              color: const Color.fromARGB(255, 255, 58, 229),
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-
-  Widget pickIconForMe(BuildContext context) {
-    return CustomButtonWidget(
-      content: _icon,
-      customHeight: 50,
-      customWidth: 50,
-      ontap: () => _pickIcon(context),
-    );
-  }
-
-  _pickIcon(context) async {
-    IconData? icon = await FlutterIconPicker.showIconPicker(
-      iconSize: 30,
-      context,
-      iconPackModes: [IconPack.cupertino],
-    );
-    _icon = Icon(
-      icon,
-      size: 40,
-    );
-    _icon = Icon(icon);
   }
 
   bool _isElevated = false;
