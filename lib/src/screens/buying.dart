@@ -7,8 +7,10 @@ class BuyingChatScreenView extends StatefulWidget {
   State<BuyingChatScreenView> createState() => _BuyingChatScreenViewState();
 }
 
+//TODO [ Send Chat - check chat - List - Reminder Button]
+//! this screen is on developing and it will be developed soon
 class _BuyingChatScreenViewState extends State<BuyingChatScreenView> {
-  final developModePathImage = 'assets/images/Developing.png';
+  final developModePathImage = 'assets/images/Process/Developing.png';
   @override
   Widget build(BuildContext context) {
     return Scaffold(

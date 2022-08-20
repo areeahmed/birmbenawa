@@ -1,8 +1,9 @@
-import 'package:birmbenawa/src/models/dialog_component_model.dart';
-import 'package:birmbenawa/src/models/navigating_between_screens.dart';
-import 'package:birmbenawa/src/models/reminder_screen_model.dart';
-import 'package:birmbenawa/src/models/used_too_mutch.dart';
+import 'package:birmbenawa/src/provider/dialog_component_model.dart';
+import 'package:birmbenawa/src/provider/navigating_between_screens.dart';
+import 'package:birmbenawa/src/provider/reminder_screen_model.dart';
+import 'package:birmbenawa/src/provider/used_too_mutch.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class Reminderpage extends StatefulWidget {
   String? titleOfTheCard;
@@ -46,45 +47,24 @@ class _ReminderoageState extends State<Reminderpage> {
   List<ReminderScreenModel> listOfCards = [];
   ReminderScreenModel reminderScreenComponentModel = ReminderScreenModel();
   DialogComponentModelWidgets dialogComponentModelWidgets =
-      DialogComponentModelWidgets();
+      DialogComponentModelWidgets(isDailyReminder: false);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Colors.grey[200],
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.only(
-            top: 80,
-            left: 8,
-            right: 8,
-          ),
-          child: Column(children: [
-            //! this cards here is wrong the user must add the cards by pressing button
-            //! and this will be by using firebase and StreamBuilder and ListViewBuilder and Futurs
-            reminderScreenComponentModel.CardBodyRemiderScreen(),
-            reminderScreenComponentModel.CardBodyRemiderScreen(),
-            reminderScreenComponentModel.CardBodyRemiderScreen(),
-            reminderScreenComponentModel.CardBodyRemiderScreen(),
-            reminderScreenComponentModel.CardBodyRemiderScreen(),
-            reminderScreenComponentModel.CardBodyRemiderScreen(),
-            reminderScreenComponentModel.CardBodyRemiderScreen(),
-            reminderScreenComponentModel.CardBodyRemiderScreen(),
-            reminderScreenComponentModel.CardBodyRemiderScreen(),
-            reminderScreenComponentModel.CardBodyRemiderScreen(),
-            reminderScreenComponentModel.CardBodyRemiderScreen(),
-            reminderScreenComponentModel.CardBodyRemiderScreen(),
-            reminderScreenComponentModel.CardBodyRemiderScreen(),
-            reminderScreenComponentModel.CardBodyRemiderScreen(),
-          ]),
-        ),
-      ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color.fromARGB(255, 98, 0, 255),
         onPressed: () => usedTooMutch.askedToLead(
-            dialogComponentModelWidgets.dialogBody(),
+            dialogComponentModelWidgets.dialogBody(context: context),
             context), //goToHome(context),
         child: const Icon(Icons.add),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    Hive.close();
+    super.dispose();
   }
 }

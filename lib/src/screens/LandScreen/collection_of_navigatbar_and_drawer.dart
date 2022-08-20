@@ -1,30 +1,29 @@
-import 'package:birmbenawa/src/screens/DrawerScreens/about_app.dart';
-import 'package:birmbenawa/src/screens/DrawerScreens/about_us.dart';
-import 'package:birmbenawa/src/drawer/my_drawer_header.dart';
-import 'package:birmbenawa/src/screens/DrawerScreens/other_apps.dart';
-import 'package:birmbenawa/src/screens/DrawerScreens/settigns.dart';
+import 'package:birmbenawa/src/app.dart';
+import 'package:birmbenawa/src/models/auth_provider.dart';
+import 'package:birmbenawa/src/screens/Auth/phone_number_verification.dart';
+import 'package:birmbenawa/src/screens/DrawerScreens/about_app_screen.dart';
+import 'package:birmbenawa/src/screens/DrawerScreens/about_us_screen.dart';
+import 'package:birmbenawa/src/drawer/head_of_drawer.dart';
+import 'package:birmbenawa/src/screens/DrawerScreens/other_app_screen.dart';
+import 'package:birmbenawa/src/screens/DrawerScreens/settign_screen.dart';
+import 'package:birmbenawa/src/screens/LandScreen/introduction_slider_screen.dart';
 import 'package:birmbenawa/src/screens/buying.dart';
 import 'package:birmbenawa/src/screens/daily_reminder_screen.dart';
-import 'package:birmbenawa/src/screens/debtscreen.dart';
+import 'package:birmbenawa/src/screens/debt_screen.dart';
 import 'package:birmbenawa/src/screens/reminder_screen.dart';
 import 'package:birmbenawa/src/screens/shoping_list_reminder_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class MainPageScreen extends StatefulWidget {
-  String? userName;
-  String? phoneNumber;
-  MainPageScreen({Key? key, this.userName, this.phoneNumber}) : super(key: key);
+  MainPageScreen({Key? key}) : super(key: key);
 
   @override
-  State<MainPageScreen> createState() =>
-      _MainPageScreenState(userName: userName, phoneNumber: phoneNumber);
+  State<MainPageScreen> createState() => _MainPageScreenState();
 }
 
 class _MainPageScreenState extends State<MainPageScreen> {
-  String? userName = 'Unknown';
-  String? phoneNumber;
-  _MainPageScreenState({this.userName, this.phoneNumber});
   var currentPage = DrawerSections.settings;
   int currentIndexPage = 0;
   final screens = [
@@ -103,7 +102,11 @@ class _MainPageScreenState extends State<MainPageScreen> {
         child: Container(
           child: Column(
             children: [
-              MyHeaderDrawer(userName: 'Unknown', phoneNumber: 'Unkown'),
+              //TODO the name and the phone number must be saved in the firestore and find it with UID
+              MyHeaderDrawer(
+                  userName: context.watch<AuthProvider>().nameControllerValue,
+                  phoneNumber:
+                      context.watch<AuthProvider>().phoneNumberControllerValue),
               MyDrawerList(),
             ],
           ),
@@ -155,7 +158,8 @@ class _MainPageScreenState extends State<MainPageScreen> {
                   MaterialPageRoute(builder: (context) => OtherAppsPage()));
             } else if (id == 5) {
               await FirebaseAuth.instance.signOut();
-              Navigator.of(context).pop();
+              await Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => LandScreenSlides()));
             }
           });
         },

@@ -7,6 +7,7 @@ class SettingsPage extends StatefulWidget {
   State<SettingsPage> createState() => _SettingsPageState();
 }
 
+//TODO adding 2 setting here 1 - app setting 2- profile setting
 //* this is for settigns screen not builded yet
 class _SettingsPageState extends State<SettingsPage> {
   final String logoPath = 'assets/images/slider/logo.png';
@@ -14,9 +15,9 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset(
-          logoPath,
-          width: 50,
+        title: Text(
+          'Settings',
+          style: TextStyle(fontFamily: 'PeshangBold'),
         ),
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 98, 0, 255),

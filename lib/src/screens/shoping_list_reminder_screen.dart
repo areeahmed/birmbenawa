@@ -1,4 +1,4 @@
-import 'package:birmbenawa/src/models/shop_list_remider_model.dart';
+import 'package:birmbenawa/src/provider/shop_list_remider_model.dart';
 import 'package:flutter/material.dart';
 
 class ShopingReminderPage extends StatefulWidget {
@@ -14,17 +14,6 @@ class _ShopingReminderPageState extends State<ShopingReminderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.only(top: 70),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              shopingListReminderModelClass.listTileWidgetComponent(),
-              shopingListReminderModelClass.listTileWidgetComponent(),
-            ],
-          ),
-        ),
-      ),
       floatingActionButton:
           shopingListReminderModelClass.floatingActionButton(),
     );

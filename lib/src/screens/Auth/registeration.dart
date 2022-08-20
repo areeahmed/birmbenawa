@@ -1,18 +1,24 @@
-import 'package:birmbenawa/src/components/general_custom_button.dart';
-import 'package:birmbenawa/src/service/phone_number_auth.dart';
+import 'package:birmbenawa/src/models/auth_provider.dart';
+import 'package:birmbenawa/src/widgets/general_custom_button.dart';
+import 'package:birmbenawa/src/models/phone_number_auth_model.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
-class RegisterationWidget extends StatefulWidget {
-  RegisterationWidget({Key? key}) : super(key: key);
+class RegistrationWidget extends StatefulWidget {
+  RegistrationWidget({Key? key}) : super(key: key);
 
   @override
-  State<RegisterationWidget> createState() => _RegisterationWidgetState();
+  State<RegistrationWidget> createState() => _RegistrationWidgetState();
 }
 
-class _RegisterationWidgetState extends State<RegisterationWidget> {
+class _RegistrationWidgetState extends State<RegistrationWidget> {
+  bool isLoading = false;
   Auth _auth = Auth();
   String userName = '';
   TextEditingController phoneNumberController = TextEditingController();
+  TextEditingController fullNameController = TextEditingController();
   final String signUpPath = 'assets/images/slider/SignUp.png';
   @override
   Widget build(BuildContext context) {
@@ -26,7 +32,9 @@ class _RegisterationWidgetState extends State<RegisterationWidget> {
             child: Column(
               textDirection: TextDirection.rtl,
               children: [
+                //* Photo
                 AppLogInShowingInTheAppBar(),
+                //* Sign Up Text it is not the text of button
                 Container(
                   padding: EdgeInsets.only(top: 0),
                   child: const Text(
@@ -34,6 +42,7 @@ class _RegisterationWidgetState extends State<RegisterationWidget> {
                     style: TextStyle(fontFamily: 'PeshangBold', fontSize: 22),
                   ),
                 ),
+
                 TextFieldBoxWidget(),
                 SignInButtonWidget(),
               ],
@@ -44,11 +53,11 @@ class _RegisterationWidgetState extends State<RegisterationWidget> {
     );
   }
 
-  // //! navigating to another screen
+  // //? navigating to another screen
   // void goToHome(context) => Navigator.of(context).push(
   //     MaterialPageRoute(builder: (context) => ));
 
-  //! the Person Icon a the top of the screen check the icon
+  //* the Person Icon a the top of the screen check the icon
   Widget AppLogInShowingInTheAppBar() {
     return Container(
         padding: const EdgeInsets.fromLTRB(60, 0, 60, 0),
@@ -58,7 +67,7 @@ class _RegisterationWidgetState extends State<RegisterationWidget> {
         ));
   }
 
-  //! Sign In Button ( Sign Up )
+  //* Sign In Button ( Sign Up )  [ Button ]
   Widget SignInButtonWidget() {
     return Container(
       margin: const EdgeInsets.all(10),
@@ -66,15 +75,70 @@ class _RegisterationWidgetState extends State<RegisterationWidget> {
       child: GeneralCustomButtonWidget(
         customHeight: 46,
         customWidth: 200,
-        ontap: () {
-          _auth.verifyPhoneNumber(context, phoneNumberController.text);
+        ontap: () async {
+          /* //TODO phone and name authentication and hunddle it.
+               TODO  Send the phone number and name to other screen using provider.
+          */
+          context.read<AuthProvider>().changeAuthData(
+              name: fullNameController.text, Phone: phoneNumberController.text);
+          if (phoneNumberController.text == '' ||
+              fullNameController.text == '') {
+            Get.snackbar('نرخی نادیار', 'ببوورە هەندێک نرخ نادیارە');
+          } else {
+            await Get.defaultDialog(
+                title: 'نرخەکان',
+                content: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.only(left: 2, right: 4),
+                          child: Icon(FontAwesomeIcons.phone),
+                        ),
+                        SizedBox(width: 4),
+                        Expanded(
+                          child: Text('${phoneNumberController.text}'),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 12),
+                    Divider(thickness: 2),
+                    SizedBox(height: 12),
+                    Row(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.only(left: 2, right: 4),
+                          child: Icon(FontAwesomeIcons.person),
+                        ),
+                        SizedBox(width: 4),
+                        Expanded(
+                          child: Text('${fullNameController.text}'),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 12),
+                    Text('Are you sure?'),
+                    SizedBox(height: 12),
+                    ElevatedButton(
+                      // Yes Button
+                      onPressed: () {
+                        //TODO authentication happen
+                        _auth.verifyPhoneNumber(
+                            context, phoneNumberController.text);
+                        Navigator.of(context).pop();
+                      },
+                      child: Text('Yes'),
+                    ),
+                  ],
+                ));
+          }
         },
         itemText: 'Sign Up',
       ),
     );
   }
 
-  //! Input Box Phone Number and Password
+  //* Background Design of the Text Fields ( Phone Number ) and ( Full Name )
   Widget TextFieldBoxWidget() {
     return Container(
       decoration: BoxDecoration(
@@ -98,10 +162,16 @@ class _RegisterationWidgetState extends State<RegisterationWidget> {
       padding: const EdgeInsets.fromLTRB(30, 50, 30, 50),
       child: Column(
         children: [
-          OneTextFieldFullName(
-            cardIcons: Icons.person,
-            labelTextView: 'Full Name',
-            hintTextView: 'Enter your full name',
+          Row(
+            children: [
+              //TODO add country code picker here
+              // Expanded(child: ,),
+              OneTextFieldFullName(
+                cardIcons: Icons.person,
+                labelTextView: 'Full Name',
+                hintTextView: 'Enter your full name',
+              ),
+            ],
           ),
           Divider(thickness: 4),
           OneTextFieldPhoneNumber(
@@ -114,6 +184,7 @@ class _RegisterationWidgetState extends State<RegisterationWidget> {
     );
   }
 
+  //* Collection of the phone number Text Field
   Widget OneTextFieldPhoneNumber({
     required String labelTextView,
     required IconData? cardIcons,
@@ -136,12 +207,14 @@ class _RegisterationWidgetState extends State<RegisterationWidget> {
     );
   }
 
+  //* Collection of the Full Name Text Field
   Widget OneTextFieldFullName({
     required String labelTextView,
     required IconData? cardIcons,
     required String hintTextView,
   }) {
     return TextField(
+      controller: fullNameController,
       style: TextStyle(),
       decoration: InputDecoration(
           border: InputBorder.none,
