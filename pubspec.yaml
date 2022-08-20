@@ -28,6 +28,7 @@ dependencies:
   path_provider: ^2.0.11
   provider: ^6.0.3
   hidden_drawer_menu: ^3.0.1
+  android_alarm_manager_plus: ^2.0.6+1
 
 dev_dependencies:
   flutter_test:

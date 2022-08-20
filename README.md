@@ -36,7 +36,7 @@ Birmbenawa is an application used to remind you important things that you need t
 - [x]  add provider to the project.
 - [ ]  use provider and class to make your code cleaner and remove Constructor
 - [ ]  change the drawer type to the new type.
-- [ ]  add a alarm screen
+- [ ]  add a alarm
 A brief description of what this project does and who it's for
 
 ## Badges
@@ -54,10 +54,11 @@ Insert gif or link to demo
 - [@Ari Ahmed](https://github.com/areeahmed)
 
 ## 🚀 About Me
+
 I' am a flutter & Dart leaner, Web Designer, and having basic knowledge about C++, C#, Python
 
-
 # Hi, I'm Ari! 👋
+
 this is my first Flutter & Dart project that i have learned in Rwanga BootCamp.
 
 ## 🔗 Links
