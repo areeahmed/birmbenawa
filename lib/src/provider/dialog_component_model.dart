@@ -5,8 +5,8 @@ import 'package:birmbenawa/src/widgets/time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class DialogComponentModelWidgets {
-  DialogComponentModelWidgets({required this.isDailyReminder});
+class transferred {
+  transferred({required this.isDailyReminder});
   bool isDailyReminder = false;
   TextEditingController titleOfCard = TextEditingController();
   TextEditingController descriptionOfCard = TextEditingController();
@@ -86,6 +86,7 @@ class DialogComponentModelWidgets {
     return Navigator.of(context, rootNavigator: true).pop();
   }
 
+  //! this widget transferred to edit reminder card screen
   Widget titleTextFieldDialogWidget(
       String hintedText, TextEditingController controllerData) {
     return TextField(

@@ -40,25 +40,37 @@ class _ReminderoageState extends State<Reminderpage> {
   IconData? icon;
   int? timeH;
   int? timeM;
-  DialogComponentModelWidgets dialogComponentModelWidgets =
-      DialogComponentModelWidgets(isDailyReminder: false);
+  transferred dialogComponentModelWidgets = transferred(isDailyReminder: false);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        reverse: true,
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 60,
-              ),
-              ReminderScreenModel(),
-            ],
-          ),
-        ),
+      body: ValueListenableBuilder(
+        valueListenable: Hive.box('name').listenable(),
+        builder: ((context, card, child) {
+          return Center(
+            child: ListView.builder(
+                itemCount: card.length,
+                itemBuilder: ((context, index) {
+                  Map<dynamic, dynamic> _data = box.getAt(index);
+                })),
+          );
+        }),
       ),
+
+      // body: SingleChildScrollView(
+      //   reverse: true,
+      //   child: Center(
+      //     child: Column(
+      //       mainAxisAlignment: MainAxisAlignment.start,
+      //       children: [
+      //         SizedBox(
+      //           height: 60,
+      //         ),
+      //         ReminderScreenModel(),
+      //       ],
+      //     ),
+      //   ),
+      // ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color.fromARGB(255, 98, 0, 255),
         onPressed: () => usedTooMutch.askedToLead(

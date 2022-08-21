@@ -11,8 +11,7 @@ class DailyReminderPage extends StatefulWidget {
 }
 
 class _DailyReminderPageState extends State<DailyReminderPage> {
-  DialogComponentModelWidgets dialogBody =
-      DialogComponentModelWidgets(isDailyReminder: true);
+  transferred dialogBody = transferred(isDailyReminder: true);
   DailyReminderScreenModel dailyReminderCard = DailyReminderScreenModel();
   UsedTooMutch userTooMutch = UsedTooMutch();
   @override

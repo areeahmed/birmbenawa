@@ -1,6 +1,6 @@
-import 'package:birmbenawa/src/drawer/hidden_drawer.dart';
 import 'package:birmbenawa/src/screens/LandScreen/main_screen.dart';
 import 'package:birmbenawa/src/screens/LandScreen/sliderScr.dart';
+import 'package:birmbenawa/src/screens/edit_remider_card_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             // ? this single line belowe is to remove the debug banner
             debugShowCheckedModeBanner: false,
-            home: MainPageScreen(),
+            home: EditReminderCardScreen(),
           );
         });
   }
