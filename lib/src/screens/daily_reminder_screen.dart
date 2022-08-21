@@ -11,7 +11,7 @@ class DailyReminderPage extends StatefulWidget {
 }
 
 class _DailyReminderPageState extends State<DailyReminderPage> {
-  transferred dialogBody = transferred(isDailyReminder: true);
+  // transferred dialogBody = transferred(isDailyReminder: true);
   DailyReminderScreenModel dailyReminderCard = DailyReminderScreenModel();
   UsedTooMutch userTooMutch = UsedTooMutch();
   @override
@@ -26,9 +26,10 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
         //* Button Action to create a Card
 
         //* Cards contains ==> ( Title - Description - Time - Icon - color - remining time for reminding)
-        floatingActionButton: userTooMutch.FloatingActionButtonTooMutchUsed(
-      () => userTooMutch.askedToLead(
-          dialogBody.dialogBody(context: context), context),
-    ));
+        //     floatingActionButton: userTooMutch.FloatingActionButtonTooMutchUsed(
+        //   () => userTooMutch.askedToLead(
+        //       dialogBody.dialogBody(context: context), context),
+        // )
+        );
   }
 }

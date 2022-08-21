@@ -70,9 +70,13 @@ flutter:
     - assets/images/AriAhmedPic.png
     - assets/icons/favicon.ico
     - assets/images/Buy.png
-    - assets/images/Dabt_Analyser.png
+    - assets/images/Debt_Analyses.png
     - assets/images/List_Of_Task.png
     - assets/images/SignIn.png
     - assets/images/Developing.png
     - assets/images/slider/SignUp.png
     - assets/images/slider/logoNoBackground.png
+    - assets/images/process/confirmed.png
+    - assets/images/process/empty_screen.png
+    - assets/images/process/error.png
+    - assets/images/edit_screen.png

@@ -69,7 +69,7 @@ class _CustomToggleButtonWidgetState extends State<CustomToggleButtonWidget> {
         width: customWidth,
         decoration: BoxDecoration(
           color: Colors.grey[300],
-          borderRadius: BorderRadius.circular(50),
+          borderRadius: BorderRadius.circular(5),
           boxShadow: _isElevated
               ? [
                   BoxShadow(

@@ -36,6 +36,7 @@ class _TimePickerState extends State<TimePicker> {
     setState(
       () {
         time = newDate!;
+        pmOrAm = time.hour > 12 ? 'PM' : 'AM';
         //! check the result of provider
       },
     );
@@ -46,18 +47,22 @@ class _TimePickerState extends State<TimePicker> {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        //? for showing the time
+        InkWell(
+          onTap: () => pickTime(context),
+          child: Text(
+            getText(), //! Return to reminder screen
+            style: const TextStyle(fontSize: 50),
+          ),
+        ),
+        SizedBox(
+          width: 12,
+        ),
         Text(
-          getText(), //! Return to reminder screen
-          style: const TextStyle(fontSize: 24),
-        ),
-        const SizedBox(
-          width: 100,
-        ),
-        //? Time Picker
-        IconButton(
-            onPressed: () => pickTime(context), icon: const Icon(Icons.watch)),
+          pmOrAm,
+          style: TextStyle(fontSize: 50),
+        )
       ],
     );
   }

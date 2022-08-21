@@ -40,22 +40,27 @@ class _ReminderoageState extends State<Reminderpage> {
   IconData? icon;
   int? timeH;
   int? timeM;
-  transferred dialogComponentModelWidgets = transferred(isDailyReminder: false);
+  // transferred dialogComponentModelWidgets = transferred(isDailyReminder: false);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ValueListenableBuilder(
-        valueListenable: Hive.box('name').listenable(),
-        builder: ((context, card, child) {
-          return Center(
-            child: ListView.builder(
-                itemCount: card.length,
-                itemBuilder: ((context, index) {
-                  Map<dynamic, dynamic> _data = box.getAt(index);
-                })),
-          );
-        }),
+      body: Center(
+        child: Text('data'),
       ),
+
+      //TODO use the segment of code for showing cards from hive database
+      // body: ValueListenableBuilder(
+      //   valueListenable: Hive.box('name').listenable(),
+      //   builder: ((context, card, child) {
+      //     return Center(
+      //       child: ListView.builder(
+      //           itemCount: card.length,
+      //           itemBuilder: ((context, index) {
+      //             Map<dynamic, dynamic> _data = box.getAt(index);
+      //           })),
+      //     );
+      //   }),
+      // ),
 
       // body: SingleChildScrollView(
       //   reverse: true,
@@ -71,13 +76,13 @@ class _ReminderoageState extends State<Reminderpage> {
       //     ),
       //   ),
       // ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color.fromARGB(255, 98, 0, 255),
-        onPressed: () => usedTooMutch.askedToLead(
-            dialogComponentModelWidgets.dialogBody(context: context),
-            context), //goToHome(context),
-        child: const Icon(Icons.add),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   backgroundColor: const Color.fromARGB(255, 98, 0, 255),
+      //   onPressed: () => usedTooMutch.askedToLead(
+      //       dialogComponentModelWidgets.dialogBody(context: context),
+      //       context), //goToHome(context),
+      //   child: const Icon(Icons.add),
+      // ),
     );
   }
 
