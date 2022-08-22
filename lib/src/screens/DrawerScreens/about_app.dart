@@ -15,7 +15,10 @@ class _AboutAppPageState extends State<AboutAppPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('دەربارەی بەرنامە'),
+        title: Text(
+          'دەربارەی بەرنامە',
+          style: TextStyle(fontFamily: 'PeshangBold'),
+        ),
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 98, 0, 255),
       ),
@@ -31,16 +34,17 @@ class _AboutAppPageState extends State<AboutAppPage> {
               width: 150,
               child: Image.asset(logoPath),
             ),
-            Text('(Birmbenawa)بیرم بێنەوە'),
+            Text(
+              '(Birmbenawa)بیرم بێنەوە',
+              style: TextStyle(fontSize: 24, fontFamily: 'PeshangBold'),
+            ),
             Container(
-                color: Colors.grey.shade100,
                 height: 100,
                 width: 350,
                 child: Text(
                   'ئەم بەرنامەیە بۆ ئەوەیە شتە گرینگەکانت بیربێنێتەوە',
-                  style: TextStyle(
-                    fontSize: 24,
-                  ),
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(fontSize: 18, fontFamily: 'PeshangBold'),
                 ))
           ],
         ),

@@ -48,76 +48,93 @@ class _ReminderPageState extends State<Reminderpage> {
   // transferred dialogComponentModelWidgets = transferred(isDailyReminder: false);
   @override
   Widget build(BuildContext context) {
-    Hive.openBox('cardDatas');
+    Hive.openBox('reminderCardDatas');
     // final cardDataBox = Hive.box('cardDatas');
     return Scaffold(
       //TODO use the segment of code for showing cards from hive database
       body: ValueListenableBuilder<Box>(
-        valueListenable: Hive.box('cardDatas').listenable(),
+        valueListenable: Hive.box('reminderCardDatas')
+            .listenable(), //! ERROR: Box not found. Did you forget to call Hive.openBox()?
         builder: ((context, box, Widget) {
-          return Center(
-            child: ListView.builder(
-                itemCount: box.length,
-                itemBuilder: ((context, index) {
-                  Map<dynamic, dynamic> _data = box.getAt(index);
-                  ReminderCardData reminderCardData =
-                      ReminderCardData.fromMap(_data as Map<dynamic, dynamic>);
-                  return Container(
-                    child: Column(
-                      textDirection: TextDirection.rtl,
-                      children: [
-                        Container(
-                          child: Text(
-                            reminderCardData.title,
-                            textDirection: TextDirection.rtl,
-                            style: TextStyle(
-                                fontSize: 20, fontFamily: 'PeshangBold'),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 12,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text(
-                              '${reminderCardData.houre}:${reminderCardData.minute}',
-                            ),
-                            Text(reminderCardData.descriptionOfCard),
-                            Icon(
-                              reminderCardData.icon,
-                              size: 60,
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            IconButton(
-                                onPressed: () {
-                                  box.delete('1');
-                                },
-                                icon: Icon(Icons.delete))
-                          ],
-                        )
-                      ],
+          return box.isEmpty
+              ? Center(
+                  child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(imageProcess.empty),
+                    SizedBox(
+                      height: 12,
                     ),
-                  );
+                    Text('Screen is Empty')
+                  ],
+                ))
+              : Center(
+                  child: ListView.builder(
+                      itemCount: box.length,
+                      itemBuilder: ((context, index) {
+                        Map<dynamic, dynamic> _data = box.getAt(index);
+                        ReminderCardData reminderCardData =
+                            ReminderCardData.fromMap(
+                                _data as Map<dynamic, dynamic>);
+                        return Container(
+                          child: Column(
+                            textDirection: TextDirection.rtl,
+                            children: [
+                              Container(
+                                child: Text(
+                                  reminderCardData.title,
+                                  textDirection: TextDirection.rtl,
+                                  style: TextStyle(
+                                      fontSize: 20, fontFamily: 'PeshangBold'),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 12,
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Text(
+                                    '${reminderCardData.houre}:${reminderCardData.minute}',
+                                  ),
+                                  Text(reminderCardData.descriptionOfCard),
+                                  Icon(
+                                    reminderCardData.icon,
+                                    size: 60,
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  IconButton(
+                                      onPressed: () {
+                                        //TODO: How to make the Key will be incremented automatically
+                                        box.delete('1');
+                                      },
+                                      icon: Icon(Icons.delete))
+                                ],
+                              )
+                            ],
+                          ),
+                        );
 
-                  // ListTile(
-                  //   title: Text(reminderCardData.title),
-                  //   leading: Icon(reminderCardData.icon),
-                  //   trailing: IconButton(
-                  //     icon: Icon(Icons.delete),
-                  //     onPressed: () {
-                  //       box.delete('1');
-                  //     },
-                  //   ),
-                  // trailing: Text(
-                  //     '${reminderCardData.houre}:${reminderCardData.minute}'),
-                  // );
-                })),
-          );
+                        // ListTile(
+                        //   title: Text(reminderCardData.title),
+                        //   leading: Icon(reminderCardData.icon),
+                        //   trailing: IconButton(
+                        //     icon: Icon(Icons.delete),
+                        //     onPressed: () {
+                        //       box.delete('1');
+                        //     },
+                        //   ),
+                        // trailing: Text(
+                        //     '${reminderCardData.houre}:${reminderCardData.minute}'),
+                        // );
+                      })),
+                );
         }),
       ),
 
