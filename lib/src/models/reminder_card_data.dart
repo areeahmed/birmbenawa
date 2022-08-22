@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 
 //* this model is for the data of the cards, you will use provider for the cards
@@ -11,6 +10,13 @@ class ReminderCardData {
   String pmOrAm; // will be shown
   IconData? icon;
   Color color;
+  // bool? sat;
+  // bool? sun;
+  // bool? mon;
+  // bool? tue;
+  // bool? thr;
+  // bool? wed;
+  // bool? fri;
   ReminderCardData(
     this.title,
     this.descriptionOfCard,
@@ -41,8 +47,8 @@ class ReminderCardData {
     );
   }
 
-  Map<String, dynamic> toMap() {
-    final result = <String, dynamic>{};
+  Map<dynamic, dynamic> toMap() {
+    final result = <dynamic, dynamic>{};
 
     result.addAll({'title': title});
     result.addAll({'descriptionOfCard': descriptionOfCard});
@@ -57,7 +63,7 @@ class ReminderCardData {
     return result;
   }
 
-  factory ReminderCardData.fromMap(Map<String, dynamic> map) {
+  factory ReminderCardData.fromMap(Map<dynamic, dynamic> map) {
     return ReminderCardData(
       map['title'] ?? '',
       map['descriptionOfCard'] ?? '',

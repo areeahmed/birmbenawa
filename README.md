@@ -87,3 +87,5 @@ What did you learn while building this project? What challenges did you face and
 I've learned a lot, learned how to create a mobile app and what it consists of, and how to connect it to Firebes, connect screens, and transfer data from one screen to another.
 
 when I used the IconPicker plugin from the package there was an error inside the plugin I asked in Stack Overflow and they told me the solution that was solved 6 months ago.
+
+I was faced an Error Said ( Box not found. Did you forget to call Hive.openBox()? ) and this Error Fixed : because i was closed the box some where in some of the class so i deleted the closs box segment code and it had been fixed.

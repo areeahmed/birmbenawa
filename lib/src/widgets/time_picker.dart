@@ -17,7 +17,7 @@ class _TimePickerState extends State<TimePicker> {
   String getText() {
     hours = time.hour.toString().padLeft(2, '0');
     minute = time.minute.toString().padLeft(2, '0');
-    context.read<TimeProvider>().changeTime(time.hour, time.minute);
+    context.read<TimeProvider>().changeTime(time.hour, time.minute, pmOrAm);
     return '${hours}:${minute}';
   }
 
@@ -53,7 +53,7 @@ class _TimePickerState extends State<TimePicker> {
           onTap: () => pickTime(context),
           child: Text(
             getText(), //! Return to reminder screen
-            style: const TextStyle(fontSize: 50),
+            style: const TextStyle(fontSize: 50, fontFamily: 'PeshangBold'),
           ),
         ),
         SizedBox(

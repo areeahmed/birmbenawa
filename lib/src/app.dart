@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             // ? this single line belowe is to remove the debug banner
             debugShowCheckedModeBanner: false,
-            home: EditReminderCardScreen(),
+            home: MainPageScreen(),
           );
         });
   }

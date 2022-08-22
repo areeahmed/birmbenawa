@@ -1,7 +1,9 @@
+import 'package:birmbenawa/src/models/reminder_card_data.dart';
 import 'package:birmbenawa/src/provider/dialog_component_model.dart';
 import 'package:birmbenawa/src/provider/navigating_between_screens.dart';
 import 'package:birmbenawa/src/provider/reminder_screen_models.dart';
 import 'package:birmbenawa/src/provider/used_too_mutch.dart';
+import 'package:birmbenawa/src/screens/edit_remider_card_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -18,7 +20,7 @@ class Reminderpage extends StatefulWidget {
     this.timeM,
   }) : super(key: key);
   @override
-  State<Reminderpage> createState() => _ReminderoageState(
+  State<Reminderpage> createState() => _ReminderPageState(
         titleOfTheCard: titleOfTheCard,
         selectedTime: selectedTime,
         timeH: timeH,
@@ -26,9 +28,9 @@ class Reminderpage extends StatefulWidget {
       );
 }
 
-class _ReminderoageState extends State<Reminderpage> {
+class _ReminderPageState extends State<Reminderpage> {
   NaviagtingBetweenScreens navigateBetweenScreens = NaviagtingBetweenScreens();
-  _ReminderoageState({
+  _ReminderPageState({
     required this.titleOfTheCard,
     required this.selectedTime,
     required this.timeH,
@@ -43,24 +45,77 @@ class _ReminderoageState extends State<Reminderpage> {
   // transferred dialogComponentModelWidgets = transferred(isDailyReminder: false);
   @override
   Widget build(BuildContext context) {
+    final box = Hive.box('cardDatas');
     return Scaffold(
-      body: Center(
-        child: Text('data'),
-      ),
-
       //TODO use the segment of code for showing cards from hive database
-      // body: ValueListenableBuilder(
-      //   valueListenable: Hive.box('name').listenable(),
-      //   builder: ((context, card, child) {
-      //     return Center(
-      //       child: ListView.builder(
-      //           itemCount: card.length,
-      //           itemBuilder: ((context, index) {
-      //             Map<dynamic, dynamic> _data = box.getAt(index);
-      //           })),
-      //     );
-      //   }),
-      // ),
+      body: ValueListenableBuilder<Box>(
+        valueListenable: box.listenable(),
+        builder: ((context, box, Widget) {
+          return Center(
+            child: ListView.builder(
+                itemCount: box.length,
+                itemBuilder: ((context, index) {
+                  Map<dynamic, dynamic> _data = box.getAt(index);
+                  ReminderCardData reminderCardData =
+                      ReminderCardData.fromMap(_data as Map<dynamic, dynamic>);
+                  return Container(
+                    child: Column(
+                      textDirection: TextDirection.rtl,
+                      children: [
+                        Container(
+                          child: Text(
+                            reminderCardData.title,
+                            textDirection: TextDirection.rtl,
+                            style: TextStyle(
+                                fontSize: 20, fontFamily: 'PeshangBold'),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 12,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text(
+                              '${reminderCardData.houre}:${reminderCardData.minute}',
+                            ),
+                            Text(reminderCardData.descriptionOfCard),
+                            Icon(
+                              reminderCardData.icon,
+                              size: 60,
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            IconButton(
+                                onPressed: () {
+                                  box.delete('1');
+                                },
+                                icon: Icon(Icons.delete))
+                          ],
+                        )
+                      ],
+                    ),
+                  );
+
+                  // ListTile(
+                  //   title: Text(reminderCardData.title),
+                  //   leading: Icon(reminderCardData.icon),
+                  //   trailing: IconButton(
+                  //     icon: Icon(Icons.delete),
+                  //     onPressed: () {
+                  //       box.delete('1');
+                  //     },
+                  //   ),
+                  // trailing: Text(
+                  //     '${reminderCardData.houre}:${reminderCardData.minute}'),
+                  // );
+                })),
+          );
+        }),
+      ),
 
       // body: SingleChildScrollView(
       //   reverse: true,
@@ -76,20 +131,19 @@ class _ReminderoageState extends State<Reminderpage> {
       //     ),
       //   ),
       // ),
-      // floatingActionButton: FloatingActionButton(
-      //   backgroundColor: const Color.fromARGB(255, 98, 0, 255),
-      //   onPressed: () => usedTooMutch.askedToLead(
-      //       dialogComponentModelWidgets.dialogBody(context: context),
-      //       context), //goToHome(context),
-      //   child: const Icon(Icons.add),
-      // ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: const Color.fromARGB(255, 98, 0, 255),
+        onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+            builder: ((context) => EditReminderCardScreen()))),
+        child: const Icon(Icons.add),
+      ),
     );
   }
 
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    Hive.close();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   // TODO: implement dispose
+  //   Hive.close();
+  //   super.dispose();
+  // }
 }

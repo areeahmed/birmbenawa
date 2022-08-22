@@ -11,6 +11,7 @@ import 'package:birmbenawa/src/screens/reminder_screen.dart';
 import 'package:birmbenawa/src/screens/shoping_list_reminder_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 
 class MainPageScreen extends StatefulWidget {
   String? userName;

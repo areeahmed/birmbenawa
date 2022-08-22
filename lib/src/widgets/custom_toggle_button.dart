@@ -92,7 +92,7 @@ class _CustomToggleButtonWidgetState extends State<CustomToggleButtonWidget> {
             child: content ??
                 Text(
                   textItem ?? 'No Text',
-                  style: TextStyle(color: fstColor),
+                  style: TextStyle(color: fstColor, fontFamily: 'PeshangBold'),
                 ),
           ),
         ),
