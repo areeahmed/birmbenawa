@@ -1,4 +1,4 @@
-import 'package:birmbenawa/src/screens/LandScreen/main_screen.dart';
+import 'package:birmbenawa/src/screens/LandScreen/Landing_screen.dart';
 import 'package:birmbenawa/src/screens/LandScreen/sliderScr.dart';
 import 'package:birmbenawa/src/screens/edit_remider_card_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';

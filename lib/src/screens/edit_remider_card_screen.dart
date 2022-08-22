@@ -2,7 +2,7 @@ import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/models/image_screens.dart';
 import 'package:birmbenawa/src/models/reminder_card_data.dart';
 import 'package:birmbenawa/src/models/time_provider.dart';
-import 'package:birmbenawa/src/screens/LandScreen/main_screen.dart';
+import 'package:birmbenawa/src/screens/LandScreen/Landing_screen.dart';
 import 'package:birmbenawa/src/widgets/time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -99,7 +99,7 @@ class EditReminderCardScreen extends StatelessWidget {
                           context.read<TimeProvider>().pmOrAm,
                           Icons.abc,
                           Colors.black);
-                      final box = Hive.box('cardDatas');
+                      final box = Hive.box('reminderCardDatas');
                       box.put('1', reminderCardData.toMap());
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => MainPageScreen()));
