@@ -1,3 +1,4 @@
+import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/models/reminder_card_data.dart';
 import 'package:birmbenawa/src/provider/dialog_component_model.dart';
 import 'package:birmbenawa/src/provider/navigating_between_screens.dart';
@@ -36,6 +37,8 @@ class _ReminderPageState extends State<Reminderpage> {
     required this.timeH,
     required this.timeM,
   });
+
+  ImageProcess imageProcess = ImageProcess();
   UsedTooMutch usedTooMutch = UsedTooMutch();
   String? titleOfTheCard;
   String? selectedTime;
@@ -45,11 +48,12 @@ class _ReminderPageState extends State<Reminderpage> {
   // transferred dialogComponentModelWidgets = transferred(isDailyReminder: false);
   @override
   Widget build(BuildContext context) {
-    final box = Hive.box('cardDatas');
+    Hive.openBox('cardDatas');
+    // final cardDataBox = Hive.box('cardDatas');
     return Scaffold(
       //TODO use the segment of code for showing cards from hive database
       body: ValueListenableBuilder<Box>(
-        valueListenable: box.listenable(),
+        valueListenable: Hive.box('cardDatas').listenable(),
         builder: ((context, box, Widget) {
           return Center(
             child: ListView.builder(

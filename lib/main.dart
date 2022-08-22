@@ -25,5 +25,5 @@ void main() async {
     child: MyApp(),
   ));
 
-  await Hive.openBox('cardDatas');
+  final box = await Hive.openBox('cardDatas');
 }
