@@ -1,6 +1,7 @@
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/models/reminder_card_data.dart';
 import 'package:birmbenawa/src/provider/shop_list_remider_model.dart';
+import 'package:birmbenawa/src/screens/edit_shop_list_reminder.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -85,8 +86,14 @@ class _ShopingReminderPageState extends State<ShopingReminderPage> {
                 );
         }),
       ),
-      floatingActionButton:
-          shopingListReminderModelClass.floatingActionButton(),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: const Color.fromARGB(255, 98, 0, 255),
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => EditShopingListReminder()));
+        },
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }

@@ -142,9 +142,14 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
         //* Button Action to create a Card
 
         //* Cards contains ==> ( Title - Description - Time - Icon - color - remining time for reminding)
-        floatingActionButton: userTooMutch.FloatingActionButtonTooMutchUsed(
-            () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => EditDailyReminderCardScreen(),
-                ))));
+        floatingActionButton: FloatingActionButton(
+            child: const Icon(Icons.add),
+            heroTag: 'fab2',
+            backgroundColor: const Color.fromARGB(255, 98, 0, 255),
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => EditDailyReminderCardScreen(),
+              ));
+            }));
   }
 }

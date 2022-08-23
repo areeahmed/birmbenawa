@@ -20,12 +20,4 @@ class UsedTooMutch {
     )) {
     }
   }
-
-  Widget FloatingActionButtonTooMutchUsed(onPressed()) {
-    return FloatingActionButton(
-      backgroundColor: const Color.fromARGB(255, 98, 0, 255),
-      onPressed: () => onPressed(),
-      child: const Icon(Icons.add),
-    );
-  }
 }

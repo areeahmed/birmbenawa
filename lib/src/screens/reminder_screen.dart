@@ -118,7 +118,7 @@ class _ReminderPageState extends State<Reminderpage> {
                                 children: [
                                   IconButton(
                                       onPressed: () {
-                                        box.delete('2');
+                                        box.delete('1');
                                       },
                                       icon: Icon(Icons.delete))
                                 ],
@@ -159,6 +159,7 @@ class _ReminderPageState extends State<Reminderpage> {
       //   ),
       // ),
       floatingActionButton: FloatingActionButton(
+        heroTag: 'fab1',
         backgroundColor: const Color.fromARGB(255, 98, 0, 255),
         onPressed: () => Navigator.of(context).push(MaterialPageRoute(
             builder: ((context) => EditReminderCardScreen()))),

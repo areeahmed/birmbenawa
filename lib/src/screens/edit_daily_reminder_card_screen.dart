@@ -103,18 +103,18 @@ class _EditDailyReminderCardScreenState
                   ),
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 30.0),
-                      child: pickIconForMe(context),
-                    ),
-                    SizedBox(
-                      width: 3,
-                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(left: 30.0),
+                    //   child: pickIconForMe(context),
+                    // ),
+                    // SizedBox(
+                    //   width: 3,
+                    // ),
                     Padding(
                       padding: const EdgeInsets.only(
                         top: 20,
-                        left: 30,
                         bottom: 12,
                       ),
                       child: TimePicker(),
@@ -206,7 +206,6 @@ class _EditDailyReminderCardScreenState
                           houre: context.read<TimeProvider>().hour,
                           minute: context.read<TimeProvider>().minute,
                           pmOrAm: context.read<TimeProvider>().pmOrAm,
-                          icon: _icon,
                           color: selectedColor,
                           sat: context.read<IsDaysChecked>().satDay,
                           sun: context.read<IsDaysChecked>().sunDay,
@@ -231,27 +230,27 @@ class _EditDailyReminderCardScreenState
         ));
   }
 
-  Widget pickIconForMe(BuildContext context) {
-    return CustomButtonWidget(
-      content: Icon(_icon),
-      customHeight: 50,
-      customWidth: 50,
-      ontap: () {
-        setState(() {
-          _pickIcon(context);
-        });
-      },
-    );
-  }
+  // Widget pickIconForMe(BuildContext context) {
+  //   return CustomButtonWidget(
+  //     content: Icon(_icon),
+  //     customHeight: 50,
+  //     customWidth: 50,
+  //     ontap: () {
+  //       setState(() {
+  //         _pickIcon(context);
+  //       });
+  //     },
+  //   );
+  // }
 
-  _pickIcon(context) async {
-    setState(() async {
-      IconData? icon = await FlutterIconPicker.showIconPicker(
-        iconSize: 30,
-        context,
-        iconPackModes: [IconPack.cupertino],
-      );
-      _icon = icon;
-    });
-  }
+  // _pickIcon(context) async {
+  //   setState(() async {
+  //     IconData? icon = await FlutterIconPicker.showIconPicker(
+  //       iconSize: 30,
+  //       context,
+  //       iconPackModes: [IconPack.cupertino],
+  //     );
+  //     _icon = icon;
+  //   });
+  // }
 }

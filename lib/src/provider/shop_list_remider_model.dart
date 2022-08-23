@@ -43,12 +43,4 @@ class ShopingListRemiderModelClass {
   }
 
   Widget buildCheckBox() => CheckBoxBuildWidget();
-
-  Widget floatingActionButton() {
-    return FloatingActionButton(
-      backgroundColor: const Color.fromARGB(255, 98, 0, 255),
-      onPressed: () {},
-      child: const Icon(Icons.add),
-    );
-  }
 }

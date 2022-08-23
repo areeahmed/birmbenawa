@@ -118,7 +118,7 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                         context.read<TimeProvider>().pmOrAm,
                       );
                       final box = Hive.box('reminderCardDatas');
-                      box.put('2', reminderCardData.toMap());
+                      box.put('1', reminderCardData.toMap());
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => MainPageScreen()));
                     },
