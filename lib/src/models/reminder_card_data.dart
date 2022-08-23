@@ -9,7 +9,6 @@ class ReminderCardData {
   int houre; // will be shown
   int minute; // will be shown
   String pmOrAm; // will be shown
-  Icon icon;
   // bool? sat;
   // bool? sun;
   // bool? mon;
@@ -23,7 +22,6 @@ class ReminderCardData {
     this.houre,
     this.minute,
     this.pmOrAm,
-    this.icon,
   );
 
   ReminderCardData copyWith({
@@ -32,8 +30,6 @@ class ReminderCardData {
     int? houre,
     int? minute,
     String? pmOrAm,
-    Icon? icon,
-    Color? color,
   }) {
     return ReminderCardData(
       title ?? this.title,
@@ -41,7 +37,6 @@ class ReminderCardData {
       houre ?? this.houre,
       minute ?? this.minute,
       pmOrAm ?? this.pmOrAm,
-      icon ?? this.icon,
     );
   }
 
@@ -53,7 +48,6 @@ class ReminderCardData {
     result.addAll({'houre': houre});
     result.addAll({'minute': minute});
     result.addAll({'pmOrAm': pmOrAm});
-    result.addAll({'icon': icon});
 
     return result;
   }
@@ -65,7 +59,6 @@ class ReminderCardData {
       map['houre']?.toInt() ?? 0,
       map['minute']?.toInt() ?? 0,
       map['pmOrAm'] ?? '',
-      map['icon'],
     );
   }
 
@@ -76,7 +69,7 @@ class ReminderCardData {
 
   @override
   String toString() {
-    return 'ReminderCardData(title: $title, descriptionOfCard: $descriptionOfCard, houre: $houre, minute: $minute, pmOrAm: $pmOrAm, icon: $icon)';
+    return 'ReminderCardData(title: $title, descriptionOfCard: $descriptionOfCard, houre: $houre, minute: $minute, pmOrAm: $pmOrAm)';
   }
 
   @override
@@ -88,8 +81,7 @@ class ReminderCardData {
         other.descriptionOfCard == descriptionOfCard &&
         other.houre == houre &&
         other.minute == minute &&
-        other.pmOrAm == pmOrAm &&
-        other.icon == icon;
+        other.pmOrAm == pmOrAm;
   }
 
   @override
@@ -98,7 +90,6 @@ class ReminderCardData {
         descriptionOfCard.hashCode ^
         houre.hashCode ^
         minute.hashCode ^
-        pmOrAm.hashCode ^
-        icon.hashCode;
+        pmOrAm.hashCode;
   }
 }

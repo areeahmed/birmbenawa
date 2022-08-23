@@ -48,12 +48,24 @@ class _ReminderPageState extends State<Reminderpage> {
   // transferred dialogComponentModelWidgets = transferred(isDailyReminder: false);
   @override
   Widget build(BuildContext context) {
-    // final cardDataBox = Hive.box('cardDatas');
+    // final cardDataBox = Hive.box('reminderCardDatas');
     return Scaffold(
+      // appBar: AppBar(
+      //   actions: [
+      //     IconButton(
+      //         onPressed: () {
+      //           if (cardDataBox.isEmpty) {
+      //             print('Box is empty');
+      //           } else {
+      //             cardDataBox.clear();
+      //           }
+      //         },
+      //         icon: Icon(Icons.clear))
+      //   ],
+      // ),
       //TODO use the segment of code for showing cards from hive database
       body: ValueListenableBuilder<Box>(
-        valueListenable: Hive.box('reminderCardDatas')
-            .listenable(), //! ERROR: Box not found. Did you forget to call Hive.openBox()?
+        valueListenable: Hive.box('reminderCardDatas').listenable(),
         builder: ((context, box, Widget) {
           return box.isEmpty
               ? Center(
@@ -98,7 +110,6 @@ class _ReminderPageState extends State<Reminderpage> {
                                     '${reminderCardData.houre}:${reminderCardData.minute}',
                                   ),
                                   Text(reminderCardData.descriptionOfCard),
-                                  reminderCardData.icon,
                                 ],
                               ),
                               Row(
@@ -107,8 +118,7 @@ class _ReminderPageState extends State<Reminderpage> {
                                 children: [
                                   IconButton(
                                       onPressed: () {
-                                        //TODO: How to make the Key will be incremented automatically
-                                        box.delete('1');
+                                        box.delete('2');
                                       },
                                       icon: Icon(Icons.delete))
                                 ],
