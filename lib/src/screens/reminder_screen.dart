@@ -48,7 +48,6 @@ class _ReminderPageState extends State<Reminderpage> {
   // transferred dialogComponentModelWidgets = transferred(isDailyReminder: false);
   @override
   Widget build(BuildContext context) {
-    Hive.openBox('reminderCardDatas');
     // final cardDataBox = Hive.box('cardDatas');
     return Scaffold(
       //TODO use the segment of code for showing cards from hive database

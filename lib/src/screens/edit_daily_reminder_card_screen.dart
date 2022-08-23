@@ -1,11 +1,10 @@
 import 'package:birmbenawa/src/models/daily_reminder_card_data.dart';
+import 'package:birmbenawa/src/models/days_checked_provider.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/models/image_screens.dart';
 import 'package:birmbenawa/src/models/reminder_card_data.dart';
 import 'package:birmbenawa/src/models/time_provider.dart';
-import 'package:birmbenawa/src/provider/days_button_data.dart';
 import 'package:birmbenawa/src/screens/LandScreen/Landing_screen.dart';
-import 'package:birmbenawa/src/widgets/custom_toggle_button.dart';
 import 'package:birmbenawa/src/widgets/icon_picker.dart';
 import 'package:birmbenawa/src/widgets/time_picker.dart';
 import 'package:flutter/material.dart';
@@ -27,24 +26,18 @@ class EditDailyReminderCardScreen extends StatefulWidget {
 
 class _EditDailyReminderCardScreenState
     extends State<EditDailyReminderCardScreen> {
+  List<bool> isSelectedvalue = [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ];
   bool isDailyReminder = true;
-
-  Icon _icon = Icon(Icons.add);
-
-  bool satDay = false;
-
-  bool sunDay = false;
-
-  bool monDay = false;
-
-  bool tueDay = false;
-
-  bool thrDay = false;
-
-  bool wedDay = false;
-
-  bool friDay = false;
-
+  Color selectedColor = Colors.grey.shade100;
+  IconData? _icon;
   @override
   Widget build(BuildContext context) {
     ReminderCardData reminderCardData;
@@ -52,6 +45,7 @@ class _EditDailyReminderCardScreenState
     ImageScreen imageScreen = ImageScreen();
     TextEditingController titleController = TextEditingController();
     TextEditingController controllerData2 = TextEditingController();
+    Color selectedColor = Colors.grey.shade100;
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -70,7 +64,6 @@ class _EditDailyReminderCardScreenState
                   height: 250,
                   width: 250,
                 ),
-                //TODO add time icon to the screen ==> Done
                 Padding(
                   padding: const EdgeInsets.only(
                     left: 18,
@@ -92,7 +85,6 @@ class _EditDailyReminderCardScreenState
                     ),
                   ),
                 ),
-                //TODO add title ( text field ) ==> Done
                 Padding(
                   padding: const EdgeInsets.only(
                     left: 18,
@@ -110,7 +102,6 @@ class _EditDailyReminderCardScreenState
                     ),
                   ),
                 ),
-                //TODO add description ( text field ) ==> Done
                 Row(
                   children: [
                     Padding(
@@ -130,36 +121,200 @@ class _EditDailyReminderCardScreenState
                     ),
                   ],
                 ),
-                //TODO add time picker ( Button => open time dialog ) ==> Done
-                isDailyReminder ? DaysPickerDialogModelWidget() : Container(),
-                //TODO add a color picker ( Drop Down Button )
-
-                //TODO add an Icon picker ( Button to open Icon Dialog )
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: DropdownButtonFormField<Color>(
+                    value: selectedColor,
+                    items: [
+                      DropdownMenuItem(
+                        child: Text(
+                          'Blue',
+                          style: TextStyle(color: Colors.lightBlueAccent),
+                        ),
+                        value: selectedColor,
+                        onTap: (() {
+                          setState(() {
+                            debugPrint('the color is Blue');
+                            selectedColor = Colors.lightBlueAccent;
+                          });
+                        }),
+                      ),
+                      DropdownMenuItem(
+                        child: Text('Pink',
+                            style:
+                                TextStyle(color: Colors.pinkAccent.shade100)),
+                        value: Colors.pinkAccent.shade100,
+                        onTap: (() {
+                          setState(() {
+                            debugPrint('the color is Pink');
+                            selectedColor = Colors.pinkAccent.shade100;
+                          });
+                        }),
+                      ),
+                      DropdownMenuItem(
+                        child: Text('Red',
+                            style: TextStyle(color: Colors.redAccent.shade100)),
+                        value: Colors.redAccent.shade100,
+                        onTap: (() {
+                          setState(() {
+                            debugPrint('the color is Red');
+                            selectedColor = Colors.redAccent.shade100;
+                          });
+                        }),
+                      ),
+                      DropdownMenuItem(
+                        child: Text('Purple',
+                            style:
+                                TextStyle(color: Colors.purpleAccent.shade100)),
+                        value: Colors.purpleAccent.shade100,
+                        onTap: (() {
+                          setState(() {
+                            debugPrint('the color is Purple');
+                            selectedColor = Colors.purpleAccent.shade100;
+                          });
+                        }),
+                      ),
+                      DropdownMenuItem(
+                        child: Text('Green',
+                            style: TextStyle(color: Colors.greenAccent)),
+                        value: Colors.greenAccent,
+                        onTap: (() {
+                          setState(() {
+                            debugPrint('the color is Green');
+                            selectedColor = Colors.greenAccent;
+                          });
+                        }),
+                      ),
+                      DropdownMenuItem(
+                        child: Text('Yellow',
+                            style:
+                                TextStyle(color: Colors.yellowAccent.shade400)),
+                        value: Colors.yellowAccent.shade100,
+                        onTap: (() {
+                          setState(() {
+                            debugPrint('the color is Yellow');
+                            selectedColor = Colors.yellowAccent.shade100;
+                          });
+                        }),
+                      ),
+                      DropdownMenuItem(
+                        child: Text('Orange',
+                            style:
+                                TextStyle(color: Colors.orangeAccent.shade200)),
+                        value: Colors.orangeAccent.shade200,
+                        onTap: (() {
+                          setState(() {
+                            debugPrint('the color is Orange');
+                            selectedColor = Colors.orangeAccent.shade200;
+                          });
+                        }),
+                      ),
+                    ],
+                    onChanged: ((value) {}),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(12),
+                  child: ToggleButtons(
+                      borderColor: Colors.purple,
+                      selectedBorderColor: Colors.pink,
+                      selectedColor: Colors.pink,
+                      borderRadius: BorderRadius.circular(10),
+                      isSelected: isSelectedvalue,
+                      children: [
+                        Text('sat'),
+                        Text('sun'),
+                        Text('mon'),
+                        Text('tue'),
+                        Text('wed'),
+                        Text('thr'),
+                        Text('fri'),
+                      ],
+                      onPressed: (int index) {
+                        setState(() {
+                          isSelectedvalue[index] = !isSelectedvalue[index];
+                          switch (index) {
+                            case 0:
+                              setState(() {
+                                context
+                                    .read<IsDaysChecked>()
+                                    .satChanges(sat: true);
+                              });
+                              break;
+                            case 1:
+                              setState(() {
+                                context
+                                    .read<IsDaysChecked>()
+                                    .sunChanges(sun: true);
+                              });
+                              break;
+                            case 2:
+                              setState(() {
+                                context
+                                    .read<IsDaysChecked>()
+                                    .monChanges(mon: true);
+                              });
+                              break;
+                            case 3:
+                              setState(() {
+                                context
+                                    .read<IsDaysChecked>()
+                                    .tueChanges(tue: true);
+                              });
+                              break;
+                            case 4:
+                              setState(() {
+                                context
+                                    .read<IsDaysChecked>()
+                                    .wedChanges(wed: true);
+                              });
+                              break;
+                            case 5:
+                              setState(() {
+                                context
+                                    .read<IsDaysChecked>()
+                                    .thrChanges(thr: true);
+                              });
+                              break;
+                            case 6:
+                              setState(() {
+                                context
+                                    .read<IsDaysChecked>()
+                                    .friChanges(fri: true);
+                              });
+                              break;
+                          }
+                          debugPrint('${isSelectedvalue[index]}');
+                        });
+                      }),
+                ),
                 ElevatedButton(
                     onPressed: () {
-                      DailyReminderCardData reminderCardData =
-                          DailyReminderCardData(
-                        title: titleController.text,
-                        descriptionOfCard: controllerData2.text,
-                        houre: context.read<TimeProvider>().hour,
-                        minute: context.read<TimeProvider>().minute,
-                        pmOrAm: context.read<TimeProvider>().pmOrAm,
-                        icon: Icons.abc,
-                        color: Colors.black,
-                        sat: satDay,
-                        sun: sunDay,
-                        mon: monDay,
-                        tue: tueDay,
-                        thr: thrDay,
-                        wed: wedDay,
-                        fri: friDay,
-                      );
-                      final box = Hive.box('dailyReminderCardDatas');
-                      box.put('1', reminderCardData.toMap());
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => MainPageScreen()));
-                      debugPrint(
-                          '$satDay, $sunDay, $monDay, $tueDay, $wedDay, $thrDay, $friDay');
+                      setState(() {
+                        DailyReminderCardData reminderCardData =
+                            DailyReminderCardData(
+                          title: titleController.text,
+                          descriptionOfCard: controllerData2.text,
+                          houre: context.read<TimeProvider>().hour,
+                          minute: context.read<TimeProvider>().minute,
+                          pmOrAm: context.read<TimeProvider>().pmOrAm,
+                          icon: _icon,
+                          color: selectedColor,
+                          sat: context.read<IsDaysChecked>().satDay,
+                          sun: context.read<IsDaysChecked>().sunDay,
+                          mon: context.read<IsDaysChecked>().monDay,
+                          tue: context.read<IsDaysChecked>().tueDay,
+                          wed: context.read<IsDaysChecked>().wedDay,
+                          thr: context.read<IsDaysChecked>().thrDay,
+                          fri: context.read<IsDaysChecked>().friDay,
+                        );
+                        final box = Hive.box('dailyReminderCardDatas');
+                        box.put('1', reminderCardData.toMap());
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => MainPageScreen()));
+                        debugPrint(
+                            '${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}');
+                      });
                     },
                     child: Text('Save'))
               ],
@@ -168,105 +323,9 @@ class _EditDailyReminderCardScreenState
         ));
   }
 
-  DaysButtonData sat =
-      DaysButtonData(color: Colors.black, day: 'شەممە', checked: false);
-
-  DaysButtonData sun =
-      DaysButtonData(color: Colors.black, day: 'یەکشەممە', checked: false);
-
-  DaysButtonData mon =
-      DaysButtonData(color: Colors.black, day: 'دووشەممە', checked: false);
-
-  DaysButtonData tue =
-      DaysButtonData(color: Colors.black, day: 'سێشەممە', checked: false);
-
-  DaysButtonData wed =
-      DaysButtonData(color: Colors.black, day: 'چوارشەممە', checked: false);
-
-  DaysButtonData thu =
-      DaysButtonData(color: Colors.black, day: 'پێنجشەممە', checked: false);
-
-  DaysButtonData fri =
-      DaysButtonData(color: Colors.black, day: 'هەینی', checked: false);
-
-  @override
-  Widget DaysPickerDialogModelWidget() {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            //! Sat
-            CustomToggleButtonWidget(
-              textItem: sat.day,
-              customHeight: 50,
-              customWidth: 100,
-            ),
-            const SizedBox(width: 12),
-            //! Sun
-            CustomToggleButtonWidget(
-              textItem: sun.day,
-              customHeight: 50,
-              customWidth: 100,
-            ),
-            const SizedBox(width: 12),
-            //! Mon
-            CustomToggleButtonWidget(
-              textItem: mon.day,
-              customHeight: 50,
-              customWidth: 100,
-            ),
-            const SizedBox(width: 12),
-          ],
-        ),
-        const SizedBox(width: 12, height: 12),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            //! Tue
-            CustomToggleButtonWidget(
-              textItem: tue.day,
-              customHeight: 50,
-              customWidth: 100,
-            ),
-            const SizedBox(width: 12),
-            //! Wed
-            CustomToggleButtonWidget(
-              textItem: wed.day,
-              customHeight: 50,
-              customWidth: 100,
-            ),
-            const SizedBox(width: 12),
-            //! Thr
-            CustomToggleButtonWidget(
-              textItem: thu.day,
-              customHeight: 50,
-              customWidth: 100,
-            ),
-          ],
-        ),
-        const SizedBox(width: 12, height: 12),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            //! Fri
-            CustomToggleButtonWidget(
-              textItem: fri.day,
-              customHeight: 50,
-              customWidth: 100,
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-
   Widget pickIconForMe(BuildContext context) {
     return CustomButtonWidget(
-      content: _icon,
+      content: Icon(_icon),
       customHeight: 50,
       customWidth: 50,
       ontap: () => _pickIcon(context),
@@ -279,10 +338,8 @@ class _EditDailyReminderCardScreenState
       context,
       iconPackModes: [IconPack.cupertino],
     );
-    _icon = Icon(
-      icon,
-      size: 40,
-    );
-    _icon = Icon(icon);
+    setState(() {
+      _icon = icon;
+    });
   }
 }
