@@ -89,3 +89,6 @@ I've learned a lot, learned how to create a mobile app and what it consists of, 
 when I used the IconPicker plugin from the package there was an error inside the plugin I asked in Stack Overflow and they told me the solution that was solved 6 months ago.
 
 I was faced an Error Said ( Box not found. Did you forget to call Hive.openBox()? ) and this Error Fixed : because i was closed the box some where in some of the class so i deleted the closs box segment code and it had been fixed.
+
+after using Hive when we restart our application or when we run our program the program was give an error
+( Box not found. Did you forget to call Hive.openBox()? ), so i fixed this after i opened box's above run app, to this issus was because of opening box's after running app.

@@ -18,6 +18,9 @@ void main() async {
     //? Solving Black Screen on Emulator
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  final reminderCardbBox = await Hive.openBox('reminderCardDatas');
+  final dailyReminderBox = await Hive.openBox('dailyReminderCardDatas');
+  final shopingListBox = await Hive.openBox('shopingListDatas');
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (context) => TimeProvider()),
@@ -26,8 +29,4 @@ void main() async {
     ],
     child: MyApp(),
   ));
-
-  final reminderCardbBox = await Hive.openBox('reminderCardDatas');
-  final dailyReminderBox = await Hive.openBox('dailyReminderCardDatas');
-  final shopingListBox = await Hive.openBox('shopingListDatas');
 }
