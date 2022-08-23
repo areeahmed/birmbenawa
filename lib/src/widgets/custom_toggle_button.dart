@@ -7,13 +7,11 @@ class CustomToggleButtonWidget extends StatefulWidget {
   String? textItem;
   Color? fstColor;
   Color? sndColor;
-  GestureTapCallback? ontap;
   CustomToggleButtonWidget({
     Key? key,
     this.content,
     required this.customHeight,
     required this.customWidth,
-    required this.ontap,
     this.fstColor,
     this.sndColor,
     this.textItem,
@@ -25,7 +23,6 @@ class CustomToggleButtonWidget extends StatefulWidget {
         content: content,
         customHeight: customHeight,
         customWidth: customWidth,
-        ontap: ontap,
         fstColor: fstColor,
         sndColor: sndColor,
         textItem: textItem,
@@ -37,28 +34,26 @@ class _CustomToggleButtonWidgetState extends State<CustomToggleButtonWidget> {
     this.content,
     required this.customHeight,
     required this.customWidth,
-    required this.ontap,
     this.fstColor,
     this.sndColor,
     this.textItem,
   });
-  bool _isElevated = false;
+  bool isElevated = false;
   String? textItem;
   Color? fstColor;
   Color? sndColor;
   Widget? content;
   double? customHeight;
   double? customWidth;
-  GestureTapCallback? ontap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         setState(() {
-          _isElevated = !_isElevated;
-          if (_isElevated == true) {
+          isElevated = !isElevated;
+          if (isElevated == true) {
             fstColor = Colors.pink;
-          } else if (_isElevated == false) {
+          } else if (isElevated == false) {
             fstColor = Colors.black;
           }
         });
@@ -70,7 +65,7 @@ class _CustomToggleButtonWidgetState extends State<CustomToggleButtonWidget> {
         decoration: BoxDecoration(
           color: Colors.grey[300],
           borderRadius: BorderRadius.circular(5),
-          boxShadow: _isElevated
+          boxShadow: isElevated
               ? [
                   BoxShadow(
                     color: Colors.grey.shade500,

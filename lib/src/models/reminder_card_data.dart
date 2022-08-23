@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 //* this model is for the data of the cards, you will use provider for the cards
@@ -47,8 +48,8 @@ class ReminderCardData {
     );
   }
 
-  Map<dynamic, dynamic> toMap() {
-    final result = <dynamic, dynamic>{};
+  Map<String, dynamic> toMap() {
+    final result = <String, dynamic>{};
 
     result.addAll({'title': title});
     result.addAll({'descriptionOfCard': descriptionOfCard});

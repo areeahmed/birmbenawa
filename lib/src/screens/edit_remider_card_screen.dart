@@ -3,8 +3,10 @@ import 'package:birmbenawa/src/models/image_screens.dart';
 import 'package:birmbenawa/src/models/reminder_card_data.dart';
 import 'package:birmbenawa/src/models/time_provider.dart';
 import 'package:birmbenawa/src/screens/LandScreen/Landing_screen.dart';
+import 'package:birmbenawa/src/widgets/icon_picker.dart';
 import 'package:birmbenawa/src/widgets/time_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_iconpicker/flutter_iconpicker.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 
@@ -15,6 +17,7 @@ class EditReminderCardScreen extends StatelessWidget {
   //required this.isDailyReminder
   : super(key: key);
   bool isDailyReminder = true;
+  Icon _icon = Icon(Icons.add);
   @override
   Widget build(BuildContext context) {
     ImageProcess process = ImageProcess();
@@ -39,7 +42,6 @@ class EditReminderCardScreen extends StatelessWidget {
                   height: 250,
                   width: 250,
                 ),
-                //TODO add time icon to the screen ==> Done
                 Padding(
                   padding: const EdgeInsets.only(
                     left: 18,
@@ -61,7 +63,6 @@ class EditReminderCardScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                //TODO add title ( text field ) ==> Done
                 Padding(
                   padding: const EdgeInsets.only(
                     left: 18,
@@ -79,7 +80,6 @@ class EditReminderCardScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                //TODO add description ( text field ) ==> Done
                 Padding(
                   padding: const EdgeInsets.only(
                     top: 20,
@@ -89,6 +89,7 @@ class EditReminderCardScreen extends StatelessWidget {
                   child: TimePicker(),
                 ),
                 //TODO add an Icon picker ( Button to open Icon Dialog )
+                // TODO add Color picker ( Drop Down Button )
                 ElevatedButton(
                     onPressed: () {
                       ReminderCardData reminderCardData = ReminderCardData(
@@ -109,5 +110,27 @@ class EditReminderCardScreen extends StatelessWidget {
             ),
           ),
         ));
+  }
+
+  Widget pickIconForMe(BuildContext context) {
+    return CustomButtonWidget(
+      content: _icon,
+      customHeight: 50,
+      customWidth: 50,
+      ontap: () => _pickIcon(context),
+    );
+  }
+
+  _pickIcon(context) async {
+    IconData? icon = await FlutterIconPicker.showIconPicker(
+      iconSize: 30,
+      context,
+      iconPackModes: [IconPack.cupertino],
+    );
+    _icon = Icon(
+      icon,
+      size: 40,
+    );
+    _icon = Icon(icon);
   }
 }

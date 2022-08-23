@@ -1,3 +1,4 @@
+import 'package:birmbenawa/src/models/daily_reminder_card_data.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/models/image_screens.dart';
 import 'package:birmbenawa/src/models/reminder_card_data.dart';
@@ -5,18 +6,45 @@ import 'package:birmbenawa/src/models/time_provider.dart';
 import 'package:birmbenawa/src/provider/days_button_data.dart';
 import 'package:birmbenawa/src/screens/LandScreen/Landing_screen.dart';
 import 'package:birmbenawa/src/widgets/custom_toggle_button.dart';
+import 'package:birmbenawa/src/widgets/icon_picker.dart';
 import 'package:birmbenawa/src/widgets/time_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_iconpicker/flutter_iconpicker.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
-class EditDailyReminderCardScreen extends StatelessWidget {
+class EditDailyReminderCardScreen extends StatefulWidget {
   EditDailyReminderCardScreen({
     Key? key,
   })
   //required this.isDailyReminder
   : super(key: key);
+
+  @override
+  State<EditDailyReminderCardScreen> createState() =>
+      _EditDailyReminderCardScreenState();
+}
+
+class _EditDailyReminderCardScreenState
+    extends State<EditDailyReminderCardScreen> {
   bool isDailyReminder = true;
+
+  Icon _icon = Icon(Icons.add);
+
+  bool satDay = false;
+
+  bool sunDay = false;
+
+  bool monDay = false;
+
+  bool tueDay = false;
+
+  bool thrDay = false;
+
+  bool wedDay = false;
+
+  bool friDay = false;
+
   @override
   Widget build(BuildContext context) {
     ReminderCardData reminderCardData;
@@ -83,32 +111,55 @@ class EditDailyReminderCardScreen extends StatelessWidget {
                   ),
                 ),
                 //TODO add description ( text field ) ==> Done
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 20,
-                    left: 20,
-                    bottom: 12,
-                  ),
-                  child: TimePicker(),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 30.0),
+                      child: pickIconForMe(context),
+                    ),
+                    SizedBox(
+                      width: 3,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        top: 20,
+                        left: 30,
+                        bottom: 12,
+                      ),
+                      child: TimePicker(),
+                    ),
+                  ],
                 ),
                 //TODO add time picker ( Button => open time dialog ) ==> Done
                 isDailyReminder ? DaysPickerDialogModelWidget() : Container(),
                 //TODO add a color picker ( Drop Down Button )
+
                 //TODO add an Icon picker ( Button to open Icon Dialog )
                 ElevatedButton(
                     onPressed: () {
-                      ReminderCardData reminderCardData = ReminderCardData(
-                          titleController.text,
-                          controllerData2.text,
-                          context.read<TimeProvider>().hour,
-                          context.read<TimeProvider>().minute,
-                          context.read<TimeProvider>().pmOrAm,
-                          Icons.abc,
-                          Colors.black);
+                      DailyReminderCardData reminderCardData =
+                          DailyReminderCardData(
+                        title: titleController.text,
+                        descriptionOfCard: controllerData2.text,
+                        houre: context.read<TimeProvider>().hour,
+                        minute: context.read<TimeProvider>().minute,
+                        pmOrAm: context.read<TimeProvider>().pmOrAm,
+                        icon: Icons.abc,
+                        color: Colors.black,
+                        sat: satDay,
+                        sun: sunDay,
+                        mon: monDay,
+                        tue: tueDay,
+                        thr: thrDay,
+                        wed: wedDay,
+                        fri: friDay,
+                      );
                       final box = Hive.box('dailyReminderCardDatas');
                       box.put('1', reminderCardData.toMap());
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => MainPageScreen()));
+                      debugPrint(
+                          '$satDay, $sunDay, $monDay, $tueDay, $wedDay, $thrDay, $friDay');
                     },
                     child: Text('Save'))
               ],
@@ -117,21 +168,27 @@ class EditDailyReminderCardScreen extends StatelessWidget {
         ));
   }
 
-  bool _isElevated = false;
   DaysButtonData sat =
       DaysButtonData(color: Colors.black, day: 'شەممە', checked: false);
+
   DaysButtonData sun =
       DaysButtonData(color: Colors.black, day: 'یەکشەممە', checked: false);
+
   DaysButtonData mon =
       DaysButtonData(color: Colors.black, day: 'دووشەممە', checked: false);
+
   DaysButtonData tue =
       DaysButtonData(color: Colors.black, day: 'سێشەممە', checked: false);
+
   DaysButtonData wed =
       DaysButtonData(color: Colors.black, day: 'چوارشەممە', checked: false);
+
   DaysButtonData thu =
       DaysButtonData(color: Colors.black, day: 'پێنجشەممە', checked: false);
+
   DaysButtonData fri =
       DaysButtonData(color: Colors.black, day: 'هەینی', checked: false);
+
   @override
   Widget DaysPickerDialogModelWidget() {
     return Column(
@@ -145,7 +202,6 @@ class EditDailyReminderCardScreen extends StatelessWidget {
               textItem: sat.day,
               customHeight: 50,
               customWidth: 100,
-              ontap: () {},
             ),
             const SizedBox(width: 12),
             //! Sun
@@ -153,7 +209,6 @@ class EditDailyReminderCardScreen extends StatelessWidget {
               textItem: sun.day,
               customHeight: 50,
               customWidth: 100,
-              ontap: () {},
             ),
             const SizedBox(width: 12),
             //! Mon
@@ -161,7 +216,6 @@ class EditDailyReminderCardScreen extends StatelessWidget {
               textItem: mon.day,
               customHeight: 50,
               customWidth: 100,
-              ontap: () {},
             ),
             const SizedBox(width: 12),
           ],
@@ -176,7 +230,6 @@ class EditDailyReminderCardScreen extends StatelessWidget {
               textItem: tue.day,
               customHeight: 50,
               customWidth: 100,
-              ontap: () {},
             ),
             const SizedBox(width: 12),
             //! Wed
@@ -184,15 +237,13 @@ class EditDailyReminderCardScreen extends StatelessWidget {
               textItem: wed.day,
               customHeight: 50,
               customWidth: 100,
-              ontap: () {},
             ),
             const SizedBox(width: 12),
-            //! Thu
+            //! Thr
             CustomToggleButtonWidget(
               textItem: thu.day,
               customHeight: 50,
               customWidth: 100,
-              ontap: () {},
             ),
           ],
         ),
@@ -206,11 +257,32 @@ class EditDailyReminderCardScreen extends StatelessWidget {
               textItem: fri.day,
               customHeight: 50,
               customWidth: 100,
-              ontap: () {},
             ),
           ],
         ),
       ],
     );
+  }
+
+  Widget pickIconForMe(BuildContext context) {
+    return CustomButtonWidget(
+      content: _icon,
+      customHeight: 50,
+      customWidth: 50,
+      ontap: () => _pickIcon(context),
+    );
+  }
+
+  _pickIcon(context) async {
+    IconData? icon = await FlutterIconPicker.showIconPicker(
+      iconSize: 30,
+      context,
+      iconPackModes: [IconPack.cupertino],
+    );
+    _icon = Icon(
+      icon,
+      size: 40,
+    );
+    _icon = Icon(icon);
   }
 }

@@ -1,3 +1,4 @@
+import 'package:birmbenawa/src/models/daily_reminder_card_data.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/models/reminder_card_data.dart';
 import 'package:birmbenawa/src/provider/daily_remider_model.dart';
@@ -43,8 +44,8 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
                       itemCount: box.length,
                       itemBuilder: ((context, index) {
                         Map<dynamic, dynamic> _data = box.getAt(index);
-                        ReminderCardData reminderCardData =
-                            ReminderCardData.fromMap(
+                        DailyReminderCardData reminderCardData =
+                            DailyReminderCardData.fromMap(
                                 _data as Map<dynamic, dynamic>);
                         return Container(
                           child: Column(
@@ -74,6 +75,41 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
                                     size: 60,
                                   ),
                                 ],
+                              ),
+                              Row(
+                                children: [
+                                  Text(reminderCardData.sat == true
+                                      ? 'sat'
+                                      : ''),
+                                  SizedBox(width: 3),
+                                  Text(reminderCardData.sun == true
+                                      ? 'sun'
+                                      : ''),
+                                  SizedBox(width: 3),
+                                  Text(reminderCardData.mon == true
+                                      ? 'mon'
+                                      : ''),
+                                  SizedBox(width: 3),
+                                  Text(reminderCardData.tue == true
+                                      ? 'tue'
+                                      : ' '),
+                                  SizedBox(width: 3),
+                                  Text(reminderCardData.wed == true
+                                      ? 'wed'
+                                      : ' '),
+                                  SizedBox(width: 3),
+                                  Text(reminderCardData.thr == true
+                                      ? 'thr'
+                                      : ' '),
+                                  SizedBox(width: 3),
+                                  Text(reminderCardData.fri == true
+                                      ? 'fri'
+                                      : ' '),
+                                  SizedBox(width: 3),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 12,
                               ),
                               Row(
                                 mainAxisAlignment:
