@@ -98,10 +98,7 @@ class _ReminderPageState extends State<Reminderpage> {
                                     '${reminderCardData.houre}:${reminderCardData.minute}',
                                   ),
                                   Text(reminderCardData.descriptionOfCard),
-                                  Icon(
-                                    reminderCardData.icon,
-                                    size: 60,
-                                  ),
+                                  reminderCardData.icon,
                                 ],
                               ),
                               Row(

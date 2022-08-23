@@ -10,14 +10,22 @@ import 'package:flutter_iconpicker/flutter_iconpicker.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 
-class EditReminderCardScreen extends StatelessWidget {
+class EditReminderCardScreen extends StatefulWidget {
   EditReminderCardScreen({
     Key? key,
   })
   //required this.isDailyReminder
   : super(key: key);
+
+  @override
+  State<EditReminderCardScreen> createState() => _EditReminderCardScreenState();
+}
+
+class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
   bool isDailyReminder = true;
+  Color selectedColor2 = Colors.grey.shade200;
   Icon _icon = Icon(Icons.add);
+
   @override
   Widget build(BuildContext context) {
     ImageProcess process = ImageProcess();
@@ -80,26 +88,36 @@ class EditReminderCardScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 20,
-                    left: 20,
-                    bottom: 12,
-                  ),
-                  child: TimePicker(),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 30.0),
+                      child: pickIconForMe(context),
+                    ),
+                    SizedBox(
+                      width: 3,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        top: 20,
+                        left: 30,
+                        bottom: 12,
+                      ),
+                      child: TimePicker(),
+                    ),
+                  ],
                 ),
                 //TODO add an Icon picker ( Button to open Icon Dialog )
-                // TODO add Color picker ( Drop Down Button )
                 ElevatedButton(
                     onPressed: () {
                       ReminderCardData reminderCardData = ReminderCardData(
-                          titleController.text,
-                          controllerData2.text,
-                          context.read<TimeProvider>().hour,
-                          context.read<TimeProvider>().minute,
-                          context.read<TimeProvider>().pmOrAm,
-                          Icons.abc,
-                          Colors.black);
+                        titleController.text,
+                        controllerData2.text,
+                        context.read<TimeProvider>().hour,
+                        context.read<TimeProvider>().minute,
+                        context.read<TimeProvider>().pmOrAm,
+                        _icon,
+                      );
                       final box = Hive.box('reminderCardDatas');
                       box.put('1', reminderCardData.toMap());
                       Navigator.of(context).push(MaterialPageRoute(

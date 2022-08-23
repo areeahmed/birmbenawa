@@ -9,8 +9,7 @@ class ReminderCardData {
   int houre; // will be shown
   int minute; // will be shown
   String pmOrAm; // will be shown
-  IconData? icon;
-  Color color;
+  Icon icon;
   // bool? sat;
   // bool? sun;
   // bool? mon;
@@ -25,7 +24,6 @@ class ReminderCardData {
     this.minute,
     this.pmOrAm,
     this.icon,
-    this.color,
   );
 
   ReminderCardData copyWith({
@@ -34,7 +32,7 @@ class ReminderCardData {
     int? houre,
     int? minute,
     String? pmOrAm,
-    IconData? icon,
+    Icon? icon,
     Color? color,
   }) {
     return ReminderCardData(
@@ -44,22 +42,18 @@ class ReminderCardData {
       minute ?? this.minute,
       pmOrAm ?? this.pmOrAm,
       icon ?? this.icon,
-      color ?? this.color,
     );
   }
 
-  Map<String, dynamic> toMap() {
-    final result = <String, dynamic>{};
+  Map<dynamic, dynamic> toMap() {
+    final result = <dynamic, dynamic>{};
 
     result.addAll({'title': title});
     result.addAll({'descriptionOfCard': descriptionOfCard});
     result.addAll({'houre': houre});
     result.addAll({'minute': minute});
     result.addAll({'pmOrAm': pmOrAm});
-    if (icon != null) {
-      result.addAll({'icon': icon!.codePoint});
-    }
-    result.addAll({'color': color.value});
+    result.addAll({'icon': icon});
 
     return result;
   }
@@ -71,10 +65,7 @@ class ReminderCardData {
       map['houre']?.toInt() ?? 0,
       map['minute']?.toInt() ?? 0,
       map['pmOrAm'] ?? '',
-      map['icon'] != null
-          ? IconData(map['icon'], fontFamily: 'MaterialIcons')
-          : null,
-      Color(map['color']),
+      map['icon'],
     );
   }
 
@@ -85,7 +76,7 @@ class ReminderCardData {
 
   @override
   String toString() {
-    return 'ReminderCardData(title: $title, descriptionOfCard: $descriptionOfCard, houre: $houre, minute: $minute, pmOrAm: $pmOrAm, icon: $icon, color: $color)';
+    return 'ReminderCardData(title: $title, descriptionOfCard: $descriptionOfCard, houre: $houre, minute: $minute, pmOrAm: $pmOrAm, icon: $icon)';
   }
 
   @override
@@ -98,8 +89,7 @@ class ReminderCardData {
         other.houre == houre &&
         other.minute == minute &&
         other.pmOrAm == pmOrAm &&
-        other.icon == icon &&
-        other.color == color;
+        other.icon == icon;
   }
 
   @override
@@ -109,7 +99,6 @@ class ReminderCardData {
         houre.hashCode ^
         minute.hashCode ^
         pmOrAm.hashCode ^
-        icon.hashCode ^
-        color.hashCode;
+        icon.hashCode;
   }
 }

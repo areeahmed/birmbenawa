@@ -52,6 +52,7 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
                             textDirection: TextDirection.rtl,
                             children: [
                               Container(
+                                color: reminderCardData.color,
                                 child: Text(
                                   reminderCardData.title,
                                   textDirection: TextDirection.rtl,

@@ -122,98 +122,6 @@ class _EditDailyReminderCardScreenState
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: DropdownButtonFormField<Color>(
-                    value: selectedColor,
-                    items: [
-                      DropdownMenuItem(
-                        child: Text(
-                          'Blue',
-                          style: TextStyle(color: Colors.lightBlueAccent),
-                        ),
-                        value: selectedColor,
-                        onTap: (() {
-                          setState(() {
-                            debugPrint('the color is Blue');
-                            selectedColor = Colors.lightBlueAccent;
-                          });
-                        }),
-                      ),
-                      DropdownMenuItem(
-                        child: Text('Pink',
-                            style:
-                                TextStyle(color: Colors.pinkAccent.shade100)),
-                        value: Colors.pinkAccent.shade100,
-                        onTap: (() {
-                          setState(() {
-                            debugPrint('the color is Pink');
-                            selectedColor = Colors.pinkAccent.shade100;
-                          });
-                        }),
-                      ),
-                      DropdownMenuItem(
-                        child: Text('Red',
-                            style: TextStyle(color: Colors.redAccent.shade100)),
-                        value: Colors.redAccent.shade100,
-                        onTap: (() {
-                          setState(() {
-                            debugPrint('the color is Red');
-                            selectedColor = Colors.redAccent.shade100;
-                          });
-                        }),
-                      ),
-                      DropdownMenuItem(
-                        child: Text('Purple',
-                            style:
-                                TextStyle(color: Colors.purpleAccent.shade100)),
-                        value: Colors.purpleAccent.shade100,
-                        onTap: (() {
-                          setState(() {
-                            debugPrint('the color is Purple');
-                            selectedColor = Colors.purpleAccent.shade100;
-                          });
-                        }),
-                      ),
-                      DropdownMenuItem(
-                        child: Text('Green',
-                            style: TextStyle(color: Colors.greenAccent)),
-                        value: Colors.greenAccent,
-                        onTap: (() {
-                          setState(() {
-                            debugPrint('the color is Green');
-                            selectedColor = Colors.greenAccent;
-                          });
-                        }),
-                      ),
-                      DropdownMenuItem(
-                        child: Text('Yellow',
-                            style:
-                                TextStyle(color: Colors.yellowAccent.shade400)),
-                        value: Colors.yellowAccent.shade100,
-                        onTap: (() {
-                          setState(() {
-                            debugPrint('the color is Yellow');
-                            selectedColor = Colors.yellowAccent.shade100;
-                          });
-                        }),
-                      ),
-                      DropdownMenuItem(
-                        child: Text('Orange',
-                            style:
-                                TextStyle(color: Colors.orangeAccent.shade200)),
-                        value: Colors.orangeAccent.shade200,
-                        onTap: (() {
-                          setState(() {
-                            debugPrint('the color is Orange');
-                            selectedColor = Colors.orangeAccent.shade200;
-                          });
-                        }),
-                      ),
-                    ],
-                    onChanged: ((value) {}),
-                  ),
-                ),
-                Padding(
                   padding: EdgeInsets.all(12),
                   child: ToggleButtons(
                       borderColor: Colors.purple,
@@ -308,12 +216,12 @@ class _EditDailyReminderCardScreenState
                           thr: context.read<IsDaysChecked>().thrDay,
                           fri: context.read<IsDaysChecked>().friDay,
                         );
+                        debugPrint(
+                            '${selectedColor},${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}');
                         final box = Hive.box('dailyReminderCardDatas');
                         box.put('1', reminderCardData.toMap());
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => MainPageScreen()));
-                        debugPrint(
-                            '${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}');
                       });
                     },
                     child: Text('Save'))
@@ -328,17 +236,21 @@ class _EditDailyReminderCardScreenState
       content: Icon(_icon),
       customHeight: 50,
       customWidth: 50,
-      ontap: () => _pickIcon(context),
+      ontap: () {
+        setState(() {
+          _pickIcon(context);
+        });
+      },
     );
   }
 
   _pickIcon(context) async {
-    IconData? icon = await FlutterIconPicker.showIconPicker(
-      iconSize: 30,
-      context,
-      iconPackModes: [IconPack.cupertino],
-    );
-    setState(() {
+    setState(() async {
+      IconData? icon = await FlutterIconPicker.showIconPicker(
+        iconSize: 30,
+        context,
+        iconPackModes: [IconPack.cupertino],
+      );
       _icon = icon;
     });
   }

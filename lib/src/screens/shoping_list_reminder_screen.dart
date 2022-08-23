@@ -64,10 +64,7 @@ class _ShopingReminderPageState extends State<ShopingReminderPage> {
                                   '${reminderCardData.houre}:${reminderCardData.minute}',
                                 ),
                                 Text(reminderCardData.descriptionOfCard),
-                                Icon(
-                                  reminderCardData.icon,
-                                  size: 60,
-                                ),
+                                reminderCardData.icon,
                               ],
                             ),
                             Row(
