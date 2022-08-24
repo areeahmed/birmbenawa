@@ -9,12 +9,12 @@ class TODO {
   @HiveField(0)
   String title;
   @HiveField(1)
-  String Description;
+  String description;
   @HiveField(2)
   bool isChecked;
   TODO({
     required this.title,
-    required this.Description,
+    required this.description,
     required this.isChecked,
   });
 
@@ -25,7 +25,7 @@ class TODO {
   }) {
     return TODO(
       title: title ?? this.title,
-      Description: Description ?? this.Description,
+      description: Description ?? this.description,
       isChecked: isChecked ?? this.isChecked,
     );
   }
@@ -34,7 +34,7 @@ class TODO {
     final result = <dynamic, dynamic>{};
 
     result.addAll({'title': title});
-    result.addAll({'Description': Description});
+    result.addAll({'Description': description});
     result.addAll({'isChecked': isChecked});
 
     return result;
@@ -43,7 +43,7 @@ class TODO {
   factory TODO.fromMap(Map<dynamic, dynamic> map) {
     return TODO(
       title: map['title'] ?? '',
-      Description: map['Description'] ?? '',
+      description: map['Description'] ?? '',
       isChecked: map['isChecked'] ?? false,
     );
   }
@@ -54,7 +54,7 @@ class TODO {
 
   @override
   String toString() =>
-      'TODO(title: $title, Description: $Description, isChecked: $isChecked)';
+      'TODO(title: $title, Description: $description, isChecked: $isChecked)';
 
   @override
   bool operator ==(Object other) {
@@ -62,11 +62,11 @@ class TODO {
 
     return other is TODO &&
         other.title == title &&
-        other.Description == Description &&
+        other.description == description &&
         other.isChecked == isChecked;
   }
 
   @override
   int get hashCode =>
-      title.hashCode ^ Description.hashCode ^ isChecked.hashCode;
+      title.hashCode ^ description.hashCode ^ isChecked.hashCode;
 }

@@ -18,7 +18,7 @@ class TODOAdapter extends TypeAdapter<TODO> {
     };
     return TODO(
       title: fields[0] as String,
-      Description: fields[1] as String,
+      description: fields[1] as String,
       isChecked: fields[2] as bool,
     );
   }
@@ -30,7 +30,7 @@ class TODOAdapter extends TypeAdapter<TODO> {
       ..writeByte(0)
       ..write(obj.title)
       ..writeByte(1)
-      ..write(obj.Description)
+      ..write(obj.description)
       ..writeByte(2)
       ..write(obj.isChecked);
   }

@@ -8,7 +8,7 @@ import 'package:birmbenawa/src/screens/buying.dart';
 import 'package:birmbenawa/src/screens/daily_reminder_screen.dart';
 import 'package:birmbenawa/src/screens/debtscreen.dart';
 import 'package:birmbenawa/src/screens/reminder_screen.dart';
-import 'package:birmbenawa/src/screens/shoping_list_reminder_screen.dart';
+import 'package:birmbenawa/src/screens/todo_list_reminder_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

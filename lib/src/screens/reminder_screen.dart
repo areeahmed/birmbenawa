@@ -177,9 +177,6 @@ class _ReminderPageState extends State<Reminderpage> {
                                             androidBorderRadius: 30,
                                             actions: <BottomSheetAction>[
                                               BottomSheetAction(
-                                                  title: Text('Edit'),
-                                                  onPressed: (context) {}),
-                                              BottomSheetAction(
                                                   title: Text('Delete'),
                                                   onPressed: (context) {
                                                     box.delete(key);

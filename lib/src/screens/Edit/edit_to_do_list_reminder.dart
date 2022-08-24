@@ -1,10 +1,27 @@
+import 'package:birmbenawa/src/models/Screen/reminder_card_data.dart';
+import 'package:birmbenawa/src/models/Screen/todo_data_model.dart';
+import 'package:birmbenawa/src/screens/LandScreen/Landing_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-class EditShopingListReminder extends StatelessWidget {
+class EditShopingListReminder extends StatefulWidget {
   const EditShopingListReminder({Key? key}) : super(key: key);
 
   @override
+  State<EditShopingListReminder> createState() =>
+      _EditShopingListReminderState();
+}
+
+class _EditShopingListReminderState extends State<EditShopingListReminder> {
+  @override
   Widget build(BuildContext context) {
+    @override
+    void initState() {
+      super.initState();
+      Hive.openBox('todo');
+    }
+
+    final box = Hive.box('todo');
     TextEditingController title = TextEditingController();
     TextEditingController description = TextEditingController();
     return Scaffold(
@@ -44,7 +61,7 @@ class EditShopingListReminder extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    controller: title,
+                    controller: description,
                     decoration: InputDecoration(
                         hintText: 'زانیاری زیاتر...', hintStyle: TextStyle()),
                     style: TextStyle(
@@ -59,7 +76,16 @@ class EditShopingListReminder extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     primary: Color.fromARGB(255, 98, 0, 255),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    TODO todo = TODO(
+                        title: title.text,
+                        description: description.text,
+                        isChecked: false);
+                    final box = Hive.box('todo');
+                    box.add(todo.toMap());
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => MainPageScreen()));
+                  },
                   child: Text(
                     'خەزن کردن',
                     style: TextStyle(fontFamily: 'PeshangBold'),
