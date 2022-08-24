@@ -13,7 +13,7 @@ class LandScreenSlides extends StatelessWidget {
   final String ShopPath = 'assets/images/slider/SHOP.png';
   final String WeeklyPath = 'assets/images/slider/Weekly.png';
   final String buyImageSlide = 'assets/images/Buy.png';
-  final String debtListSlideImage = 'assets/images/Dabt_Analyser.png';
+  final String debtListSlideImage = 'assets/images/slider/Debt_Analyses.png';
   @override
   Widget build(BuildContext context) {
     return SafeArea(

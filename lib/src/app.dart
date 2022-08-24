@@ -1,6 +1,5 @@
 import 'package:birmbenawa/src/screens/LandScreen/Landing_screen.dart';
 import 'package:birmbenawa/src/screens/LandScreen/sliderScr.dart';
-import 'package:birmbenawa/src/screens/edit_remider_card_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -20,16 +19,19 @@ class MyApp extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return MaterialApp(
+              debugShowCheckedModeBanner: false,
               home: Scaffold(
                   body: Center(child: CircularProgressIndicator.adaptive())),
             );
           } else if (snapshot.hasError) {
             return MaterialApp(
+              debugShowCheckedModeBanner: false,
               home: Scaffold(
                   body: Center(child: Text(snapshot.error.toString()))),
             );
           } else if (snapshot.data == null) {
             return MaterialApp(
+              debugShowCheckedModeBanner: false,
               home: LandScreenSlides(),
             );
           }

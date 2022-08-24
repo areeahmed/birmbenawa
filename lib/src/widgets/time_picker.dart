@@ -66,8 +66,4 @@ class _TimePickerState extends State<TimePicker> {
       ],
     );
   }
-
-  getPmOrAm() {
-    return pmOrAm;
-  }
 }

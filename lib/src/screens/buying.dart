@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class BuyingChatScreenView extends StatefulWidget {
@@ -11,6 +12,7 @@ class BuyingChatScreenView extends StatefulWidget {
 //! this screen is on developing and it will be developed soon
 class _BuyingChatScreenViewState extends State<BuyingChatScreenView> {
   final developModePathImage = 'assets/images/Developing.png';
+  final userID = FirebaseAuth.instance.currentUser!.uid;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

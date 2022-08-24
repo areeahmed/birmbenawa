@@ -107,7 +107,7 @@ class AboutUsPage extends StatelessWidget {
             },
             icon: Icon(
               Icons.facebook,
-              color: Colors.blue,
+              color: Color.fromARGB(255, 98, 0, 255),
             ),
             iconSize: 40,
           ),
@@ -126,7 +126,7 @@ class AboutUsPage extends StatelessWidget {
             },
             icon: Image.asset(
               instagramIconPath,
-              color: Color.fromARGB(255, 255, 0, 157),
+              color: Color.fromARGB(255, 98, 0, 255),
               height: 40,
             ),
             iconSize: 10,
@@ -146,7 +146,7 @@ class AboutUsPage extends StatelessWidget {
             },
             icon: FaIcon(
               FontAwesomeIcons.youtube,
-              color: Colors.red,
+              color: Color.fromARGB(255, 98, 0, 255),
             ),
             iconSize: 35,
           ),

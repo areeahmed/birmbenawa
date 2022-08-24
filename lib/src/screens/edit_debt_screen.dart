@@ -3,10 +3,7 @@ import 'package:birmbenawa/src/models/image_screens.dart';
 import 'package:birmbenawa/src/models/reminder_card_data.dart';
 import 'package:birmbenawa/src/models/time_provider.dart';
 import 'package:birmbenawa/src/screens/LandScreen/Landing_screen.dart';
-import 'package:birmbenawa/src/widgets/icon_picker.dart';
-import 'package:birmbenawa/src/widgets/time_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_iconpicker/flutter_iconpicker.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
@@ -20,6 +17,9 @@ class EditDebtScreen extends StatefulWidget {
 class _EditDebtScreenState extends State<EditDebtScreen> {
   Icon _icon = Icon(Icons.add);
 
+  //* title - description - time - and save it
+  //TODO find the way to increment the key of hive db
+  // TODO you can add the packages that you found in Pub.dev
   @override
   Widget build(BuildContext context) {
     ImageProcess process = ImageProcess();

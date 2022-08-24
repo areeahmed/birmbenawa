@@ -1,13 +1,22 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
+part 'reminder_card_data.g.dart';
 
 //* this model is for the data of the cards, you will use provider for the cards
+@HiveType(typeId: 0)
 class ReminderCardData {
-  String title; // will be shown
-  String descriptionOfCard; // will be shown
-  int houre; // will be shown
-  int minute; // will be shown
+  @HiveField(0)
+  String title;
+  @HiveField(1) // will be shown
+  String descriptionOfCard;
+  @HiveField(2) // will be shown
+  int houre;
+  @HiveField(3) // will be shown
+  int minute;
+  @HiveField(4) // will be shown
   String pmOrAm; // will be shown
   // bool? sat;
   // bool? sun;

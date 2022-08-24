@@ -1,14 +1,25 @@
 import 'dart:convert';
 
 import 'package:flutter/widgets.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
+part 'daily_reminder_card_data.g.dart';
+
+@HiveType(typeId: 0)
 class DailyReminderCardData {
-  String title; // will be shown
-  String descriptionOfCard; // will be shown
-  int houre; // will be shown
-  int minute; // will be shown
-  String pmOrAm; // will be shown
+  @HiveField(0)
+  String title;
+  @HiveField(1) // will be shown
+  String descriptionOfCard;
+  @HiveField(2) // will be shown
+  int houre;
+  @HiveField(3) // will be shown
+  int minute;
+  @HiveField(4) // will be shown
+  String pmOrAm;
+  @HiveField(5) // will be shown
   IconData? icon;
+  @HiveField(6)
   Color color;
   // Color color;
   bool? sat;

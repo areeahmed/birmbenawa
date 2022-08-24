@@ -29,6 +29,11 @@ dependencies:
   provider: ^6.0.3
   hidden_drawer_menu: ^3.0.1
   android_alarm_manager_plus: ^2.0.6+1
+  google_fonts: ^3.0.1
+  dropdown_button2: ^1.7.2
+  auto_size_text_field: ^2.1.0
+  animated_toggle_switch: ^0.5.2
+  flutter_material_color_picker: ^1.1.0+2
 
 dev_dependencies:
   flutter_test:

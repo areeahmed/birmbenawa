@@ -1,8 +1,6 @@
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/models/reminder_card_data.dart';
-import 'package:birmbenawa/src/provider/dialog_component_model.dart';
 import 'package:birmbenawa/src/provider/navigating_between_screens.dart';
-import 'package:birmbenawa/src/provider/reminder_screen_models.dart';
 import 'package:birmbenawa/src/provider/used_too_mutch.dart';
 import 'package:birmbenawa/src/screens/edit_remider_card_screen.dart';
 import 'package:flutter/material.dart';
@@ -67,6 +65,7 @@ class _ReminderPageState extends State<Reminderpage> {
       body: ValueListenableBuilder<Box>(
         valueListenable: Hive.box('reminderCardDatas').listenable(),
         builder: ((context, box, Widget) {
+          List keys = box.keys.cast<int>().toList();
           return box.isEmpty
               ? Center(
                   child: Column(
@@ -83,6 +82,7 @@ class _ReminderPageState extends State<Reminderpage> {
                   child: ListView.builder(
                       itemCount: box.length,
                       itemBuilder: ((context, index) {
+                        final key = keys[index];
                         Map<dynamic, dynamic> _data = box.getAt(index);
                         ReminderCardData reminderCardData =
                             ReminderCardData.fromMap(
@@ -106,21 +106,32 @@ class _ReminderPageState extends State<Reminderpage> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
                                 children: [
-                                  Text(
-                                    '${reminderCardData.houre}:${reminderCardData.minute}',
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      '${reminderCardData.houre}:${reminderCardData.minute}',
+                                      style: TextStyle(fontSize: 35),
+                                    ),
                                   ),
                                   Text(reminderCardData.descriptionOfCard),
                                 ],
                               ),
                               Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   IconButton(
-                                      onPressed: () {
-                                        box.delete('1');
-                                      },
-                                      icon: Icon(Icons.delete))
+                                    onPressed: () {
+                                      box.delete(key);
+                                    },
+                                    icon: Icon(Icons.delete),
+                                  ),
+                                  SizedBox(
+                                    width: 3,
+                                  ),
+                                  IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(Icons.delete),
+                                  ),
                                 ],
                               )
                             ],

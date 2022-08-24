@@ -3,10 +3,8 @@ import 'package:birmbenawa/src/models/image_screens.dart';
 import 'package:birmbenawa/src/models/reminder_card_data.dart';
 import 'package:birmbenawa/src/models/time_provider.dart';
 import 'package:birmbenawa/src/screens/LandScreen/Landing_screen.dart';
-import 'package:birmbenawa/src/widgets/icon_picker.dart';
 import 'package:birmbenawa/src/widgets/time_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_iconpicker/flutter_iconpicker.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 
@@ -26,6 +24,9 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
   Color selectedColor2 = Colors.grey.shade200;
   Icon _icon = Icon(Icons.add);
 
+  //* title - description - time - and save it
+  //TODO find the way to increment the key of hive db
+  // TODO you can add the packages that you found in Pub.dev
   @override
   Widget build(BuildContext context) {
     ImageProcess process = ImageProcess();
@@ -34,6 +35,7 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
     TextEditingController controllerData2 = TextEditingController();
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Color.fromARGB(255, 98, 0, 255),
           title: Text(
             'گۆڕینی کات',
             style: TextStyle(fontFamily: 'PeshangBold'),
@@ -92,7 +94,6 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(left: 30.0),
-                      child: pickIconForMe(context),
                     ),
                     SizedBox(
                       width: 3,
@@ -109,6 +110,8 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                 ),
                 //TODO add an Icon picker ( Button to open Icon Dialog )
                 ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: Color.fromARGB(255, 98, 0, 255)),
                     onPressed: () {
                       ReminderCardData reminderCardData = ReminderCardData(
                         titleController.text,
@@ -118,7 +121,7 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                         context.read<TimeProvider>().pmOrAm,
                       );
                       final box = Hive.box('reminderCardDatas');
-                      box.put('1', reminderCardData.toMap());
+                      box.add(reminderCardData.toMap());
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => MainPageScreen()));
                     },
@@ -127,27 +130,5 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
             ),
           ),
         ));
-  }
-
-  Widget pickIconForMe(BuildContext context) {
-    return CustomButtonWidget(
-      content: _icon,
-      customHeight: 50,
-      customWidth: 50,
-      ontap: () => _pickIcon(context),
-    );
-  }
-
-  _pickIcon(context) async {
-    IconData? icon = await FlutterIconPicker.showIconPicker(
-      iconSize: 30,
-      context,
-      iconPackModes: [IconPack.cupertino],
-    );
-    _icon = Icon(
-      icon,
-      size: 40,
-    );
-    _icon = Icon(icon);
   }
 }

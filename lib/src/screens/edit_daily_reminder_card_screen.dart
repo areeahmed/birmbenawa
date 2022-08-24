@@ -5,10 +5,8 @@ import 'package:birmbenawa/src/models/image_screens.dart';
 import 'package:birmbenawa/src/models/reminder_card_data.dart';
 import 'package:birmbenawa/src/models/time_provider.dart';
 import 'package:birmbenawa/src/screens/LandScreen/Landing_screen.dart';
-import 'package:birmbenawa/src/widgets/icon_picker.dart';
 import 'package:birmbenawa/src/widgets/time_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_iconpicker/flutter_iconpicker.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
