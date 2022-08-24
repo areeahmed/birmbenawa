@@ -46,6 +46,7 @@ class _EditDailyReminderCardScreenState
     Color selectedColor = Colors.grey.shade100;
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Color.fromARGB(255, 98, 0, 255),
           title: Text(
             'گۆڕینی کاتی ڕۆژانە',
             style: TextStyle(fontFamily: 'PeshangBold'),
@@ -195,6 +196,9 @@ class _EditDailyReminderCardScreenState
                       }),
                 ),
                 ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Color.fromARGB(255, 98, 0, 255),
+                    ),
                     onPressed: () {
                       setState(() {
                         DailyReminderCardData reminderCardData =
@@ -221,7 +225,10 @@ class _EditDailyReminderCardScreenState
                             builder: (context) => MainPageScreen()));
                       });
                     },
-                    child: Text('Save'))
+                    child: Text(
+                      'خەزن کردن',
+                      style: TextStyle(fontFamily: 'PeshangBold'),
+                    ))
               ],
             ),
           ),

@@ -125,7 +125,10 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => MainPageScreen()));
                     },
-                    child: Text('Save'))
+                    child: Text(
+                      'خەزن کردن',
+                      style: TextStyle(fontFamily: 'PeshangBold'),
+                    ))
               ],
             ),
           ),

@@ -28,6 +28,7 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
     TextEditingController controllerData2 = TextEditingController();
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Color.fromARGB(255, 98, 0, 255),
           title: Text(
             'گۆڕینی کات',
             style: TextStyle(fontFamily: 'PeshangBold'),
@@ -92,6 +93,9 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Color.fromARGB(255, 98, 0, 255),
+                      ),
                       onPressed: () {
                         ReminderCardData reminderCardData = ReminderCardData(
                           titleController.text,
@@ -105,7 +109,10 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => MainPageScreen()));
                       },
-                      child: Text('Save')),
+                      child: Text(
+                        'خەزن کردن',
+                        style: TextStyle(fontFamily: 'PeshangBold'),
+                      )),
                 )
               ],
             ),
