@@ -83,8 +83,7 @@ class _EditShopingListReminderState extends State<EditShopingListReminder> {
                         isChecked: false);
                     final box = Hive.box('todo');
                     box.add(todo.toMap());
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => MainPageScreen()));
+                    Navigator.of(context).pop();
                   },
                   child: Text(
                     'خەزن کردن',

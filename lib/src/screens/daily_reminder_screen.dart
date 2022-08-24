@@ -1,3 +1,5 @@
+import 'package:adaptive_action_sheet/adaptive_action_sheet.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:birmbenawa/src/models/Screen/daily_reminder_card_data.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/provider/daily_remider_model.dart';
@@ -14,8 +16,7 @@ class DailyReminderPage extends StatefulWidget {
 }
 
 class _DailyReminderPageState extends State<DailyReminderPage> {
-  // transferred dialogBody = transferred(isDailyReminder: true);
-  DailyReminderScreenModel dailyReminderCard = DailyReminderScreenModel();
+  bool isChecked = false;
   ImageProcess imageProcess = ImageProcess();
   UsedTooMutch userTooMutch = UsedTooMutch();
   @override
@@ -23,9 +24,11 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
     Hive.openBox('dailyReminderCardDatas');
     return Scaffold(
         body: ValueListenableBuilder<Box>(
-          valueListenable: Hive.box('dailyReminderCardDatas')
-              .listenable(), //! ERROR: Box not found. Did you forget to call Hive.openBox()?
+          valueListenable: Hive.box('dailyReminderCardDatas').listenable(),
           builder: ((context, box, Widget) {
+            List keys = box.keys
+                .cast<int>()
+                .toList(); //! ERROR: type 'String' is not a subtype of type 'int' in type cast
             return box.isEmpty
                 ? Center(
                     child: Column(
@@ -42,90 +45,114 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
                     child: ListView.builder(
                       itemCount: box.length,
                       itemBuilder: ((context, index) {
+                        final key = keys[index];
                         Map<dynamic, dynamic> _data = box.getAt(index);
-                        DailyReminderCardData reminderCardData =
+                        DailyReminderCardData dailyReminderCardData =
                             DailyReminderCardData.fromMap(
                                 _data as Map<dynamic, dynamic>);
                         return Container(
-                          child: Column(
-                            textDirection: TextDirection.rtl,
-                            children: [
-                              Container(
-                                color: reminderCardData.color,
-                                child: Text(
-                                  reminderCardData.title,
-                                  textDirection: TextDirection.rtl,
-                                  style: TextStyle(
-                                      fontSize: 20, fontFamily: 'PeshangBold'),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              color: Colors.grey.shade300,
+                            ),
+                            padding: EdgeInsets.all(20),
+                            margin: EdgeInsets.all(20),
+                            width: 400,
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Icon(
+                                      Icons.label,
+                                      size: 40,
+                                      color: Color.fromARGB(255, 98, 0, 255),
+                                    ),
+                                    Text(
+                                      dailyReminderCardData.title,
+                                      style: TextStyle(fontSize: 20),
+                                    ),
+                                    Switch.adaptive(
+                                        activeColor:
+                                            Color.fromARGB(255, 98, 0, 255),
+                                        inactiveThumbColor:
+                                            Color.fromARGB(255, 155, 98, 248),
+                                        inactiveTrackColor:
+                                            Color.fromARGB(255, 201, 167, 255),
+                                        value: isChecked,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            isChecked = !isChecked;
+                                          });
+                                        })
+                                  ],
                                 ),
-                              ),
-                              SizedBox(
-                                height: 12,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Text(
-                                    '${reminderCardData.houre}:${reminderCardData.minute}',
-                                  ),
-                                  Text(reminderCardData.descriptionOfCard),
-                                  Icon(
-                                    reminderCardData.icon,
-                                    size: 60,
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Text(reminderCardData.sat == true
-                                      ? 'sat'
-                                      : ''),
-                                  SizedBox(width: 3),
-                                  Text(reminderCardData.sun == true
-                                      ? 'sun'
-                                      : ''),
-                                  SizedBox(width: 3),
-                                  Text(reminderCardData.mon == true
-                                      ? 'mon'
-                                      : ''),
-                                  SizedBox(width: 3),
-                                  Text(reminderCardData.tue == true
-                                      ? 'tue'
-                                      : ' '),
-                                  SizedBox(width: 3),
-                                  Text(reminderCardData.wed == true
-                                      ? 'wed'
-                                      : ' '),
-                                  SizedBox(width: 3),
-                                  Text(reminderCardData.thr == true
-                                      ? 'thr'
-                                      : ' '),
-                                  SizedBox(width: 3),
-                                  Text(reminderCardData.fri == true
-                                      ? 'fri'
-                                      : ' '),
-                                  SizedBox(width: 3),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 12,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  IconButton(
-                                      onPressed: () {
-                                        //TODO: How to make the Key will be incremented automatically
-                                        box.delete('1');
-                                      },
-                                      icon: Icon(Icons.delete))
-                                ],
-                              )
-                            ],
-                          ),
-                        );
+                                SizedBox(
+                                  height: 3,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.all(3),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(3),
+                                        color: Colors.grey.shade400,
+                                      ),
+                                      width: 300,
+                                      height: 70,
+                                      child: AutoSizeText(
+                                        dailyReminderCardData.descriptionOfCard,
+                                        style: TextStyle(fontSize: 20),
+                                        maxLines: 2,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                // Row(
+                                //   children: [
+                                //     Text(
+                                //       'Mon-Fri',
+                                //       style: TextStyle(fontSize: 16),
+                                //     ),
+                                //   ],
+                                // ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      '${dailyReminderCardData.houre}:${dailyReminderCardData.minute}',
+                                      style: TextStyle(fontSize: 40),
+                                    ),
+                                    IconButton(
+                                        onPressed: () {
+                                          showAdaptiveActionSheet(
+                                            context: context,
+                                            title: Text('Card Number $key'),
+                                            androidBorderRadius: 30,
+                                            actions: <BottomSheetAction>[
+                                              BottomSheetAction(
+                                                  title: Text('Delete'),
+                                                  onPressed: (context) {
+                                                    box.delete(key);
+                                                    Navigator.of(context).pop();
+                                                  }),
+                                            ],
+                                            cancelAction: CancelAction(
+                                                title: const Text(
+                                                    'Cancel')), // onPressed parameter is optional by default will dismiss the ActionSheet
+                                          );
+                                        },
+                                        icon: Icon(Icons.arrow_circle_down))
+                                  ],
+                                )
+                              ],
+                            ));
                       }),
                     ),
                   );
@@ -146,6 +173,7 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
             heroTag: 'fab2',
             backgroundColor: const Color.fromARGB(255, 98, 0, 255),
             onPressed: () {
+              // Hive.box('dailyReminderCardDatas').clear();
               Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => EditDailyReminderCardScreen(),
               ));

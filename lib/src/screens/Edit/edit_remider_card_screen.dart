@@ -123,8 +123,7 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                       );
                       final box = Hive.box('reminderCardDatas');
                       box.add(reminderCardData.toMap());
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => MainPageScreen()));
+                      Navigator.of(context).pop();
                     },
                     child: Text(
                       'خەزن کردن',

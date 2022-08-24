@@ -106,8 +106,7 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
                         // );
                         final box = Hive.box('reminderCardDatas');
                         // box.put('1', reminderCardData.toMap());
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => MainPageScreen()));
+                        Navigator.of(context).pop();
                       },
                       child: Text(
                         'خەزن کردن',

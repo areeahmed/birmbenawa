@@ -208,7 +208,6 @@ class _EditDailyReminderCardScreenState
                           houre: context.read<TimeProvider>().hour,
                           minute: context.read<TimeProvider>().minute,
                           pmOrAm: context.read<TimeProvider>().pmOrAm,
-                          color: selectedColor,
                           sat: context.read<IsDaysChecked>().satDay,
                           sun: context.read<IsDaysChecked>().sunDay,
                           mon: context.read<IsDaysChecked>().monDay,
@@ -221,8 +220,7 @@ class _EditDailyReminderCardScreenState
                             '${selectedColor},${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}');
                         final box = Hive.box('dailyReminderCardDatas');
                         box.put('1', reminderCardData.toMap());
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => MainPageScreen()));
+                        Navigator.of(context).pop();
                       });
                     },
                     child: Text(

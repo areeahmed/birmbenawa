@@ -17,11 +17,6 @@ class DailyReminderCardData {
   int minute;
   @HiveField(4) // will be shown
   String pmOrAm;
-  @HiveField(5) // will be shown
-  IconData? icon;
-  @HiveField(6)
-  Color color;
-  // Color color;
   bool? sat;
   bool? sun;
   bool? mon;
@@ -35,8 +30,6 @@ class DailyReminderCardData {
     required this.houre,
     required this.minute,
     required this.pmOrAm,
-    this.icon,
-    required this.color,
     this.sat,
     this.sun,
     this.mon,
@@ -52,8 +45,6 @@ class DailyReminderCardData {
     int? houre,
     int? minute,
     String? pmOrAm,
-    IconData? icon,
-    Color? color,
     bool? sat,
     bool? sun,
     bool? mon,
@@ -68,8 +59,6 @@ class DailyReminderCardData {
       houre: houre ?? this.houre,
       minute: minute ?? this.minute,
       pmOrAm: pmOrAm ?? this.pmOrAm,
-      icon: icon ?? this.icon,
-      color: color ?? this.color,
       sat: sat ?? this.sat,
       sun: sun ?? this.sun,
       mon: mon ?? this.mon,
@@ -88,10 +77,6 @@ class DailyReminderCardData {
     result.addAll({'houre': houre});
     result.addAll({'minute': minute});
     result.addAll({'pmOrAm': pmOrAm});
-    if (icon != null) {
-      result.addAll({'icon': icon!.codePoint});
-    }
-    result.addAll({'color': color.value});
     if (sat != null) {
       result.addAll({'sat': sat});
     }
@@ -124,10 +109,6 @@ class DailyReminderCardData {
       houre: map['houre']?.toInt() ?? 0,
       minute: map['minute']?.toInt() ?? 0,
       pmOrAm: map['pmOrAm'] ?? '',
-      icon: map['icon'] != null
-          ? IconData(map['icon'], fontFamily: 'MaterialIcons')
-          : null,
-      color: Color(map['color']),
       sat: map['sat'],
       sun: map['sun'],
       mon: map['mon'],
@@ -145,7 +126,7 @@ class DailyReminderCardData {
 
   @override
   String toString() {
-    return 'DailyReminderCardData(title: $title, descriptionOfCard: $descriptionOfCard, houre: $houre, minute: $minute, pmOrAm: $pmOrAm, icon: $icon, color: $color, sat: $sat, sun: $sun, mon: $mon, tue: $tue, thr: $thr, wed: $wed, fri: $fri)';
+    return 'DailyReminderCardData(title: $title, descriptionOfCard: $descriptionOfCard, houre: $houre, minute: $minute, pmOrAm: $pmOrAm, sat: $sat, sun: $sun, mon: $mon, tue: $tue, thr: $thr, wed: $wed, fri: $fri)';
   }
 
   @override
@@ -158,8 +139,6 @@ class DailyReminderCardData {
         other.houre == houre &&
         other.minute == minute &&
         other.pmOrAm == pmOrAm &&
-        other.icon == icon &&
-        other.color == color &&
         other.sat == sat &&
         other.sun == sun &&
         other.mon == mon &&
@@ -176,8 +155,6 @@ class DailyReminderCardData {
         houre.hashCode ^
         minute.hashCode ^
         pmOrAm.hashCode ^
-        icon.hashCode ^
-        color.hashCode ^
         sat.hashCode ^
         sun.hashCode ^
         mon.hashCode ^
