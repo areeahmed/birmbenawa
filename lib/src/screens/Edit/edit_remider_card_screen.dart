@@ -1,6 +1,6 @@
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/models/image_screens.dart';
-import 'package:birmbenawa/src/models/reminder_card_data.dart';
+import 'package:birmbenawa/src/models/Screen/reminder_card_data.dart';
 import 'package:birmbenawa/src/models/time_provider.dart';
 import 'package:birmbenawa/src/screens/LandScreen/Landing_screen.dart';
 import 'package:birmbenawa/src/widgets/time_picker.dart';
@@ -119,6 +119,7 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                         context.read<TimeProvider>().hour,
                         context.read<TimeProvider>().minute,
                         context.read<TimeProvider>().pmOrAm,
+                        true,
                       );
                       final box = Hive.box('reminderCardDatas');
                       box.add(reminderCardData.toMap());

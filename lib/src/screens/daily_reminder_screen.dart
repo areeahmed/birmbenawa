@@ -1,4 +1,4 @@
-import 'package:birmbenawa/src/models/daily_reminder_card_data.dart';
+import 'package:birmbenawa/src/models/Screen/daily_reminder_card_data.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/provider/daily_remider_model.dart';
 import 'package:birmbenawa/src/provider/used_too_mutch.dart';

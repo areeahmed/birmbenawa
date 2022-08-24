@@ -1,9 +1,12 @@
+import 'package:adaptive_action_sheet/adaptive_action_sheet.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
-import 'package:birmbenawa/src/models/reminder_card_data.dart';
+import 'package:birmbenawa/src/models/Screen/reminder_card_data.dart';
 import 'package:birmbenawa/src/provider/navigating_between_screens.dart';
 import 'package:birmbenawa/src/provider/used_too_mutch.dart';
 import 'package:birmbenawa/src/screens/Edit/edit_remider_card_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class Reminderpage extends StatefulWidget {
@@ -35,7 +38,7 @@ class _ReminderPageState extends State<Reminderpage> {
     required this.timeH,
     required this.timeM,
   });
-
+  bool isChecked = false;
   ImageProcess imageProcess = ImageProcess();
   UsedTooMutch usedTooMutch = UsedTooMutch();
   String? titleOfTheCard;
@@ -88,55 +91,118 @@ class _ReminderPageState extends State<Reminderpage> {
                             ReminderCardData.fromMap(
                                 _data as Map<dynamic, dynamic>);
                         return Container(
-                          child: Column(
-                            textDirection: TextDirection.rtl,
-                            children: [
-                              Container(
-                                child: Text(
-                                  reminderCardData.title,
-                                  textDirection: TextDirection.rtl,
-                                  style: TextStyle(
-                                      fontSize: 20, fontFamily: 'PeshangBold'),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 12,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      '${reminderCardData.houre}:${reminderCardData.minute}',
-                                      style: TextStyle(fontSize: 35),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              color: Colors.grey.shade300,
+                            ),
+                            padding: EdgeInsets.all(20),
+                            margin: EdgeInsets.all(20),
+                            width: 400,
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Icon(
+                                      Icons.label,
+                                      size: 40,
+                                      color: Color.fromARGB(255, 98, 0, 255),
                                     ),
-                                  ),
-                                  Text(reminderCardData.descriptionOfCard),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  IconButton(
-                                    onPressed: () {
-                                      box.delete(key);
-                                    },
-                                    icon: Icon(Icons.delete),
-                                  ),
-                                  SizedBox(
-                                    width: 3,
-                                  ),
-                                  IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(Icons.delete),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                        );
+                                    Text(
+                                      reminderCardData.title,
+                                      style: TextStyle(fontSize: 20),
+                                    ),
+                                    Switch.adaptive(
+                                        activeColor:
+                                            Color.fromARGB(255, 98, 0, 255),
+                                        inactiveThumbColor:
+                                            Color.fromARGB(255, 155, 98, 248),
+                                        inactiveTrackColor:
+                                            Color.fromARGB(255, 201, 167, 255),
+                                        value: isChecked,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            isChecked = !isChecked;
+                                          });
+                                        })
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 3,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.all(3),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(3),
+                                        color: Colors.grey.shade400,
+                                      ),
+                                      width: 300,
+                                      height: 70,
+                                      child: AutoSizeText(
+                                        reminderCardData.descriptionOfCard,
+                                        style: TextStyle(fontSize: 20),
+                                        maxLines: 2,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                // Row(
+                                //   children: [
+                                //     Text(
+                                //       'Mon-Fri',
+                                //       style: TextStyle(fontSize: 16),
+                                //     ),
+                                //   ],
+                                // ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      '${reminderCardData.houre}:${reminderCardData.minute}',
+                                      style: TextStyle(fontSize: 40),
+                                    ),
+                                    IconButton(
+                                        onPressed: () {
+                                          showAdaptiveActionSheet(
+                                            context: context,
+                                            title: Text('Card Number $key'),
+                                            androidBorderRadius: 30,
+                                            actions: <BottomSheetAction>[
+                                              BottomSheetAction(
+                                                  title: Text('Edit'),
+                                                  onPressed: (context) {}),
+                                              BottomSheetAction(
+                                                  title: Text('Delete'),
+                                                  onPressed: (context) {
+                                                    box.delete(key);
+                                                    Navigator.of(context).pop();
+                                                  }),
+                                            ],
+                                            cancelAction: CancelAction(
+                                                title: const Text(
+                                                    'Cancel')), // onPressed parameter is optional by default will dismiss the ActionSheet
+                                          );
+                                        },
+                                        icon: Icon(Icons.arrow_circle_down))
+                                  ],
+                                )
+                              ],
+                            ));
+                        // reminderCardData.title,
+
+                        // '${reminderCardData.houre}:${reminderCardData.minute}',
+
+                        // Text(reminderCardData.descriptionOfCard),
+
+                        // box.delete(key);
                       })),
                 );
         }),

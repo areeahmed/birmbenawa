@@ -1,5 +1,5 @@
 import 'package:birmbenawa/src/models/image_process_model.dart';
-import 'package:birmbenawa/src/models/reminder_card_data.dart';
+import 'package:birmbenawa/src/models/Screen/reminder_card_data.dart';
 import 'package:birmbenawa/src/provider/shop_list_remider_model.dart';
 import 'package:birmbenawa/src/screens/Edit/edit_to_do_list_reminder.dart';
 import 'package:flutter/material.dart';

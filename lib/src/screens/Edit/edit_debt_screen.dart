@@ -1,6 +1,6 @@
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/models/image_screens.dart';
-import 'package:birmbenawa/src/models/reminder_card_data.dart';
+import 'package:birmbenawa/src/models/Screen/reminder_card_data.dart';
 import 'package:birmbenawa/src/models/time_provider.dart';
 import 'package:birmbenawa/src/screens/LandScreen/Landing_screen.dart';
 import 'package:flutter/material.dart';
@@ -97,15 +97,15 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
                         primary: Color.fromARGB(255, 98, 0, 255),
                       ),
                       onPressed: () {
-                        ReminderCardData reminderCardData = ReminderCardData(
-                          titleController.text,
-                          controllerData2.text,
-                          context.read<TimeProvider>().hour,
-                          context.read<TimeProvider>().minute,
-                          context.read<TimeProvider>().pmOrAm,
-                        );
+                        // ReminderCardData reminderCardData = ReminderCardData(
+                        //   titleController.text,
+                        //   controllerData2.text,
+                        //   context.read<TimeProvider>().hour,
+                        //   context.read<TimeProvider>().minute,
+                        //   context.read<TimeProvider>().pmOrAm,
+                        // );
                         final box = Hive.box('reminderCardDatas');
-                        box.put('1', reminderCardData.toMap());
+                        // box.put('1', reminderCardData.toMap());
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => MainPageScreen()));
                       },

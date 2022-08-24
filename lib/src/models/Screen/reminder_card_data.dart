@@ -17,7 +17,9 @@ class ReminderCardData {
   @HiveField(3) // will be shown
   int minute;
   @HiveField(4) // will be shown
-  String pmOrAm; // will be shown
+  String pmOrAm;
+  @HiveField(5)
+  bool isChecked; // will be shown
   // bool? sat;
   // bool? sun;
   // bool? mon;
@@ -31,6 +33,7 @@ class ReminderCardData {
     this.houre,
     this.minute,
     this.pmOrAm,
+    this.isChecked,
   );
 
   ReminderCardData copyWith({
@@ -39,6 +42,7 @@ class ReminderCardData {
     int? houre,
     int? minute,
     String? pmOrAm,
+    bool? isChecked,
   }) {
     return ReminderCardData(
       title ?? this.title,
@@ -46,6 +50,7 @@ class ReminderCardData {
       houre ?? this.houre,
       minute ?? this.minute,
       pmOrAm ?? this.pmOrAm,
+      isChecked ?? this.isChecked,
     );
   }
 
@@ -57,6 +62,7 @@ class ReminderCardData {
     result.addAll({'houre': houre});
     result.addAll({'minute': minute});
     result.addAll({'pmOrAm': pmOrAm});
+    result.addAll({'isChecked': isChecked});
 
     return result;
   }
@@ -68,6 +74,7 @@ class ReminderCardData {
       map['houre']?.toInt() ?? 0,
       map['minute']?.toInt() ?? 0,
       map['pmOrAm'] ?? '',
+      map['isChecked'] ?? false,
     );
   }
 
@@ -78,7 +85,7 @@ class ReminderCardData {
 
   @override
   String toString() {
-    return 'ReminderCardData(title: $title, descriptionOfCard: $descriptionOfCard, houre: $houre, minute: $minute, pmOrAm: $pmOrAm)';
+    return 'ReminderCardData(title: $title, descriptionOfCard: $descriptionOfCard, houre: $houre, minute: $minute, pmOrAm: $pmOrAm, isChecked: $isChecked)';
   }
 
   @override
@@ -90,7 +97,8 @@ class ReminderCardData {
         other.descriptionOfCard == descriptionOfCard &&
         other.houre == houre &&
         other.minute == minute &&
-        other.pmOrAm == pmOrAm;
+        other.pmOrAm == pmOrAm &&
+        other.isChecked == isChecked;
   }
 
   @override
@@ -99,6 +107,7 @@ class ReminderCardData {
         descriptionOfCard.hashCode ^
         houre.hashCode ^
         minute.hashCode ^
-        pmOrAm.hashCode;
+        pmOrAm.hashCode ^
+        isChecked.hashCode;
   }
 }
