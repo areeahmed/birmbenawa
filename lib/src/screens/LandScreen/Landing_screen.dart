@@ -11,6 +11,7 @@ import 'package:birmbenawa/src/screens/reminder_screen.dart';
 import 'package:birmbenawa/src/screens/shoping_list_reminder_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MainPageScreen extends StatefulWidget {
   String? userName;
@@ -69,13 +70,13 @@ class _MainPageScreenState extends State<MainPageScreen> {
         items: const [
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.notifications,
+              Icons.notification_add,
             ),
             label: 'ئەمرۆ',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.calendar_month,
+              Icons.calendar_today,
             ),
             label: 'رۆژانە',
           ),
@@ -103,7 +104,7 @@ class _MainPageScreenState extends State<MainPageScreen> {
         child: Container(
           child: Column(
             children: [
-              MyHeaderDrawer(userName: 'Unknown', phoneNumber: 'Unkown'),
+              MyHeaderDrawer(),
               MyDrawerList(),
             ],
           ),
@@ -122,13 +123,13 @@ class _MainPageScreenState extends State<MainPageScreen> {
         children: [
           menuItem(1, 'دەستکاری کردن', Icons.settings,
               currentPage == DrawerSections.settings ? true : false),
-          menuItem(2, 'دەربارەی بەرنامە', Icons.check_circle,
+          menuItem(2, 'دەربارەی بەرنامە', Icons.info,
               currentPage == DrawerSections.aboutApp ? true : false),
-          menuItem(3, 'دەربارەی ئێمە', Icons.person,
+          menuItem(3, 'دەربارەی ئێمە', FontAwesomeIcons.peopleGroup,
               currentPage == DrawerSections.aboutUs ? true : false),
-          menuItem(4, 'بەرنامەکانی تر', Icons.dashboard,
+          menuItem(4, 'بەرنامەکانی تر', FontAwesomeIcons.boxArchive,
               currentPage == DrawerSections.otherApps ? true : false),
-          menuItem(5, 'Sign Out', Icons.dashboard,
+          menuItem(5, 'Sign Out', FontAwesomeIcons.arrowRightFromBracket,
               currentPage == DrawerSections.signOut ? true : false),
         ],
       ),

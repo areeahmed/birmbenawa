@@ -2,7 +2,7 @@ import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/models/reminder_card_data.dart';
 import 'package:birmbenawa/src/provider/navigating_between_screens.dart';
 import 'package:birmbenawa/src/provider/used_too_mutch.dart';
-import 'package:birmbenawa/src/screens/edit_remider_card_screen.dart';
+import 'package:birmbenawa/src/screens/Edit/edit_remider_card_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -137,38 +137,10 @@ class _ReminderPageState extends State<Reminderpage> {
                             ],
                           ),
                         );
-
-                        // ListTile(
-                        //   title: Text(reminderCardData.title),
-                        //   leading: Icon(reminderCardData.icon),
-                        //   trailing: IconButton(
-                        //     icon: Icon(Icons.delete),
-                        //     onPressed: () {
-                        //       box.delete('1');
-                        //     },
-                        //   ),
-                        // trailing: Text(
-                        //     '${reminderCardData.houre}:${reminderCardData.minute}'),
-                        // );
                       })),
                 );
         }),
       ),
-
-      // body: SingleChildScrollView(
-      //   reverse: true,
-      //   child: Center(
-      //     child: Column(
-      //       mainAxisAlignment: MainAxisAlignment.start,
-      //       children: [
-      //         SizedBox(
-      //           height: 60,
-      //         ),
-      //         ReminderScreenModel(),
-      //       ],
-      //     ),
-      //   ),
-      // ),
       floatingActionButton: FloatingActionButton(
         heroTag: 'fab1',
         backgroundColor: const Color.fromARGB(255, 98, 0, 255),
@@ -178,11 +150,4 @@ class _ReminderPageState extends State<Reminderpage> {
       ),
     );
   }
-
-  // @override
-  // void dispose() {
-  //   // TODO: implement dispose
-  //   Hive.close();
-  //   super.dispose();
-  // }
 }

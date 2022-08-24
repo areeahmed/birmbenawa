@@ -67,7 +67,7 @@ class _LoginWidgetState extends State<LoginWidget> {
         customHeight: 46,
         customWidth: 200,
         ontap: () {},
-        itemText: 'Log In',
+        itemText: 'Register Me',
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:birmbenawa/src/widgets/general_custom_button.dart';
 import 'package:birmbenawa/src/service/phone_number_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class RegisterationWidget extends StatefulWidget {
   RegisterationWidget({Key? key}) : super(key: key);
@@ -10,9 +11,11 @@ class RegisterationWidget extends StatefulWidget {
 }
 
 class _RegisterationWidgetState extends State<RegisterationWidget> {
+  final box = Hive.box('user');
   Auth _auth = Auth();
   String userName = '';
   TextEditingController phoneNumberController = TextEditingController();
+  TextEditingController userFullName = TextEditingController();
   final String signUpPath = 'assets/images/slider/SignUp.png';
   @override
   Widget build(BuildContext context) {
@@ -67,6 +70,8 @@ class _RegisterationWidgetState extends State<RegisterationWidget> {
         customHeight: 46,
         customWidth: 200,
         ontap: () {
+          box.put('name', userFullName.text);
+          box.put('phone', phoneNumberController.text);
           _auth.verifyPhoneNumber(context, phoneNumberController.text);
         },
         itemText: 'Sign Up',
@@ -142,6 +147,7 @@ class _RegisterationWidgetState extends State<RegisterationWidget> {
     required String hintTextView,
   }) {
     return TextField(
+      controller: userFullName,
       style: TextStyle(),
       decoration: InputDecoration(
           border: InputBorder.none,

@@ -20,7 +20,9 @@ void main() async {
   );
   final reminderCardbBox = await Hive.openBox('reminderCardDatas');
   final dailyReminderBox = await Hive.openBox('dailyReminderCardDatas');
-  final shopingListBox = await Hive.openBox('todo');
+  final shopingListBox = await Hive.openBox('shopingListDatas');
+  final todoList = await Hive.openBox('todo');
+  final userInfo = await Hive.openBox('user');
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (context) => TimeProvider()),

@@ -1,66 +1,57 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class MyHeaderDrawer extends StatefulWidget {
-  String userName;
-  String phoneNumber;
-  MyHeaderDrawer({
-    Key? key,
-    required this.userName,
-    required this.phoneNumber,
-  }) : super(key: key);
+  MyHeaderDrawer({Key? key}) : super(key: key);
 
   @override
-  State<MyHeaderDrawer> createState() =>
-      _MyHeaderDraweState(userName: userName, phoneNumber: phoneNumber);
+  State<MyHeaderDrawer> createState() => _MyHeaderDraweState();
 }
 
 //TODO: here i have to return back the name and phone number to drawer to be shown in the header drawer.
 //* this is the header of the drawer that conatiane ProfileImage - Name of the user - phone number
 class _MyHeaderDraweState extends State<MyHeaderDrawer> {
   final String logoPath = 'assets/images/slider/logo.png';
-  String userName;
-  String phoneNumber;
-  _MyHeaderDraweState({
-    required this.userName,
-    required this.phoneNumber,
-  });
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Hive.openBox('user');
+  }
+
   @override
   Widget build(BuildContext context) {
+    String name = Hive.box('user').get('name') ?? 'null';
+    String phone = Hive.box('user').get('phone') ?? 'null';
     return Container(
-        color: Color.fromARGB(255, 204, 174, 252),
         width: double.infinity,
         height: 200,
+        decoration: BoxDecoration(
+          image: DecorationImage(image: AssetImage('assets/images/banner.jpg')),
+        ),
         padding: EdgeInsets.only(top: 20.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              height: 70,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: AssetImage(logoPath),
-                ),
-              ),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.edit),
+            SizedBox(
+              height: 8,
             ),
             Text(
-              userName,
+              name,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 30,
+                fontFamily: 'PeshangBold',
+              ),
+            ),
+            Text(
+              '0$phone',
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 20,
+                fontFamily: 'PeshangBold',
               ),
             ),
-            Text(
-              phoneNumber,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 14,
-              ),
-            )
           ],
         ));
   }
