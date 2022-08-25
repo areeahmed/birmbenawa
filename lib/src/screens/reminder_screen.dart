@@ -4,7 +4,7 @@ import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/models/Screen/reminder_card_data.dart';
 import 'package:birmbenawa/src/provider/navigating_between_screens.dart';
 import 'package:birmbenawa/src/provider/used_too_mutch.dart';
-import 'package:birmbenawa/src/screens/Edit/edit_remider_card_screen.dart';
+import 'package:birmbenawa/src/screens/Adding_Screen/add_to_remider_card_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -138,7 +138,7 @@ class _ReminderPageState extends State<Reminderpage> {
                                       padding: EdgeInsets.all(3),
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(3),
-                                        color: Colors.grey.shade400,
+                                        color: Colors.grey.shade100,
                                       ),
                                       width: 300,
                                       height: 70,

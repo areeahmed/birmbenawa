@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:provider/provider.dart';
-import 'src/app.dart';
+import 'src/myapp.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -4,7 +4,7 @@ import 'package:birmbenawa/src/models/Screen/daily_reminder_card_data.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/provider/daily_remider_model.dart';
 import 'package:birmbenawa/src/provider/used_too_mutch.dart';
-import 'package:birmbenawa/src/screens/Edit/edit_daily_reminder_card_screen.dart';
+import 'package:birmbenawa/src/screens/Adding_Screen/add_to_daily_reminder_card_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 
@@ -26,7 +26,7 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
         body: ValueListenableBuilder<Box>(
           valueListenable: Hive.box('dailyReminderCardDatas').listenable(),
           builder: ((context, box, Widget) {
-            List keys = box.keys
+            List<int> keys = box.keys
                 .cast<int>()
                 .toList(); //! ERROR: type 'String' is not a subtype of type 'int' in type cast
             return box.isEmpty

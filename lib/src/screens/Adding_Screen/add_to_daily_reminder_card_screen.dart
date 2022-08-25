@@ -4,7 +4,6 @@ import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/models/image_screens.dart';
 import 'package:birmbenawa/src/models/Screen/reminder_card_data.dart';
 import 'package:birmbenawa/src/models/time_provider.dart';
-import 'package:birmbenawa/src/screens/LandScreen/Landing_screen.dart';
 import 'package:birmbenawa/src/widgets/time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -219,7 +218,7 @@ class _EditDailyReminderCardScreenState
                         debugPrint(
                             '${selectedColor},${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}');
                         final box = Hive.box('dailyReminderCardDatas');
-                        box.put('1', reminderCardData.toMap());
+                        box.add(reminderCardData.toMap());
                         Navigator.of(context).pop();
                       });
                     },

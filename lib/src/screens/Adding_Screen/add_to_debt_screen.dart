@@ -4,6 +4,7 @@ import 'package:birmbenawa/src/models/Screen/reminder_card_data.dart';
 import 'package:birmbenawa/src/models/time_provider.dart';
 import 'package:birmbenawa/src/screens/LandScreen/Landing_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
@@ -24,8 +25,9 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
   Widget build(BuildContext context) {
     ImageProcess process = ImageProcess();
     ImageScreen imageScreen = ImageScreen();
-    TextEditingController titleController = TextEditingController();
-    TextEditingController controllerData2 = TextEditingController();
+    TextEditingController nameOfGiveDebtController = TextEditingController();
+    TextEditingController nameOfTookDebtController = TextEditingController();
+    TextEditingController moneyController = TextEditingController();
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 98, 0, 255),
@@ -53,15 +55,38 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
                   ),
                   child: Directionality(
                     textDirection: TextDirection.rtl,
-                    child: TextField(
+                    child: TextFormField(
+                      keyboardType: TextInputType.name,
                       textDirection: TextDirection.rtl,
                       style: TextStyle(
                         fontFamily: 'PeshangBold',
                         fontSize: 20,
                       ),
-                      controller: titleController,
+                      controller: nameOfTookDebtController,
                       decoration: InputDecoration(
-                        hintText: 'ناوی کەس',
+                        hintText: 'ناوی کەسی پارە بەخشەر',
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 18,
+                    right: 18,
+                    bottom: 12,
+                  ),
+                  child: Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: TextFormField(
+                      keyboardType: TextInputType.name,
+                      textDirection: TextDirection.rtl,
+                      style: TextStyle(
+                        fontFamily: 'PeshangBold',
+                        fontSize: 20,
+                      ),
+                      controller: nameOfGiveDebtController,
+                      decoration: InputDecoration(
+                        hintText: 'ناوی کەسی پارە وەرگر',
                       ),
                     ),
                   ),
@@ -73,23 +98,29 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
                   ),
                   child: Directionality(
                     textDirection: TextDirection.rtl,
-                    child: TextField(
-                      style: TextStyle(fontFamily: 'PeshangBold'),
+                    child: TextFormField(
+                      keyboardType: TextInputType.number,
+                      style: TextStyle(fontFamily: 'PeshangBold', fontSize: 20),
                       textDirection: TextDirection.rtl,
-                      controller: controllerData2,
+                      controller: moneyController,
                       decoration: InputDecoration(
                         hintText: 'بڕی قەرزەکە',
                       ),
                     ),
                   ),
                 ),
-                // DropdownButtonFormField(
-                //   value: 1,
-                //   items: [
-                //   DropdownMenuItem(child: Text('قەرزم کرد')),
-                //   DropdownMenuItem(child: Text('قەرزم کرد')),
-                // ], onChanged: (value){}),
-                //TODO add an Icon picker ( Button to open Icon Dialog )
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: DropdownButtonFormField(
+                      value: 'قەرزم کرد',
+                      items: [
+                        DropdownMenuItem(
+                            value: 'قەرزم کرد', child: Text('قەرزم کرد')),
+                        DropdownMenuItem(
+                            value: 'قەرزی کرد', child: Text('قەرزی کرد')),
+                      ],
+                      onChanged: (value) {}),
+                ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(

@@ -1,6 +1,5 @@
 import 'package:birmbenawa/src/models/Screen/reminder_card_data.dart';
 import 'package:birmbenawa/src/models/Screen/todo_data_model.dart';
-import 'package:birmbenawa/src/screens/LandScreen/Landing_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 

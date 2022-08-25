@@ -1,6 +1,6 @@
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/provider/used_too_mutch.dart';
-import 'package:birmbenawa/src/screens/Edit/edit_debt_screen.dart';
+import 'package:birmbenawa/src/screens/Adding_Screen/add_to_debt_screen.dart';
 import 'package:flutter/material.dart';
 
 class DebtScreenView extends StatefulWidget {

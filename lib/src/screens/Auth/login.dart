@@ -26,7 +26,7 @@ class _LoginWidgetState extends State<LoginWidget> {
             child: Column(
               textDirection: TextDirection.rtl,
               children: [
-                AppLogInShowingInTheAppBar(),
+                PictureOfLoginPageShowInTheAppBar(),
                 Container(
                   padding: EdgeInsets.only(top: 0),
                   child: const Text(
@@ -49,7 +49,7 @@ class _LoginWidgetState extends State<LoginWidget> {
   //     MaterialPageRoute(builder: (context) => ));
 
   //* the Person Icon a the top of the screen check the icon
-  Widget AppLogInShowingInTheAppBar() {
+  Widget PictureOfLoginPageShowInTheAppBar() {
     return Container(
         padding: const EdgeInsets.fromLTRB(60, 0, 60, 0),
         child: Image.asset(

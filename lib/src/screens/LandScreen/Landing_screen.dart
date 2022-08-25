@@ -1,4 +1,4 @@
-import 'package:birmbenawa/src/app.dart';
+import 'package:birmbenawa/src/myapp.dart';
 import 'package:birmbenawa/src/screens/DrawerScreens/about_app.dart';
 import 'package:birmbenawa/src/screens/DrawerScreens/about_us.dart';
 import 'package:birmbenawa/src/drawer/head_of_drawer.dart';

@@ -3,7 +3,7 @@ import 'package:birmbenawa/src/models/Screen/todo_data_model.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/models/Screen/reminder_card_data.dart';
 import 'package:birmbenawa/src/provider/shop_list_remider_model.dart';
-import 'package:birmbenawa/src/screens/Edit/edit_to_do_list_reminder.dart';
+import 'package:birmbenawa/src/screens/Adding_Screen/add_to_do_list_reminder.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:msh_checkbox/msh_checkbox.dart';
@@ -85,7 +85,7 @@ class _ShopingReminderPageState extends State<ShopingReminderPage> {
                         trailing: MSHCheckbox(
                           size: 30,
                           value: isChecked,
-                          checkedColor: Colors.blue,
+                          checkedColor: Color.fromARGB(255, 98, 0, 255),
                           style: MSHCheckboxStyle.stroke,
                           onChanged: (selected) {
                             setState(() {
