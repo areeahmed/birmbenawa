@@ -6,7 +6,7 @@ import 'package:birmbenawa/src/screens/DrawerScreens/other_apps.dart';
 import 'package:birmbenawa/src/screens/DrawerScreens/settigns.dart';
 import 'package:birmbenawa/src/screens/buying.dart';
 import 'package:birmbenawa/src/screens/daily_reminder_screen.dart';
-import 'package:birmbenawa/src/screens/debtscreen.dart';
+import 'package:birmbenawa/src/screens/debt_screen.dart';
 import 'package:birmbenawa/src/screens/reminder_screen.dart';
 import 'package:birmbenawa/src/screens/todo_list_reminder_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
