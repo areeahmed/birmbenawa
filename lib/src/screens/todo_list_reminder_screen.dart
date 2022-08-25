@@ -1,7 +1,6 @@
 import 'package:adaptive_action_sheet/adaptive_action_sheet.dart';
 import 'package:birmbenawa/src/models/Screen/todo_data_model.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
-import 'package:birmbenawa/src/models/Screen/reminder_card_data.dart';
 import 'package:birmbenawa/src/provider/shop_list_remider_model.dart';
 import 'package:birmbenawa/src/screens/Adding_Screen/add_to_do_list_reminder.dart';
 import 'package:flutter/material.dart';
@@ -67,16 +66,16 @@ class _ShopingReminderPageState extends State<ShopingReminderPage> {
                         },
                         leading: Icon(Icons.subject),
                         title: Text(
-                          todo.title,
-                          style: isChecked
+                          todo.title!,
+                          style: todo.isChecked!
                               ? TextStyle(
                                   color: Colors.grey.shade400,
                                   decoration: TextDecoration.lineThrough)
                               : null,
                         ),
                         subtitle: Text(
-                          todo.description,
-                          style: isChecked
+                          todo.description!,
+                          style: todo.isChecked!
                               ? TextStyle(
                                   color: Colors.grey.shade300,
                                   decoration: TextDecoration.lineThrough)
@@ -84,12 +83,12 @@ class _ShopingReminderPageState extends State<ShopingReminderPage> {
                         ),
                         trailing: MSHCheckbox(
                           size: 30,
-                          value: isChecked,
+                          value: todo.isChecked!,
                           checkedColor: Color.fromARGB(255, 98, 0, 255),
                           style: MSHCheckboxStyle.stroke,
                           onChanged: (selected) {
                             setState(() {
-                              isChecked = selected;
+                              todo.isChecked = selected;
                             });
                           },
                         ),

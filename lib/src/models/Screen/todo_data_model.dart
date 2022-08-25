@@ -7,15 +7,15 @@ part 'todo_data_model.g.dart';
 @HiveType(typeId: 0)
 class TODO {
   @HiveField(0)
-  String title;
+  String? title;
   @HiveField(1)
-  String description;
+  String? description;
   @HiveField(2)
-  bool isChecked;
+  bool? isChecked;
   TODO({
-    required this.title,
-    required this.description,
-    required this.isChecked,
+    this.title,
+    this.description,
+    this.isChecked,
   });
 
   TODO copyWith({
