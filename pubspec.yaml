@@ -40,6 +40,7 @@ dependencies:
   tip_dialog: ^4.0.0
   msh_checkbox: ^1.1.1
   custom_bottom_sheet: ^1.1.2
+  flutter_slidable: ^2.0.0
 
 dev_dependencies:
   flutter_test:

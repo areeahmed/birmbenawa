@@ -4,6 +4,7 @@ import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/provider/shop_list_remider_model.dart';
 import 'package:birmbenawa/src/screens/Adding_Screen/add_to_do_list_reminder.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:msh_checkbox/msh_checkbox.dart';
 
@@ -23,85 +24,87 @@ class _ShopingReminderPageState extends State<ShopingReminderPage> {
   Widget build(BuildContext context) {
     ImageProcess imageProcess = ImageProcess();
     return Scaffold(
-      body: ValueListenableBuilder<Box>(
-        valueListenable: Hive.box('todo').listenable(),
-        builder: ((context, box, Widget) {
-          List keys = box.keys.cast<int>().toList();
-          return box.isEmpty
-              ? Center(
-                  child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(imageProcess.empty),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    Text('Screen is Empty')
-                  ],
-                ))
-              : Center(
-                  child: ListView.builder(
-                    itemCount: box.length,
-                    itemBuilder: ((context, index) {
-                      final key = keys[index];
-                      Map<dynamic, dynamic> _data = box.getAt(index);
-                      TODO todo = TODO.fromMap(_data as Map<dynamic, dynamic>);
-                      return ListTile(
-                        onTap: () {
-                          showAdaptiveActionSheet(
-                            context: context,
-                            title: Text('Card Number $key'),
-                            androidBorderRadius: 30,
-                            actions: <BottomSheetAction>[
-                              BottomSheetAction(
-                                  title: Text('Delete'),
-                                  onPressed: (context) {
-                                    box.delete(key);
-                                    Navigator.of(context).pop();
-                                  }),
+      body: Container(
+        color: Colors.white,
+        child: ValueListenableBuilder<Box>(
+          valueListenable: Hive.box('todo').listenable(),
+          builder: ((context, box, Widget) {
+            List keys = box.keys.cast<int>().toList();
+            return box.isEmpty
+                ? Center(
+                    child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(imageProcess.empty),
+                      SizedBox(
+                        height: 12,
+                      ),
+                      Text('Screen is Empty')
+                    ],
+                  ))
+                : Center(
+                    child: ListView.builder(
+                      itemCount: box.length,
+                      itemBuilder: ((context, index) {
+                        final key = keys[index];
+                        Map<dynamic, dynamic> _data = box.getAt(index);
+                        TODO todo =
+                            TODO.fromMap(_data as Map<dynamic, dynamic>);
+                        return Slidable(
+                          endActionPane: ActionPane(
+                            motion: StretchMotion(),
+                            children: [
+                              SlidableAction(
+                                onPressed: (context) {
+                                  box.delete(key);
+                                },
+                                backgroundColor: Colors.red,
+                                icon: Icons.delete,
+                              )
                             ],
-                            cancelAction: CancelAction(
-                                title: const Text(
-                                    'Cancel')), // onPressed parameter is optional by default will dismiss the ActionSheet
-                          );
-                        },
-                        leading: Icon(Icons.subject),
-                        title: Text(
-                          todo.title!,
-                          style: _data[key]
-                              ? TextStyle(
-                                  color: Colors.grey.shade400,
-                                  decoration: TextDecoration.lineThrough)
-                              : null,
-                        ),
-                        subtitle: Text(
-                          todo.description!,
-                          style: _data[key]
-                              ? TextStyle(
-                                  color: Colors.grey.shade300,
-                                  decoration: TextDecoration.lineThrough)
-                              : null,
-                        ),
-                        trailing: MSHCheckbox(
-                          size: 30,
-                          value: _data[key] ?? false,
-                          checkedColor: Color.fromARGB(255, 98, 0, 255),
-                          style: MSHCheckboxStyle.stroke,
-                          onChanged: (selected) {
-                            setState(() {
-                              if (_data[key] == null) {
-                                _data[key] = true;
-                              }
-                              _data[key] = !_data[key];
-                              // todo.isChecked = selected;
-                            });
-                          },
-                        ),
-                      );
-                    }),
-                  ),
-                );
-        }),
+                          ),
+                          child: Container(
+                            child: ListTile(
+                              leading: Icon(Icons.subject),
+                              title: Text(
+                                todo.title!,
+                                style: _data[key] ?? false
+                                    ? TextStyle(
+                                        color: Colors.grey.shade400,
+                                        decoration: TextDecoration.lineThrough)
+                                    : null,
+                              ),
+                              subtitle: Text(
+                                todo.description!,
+                                style: _data[key] ?? false
+                                    ? TextStyle(
+                                        color: Colors.grey.shade300,
+                                        decoration: TextDecoration.lineThrough)
+                                    : null,
+                              ),
+                              trailing: MSHCheckbox(
+                                size: 30,
+                                value: _data[key] ?? true,
+                                checkedColor: Color.fromARGB(255, 98, 0, 255),
+                                style: MSHCheckboxStyle.stroke,
+                                onChanged: (selected) {
+                                  setState(() {
+                                    if (_data[key] == null) {
+                                      _data[key] = true;
+                                    }
+                                    _data[key] = !_data[key];
+                                    // todo.isChecked = selected;
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
+                        );
+                      }),
+                    ),
+                  );
+          }),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color.fromARGB(255, 98, 0, 255),

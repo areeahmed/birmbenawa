@@ -79,10 +79,13 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
                                             Color.fromARGB(255, 155, 98, 248),
                                         inactiveTrackColor:
                                             Color.fromARGB(255, 201, 167, 255),
-                                        value: isChecked,
+                                        value: _data[key] ?? false,
                                         onChanged: (value) {
                                           setState(() {
-                                            isChecked = !isChecked;
+                                            if (_data[key] == null) {
+                                              _data[key] = true;
+                                            }
+                                            _data[key] = !_data[key];
                                           });
                                         })
                                   ],
@@ -147,7 +150,7 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
                                                     'Cancel')), // onPressed parameter is optional by default will dismiss the ActionSheet
                                           );
                                         },
-                                        icon: Icon(Icons.arrow_circle_down))
+                                        icon: Icon(Icons.delete))
                                   ],
                                 )
                               ],

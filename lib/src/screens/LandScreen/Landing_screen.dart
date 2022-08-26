@@ -30,12 +30,7 @@ class _MainPageScreenState extends State<MainPageScreen> {
   var currentPage = DrawerSections.settings;
   int currentIndexPage = 0;
   final screens = [
-    Reminderpage(
-      selectedTime: '',
-      titleOfTheCard: '',
-      timeH: 0,
-      timeM: 0,
-    ),
+    Reminderpage(),
     const DailyReminderPage(),
     const ShopingReminderPage(),
     DebtScreenView(),

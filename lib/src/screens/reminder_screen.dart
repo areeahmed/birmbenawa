@@ -9,61 +9,21 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class Reminderpage extends StatefulWidget {
-  String? titleOfTheCard;
-  String? selectedTime;
-  int? timeH;
-  int? timeM;
-  Reminderpage({
-    Key? key,
-    this.titleOfTheCard,
-    this.selectedTime,
-    this.timeH,
-    this.timeM,
-  }) : super(key: key);
+  Reminderpage({Key? key}) : super(key: key);
   @override
-  State<Reminderpage> createState() => _ReminderPageState(
-        titleOfTheCard: titleOfTheCard,
-        selectedTime: selectedTime,
-        timeH: timeH,
-        timeM: timeM,
-      );
+  State<Reminderpage> createState() => _ReminderPageState();
 }
 
 class _ReminderPageState extends State<Reminderpage> {
   NaviagtingBetweenScreens navigateBetweenScreens = NaviagtingBetweenScreens();
-  _ReminderPageState({
-    required this.titleOfTheCard,
-    required this.selectedTime,
-    required this.timeH,
-    required this.timeM,
-  });
-  bool isChecked = false;
   ImageProcess imageProcess = ImageProcess();
   UsedTooMutch usedTooMutch = UsedTooMutch();
-  String? titleOfTheCard;
-  String? selectedTime;
-  IconData? icon;
-  int? timeH;
-  int? timeM;
+
   // transferred dialogComponentModelWidgets = transferred(isDailyReminder: false);
   @override
   Widget build(BuildContext context) {
     // final cardDataBox = Hive.box('reminderCardDatas');
     return Scaffold(
-      // appBar: AppBar(
-      //   actions: [
-      //     IconButton(
-      //         onPressed: () {
-      //           if (cardDataBox.isEmpty) {
-      //             print('Box is empty');
-      //           } else {
-      //             cardDataBox.clear();
-      //           }
-      //         },
-      //         icon: Icon(Icons.clear))
-      //   ],
-      // ),
-      //TODO use the segment of code for showing cards from hive database
       body: ValueListenableBuilder<Box>(
         valueListenable: Hive.box('reminderCardDatas').listenable(),
         builder: ((context, box, Widget) {
@@ -119,10 +79,13 @@ class _ReminderPageState extends State<Reminderpage> {
                                             Color.fromARGB(255, 155, 98, 248),
                                         inactiveTrackColor:
                                             Color.fromARGB(255, 201, 167, 255),
-                                        value: isChecked,
+                                        value: _data[key] ?? false,
                                         onChanged: (value) {
                                           setState(() {
-                                            isChecked = !isChecked;
+                                            if (_data[key] == null) {
+                                              _data[key] = true;
+                                            }
+                                            _data[key] = !_data[key];
                                           });
                                         })
                                   ],
@@ -152,14 +115,6 @@ class _ReminderPageState extends State<Reminderpage> {
                                 SizedBox(
                                   height: 5,
                                 ),
-                                // Row(
-                                //   children: [
-                                //     Text(
-                                //       'Mon-Fri',
-                                //       style: TextStyle(fontSize: 16),
-                                //     ),
-                                //   ],
-                                // ),
                                 Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -172,7 +127,8 @@ class _ReminderPageState extends State<Reminderpage> {
                                         onPressed: () {
                                           showAdaptiveActionSheet(
                                             context: context,
-                                            title: Text('Card Number $key'),
+                                            title:
+                                                Text('Card Number ${key + 1}'),
                                             androidBorderRadius: 30,
                                             actions: <BottomSheetAction>[
                                               BottomSheetAction(
@@ -183,22 +139,14 @@ class _ReminderPageState extends State<Reminderpage> {
                                                   }),
                                             ],
                                             cancelAction: CancelAction(
-                                                title: const Text(
-                                                    'Cancel')), // onPressed parameter is optional by default will dismiss the ActionSheet
+                                                title: const Text('Cancel')),
                                           );
                                         },
-                                        icon: Icon(Icons.arrow_circle_down))
+                                        icon: Icon(Icons.delete))
                                   ],
                                 )
                               ],
                             ));
-                        // reminderCardData.title,
-
-                        // '${reminderCardData.houre}:${reminderCardData.minute}',
-
-                        // Text(reminderCardData.descriptionOfCard),
-
-                        // box.delete(key);
                       })),
                 );
         }),

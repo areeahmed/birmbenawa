@@ -28,66 +28,69 @@ class _EditShopingListReminderState extends State<EditShopingListReminder> {
         centerTitle: true,
       ),
       body: Center(
-        child: SingleChildScrollView(
-          reverse: true,
-          child: Column(
-            children: [
-              Container(
-                child: Image.asset('assets/images/List_Of_Task.png'),
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              Directionality(
-                textDirection: TextDirection.rtl,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    controller: title,
-                    decoration: InputDecoration(
-                        hintText: 'ناونیشان', hintStyle: TextStyle()),
-                    style: TextStyle(
-                      fontFamily: 'PeshangBold',
-                      fontSize: 20,
+        child: Container(
+          color: Colors.white,
+          child: SingleChildScrollView(
+            reverse: true,
+            child: Column(
+              children: [
+                Container(
+                  child: Image.asset('assets/images/List_Of_Task.png'),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextFormField(
+                      controller: title,
+                      decoration: InputDecoration(
+                          hintText: 'ناونیشان', hintStyle: TextStyle()),
+                      style: TextStyle(
+                        fontFamily: 'PeshangBold',
+                        fontSize: 20,
+                      ),
+                      textDirection: TextDirection.rtl,
                     ),
-                    textDirection: TextDirection.rtl,
                   ),
                 ),
-              ),
-              Directionality(
-                textDirection: TextDirection.rtl,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    controller: description,
-                    decoration: InputDecoration(
-                        hintText: 'زانیاری زیاتر...', hintStyle: TextStyle()),
-                    style: TextStyle(
-                      fontFamily: 'PeshangBold',
-                      fontSize: 20,
+                Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextFormField(
+                      controller: description,
+                      decoration: InputDecoration(
+                          hintText: 'زانیاری زیاتر...', hintStyle: TextStyle()),
+                      style: TextStyle(
+                        fontFamily: 'PeshangBold',
+                        fontSize: 20,
+                      ),
+                      textDirection: TextDirection.rtl,
                     ),
-                    textDirection: TextDirection.rtl,
                   ),
                 ),
-              ),
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Color.fromARGB(255, 98, 0, 255),
-                  ),
-                  onPressed: () {
-                    TODO todo = TODO(
-                        title: title.text,
-                        description: description.text,
-                        isChecked: false);
-                    final box = Hive.box('todo');
-                    box.add(todo.toMap());
-                    Navigator.of(context).pop();
-                  },
-                  child: Text(
-                    'خەزن کردن',
-                    style: TextStyle(fontFamily: 'PeshangBold'),
-                  ))
-            ],
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Color.fromARGB(255, 98, 0, 255),
+                    ),
+                    onPressed: () {
+                      TODO todo = TODO(
+                          title: title.text,
+                          description: description.text,
+                          isChecked: true);
+                      final box = Hive.box('todo');
+                      box.add(todo.toMap());
+                      Navigator.of(context).pop();
+                    },
+                    child: Text(
+                      'خەزن کردن',
+                      style: TextStyle(fontFamily: 'PeshangBold'),
+                    ))
+              ],
+            ),
           ),
         ),
       ),
