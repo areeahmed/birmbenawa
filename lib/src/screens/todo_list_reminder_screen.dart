@@ -17,6 +17,7 @@ class ShopingReminderPage extends StatefulWidget {
 class _ShopingReminderPageState extends State<ShopingReminderPage> {
   ShopingListRemiderModelClass shopingListReminderModelClass =
       ShopingListRemiderModelClass();
+  Map<String, bool> checkBoxListValue = {};
   bool isChecked = false;
   @override
   Widget build(BuildContext context) {
@@ -67,7 +68,7 @@ class _ShopingReminderPageState extends State<ShopingReminderPage> {
                         leading: Icon(Icons.subject),
                         title: Text(
                           todo.title!,
-                          style: todo.isChecked!
+                          style: _data[key]
                               ? TextStyle(
                                   color: Colors.grey.shade400,
                                   decoration: TextDecoration.lineThrough)
@@ -75,7 +76,7 @@ class _ShopingReminderPageState extends State<ShopingReminderPage> {
                         ),
                         subtitle: Text(
                           todo.description!,
-                          style: todo.isChecked!
+                          style: _data[key]
                               ? TextStyle(
                                   color: Colors.grey.shade300,
                                   decoration: TextDecoration.lineThrough)
@@ -83,12 +84,16 @@ class _ShopingReminderPageState extends State<ShopingReminderPage> {
                         ),
                         trailing: MSHCheckbox(
                           size: 30,
-                          value: todo.isChecked!,
+                          value: _data[key] ?? false,
                           checkedColor: Color.fromARGB(255, 98, 0, 255),
                           style: MSHCheckboxStyle.stroke,
                           onChanged: (selected) {
                             setState(() {
-                              todo.isChecked = selected;
+                              if (_data[key] == null) {
+                                _data[key] = true;
+                              }
+                              _data[key] = !_data[key];
+                              // todo.isChecked = selected;
                             });
                           },
                         ),
