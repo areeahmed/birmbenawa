@@ -1,10 +1,10 @@
-import 'package:adaptive_action_sheet/adaptive_action_sheet.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:birmbenawa/src/models/Screen/daily_reminder_card_data.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/provider/used_too_mutch.dart';
 import 'package:birmbenawa/src/screens/Adding_Screen/add_to_daily_reminder_card_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:hive_flutter/adapters.dart';
 
 class DailyReminderPage extends StatefulWidget {
@@ -25,9 +25,7 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
         body: ValueListenableBuilder<Box>(
           valueListenable: Hive.box('dailyReminderCardDatas').listenable(),
           builder: ((context, box, Widget) {
-            List<int> keys = box.keys
-                .cast<int>()
-                .toList(); //! ERROR: type 'String' is not a subtype of type 'int' in type cast
+            List<int> keys = box.keys.cast<int>().toList();
             return box.isEmpty
                 ? Center(
                     child: Column(
@@ -37,7 +35,24 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
                       SizedBox(
                         height: 12,
                       ),
-                      Text('Screen is Empty')
+                      Container(
+                        margin: EdgeInsets.only(bottom: 25),
+                        child: Text(
+                          'ئەم بەشە بەتاڵە لە ئێستا دا',
+                          style: TextStyle(
+                              fontFamily: 'PeshangBold', fontSize: 16),
+                        ),
+                      ),
+                      Transform.rotate(
+                        angle: 6.6,
+                        child: Image.asset(
+                          'assets/images/arrow.png',
+                          height: 200,
+                          fit: BoxFit.cover,
+                          scale: 6,
+                          opacity: AlwaysStoppedAnimation(200),
+                        ),
+                      ),
                     ],
                   ))
                 : Center(
@@ -49,112 +64,99 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
                         DailyReminderCardData dailyReminderCardData =
                             DailyReminderCardData.fromMap(
                                 _data as Map<dynamic, dynamic>);
-                        return Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                              color: Colors.grey.shade300,
-                            ),
-                            padding: EdgeInsets.all(20),
-                            margin: EdgeInsets.all(20),
-                            width: 400,
-                            child: Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Icon(
-                                      Icons.label,
-                                      size: 40,
-                                      color: Color.fromARGB(255, 98, 0, 255),
-                                    ),
-                                    Text(
-                                      dailyReminderCardData.title,
-                                      style: TextStyle(fontSize: 20),
-                                    ),
-                                    Switch.adaptive(
-                                        activeColor:
-                                            Color.fromARGB(255, 98, 0, 255),
-                                        inactiveThumbColor:
-                                            Color.fromARGB(255, 155, 98, 248),
-                                        inactiveTrackColor:
-                                            Color.fromARGB(255, 201, 167, 255),
-                                        value: _data[key] ?? false,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            if (_data[key] == null) {
-                                              _data[key] = true;
-                                            }
-                                            _data[key] = !_data[key];
-                                          });
-                                        })
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 3,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      padding: EdgeInsets.all(3),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(3),
-                                        color: Colors.grey.shade400,
+                        return Slidable(
+                          endActionPane: ActionPane(
+                            motion: StretchMotion(),
+                            children: [
+                              SlidableAction(
+                                onPressed: (context) {
+                                  box.delete(key);
+                                },
+                                backgroundColor: Colors.red,
+                                icon: Icons.delete,
+                              )
+                            ],
+                          ),
+                          child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.grey.shade300,
+                              ),
+                              padding: EdgeInsets.all(20),
+                              margin: EdgeInsets.only(bottom: 10),
+                              width: 400,
+                              child: Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Icon(
+                                        Icons.label,
+                                        size: 40,
+                                        color: Color.fromARGB(255, 98, 0, 255),
                                       ),
-                                      width: 300,
-                                      height: 70,
-                                      child: AutoSizeText(
-                                        dailyReminderCardData.descriptionOfCard,
+                                      Text(
+                                        dailyReminderCardData.title,
                                         style: TextStyle(fontSize: 20),
-                                        maxLines: 2,
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                // Row(
-                                //   children: [
-                                //     Text(
-                                //       'Mon-Fri',
-                                //       style: TextStyle(fontSize: 16),
-                                //     ),
-                                //   ],
-                                // ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      '${dailyReminderCardData.houre}:${dailyReminderCardData.minute}',
-                                      style: TextStyle(fontSize: 40),
-                                    ),
-                                    IconButton(
-                                        onPressed: () {
-                                          showAdaptiveActionSheet(
-                                            context: context,
-                                            title: Text('Card Number $key'),
-                                            androidBorderRadius: 30,
-                                            actions: <BottomSheetAction>[
-                                              BottomSheetAction(
-                                                  title: Text('Delete'),
-                                                  onPressed: (context) {
-                                                    box.delete(key);
-                                                    Navigator.of(context).pop();
-                                                  }),
-                                            ],
-                                            cancelAction: CancelAction(
-                                                title: const Text(
-                                                    'Cancel')), // onPressed parameter is optional by default will dismiss the ActionSheet
-                                          );
-                                        },
-                                        icon: Icon(Icons.delete))
-                                  ],
-                                )
-                              ],
-                            ));
+                                      Switch.adaptive(
+                                          activeColor:
+                                              Color.fromARGB(255, 98, 0, 255),
+                                          inactiveThumbColor:
+                                              Color.fromARGB(255, 155, 98, 248),
+                                          inactiveTrackColor: Color.fromARGB(
+                                              255, 201, 167, 255),
+                                          value: _data[key] ?? false,
+                                          onChanged: (value) {
+                                            setState(() {
+                                              if (_data[key] == null) {
+                                                _data[key] = true;
+                                              }
+                                              _data[key] = !_data[key];
+                                            });
+                                          })
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 3,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        padding: EdgeInsets.all(3),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(3),
+                                          color: Colors.grey.shade400,
+                                        ),
+                                        width: 300,
+                                        height: 70,
+                                        child: AutoSizeText(
+                                          dailyReminderCardData
+                                              .descriptionOfCard,
+                                          style: TextStyle(fontSize: 20),
+                                          maxLines: 2,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        '${dailyReminderCardData.houre}:${dailyReminderCardData.minute}',
+                                        style: TextStyle(fontSize: 40),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              )),
+                        );
                       }),
                     ),
                   );

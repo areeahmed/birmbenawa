@@ -1,5 +1,6 @@
 import 'package:birmbenawa/firebase_options.dart';
 import 'package:birmbenawa/src/models/card_data_provider.dart';
+import 'package:birmbenawa/src/models/date_picker_provider.dart';
 import 'package:birmbenawa/src/models/days_checked_provider.dart';
 import 'package:birmbenawa/src/models/time_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -27,7 +28,8 @@ void main() async {
     providers: [
       ChangeNotifierProvider(create: (context) => TimeProvider()),
       ChangeNotifierProvider(create: ((context) => CardDataProvider())),
-      ChangeNotifierProvider(create: (context) => IsDaysChecked())
+      ChangeNotifierProvider(create: (context) => IsDaysChecked()),
+      ChangeNotifierProvider(create: (context) => DatePickerProvider()),
     ],
     child: MyApp(),
   ));

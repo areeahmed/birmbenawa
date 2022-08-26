@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/widgets.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 part 'daily_reminder_card_data.g.dart';

@@ -1,7 +1,16 @@
+import 'package:adaptive_action_sheet/adaptive_action_sheet.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:birmbenawa/src/models/Screen/debt_card_data_model.dart';
+import 'package:birmbenawa/src/models/date_picker_provider.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/provider/used_too_mutch.dart';
 import 'package:birmbenawa/src/screens/Adding_Screen/add_to_debt_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
+import 'package:birmbenawa/src/models/Screen/daily_reminder_card_data.dart';
+import 'package:provider/provider.dart';
 
 class DebtScreenView extends StatefulWidget {
   DebtScreenView({Key? key}) : super(key: key);
@@ -23,130 +32,91 @@ class _DebtScreenViewState extends State<DebtScreenView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // body: Container(
-      //   padding: EdgeInsets.only(top: 70),
-      //   child: Column(
-      //     mainAxisAlignment: MainAxisAlignment.start,
-      //     children: [
-      //       Padding(
-      //         padding: const EdgeInsets.only(right: 20.0),
-      //         child: Row(
-      //           mainAxisAlignment: MainAxisAlignment.end,
-      //           children: [
-      //             Container(
-      //               height: 40,
-      //               width: 80,
-      //               decoration: BoxDecoration(
-      //                   border: Border.all(color: Colors.red),
-      //                   borderRadius: BorderRadius.circular(5)),
-      //               child: Center(
-      //                 child: Text(
-      //                   '200\$',
-      //                   style: TextStyle(color: Colors.red, fontSize: 30),
-      //                 ),
-      //               ),
-      //             ),
-      //             SizedBox(
-      //               width: 12,
-      //             ),
-      //             Container(
-      //               height: 40,
-      //               width: 80,
-      //               decoration: BoxDecoration(
-      //                   border: Border.all(color: Colors.green),
-      //                   borderRadius: BorderRadius.circular(5)),
-      //               child: Center(
-      //                 child: Text(
-      //                   '0\$',
-      //                   style: TextStyle(color: Colors.green, fontSize: 30),
-      //                 ),
-      //               ),
-      //             ),
-      //           ],
-      //         ),
-      //       ),
-      //       ValueListenableBuilder<Box>(
-      //         valueListenable: Hive.box('reminderCardDatas').listenable(),
-      //         builder: ((context, box, Widget) {
-      //           return box.isEmpty
-      //               ? Center(
-      //                   child: Column(
-      //                   mainAxisAlignment: MainAxisAlignment.center,
-      //                   children: [
-      //                     Image.asset(imageProcess.empty),
-      //                     SizedBox(
-      //                       height: 12,
-      //                     ),
-      //                     Text('Screen is Empty')
-      //                   ],
-      //                 ))
-      //               : Expanded(
-      //                   child: Container(
-      //                     height: 200,
-      //                     width: 400,
-      //                     color: Colors.grey.shade500,
-      //                     child: ListView.builder(
-      //                         itemCount: box.length,
-      //                         itemBuilder: ((context, index) {
-      //                           Map<dynamic, dynamic> _data = box.getAt(index);
-      //                           ReminderCardData reminderCardData =
-      //                               ReminderCardData.fromMap(
-      //                                   _data as Map<dynamic, dynamic>);
-      //                           return Container(
-      //                             height: 200,
-      //                             width: 400,
-      //                             color: Colors.grey.shade500,
-      //                             child: Column(
-      //                               textDirection: TextDirection.rtl,
-      //                               children: [
-      //                                 Container(
-      //                                   height: 200,
-      //                                   width: 100000,
-      //                                   color: Colors.black,
-      //                                   child: Text(
-      //                                     reminderCardData.title,
-      //                                     textDirection: TextDirection.rtl,
-      //                                     style: TextStyle(
-      //                                         fontSize: 20,
-      //                                         fontFamily: 'PeshangBold'),
-      //                                   ),
-      //                                 ),
-      //                                 SizedBox(
-      //                                   height: 12,
-      //                                 ),
-      //                                 Row(
-      //                                   mainAxisAlignment:
-      //                                       MainAxisAlignment.spaceAround,
-      //                                   children: [
-      //                                     Text(
-      //                                       '${reminderCardData.houre}:${reminderCardData.minute}',
-      //                                     ),
-      //                                     Text(reminderCardData
-      //                                         .descriptionOfCard),
-      //                                   ],
-      //                                 ),
-      //                                 Row(
-      //                                   mainAxisAlignment:
-      //                                       MainAxisAlignment.spaceAround,
-      //                                   children: [
-      //                                     IconButton(
-      //                                         onPressed: () {
-      //                                           box.delete('1');
-      //                                         },
-      //                                         icon: Icon(Icons.delete))
-      //                                   ],
-      //                                 )
-      //                               ],
-      //                             ),
-      //                           );
-      //                         })),
-      //                   ),
-      //                 );
-      //         }),
-      //       ),
-      //     ],
-      //   ),
-      // ),
+      body: ValueListenableBuilder<Box>(
+        valueListenable: Hive.box('debt').listenable(),
+        builder: ((context, box, Widget) {
+          List<int> keys = box.keys
+              .cast<int>()
+              .toList(); //! ERROR: type 'String' is not a subtype of type 'int' in type cast
+          return box.isEmpty
+              ? Center(
+                  child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(imageProcess.empty),
+                    SizedBox(
+                      height: 12,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(bottom: 25),
+                      child: Text(
+                        'ئەم بەشە بەتاڵە لە ئێستا دا',
+                        style:
+                            TextStyle(fontFamily: 'PeshangBold', fontSize: 16),
+                      ),
+                    ),
+                    Transform.rotate(
+                      angle: 6.6,
+                      child: Image.asset(
+                        'assets/images/arrow.png',
+                        height: 200,
+                        fit: BoxFit.cover,
+                        scale: 6,
+                        opacity: AlwaysStoppedAnimation(200),
+                      ),
+                    ),
+                  ],
+                ))
+              : Center(
+                  child: ListView.builder(
+                    itemCount: box.length,
+                    itemBuilder: ((context, index) {
+                      int year = context.watch<DatePickerProvider>().year;
+                      int month = context.watch<DatePickerProvider>().month;
+                      int day = context.watch<DatePickerProvider>().day;
+                      final key = keys[index];
+                      Map<dynamic, dynamic> _data = box.getAt(index);
+                      DebtCardDataModel debtCardDataModel =
+                          DebtCardDataModel.fromMap(
+                              _data as Map<dynamic, dynamic>);
+                      return Slidable(
+                          endActionPane: ActionPane(
+                            motion: StretchMotion(),
+                            children: [
+                              SlidableAction(
+                                onPressed: (context) {
+                                  Hive.box('debt').clear();
+                                },
+                                icon: Icons.delete,
+                              )
+                            ],
+                          ),
+                          child: Container(
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Text('${debtCardDataModel.nameTookDebt}'),
+                                    Icon(Icons.arrow_back),
+                                    Text(debtCardDataModel.nameGiveDebt),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Text('${debtCardDataModel.debt}'),
+                                    Text('$year / $month / $day')
+                                  ],
+                                )
+                              ],
+                            ),
+                          ));
+                    }),
+                  ),
+                );
+        }),
+      ),
       floatingActionButton: FloatingActionButton(
         heroTag: 'fab4',
         backgroundColor: const Color.fromARGB(255, 98, 0, 255),

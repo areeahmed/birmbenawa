@@ -1,38 +1,41 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'todo_data_model.dart';
+part of 'debt_card_data_model.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class TODOAdapter extends TypeAdapter<TODO> {
+class DebtCardDataModelAdapter extends TypeAdapter<DebtCardDataModel> {
   @override
   final int typeId = 0;
 
   @override
-  TODO read(BinaryReader reader) {
+  DebtCardDataModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return TODO(
-      title: fields[0] as String?,
-      description: fields[1] as String?,
-      isChecked: fields[2] as bool?,
+    return DebtCardDataModel(
+      nameGiveDebt: fields[1] as String,
+      nameTookDebt: fields[2] as String,
+      debt: fields[3] as double,
+      typeOfDebt: fields[4] as String,
     );
   }
 
   @override
-  void write(BinaryWriter writer, TODO obj) {
+  void write(BinaryWriter writer, DebtCardDataModel obj) {
     writer
-      ..writeByte(3)
-      ..writeByte(0)
-      ..write(obj.title)
+      ..writeByte(4)
       ..writeByte(1)
-      ..write(obj.description)
+      ..write(obj.nameGiveDebt)
       ..writeByte(2)
-      ..write(obj.isChecked);
+      ..write(obj.nameTookDebt)
+      ..writeByte(3)
+      ..write(obj.debt)
+      ..writeByte(4)
+      ..write(obj.typeOfDebt);
   }
 
   @override
@@ -41,7 +44,7 @@ class TODOAdapter extends TypeAdapter<TODO> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is TODOAdapter &&
+      other is DebtCardDataModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

@@ -1,10 +1,10 @@
-import 'package:adaptive_action_sheet/adaptive_action_sheet.dart';
 import 'package:birmbenawa/src/models/Screen/todo_data_model.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/provider/shop_list_remider_model.dart';
 import 'package:birmbenawa/src/screens/Adding_Screen/add_to_do_list_reminder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:msh_checkbox/msh_checkbox.dart';
 
@@ -39,7 +39,24 @@ class _ShopingReminderPageState extends State<ShopingReminderPage> {
                       SizedBox(
                         height: 12,
                       ),
-                      Text('Screen is Empty')
+                      Container(
+                        margin: EdgeInsets.only(bottom: 25),
+                        child: Text(
+                          'ئەم بەشە بەتاڵە لە ئێستا دا',
+                          style: TextStyle(
+                              fontFamily: 'PeshangBold', fontSize: 16),
+                        ),
+                      ),
+                      Transform.rotate(
+                        angle: 6.6,
+                        child: Image.asset(
+                          'assets/images/arrow.png',
+                          height: 200,
+                          fit: BoxFit.cover,
+                          scale: 6,
+                          opacity: AlwaysStoppedAnimation(200),
+                        ),
+                      ),
                     ],
                   ))
                 : Center(

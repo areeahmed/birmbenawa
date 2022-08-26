@@ -1,6 +1,9 @@
+import 'package:birmbenawa/src/models/Screen/debt_card_data_model.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/models/image_screens.dart';
+import 'package:birmbenawa/src/widgets/date_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class EditDebtScreen extends StatefulWidget {
@@ -14,7 +17,6 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
   Icon _icon = Icon(Icons.add);
 
   //* title - description - time - and save it
-  //TODO find the way to increment the key of hive db
   // TODO you can add the packages that you found in Pub.dev
   @override
   Widget build(BuildContext context) {
@@ -23,6 +25,7 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
     TextEditingController nameOfGiveDebtController = TextEditingController();
     TextEditingController nameOfTookDebtController = TextEditingController();
     TextEditingController moneyController = TextEditingController();
+    String typeOfDebt = 'جۆری قەرز';
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 98, 0, 255),
@@ -107,15 +110,31 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
                 Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: DropdownButtonFormField(
-                      value: 'قەرزم کرد',
+                      value: 'جۆری قەرز',
                       items: [
                         DropdownMenuItem(
-                            value: 'قەرزم کرد', child: Text('قەرزم کرد')),
+                            value: 'جۆری قەرز',
+                            child: Text('جۆری قەرز'),
+                            onTap: (() {
+                              typeOfDebt = 'جۆری قەرز';
+                            })),
                         DropdownMenuItem(
-                            value: 'قەرزی کرد', child: Text('قەرزی کرد')),
+                            value: 'قەرزم کرد',
+                            child: Text('قەرزم کرد'),
+                            onTap: (() {
+                              typeOfDebt = 'قەرزم کرد';
+                            })),
+                        DropdownMenuItem(
+                          value: 'قەرزی کرد',
+                          child: Text('قەرزی کرد'),
+                          onTap: () {
+                            typeOfDebt = 'قەرزی کرد';
+                          },
+                        ),
                       ],
                       onChanged: (value) {}),
                 ),
+                DatePickerScreen(),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
@@ -123,15 +142,13 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
                         primary: Color.fromARGB(255, 98, 0, 255),
                       ),
                       onPressed: () {
-                        // ReminderCardData reminderCardData = ReminderCardData(
-                        //   titleController.text,
-                        //   controllerData2.text,
-                        //   context.read<TimeProvider>().hour,
-                        //   context.read<TimeProvider>().minute,
-                        //   context.read<TimeProvider>().pmOrAm,
-                        // );
-                        final box = Hive.box('reminderCardDatas');
-                        // box.put('1', reminderCardData.toMap());
+                        DebtCardDataModel debtCardDataModel = DebtCardDataModel(
+                            nameGiveDebt: nameOfGiveDebtController.text,
+                            nameTookDebt: nameOfTookDebtController.text,
+                            debt: double.parse(moneyController.text),
+                            typeOfDebt: typeOfDebt);
+                        final box = Hive.box('debt');
+                        box.add(debtCardDataModel.toMap());
                         Navigator.of(context).pop();
                       },
                       child: Text(
