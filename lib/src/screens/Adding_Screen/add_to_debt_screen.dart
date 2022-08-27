@@ -17,8 +17,6 @@ class EditDebtScreen extends StatefulWidget {
 }
 
 class _EditDebtScreenState extends State<EditDebtScreen> {
-  Icon _icon = Icon(Icons.add);
-
   //* title - description - time - and save it
   // TODO you can add the packages that you found in Pub.dev
   @override
@@ -173,9 +171,7 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
                             },
                           ),
                         ],
-                        onChanged: (value) {
-                          typeOfDebt = value as String;
-                        }),
+                        onChanged: (value) {}),
                   ),
                   DatePickerScreen(),
                   Padding(
@@ -198,6 +194,8 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
                                   nameTookDebt: nameOfTookDebtController.text,
                                   debt: int.parse(moneyController.text),
                                   typeOfDebt: typeOfDebt);
+                          debugPrint(
+                              'Name: ${nameOfTookDebtController.text}, Type Of Debt Money: $typeOfDebtMoney , Type Of Debt: $typeOfDebt');
                           final box = Hive.box('debt');
                           box.add(debtCardDataModel.toMap());
                           Navigator.of(context).pop();
