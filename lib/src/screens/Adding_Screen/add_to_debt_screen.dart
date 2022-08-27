@@ -31,14 +31,12 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
     false,
   ];
   int _value = 1;
-  String typeOfDebt = 'جۆری قەرز';
+  String typeOfDebtMoney = 'IQD';
   Widget build(BuildContext context) {
     ImageProcess process = ImageProcess();
     ImageScreen imageScreen = ImageScreen();
 
     FocusScopeNode currentFocus = FocusScope.of(context);
-
-    String typeOfDebtMoney = items.first;
 
     return Scaffold(
         appBar: AppBar(
@@ -105,6 +103,15 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
                               setState(() {
                                 isSelectedvalue[index] =
                                     !isSelectedvalue[index];
+                                if (index == 0 &&
+                                    isSelectedvalue[index] == true) {
+                                  isSelectedvalue[index + 1] = false;
+                                  typeOfDebtMoney = items.first;
+                                } else if (index == 1 &&
+                                    isSelectedvalue[index] == true) {
+                                  isSelectedvalue[index - 1] = false;
+                                  typeOfDebtMoney = items.last;
+                                }
                               });
                             }),
                         // child: DropdownButtonFormField(

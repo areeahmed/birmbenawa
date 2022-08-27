@@ -113,7 +113,12 @@ class _DebtScreenViewState extends State<DebtScreenView> {
                                       MainAxisAlignment.spaceAround,
                                   children: [
                                     Text(
-                                        '${debtCardDataModel.typeOfDebtMoney}'),
+                                      '${debtCardDataModel.typeOfDebtMoney}',
+                                      style: TextStyle(
+                                          fontSize: 25,
+                                          color:
+                                              Color.fromARGB(255, 98, 0, 255)),
+                                    ),
                                     Text(
                                       '${debtCardDataModel.debt}',
                                       style: TextStyle(
