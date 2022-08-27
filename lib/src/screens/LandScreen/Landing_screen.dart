@@ -2,6 +2,7 @@ import 'package:birmbenawa/src/myapp.dart';
 import 'package:birmbenawa/src/screens/DrawerScreens/about_app.dart';
 import 'package:birmbenawa/src/screens/DrawerScreens/about_us.dart';
 import 'package:birmbenawa/src/drawer/head_of_drawer.dart';
+import 'package:birmbenawa/src/screens/DrawerScreens/feed_back.dart';
 import 'package:birmbenawa/src/screens/DrawerScreens/other_apps.dart';
 import 'package:birmbenawa/src/screens/DrawerScreens/settigns.dart';
 import 'package:birmbenawa/src/screens/daily_reminder_screen.dart';
@@ -148,7 +149,8 @@ class _MainPageScreenState extends State<MainPageScreen> {
               await Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => MyApp()));
             } else if (id == 6) {
-              //Navigator to FeedBack Screen
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: ((context) => FeedBackScreen())));
             }
           });
         },
