@@ -31,6 +31,7 @@ class _DebtScreenViewState extends State<DebtScreenView> {
   final developModePathImage = 'assets/images/Developing.png';
   @override
   Widget build(BuildContext context) {
+    final user = Hive.box('user').get('name');
     return Scaffold(
       body: ValueListenableBuilder<Box>(
         valueListenable: Hive.box('debt').listenable(),
@@ -85,28 +86,60 @@ class _DebtScreenViewState extends State<DebtScreenView> {
                             children: [
                               SlidableAction(
                                 onPressed: (context) {
-                                  Hive.box('debt').clear();
+                                  Hive.box('debt').delete(key);
                                 },
                                 icon: Icons.delete,
+                                backgroundColor: Colors.red,
                               )
                             ],
                           ),
                           child: Container(
+                            color: Colors.grey.shade200,
+                            margin: EdgeInsets.only(bottom: 5),
                             child: Column(
                               children: [
                                 Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
                                   children: [
-                                    Text('${debtCardDataModel.nameTookDebt}'),
-                                    Icon(Icons.arrow_back),
-                                    Text(debtCardDataModel.nameGiveDebt),
+                                    Text(
+                                      user,
+                                      style: TextStyle(
+                                          fontFamily: 'PeshangBold',
+                                          fontSize: 20),
+                                    ),
+                                    Icon(debtCardDataModel.typeOfDebt ==
+                                            'قەرزم کرد'
+                                        ? Icons.arrow_back
+                                        : Icons.arrow_forward),
+                                    Text(
+                                      '${debtCardDataModel.nameTookDebt}',
+                                      style: TextStyle(
+                                          fontFamily: 'PeshangBold',
+                                          fontSize: 20),
+                                    ),
                                   ],
                                 ),
                                 Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceAround,
                                   children: [
-                                    Text('${debtCardDataModel.debt}'),
-                                    Text('$year / $month / $day')
+                                    Text(
+                                      '${debtCardDataModel.debt}',
+                                      style: TextStyle(
+                                          fontFamily: 'PeshangBold',
+                                          fontSize: 20,
+                                          color: debtCardDataModel.typeOfDebt ==
+                                                  'قەرزم کرد'
+                                              ? Colors.red
+                                              : Colors.green),
+                                    ),
+                                    Text(
+                                      '$year / $month / $day',
+                                      style: TextStyle(
+                                          fontFamily: 'PeshangBold',
+                                          fontSize: 20),
+                                    )
                                   ],
                                 )
                               ],

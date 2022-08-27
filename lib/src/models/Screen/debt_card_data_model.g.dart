@@ -17,24 +17,21 @@ class DebtCardDataModelAdapter extends TypeAdapter<DebtCardDataModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return DebtCardDataModel(
-      nameGiveDebt: fields[1] as String,
-      nameTookDebt: fields[2] as String,
-      debt: fields[3] as double,
-      typeOfDebt: fields[4] as String,
+      nameTookDebt: fields[1] as String,
+      debt: fields[2] as double,
+      typeOfDebt: fields[3] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, DebtCardDataModel obj) {
     writer
-      ..writeByte(4)
-      ..writeByte(1)
-      ..write(obj.nameGiveDebt)
-      ..writeByte(2)
-      ..write(obj.nameTookDebt)
       ..writeByte(3)
+      ..writeByte(1)
+      ..write(obj.nameTookDebt)
+      ..writeByte(2)
       ..write(obj.debt)
-      ..writeByte(4)
+      ..writeByte(3)
       ..write(obj.typeOfDebt);
   }
 

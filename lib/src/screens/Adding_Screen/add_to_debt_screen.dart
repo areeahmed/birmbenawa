@@ -71,28 +71,6 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
                   padding: const EdgeInsets.only(
                     left: 18,
                     right: 18,
-                    bottom: 12,
-                  ),
-                  child: Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: TextFormField(
-                      keyboardType: TextInputType.name,
-                      textDirection: TextDirection.rtl,
-                      style: TextStyle(
-                        fontFamily: 'PeshangBold',
-                        fontSize: 20,
-                      ),
-                      controller: nameOfGiveDebtController,
-                      decoration: InputDecoration(
-                        hintText: 'ناوی کەسی پارە وەرگر',
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 18,
-                    right: 18,
                   ),
                   child: Directionality(
                     textDirection: TextDirection.rtl,
@@ -143,7 +121,6 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
                       ),
                       onPressed: () {
                         DebtCardDataModel debtCardDataModel = DebtCardDataModel(
-                            nameGiveDebt: nameOfGiveDebtController.text,
                             nameTookDebt: nameOfTookDebtController.text,
                             debt: double.parse(moneyController.text),
                             typeOfDebt: typeOfDebt);

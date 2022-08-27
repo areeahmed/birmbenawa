@@ -1,4 +1,5 @@
 import 'package:birmbenawa/firebase_options.dart';
+import 'package:birmbenawa/src/models/Screen/todo_data_model.dart';
 import 'package:birmbenawa/src/models/card_data_provider.dart';
 import 'package:birmbenawa/src/models/date_picker_provider.dart';
 import 'package:birmbenawa/src/models/days_checked_provider.dart';
@@ -15,6 +16,7 @@ void main() async {
   final appDocumentDirectory =
       await path_provider.getApplicationDocumentsDirectory();
   Hive.init(appDocumentDirectory.path);
+  Hive.registerAdapter(TODOAdapter());
   await Firebase.initializeApp(
     //? Solving Black Screen on Emulator
     options: DefaultFirebaseOptions.currentPlatform,

@@ -41,6 +41,8 @@ dependencies:
   msh_checkbox: ^1.1.1
   custom_bottom_sheet: ^1.1.2
   flutter_slidable: ^2.0.0
+  internet_connection_checker: ^0.0.1+4
+  overlay_support: ^2.0.1
 
 dev_dependencies:
   flutter_test:

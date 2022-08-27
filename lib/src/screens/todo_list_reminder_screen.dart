@@ -82,7 +82,12 @@ class _ShopingReminderPageState extends State<ShopingReminderPage> {
                           ),
                           child: Container(
                             child: ListTile(
-                              leading: Icon(Icons.subject),
+                              leading: Icon(
+                                Icons.label,
+                                color: _data[key] ?? false
+                                    ? Colors.black
+                                    : Color.fromARGB(255, 98, 0, 255),
+                              ),
                               title: Text(
                                 todo.title!,
                                 style: _data[key] ?? false
@@ -101,16 +106,18 @@ class _ShopingReminderPageState extends State<ShopingReminderPage> {
                               ),
                               trailing: MSHCheckbox(
                                 size: 30,
-                                value: _data[key] ?? true,
+                                value: _data[key] ?? false,
                                 checkedColor: Color.fromARGB(255, 98, 0, 255),
-                                style: MSHCheckboxStyle.stroke,
+                                style: MSHCheckboxStyle.fillFade,
                                 onChanged: (selected) {
                                   setState(() {
                                     if (_data[key] == null) {
                                       _data[key] = true;
                                     }
                                     _data[key] = !_data[key];
-                                    // todo.isChecked = selected;
+                                    bool checked = _data[key];
+
+                                    box.put(key, _data);
                                   });
                                 },
                               ),
@@ -126,6 +133,7 @@ class _ShopingReminderPageState extends State<ShopingReminderPage> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color.fromARGB(255, 98, 0, 255),
         onPressed: () {
+          // Hive.box('todo').clear();
           Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => EditShopingListReminder()));
         },
