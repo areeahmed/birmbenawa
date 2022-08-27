@@ -19,7 +19,7 @@ class DebtCardDataModelAdapter extends TypeAdapter<DebtCardDataModel> {
     return DebtCardDataModel(
       nameTookDebt: fields[1] as String,
       debt: fields[2] as int,
-      typeOfDebt: fields[3] as String,
+      typeOfDebt: fields[3] as int,
       year: fields[4] as int,
       month: fields[5] as int,
       day: fields[6] as int,

@@ -22,22 +22,24 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
   @override
   TextEditingController nameOfTookDebtController = TextEditingController();
   TextEditingController moneyController = TextEditingController();
+  final List<String> items = [
+    'IQD',
+    '\$',
+  ];
+  List<bool> isSelectedvalue = [
+    false,
+    false,
+  ];
+  int _value = 1;
+  String typeOfDebt = 'جۆری قەرز';
   Widget build(BuildContext context) {
     ImageProcess process = ImageProcess();
     ImageScreen imageScreen = ImageScreen();
 
-    String typeOfDebt = 'جۆری قەرز';
     FocusScopeNode currentFocus = FocusScope.of(context);
-    final List<String> items = [
-      'IQD',
-      '\$',
-    ];
-    List<bool> isSelectedvalue = [
-      false,
-      false,
-    ];
+
     String typeOfDebtMoney = items.first;
-    int _value = 1;
+
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 98, 0, 255),
@@ -153,11 +155,11 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
                         value: _value,
                         items: [
                           DropdownMenuItem(
-                            child: Text("First Item"),
+                            child: Text("قەرزم کرد"),
                             value: 1,
                           ),
                           DropdownMenuItem(
-                            child: Text("Second Item"),
+                            child: Text("قەرزی کرد"),
                             value: 2,
                           )
                         ],
@@ -188,9 +190,9 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
                                   day: context.read<DatePickerProvider>().day,
                                   nameTookDebt: nameOfTookDebtController.text,
                                   debt: int.parse(moneyController.text),
-                                  typeOfDebt: typeOfDebt);
+                                  typeOfDebt: _value);
                           debugPrint(
-                              'Name: ${nameOfTookDebtController.text}, Type Of Debt Money: $typeOfDebtMoney , Type Of Debt: $typeOfDebt');
+                              'Name: ${nameOfTookDebtController.text}, Type Of Debt Money: $typeOfDebtMoney , The Value: $_value');
                           final box = Hive.box('debt');
                           box.add(debtCardDataModel.toMap());
                           Navigator.of(context).pop();

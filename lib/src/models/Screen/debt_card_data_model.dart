@@ -11,7 +11,7 @@ class DebtCardDataModel {
   @HiveField(2)
   int debt;
   @HiveField(3)
-  String typeOfDebt;
+  int typeOfDebt;
   @HiveField(4)
   int year;
   @HiveField(5)
@@ -34,7 +34,7 @@ class DebtCardDataModel {
   DebtCardDataModel copyWith({
     String? nameTookDebt,
     int? debt,
-    String? typeOfDebt,
+    int? typeOfDebt,
     int? year,
     int? month,
     int? day,
@@ -69,7 +69,7 @@ class DebtCardDataModel {
     return DebtCardDataModel(
       nameTookDebt: map['nameTookDebt'] ?? '',
       debt: map['debt']?.toInt() ?? 0,
-      typeOfDebt: map['typeOfDebt'] ?? '',
+      typeOfDebt: map['typeOfDebt']?.toInt() ?? 0,
       year: map['year']?.toInt() ?? 0,
       month: map['month']?.toInt() ?? 0,
       day: map['day']?.toInt() ?? 0,

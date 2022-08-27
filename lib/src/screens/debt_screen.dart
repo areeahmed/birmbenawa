@@ -97,8 +97,7 @@ class _DebtScreenViewState extends State<DebtScreenView> {
                                           fontFamily: 'PeshangBold',
                                           fontSize: 20),
                                     ),
-                                    Icon(debtCardDataModel.typeOfDebt ==
-                                            'قەرزم کرد'
+                                    Icon(debtCardDataModel.typeOfDebt == 1
                                         ? Icons.arrow_back
                                         : Icons.arrow_forward),
                                     Text(
@@ -120,10 +119,10 @@ class _DebtScreenViewState extends State<DebtScreenView> {
                                       style: TextStyle(
                                           fontFamily: 'PeshangBold',
                                           fontSize: 20,
-                                          color: debtCardDataModel.typeOfDebt ==
-                                                  'قەرزم کرد'
-                                              ? Colors.red
-                                              : Colors.green),
+                                          color:
+                                              debtCardDataModel.typeOfDebt == 1
+                                                  ? Colors.red
+                                                  : Colors.green),
                                     ),
                                     Text(
                                       '${debtCardDataModel.year} / ${debtCardDataModel.month} / ${debtCardDataModel.day}',
