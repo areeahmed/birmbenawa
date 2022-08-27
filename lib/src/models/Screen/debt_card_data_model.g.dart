@@ -18,21 +18,33 @@ class DebtCardDataModelAdapter extends TypeAdapter<DebtCardDataModel> {
     };
     return DebtCardDataModel(
       nameTookDebt: fields[1] as String,
-      debt: fields[2] as double,
+      debt: fields[2] as int,
       typeOfDebt: fields[3] as String,
+      year: fields[4] as int,
+      month: fields[5] as int,
+      day: fields[6] as int,
+      typeOfDebtMoney: fields[7] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, DebtCardDataModel obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(7)
       ..writeByte(1)
       ..write(obj.nameTookDebt)
       ..writeByte(2)
       ..write(obj.debt)
       ..writeByte(3)
-      ..write(obj.typeOfDebt);
+      ..write(obj.typeOfDebt)
+      ..writeByte(4)
+      ..write(obj.year)
+      ..writeByte(5)
+      ..write(obj.month)
+      ..writeByte(6)
+      ..write(obj.day)
+      ..writeByte(7)
+      ..write(obj.typeOfDebtMoney);
   }
 
   @override

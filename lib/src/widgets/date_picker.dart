@@ -21,6 +21,7 @@ class _DatePickerScreenState extends State<DatePickerScreen> {
               '${date.year} / ${date.month} / ${date.day}',
               style: TextStyle(
                 fontSize: 32,
+                color: Color.fromARGB(255, 98, 0, 255),
               ),
             ),
             onPressed: () async {

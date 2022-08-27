@@ -21,6 +21,7 @@ class EditReminderCardScreen extends StatefulWidget {
 class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
   bool isDailyReminder = true;
   Color selectedColor2 = Colors.grey.shade200;
+
   Icon _icon = Icon(Icons.add);
 
   //* title - description - time - and save it
@@ -28,6 +29,7 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
   // TODO you can add the packages that you found in Pub.dev
   @override
   Widget build(BuildContext context) {
+    FocusScopeNode currentFocus = FocusScope.of(context);
     ImageProcess process = ImageProcess();
     ImageScreen imageScreen = ImageScreen();
     TextEditingController titleController = TextEditingController();
@@ -36,99 +38,104 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 98, 0, 255),
           title: Text(
-            'گۆڕینی کات',
+            'دانانی ئاگادارکردنەوەی ئەمڕۆ',
             style: TextStyle(fontFamily: 'PeshangBold'),
           ),
           centerTitle: true,
         ),
         body: SingleChildScrollView(
-          child: Container(
-            color: Colors.white,
-            child: Column(
-              children: [
-                Image.asset(
-                  imageScreen.editScreen,
-                  height: 250,
-                  width: 250,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 18,
-                    right: 18,
-                    bottom: 12,
+          child: GestureDetector(
+            onTap: () {
+              currentFocus.unfocus();
+            },
+            child: Container(
+              color: Colors.white,
+              child: Column(
+                children: [
+                  Image.asset(
+                    imageScreen.editScreen,
+                    height: 250,
+                    width: 250,
                   ),
-                  child: Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: TextField(
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 18,
+                      right: 18,
+                      bottom: 12,
+                    ),
+                    child: Directionality(
                       textDirection: TextDirection.rtl,
-                      style: TextStyle(
-                        fontFamily: 'PeshangBold',
-                        fontSize: 20,
-                      ),
-                      controller: titleController,
-                      decoration: InputDecoration(
-                        hintText: 'ناونیشان',
+                      child: TextField(
+                        textDirection: TextDirection.rtl,
+                        style: TextStyle(
+                          fontFamily: 'PeshangBold',
+                          fontSize: 20,
+                        ),
+                        controller: titleController,
+                        decoration: InputDecoration(
+                          hintText: 'ناونیشان',
+                        ),
                       ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 18,
-                    right: 18,
-                  ),
-                  child: Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: TextField(
-                      style: TextStyle(fontFamily: 'PeshangBold'),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 18,
+                      right: 18,
+                    ),
+                    child: Directionality(
                       textDirection: TextDirection.rtl,
-                      controller: controllerData2,
-                      decoration: InputDecoration(
-                        hintText: 'زانیاری زیاتر',
+                      child: TextField(
+                        style: TextStyle(fontFamily: 'PeshangBold'),
+                        textDirection: TextDirection.rtl,
+                        controller: controllerData2,
+                        decoration: InputDecoration(
+                          hintText: 'زانیاری زیاتر',
+                        ),
                       ),
                     ),
                   ),
-                ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 30.0),
-                    ),
-                    SizedBox(
-                      width: 3,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 20,
-                        left: 30,
-                        bottom: 12,
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 30.0),
                       ),
-                      child: TimePicker(),
-                    ),
-                  ],
-                ),
-                //TODO add an Icon picker ( Button to open Icon Dialog )
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: Color.fromARGB(255, 98, 0, 255)),
-                    onPressed: () {
-                      ReminderCardData reminderCardData = ReminderCardData(
-                        titleController.text,
-                        controllerData2.text,
-                        context.read<TimeProvider>().hour,
-                        context.read<TimeProvider>().minute,
-                        context.read<TimeProvider>().pmOrAm,
-                        true,
-                      );
-                      final box = Hive.box('reminderCardDatas');
-                      box.add(reminderCardData.toMap());
-                      Navigator.of(context).pop();
-                    },
-                    child: Text(
-                      'خەزن کردن',
-                      style: TextStyle(fontFamily: 'PeshangBold'),
-                    ))
-              ],
+                      SizedBox(
+                        width: 3,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          top: 20,
+                          left: 30,
+                          bottom: 12,
+                        ),
+                        child: TimePicker(),
+                      ),
+                    ],
+                  ),
+                  //TODO add an Icon picker ( Button to open Icon Dialog )
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          primary: Color.fromARGB(255, 98, 0, 255)),
+                      onPressed: () {
+                        ReminderCardData reminderCardData = ReminderCardData(
+                          titleController.text,
+                          controllerData2.text,
+                          context.read<TimeProvider>().hour,
+                          context.read<TimeProvider>().minute,
+                          context.read<TimeProvider>().pmOrAm,
+                          true,
+                        );
+                        final box = Hive.box('reminderCardDatas');
+                        box.add(reminderCardData.toMap());
+                        Navigator.of(context).pop();
+                      },
+                      child: Text(
+                        'خەزن کردن',
+                        style: TextStyle(fontFamily: 'PeshangBold'),
+                      ))
+                ],
+              ),
             ),
           ),
         ));

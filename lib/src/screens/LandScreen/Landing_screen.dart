@@ -4,7 +4,6 @@ import 'package:birmbenawa/src/screens/DrawerScreens/about_us.dart';
 import 'package:birmbenawa/src/drawer/head_of_drawer.dart';
 import 'package:birmbenawa/src/screens/DrawerScreens/other_apps.dart';
 import 'package:birmbenawa/src/screens/DrawerScreens/settigns.dart';
-import 'package:birmbenawa/src/screens/buying.dart';
 import 'package:birmbenawa/src/screens/daily_reminder_screen.dart';
 import 'package:birmbenawa/src/screens/debt_screen.dart';
 import 'package:birmbenawa/src/screens/reminder_screen.dart';
@@ -34,7 +33,6 @@ class _MainPageScreenState extends State<MainPageScreen> {
     const DailyReminderPage(),
     const ShopingReminderPage(),
     DebtScreenView(),
-    BuyingChatScreenView(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -87,12 +85,6 @@ class _MainPageScreenState extends State<MainPageScreen> {
             ),
             label: 'قەرزەکان',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.shopping_bag,
-            ),
-            label: 'بۆم بکرە',
-          ),
         ],
       ),
       drawer: Drawer(
@@ -126,6 +118,8 @@ class _MainPageScreenState extends State<MainPageScreen> {
               currentPage == DrawerSections.otherApps ? true : false),
           menuItem(5, 'Sign Out', FontAwesomeIcons.arrowRightFromBracket,
               currentPage == DrawerSections.signOut ? true : false),
+          menuItem(6, 'Feed Back', Icons.feedback,
+              currentPage == DrawerSections.feedback ? true : false),
         ],
       ),
     );
@@ -153,6 +147,8 @@ class _MainPageScreenState extends State<MainPageScreen> {
               await FirebaseAuth.instance.signOut();
               await Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => MyApp()));
+            } else if (id == 6) {
+              //Navigator to FeedBack Screen
             }
           });
         },
@@ -192,4 +188,5 @@ enum DrawerSections {
   aboutUs,
   otherApps,
   signOut,
+  feedback,
 }

@@ -48,13 +48,6 @@ class LandScreenSlides extends StatelessWidget {
             decoration: getPageDecoration(),
           ),
           PageViewModel(
-            title: 'داواکاری',
-            body:
-                'ئێستا لە ماڵەوە دەتوانن داوای کەل و پەلەکانتان بکەن لە هاوسەرەکانتان',
-            image: buildImage(buyImageSlide),
-            decoration: getPageDecoration(),
-          ),
-          PageViewModel(
             title: 'بیرهێنانەوەی قەرز',
             body: 'لیستی قەرزەکانت بیردێنێتەوە',
             image: buildImage(debtListSlideImage),

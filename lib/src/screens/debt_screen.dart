@@ -72,14 +72,12 @@ class _DebtScreenViewState extends State<DebtScreenView> {
                   child: ListView.builder(
                     itemCount: box.length,
                     itemBuilder: ((context, index) {
-                      int year = context.watch<DatePickerProvider>().year;
-                      int month = context.watch<DatePickerProvider>().month;
-                      int day = context.watch<DatePickerProvider>().day;
                       final key = keys[index];
                       Map<dynamic, dynamic> _data = box.getAt(index);
                       DebtCardDataModel debtCardDataModel =
                           DebtCardDataModel.fromMap(
                               _data as Map<dynamic, dynamic>);
+
                       return Slidable(
                           endActionPane: ActionPane(
                             motion: StretchMotion(),
@@ -125,6 +123,8 @@ class _DebtScreenViewState extends State<DebtScreenView> {
                                       MainAxisAlignment.spaceAround,
                                   children: [
                                     Text(
+                                        '${debtCardDataModel.typeOfDebtMoney}'),
+                                    Text(
                                       '${debtCardDataModel.debt}',
                                       style: TextStyle(
                                           fontFamily: 'PeshangBold',
@@ -135,7 +135,7 @@ class _DebtScreenViewState extends State<DebtScreenView> {
                                               : Colors.green),
                                     ),
                                     Text(
-                                      '$year / $month / $day',
+                                      '${debtCardDataModel.year} / ${debtCardDataModel.month} / ${debtCardDataModel.day}',
                                       style: TextStyle(
                                           fontFamily: 'PeshangBold',
                                           fontSize: 20),

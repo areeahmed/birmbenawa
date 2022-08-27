@@ -18,8 +18,6 @@ class _ReminderPageState extends State<Reminderpage> {
   NaviagtingBetweenScreens navigateBetweenScreens = NaviagtingBetweenScreens();
   ImageProcess imageProcess = ImageProcess();
   UsedTooMutch usedTooMutch = UsedTooMutch();
-
-  // transferred dialogComponentModelWidgets = transferred(isDailyReminder: false);
   @override
   Widget build(BuildContext context) {
     // final cardDataBox = Hive.box('reminderCardDatas');
@@ -83,9 +81,15 @@ class _ReminderPageState extends State<Reminderpage> {
                             ),
                             child: Container(
                                 decoration: BoxDecoration(
-                                  color: Colors.grey.shade300,
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey,
+                                      offset: Offset(-2, 2),
+                                    ),
+                                  ],
                                 ),
-                                padding: EdgeInsets.all(20),
+                                padding: EdgeInsets.all(10),
                                 margin: EdgeInsets.only(bottom: 10),
                                 width: 450,
                                 child: Column(
@@ -134,14 +138,16 @@ class _ReminderPageState extends State<Reminderpage> {
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(3),
-                                            color: Colors.grey.shade100,
                                           ),
                                           width: 300,
                                           height: 70,
-                                          child: AutoSizeText(
-                                            reminderCardData.descriptionOfCard,
-                                            style: TextStyle(fontSize: 20),
-                                            maxLines: 2,
+                                          child: Center(
+                                            child: AutoSizeText(
+                                              reminderCardData
+                                                  .descriptionOfCard,
+                                              style: TextStyle(fontSize: 20),
+                                              maxLines: 2,
+                                            ),
                                           ),
                                         ),
                                       ],

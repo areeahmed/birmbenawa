@@ -79,8 +79,15 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
                           ),
                           child: Container(
                               decoration: BoxDecoration(
-                                color: Colors.grey.shade300,
-                              ),
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey,
+                                      blurRadius: 1,
+                                      spreadRadius: 1,
+                                      offset: Offset(-2, 2),
+                                    ),
+                                  ]),
                               padding: EdgeInsets.all(20),
                               margin: EdgeInsets.only(bottom: 10),
                               width: 400,
@@ -128,15 +135,16 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(3),
-                                          color: Colors.grey.shade400,
                                         ),
                                         width: 300,
                                         height: 70,
-                                        child: AutoSizeText(
-                                          dailyReminderCardData
-                                              .descriptionOfCard,
-                                          style: TextStyle(fontSize: 20),
-                                          maxLines: 2,
+                                        child: Center(
+                                          child: AutoSizeText(
+                                            dailyReminderCardData
+                                                .descriptionOfCard,
+                                            style: TextStyle(fontSize: 20),
+                                            maxLines: 2,
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -153,7 +161,7 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
                                         style: TextStyle(fontSize: 40),
                                       ),
                                     ],
-                                  )
+                                  ),
                                 ],
                               )),
                         );
