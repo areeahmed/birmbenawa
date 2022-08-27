@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:url_launcher/url_launcher.dart';
 
 class FeedBackScreen extends StatefulWidget {
   FeedBackScreen({Key? key}) : super(key: key);
@@ -17,11 +18,16 @@ class _FeedBackScreenState extends State<FeedBackScreen> {
     TextEditingController emailOfUser = TextEditingController();
     TextEditingController subjectOfUser = TextEditingController();
     TextEditingController messageOfUser = TextEditingController();
+    String logoPath = 'assets/images/slider/logoNoBackground.png';
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 98, 0, 255),
+        iconTheme: IconThemeData(color: Color.fromARGB(255, 98, 0, 255)),
+        backgroundColor: Colors.white,
         centerTitle: true,
-        title: Text('Feed Back'),
+        title: Text(
+          'FeedBack',
+          style: TextStyle(color: Color.fromARGB(255, 98, 0, 255)),
+        ),
       ),
       body: Center(
           child: SingleChildScrollView(
@@ -31,38 +37,11 @@ class _FeedBackScreenState extends State<FeedBackScreen> {
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: Text(
-                'Name',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                'please write your name at the end of message, and write is in English',
+                style: TextStyle(fontSize: 16, color: Colors.red),
               ),
             ),
-            Container(
-              padding: EdgeInsets.only(left: 12, right: 12),
-              child: TextField(
-                controller: nameOfUser,
-                decoration: InputDecoration(
-                  hintText: 'Your name',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-            ), // user name
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Text(
-                'Email',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.only(left: 12, right: 12),
-              child: TextField(
-                controller: emailOfUser,
-                enableSuggestions: true,
-                decoration: InputDecoration(
-                  hintText: 'example@example.com',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-            ), // User Email
+            // User Email
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: Text(
@@ -105,6 +84,10 @@ class _FeedBackScreenState extends State<FeedBackScreen> {
                 width: 200,
                 child: ElevatedButton(
                   onPressed: () {
+                    launchEmail(
+                        toEmail: 'birmbenawa@gmail.com', // Developer Team email
+                        subject: subjectOfUser.text,
+                        message: messageOfUser.text);
                     // TODO send the feed back with email to us
                     //TODO show the dialog and tell the user to be patent for response
                   },
@@ -115,5 +98,21 @@ class _FeedBackScreenState extends State<FeedBackScreen> {
         ),
       )),
     );
+  }
+
+  Future launchEmail({
+    required String toEmail,
+    required String subject,
+    required String message,
+  }) async {
+    final url = Uri(scheme: 'mailto', path: toEmail, queryParameters: {
+      'subject': subject,
+      'body': message,
+    });
+    // final url =
+    //     'mailto:$toEmail?subject=${Uri.encodeFull(subject)}&body=${Uri.encodeFull(message)}';
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    }
   }
 }

@@ -116,7 +116,8 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                   //TODO add an Icon picker ( Button to open Icon Dialog )
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          primary: Color.fromARGB(255, 98, 0, 255)),
+                        primary: Color.fromARGB(255, 98, 0, 255),
+                      ),
                       onPressed: () {
                         ReminderCardData reminderCardData = ReminderCardData(
                           titleController.text,

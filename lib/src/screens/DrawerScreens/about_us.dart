@@ -3,7 +3,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AboutUsPage extends StatelessWidget {
-  final String logoPath = 'assets/images/slider/logo.png';
+  final String logoPath = 'assets/images/slider/logoNoBackground.png';
   const AboutUsPage({Key? key}) : super(key: key);
 
 //* About us screen for now is completed
@@ -15,9 +15,13 @@ class AboutUsPage extends StatelessWidget {
     String ownerPicturePath = 'assets/images/AriAhmedPic.png';
     return Scaffold(
       appBar: AppBar(
-        title: Text('About Us'),
+        iconTheme: IconThemeData(color: Color.fromARGB(255, 98, 0, 255)),
+        title: Text(
+          'About Us',
+          style: TextStyle(color: Color.fromARGB(255, 98, 0, 255)),
+        ),
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 98, 0, 255),
+        backgroundColor: Colors.white,
       ),
       body: Center(
         child: SingleChildScrollView(

@@ -8,7 +8,7 @@ class LandScreenSlides extends StatelessWidget {
   const LandScreenSlides({
     Key? key,
   }) : super(key: key);
-  final String LogoPath = 'assets/images/slider/logo.png';
+  final String LogoPath = 'assets/images/slider/logoNoBackground.png';
   final String ReminderPath = 'assets/images/slider/REMINDER.png';
   final String ShopPath = 'assets/images/slider/SHOP.png';
   final String WeeklyPath = 'assets/images/slider/Weekly.png';

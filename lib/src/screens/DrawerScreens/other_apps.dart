@@ -1,24 +1,46 @@
+import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:flutter/material.dart';
 
 class OtherAppsPage extends StatelessWidget {
-  final String logoPath = 'assets/images/slider/logo.png';
+  final String logoPath = 'assets/images/slider/logoNoBackground.png';
   const OtherAppsPage({Key? key}) : super(key: key);
 
   //* here we will add other apps when we builded another apps.
   //* this is for other apps if the developer created another apps
   @override
   Widget build(BuildContext context) {
+    ImageProcess imageProcess = ImageProcess();
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset(
-          logoPath,
-          width: 50,
+        iconTheme: IconThemeData(color: Color.fromARGB(255, 98, 0, 255)),
+        title: Text(
+          'Other Apps',
+          style: TextStyle(color: Color.fromARGB(255, 98, 0, 255)),
         ),
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 98, 0, 255),
+        backgroundColor: Colors.white,
       ),
-      body: const Center(
-        child: Text('Other Apps'),
+      body: Center(
+        child: Container(
+          color: Colors.white,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(imageProcess.empty),
+              Container(
+                height: 100,
+                width: 280,
+                child: Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: Text(
+                    'لە ئێستا دا هیچ بەرنامەیەک بەردەست نییە بەڵام بەم زووانە بەردەست دەبێت',
+                    style: TextStyle(fontFamily: 'PeshangBold', fontSize: 18),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

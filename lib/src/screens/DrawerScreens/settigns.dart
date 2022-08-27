@@ -21,15 +21,19 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   final box = Hive.box('user');
-  final String logoPath = 'assets/images/slider/logo.png';
+  final String logoPath = 'assets/images/slider/logoNoBackground.png';
   TextEditingController name = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings'),
+        iconTheme: IconThemeData(color: Color.fromARGB(255, 98, 0, 255)),
+        title: Text(
+          'Settings',
+          style: TextStyle(color: Color.fromARGB(255, 98, 0, 255)),
+        ),
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 98, 0, 255),
+        backgroundColor: Colors.white,
       ),
       body: Column(
         children: [
@@ -41,6 +45,9 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
           ),
           ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              primary: Color.fromARGB(255, 98, 0, 255),
+            ),
             onPressed: () async {
               box.put('name', name.text);
               Get.snackbar('ناو گۆڕین', 'ناو گۆڕینەکە سەرکەوتوو بوو');
@@ -86,7 +93,12 @@ class _SettingsPageState extends State<SettingsPage> {
                     )),
               );
             },
-            child: Text('Clear All Today Reminder'),
+            child: Text(
+              'Clear All Today Reminder',
+              style: TextStyle(
+                color: Color.fromARGB(255, 98, 0, 255),
+              ),
+            ),
           ),
           TextButton(
             onPressed: () {
@@ -127,7 +139,12 @@ class _SettingsPageState extends State<SettingsPage> {
                     )),
               );
             },
-            child: Text('Clear All Daily Reminder'),
+            child: Text(
+              'Clear All Daily Reminder',
+              style: TextStyle(
+                color: Color.fromARGB(255, 98, 0, 255),
+              ),
+            ),
           ),
           TextButton(
             onPressed: () {
@@ -168,7 +185,12 @@ class _SettingsPageState extends State<SettingsPage> {
                     )),
               );
             },
-            child: Text('Clear All TODO'),
+            child: Text(
+              'Clear All TODO',
+              style: TextStyle(
+                color: Color.fromARGB(255, 98, 0, 255),
+              ),
+            ),
           ),
           TextButton(
             onPressed: () {
@@ -209,7 +231,12 @@ class _SettingsPageState extends State<SettingsPage> {
                     )),
               );
             },
-            child: Text('Clear All Debt'),
+            child: Text(
+              'Clear All Debt',
+              style: TextStyle(
+                color: Color.fromARGB(255, 98, 0, 255),
+              ),
+            ),
           )
         ],
       ),
