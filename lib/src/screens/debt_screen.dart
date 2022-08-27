@@ -1,16 +1,10 @@
-import 'package:adaptive_action_sheet/adaptive_action_sheet.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:birmbenawa/src/models/Screen/debt_card_data_model.dart';
-import 'package:birmbenawa/src/models/date_picker_provider.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/provider/used_too_mutch.dart';
 import 'package:birmbenawa/src/screens/Adding_Screen/add_to_debt_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-
-import 'package:birmbenawa/src/models/Screen/daily_reminder_card_data.dart';
-import 'package:provider/provider.dart';
 
 class DebtScreenView extends StatefulWidget {
   DebtScreenView({Key? key}) : super(key: key);
@@ -19,7 +13,6 @@ class DebtScreenView extends StatefulWidget {
   State<DebtScreenView> createState() => _DebtScreenViewState();
 }
 
-//! this screen is on developing
 class _DebtScreenViewState extends State<DebtScreenView> {
   ImageProcess imageProcess = ImageProcess();
   UsedTooMutch usedTooMutch = UsedTooMutch();
@@ -36,9 +29,7 @@ class _DebtScreenViewState extends State<DebtScreenView> {
       body: ValueListenableBuilder<Box>(
         valueListenable: Hive.box('debt').listenable(),
         builder: ((context, box, Widget) {
-          List<int> keys = box.keys
-              .cast<int>()
-              .toList(); //! ERROR: type 'String' is not a subtype of type 'int' in type cast
+          List<int> keys = box.keys.cast<int>().toList();
           return box.isEmpty
               ? Center(
                   child: Column(

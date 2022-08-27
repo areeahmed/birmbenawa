@@ -20,11 +20,12 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
   //* title - description - time - and save it
   // TODO you can add the packages that you found in Pub.dev
   @override
+  TextEditingController nameOfTookDebtController = TextEditingController();
+  TextEditingController moneyController = TextEditingController();
   Widget build(BuildContext context) {
     ImageProcess process = ImageProcess();
     ImageScreen imageScreen = ImageScreen();
-    TextEditingController nameOfTookDebtController = TextEditingController();
-    TextEditingController moneyController = TextEditingController();
+
     String typeOfDebt = 'جۆری قەرز';
     FocusScopeNode currentFocus = FocusScope.of(context);
     final List<String> items = [
@@ -36,7 +37,7 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
       false,
     ];
     String typeOfDebtMoney = items.first;
-
+    int _value = 1;
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 98, 0, 255),
@@ -148,30 +149,24 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: DropdownButtonFormField(
-                        value: 'جۆری قەرز',
+                    child: DropdownButton(
+                        value: _value,
                         items: [
                           DropdownMenuItem(
-                              value: 'جۆری قەرز',
-                              child: Text('جۆری قەرز'),
-                              onTap: (() {
-                                typeOfDebt = 'جۆری قەرز';
-                              })),
-                          DropdownMenuItem(
-                              value: 'قەرزم کرد',
-                              child: Text('قەرزم کرد'),
-                              onTap: (() {
-                                typeOfDebt = 'قەرزم کرد';
-                              })),
-                          DropdownMenuItem(
-                            value: 'قەرزی کرد',
-                            child: Text('قەرزی کرد'),
-                            onTap: () {
-                              typeOfDebt = 'قەرزی کرد';
-                            },
+                            child: Text("First Item"),
+                            value: 1,
                           ),
+                          DropdownMenuItem(
+                            child: Text("Second Item"),
+                            value: 2,
+                          )
                         ],
-                        onChanged: (value) {}),
+                        onChanged: (value) {
+                          setState(() {
+                            _value = value as int;
+                          });
+                        },
+                        hint: Text("Select item")),
                   ),
                   DatePickerScreen(),
                   Padding(

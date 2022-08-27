@@ -12,6 +12,8 @@ class EditShopingListReminder extends StatefulWidget {
 
 class _EditShopingListReminderState extends State<EditShopingListReminder> {
   @override
+  TextEditingController title = TextEditingController();
+  TextEditingController description = TextEditingController();
   Widget build(BuildContext context) {
     @override
     void initState() {
@@ -21,8 +23,7 @@ class _EditShopingListReminderState extends State<EditShopingListReminder> {
 
     final box = Hive.box('todo');
     FocusScopeNode currentFocus = FocusScope.of(context);
-    TextEditingController title = TextEditingController();
-    TextEditingController description = TextEditingController();
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 98, 0, 255),

@@ -28,12 +28,13 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
   //TODO find the way to increment the key of hive db
   // TODO you can add the packages that you found in Pub.dev
   @override
+  TextEditingController titleController = TextEditingController();
+  TextEditingController controllerData2 = TextEditingController();
   Widget build(BuildContext context) {
     FocusScopeNode currentFocus = FocusScope.of(context);
     ImageProcess process = ImageProcess();
     ImageScreen imageScreen = ImageScreen();
-    TextEditingController titleController = TextEditingController();
-    TextEditingController controllerData2 = TextEditingController();
+
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 98, 0, 255),

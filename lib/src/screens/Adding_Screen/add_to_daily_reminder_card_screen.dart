@@ -36,12 +36,12 @@ class _EditDailyReminderCardScreenState
   Color selectedColor = Colors.grey.shade100;
   IconData? _icon;
   @override
+  ImageProcess process = ImageProcess();
+  ImageScreen imageScreen = ImageScreen();
+  TextEditingController titleController = TextEditingController();
+  TextEditingController controllerData2 = TextEditingController();
   Widget build(BuildContext context) {
     ReminderCardData reminderCardData;
-    ImageProcess process = ImageProcess();
-    ImageScreen imageScreen = ImageScreen();
-    TextEditingController titleController = TextEditingController();
-    TextEditingController controllerData2 = TextEditingController();
     FocusScopeNode currentFocus = FocusScope.of(context);
     Color selectedColor = Colors.grey.shade100;
     return Scaffold(
