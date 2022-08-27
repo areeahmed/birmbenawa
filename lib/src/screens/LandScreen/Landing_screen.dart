@@ -129,30 +129,28 @@ class _MainPageScreenState extends State<MainPageScreen> {
   Widget menuItem(int id, String title, IconData icon, bool selected) {
     return Material(
       child: InkWell(
-        onTap: () {
+        onTap: () async {
           Navigator.pop(context);
-          setState(() async {
-            if (id == 1) {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => SettingsPage()));
-            } else if (id == 2) {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => AboutAppPage()));
-            } else if (id == 3) {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => AboutUsPage()));
-            } else if (id == 4) {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => OtherAppsPage()));
-            } else if (id == 5) {
-              await FirebaseAuth.instance.signOut();
-              await Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => MyApp()));
-            } else if (id == 6) {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: ((context) => FeedBackScreen())));
-            }
-          });
+          if (id == 1) {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => SettingsPage()));
+          } else if (id == 2) {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => AboutAppPage()));
+          } else if (id == 3) {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => AboutUsPage()));
+          } else if (id == 4) {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => OtherAppsPage()));
+          } else if (id == 5) {
+            await FirebaseAuth.instance.signOut();
+            await Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => MyApp()));
+          } else if (id == 6) {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: ((context) => FeedBackScreen())));
+          }
         },
         child: Padding(
           padding: const EdgeInsets.all(15.0),
