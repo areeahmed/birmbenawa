@@ -74,7 +74,7 @@ class _CustomButtonWidgetState extends State<GeneralCustomButtonWidget> {
                 ? Text(
                     itemText,
                     style: TextStyle(
-                      fontFamily: 'PeshangBold',
+                      fontFamily: 'RaberR',
                       fontSize: 20,
                       color: Color.fromARGB(255, 98, 0, 255),
                     ),

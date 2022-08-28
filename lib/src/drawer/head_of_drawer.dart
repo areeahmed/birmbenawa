@@ -41,7 +41,7 @@ class _MyHeaderDraweState extends State<MyHeaderDrawer> {
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 30,
-                fontFamily: 'PeshangBold',
+                fontFamily: 'RaberB',
               ),
             ),
             Text(
@@ -49,7 +49,7 @@ class _MyHeaderDraweState extends State<MyHeaderDrawer> {
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 20,
-                fontFamily: 'PeshangBold',
+                fontFamily: 'RaberR',
               ),
             ),
           ],

@@ -1,7 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/models/Screen/reminder_card_data.dart';
-import 'package:birmbenawa/src/widgets/used_too_mutch.dart';
 import 'package:birmbenawa/src/screens/Adding_Screen/add_to_remider_card_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -15,7 +14,6 @@ class Reminderpage extends StatefulWidget {
 
 class _ReminderPageState extends State<Reminderpage> {
   ImageProcess imageProcess = ImageProcess();
-  UsedTooMutch usedTooMutch = UsedTooMutch();
   @override
   Widget build(BuildContext context) {
     // final cardDataBox = Hive.box('reminderCardDatas');
@@ -39,8 +37,7 @@ class _ReminderPageState extends State<Reminderpage> {
                         margin: EdgeInsets.only(bottom: 25),
                         child: Text(
                           'ئەم بەشە بەتاڵە لە ئێستا دا',
-                          style: TextStyle(
-                              fontFamily: 'PeshangBold', fontSize: 16),
+                          style: TextStyle(fontFamily: 'RaberB', fontSize: 20),
                         ),
                       ),
                       Transform.rotate(
@@ -178,7 +175,7 @@ class _ReminderPageState extends State<Reminderpage> {
           Navigator.of(context).push(MaterialPageRoute(
               builder: ((context) => EditReminderCardScreen())));
         },
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.notification_add),
       ),
     );
   }

@@ -68,7 +68,7 @@ class _MyDrawerListState extends State<MyDrawerList> {
                 child: Text(
                   title,
                   style: TextStyle(
-                    fontFamily: 'PeshangBold',
+                    fontFamily: 'RaberB',
                     color: Colors.black,
                     fontSize: 16,
                   ),

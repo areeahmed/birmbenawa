@@ -53,7 +53,7 @@ class _TimePickerState extends State<TimePicker> {
           onTap: () => pickTime(context),
           child: Text(
             getText(), //! Return to reminder screen
-            style: const TextStyle(fontSize: 50, fontFamily: 'PeshangBold'),
+            style: const TextStyle(fontSize: 50, fontFamily: 'RaberR'),
           ),
         ),
         SizedBox(

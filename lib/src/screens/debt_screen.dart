@@ -1,6 +1,5 @@
 import 'package:birmbenawa/src/models/Screen/debt_card_data_model.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
-import 'package:birmbenawa/src/widgets/used_too_mutch.dart';
 import 'package:birmbenawa/src/screens/Adding_Screen/add_to_debt_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -15,7 +14,6 @@ class DebtScreenView extends StatefulWidget {
 
 class _DebtScreenViewState extends State<DebtScreenView> {
   ImageProcess imageProcess = ImageProcess();
-  UsedTooMutch usedTooMutch = UsedTooMutch();
   String? titleOfTheCard;
   String? selectedTime;
   IconData? icon;
@@ -31,34 +29,36 @@ class _DebtScreenViewState extends State<DebtScreenView> {
         builder: ((context, box, Widget) {
           List<int> keys = box.keys.cast<int>().toList();
           return box.isEmpty
-              ? Center(
-                  child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(imageProcess.empty),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(bottom: 25),
-                      child: Text(
-                        'ئەم بەشە بەتاڵە لە ئێستا دا',
-                        style:
-                            TextStyle(fontFamily: 'PeshangBold', fontSize: 16),
+              ? Container(
+                  color: Colors.white,
+                  child: Center(
+                      child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(imageProcess.empty),
+                      SizedBox(
+                        height: 12,
                       ),
-                    ),
-                    Transform.rotate(
-                      angle: 6.6,
-                      child: Image.asset(
-                        'assets/images/arrow.png',
-                        height: 200,
-                        fit: BoxFit.cover,
-                        scale: 6,
-                        opacity: AlwaysStoppedAnimation(200),
+                      Container(
+                        margin: EdgeInsets.only(bottom: 25),
+                        child: Text(
+                          'ئەم بەشە بەتاڵە لە ئێستا دا',
+                          style: TextStyle(fontFamily: 'RaberB', fontSize: 20),
+                        ),
                       ),
-                    ),
-                  ],
-                ))
+                      Transform.rotate(
+                        angle: 6.6,
+                        child: Image.asset(
+                          'assets/images/arrow.png',
+                          height: 200,
+                          fit: BoxFit.cover,
+                          scale: 6,
+                          opacity: AlwaysStoppedAnimation(200),
+                        ),
+                      ),
+                    ],
+                  )),
+                )
               : Center(
                   child: ListView.builder(
                     itemCount: box.length,
@@ -150,7 +150,7 @@ class _DebtScreenViewState extends State<DebtScreenView> {
         backgroundColor: const Color.fromARGB(255, 98, 0, 255),
         onPressed: () => Navigator.of(context)
             .push(MaterialPageRoute(builder: ((context) => EditDebtScreen()))),
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.attach_money),
       ),
     );
   }

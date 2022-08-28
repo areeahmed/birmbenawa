@@ -20,6 +20,7 @@ class _DatePickerScreenState extends State<DatePickerScreen> {
             child: Text(
               '${date.year} / ${date.month} / ${date.day}',
               style: TextStyle(
+                fontFamily: 'RaberR',
                 fontSize: 32,
                 color: Color.fromARGB(255, 98, 0, 255),
               ),

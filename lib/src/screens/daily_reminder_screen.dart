@@ -1,10 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:birmbenawa/src/models/Screen/daily_reminder_card_data.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
-import 'package:birmbenawa/src/widgets/used_too_mutch.dart';
 import 'package:birmbenawa/src/screens/Adding_Screen/add_to_daily_reminder_card_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hive_flutter/adapters.dart';
 
 class DailyReminderPage extends StatefulWidget {
@@ -17,7 +17,6 @@ class DailyReminderPage extends StatefulWidget {
 class _DailyReminderPageState extends State<DailyReminderPage> {
   bool isChecked = false;
   ImageProcess imageProcess = ImageProcess();
-  UsedTooMutch userTooMutch = UsedTooMutch();
   @override
   Widget build(BuildContext context) {
     Hive.openBox('dailyReminderCardDatas');
@@ -27,34 +26,37 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
           builder: ((context, box, Widget) {
             List<int> keys = box.keys.cast<int>().toList();
             return box.isEmpty
-                ? Center(
-                    child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(imageProcess.empty),
-                      SizedBox(
-                        height: 12,
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(bottom: 25),
-                        child: Text(
-                          'ئەم بەشە بەتاڵە لە ئێستا دا',
-                          style: TextStyle(
-                              fontFamily: 'PeshangBold', fontSize: 16),
+                ? Container(
+                    color: Colors.white,
+                    child: Center(
+                        child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(imageProcess.empty),
+                        SizedBox(
+                          height: 12,
                         ),
-                      ),
-                      Transform.rotate(
-                        angle: 6.6,
-                        child: Image.asset(
-                          'assets/images/arrow.png',
-                          height: 200,
-                          fit: BoxFit.cover,
-                          scale: 6,
-                          opacity: AlwaysStoppedAnimation(200),
+                        Container(
+                          margin: EdgeInsets.only(bottom: 25),
+                          child: Text(
+                            'ئەم بەشە بەتاڵە لە ئێستا دا',
+                            style:
+                                TextStyle(fontFamily: 'RaberB', fontSize: 20),
+                          ),
                         ),
-                      ),
-                    ],
-                  ))
+                        Transform.rotate(
+                          angle: 6.6,
+                          child: Image.asset(
+                            'assets/images/arrow.png',
+                            height: 200,
+                            fit: BoxFit.cover,
+                            scale: 6,
+                            opacity: AlwaysStoppedAnimation(200),
+                          ),
+                        ),
+                      ],
+                    )),
+                  )
                 : Center(
                     child: ListView.builder(
                       itemCount: box.length,
@@ -181,7 +183,7 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
 
         //* Cards contains ==> ( Title - Description - Time - Icon - color - remining time for reminding)
         floatingActionButton: FloatingActionButton(
-            child: const Icon(Icons.add),
+            child: const Icon(FontAwesomeIcons.calendarDays),
             heroTag: 'fab2',
             backgroundColor: const Color.fromARGB(255, 98, 0, 255),
             onPressed: () {

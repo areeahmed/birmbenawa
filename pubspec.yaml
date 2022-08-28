@@ -65,15 +65,12 @@ flutter_icons:
 flutter:
   uses-material-design: true
   fonts:
-    - family: KurdBold
+    - family: RaberR
       fonts: 
-        - asset: fonts/K24KurdishBold-Bold.ttf
-    - family: KurdLight
+        - asset: fonts/RabarRegular.ttf
+    - family: RaberB
       fonts: 
-        - asset: fonts/K24KurdishLight-Light.ttf
-    - family: PeshangBold
-      fonts: 
-        - asset: fonts/peshangBold.ttf
+        - asset: fonts/RabarBold.ttf
 
   # Enable generation of localized Strings from arb files.
   generate: true

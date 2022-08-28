@@ -40,8 +40,7 @@ class _ShopingReminderPageState extends State<ShopingReminderPage> {
                         margin: EdgeInsets.only(bottom: 25),
                         child: Text(
                           'ئەم بەشە بەتاڵە لە ئێستا دا',
-                          style: TextStyle(
-                              fontFamily: 'PeshangBold', fontSize: 16),
+                          style: TextStyle(fontFamily: 'RaberB', fontSize: 20),
                         ),
                       ),
                       Transform.rotate(
@@ -106,9 +105,10 @@ class _ShopingReminderPageState extends State<ShopingReminderPage> {
                                 todo.description!,
                                 style: _data[key] ?? false
                                     ? TextStyle(
+                                        fontFamily: 'RaberB',
                                         color: Colors.grey.shade300,
                                         decoration: TextDecoration.lineThrough)
-                                    : null,
+                                    : TextStyle(fontFamily: 'RaberB'),
                               ),
                               trailing: MSHCheckbox(
                                 size: 30,
@@ -143,7 +143,7 @@ class _ShopingReminderPageState extends State<ShopingReminderPage> {
           Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => EditShopingListReminder()));
         },
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.list),
       ),
     );
   }

@@ -30,7 +30,8 @@ class _SettingsPageState extends State<SettingsPage> {
         iconTheme: IconThemeData(color: Color.fromARGB(255, 98, 0, 255)),
         title: Text(
           'Settings',
-          style: TextStyle(color: Color.fromARGB(255, 98, 0, 255)),
+          style: TextStyle(
+              color: Color.fromARGB(255, 98, 0, 255), fontFamily: 'RaberB'),
         ),
         centerTitle: true,
         backgroundColor: Colors.white,
@@ -41,7 +42,9 @@ class _SettingsPageState extends State<SettingsPage> {
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
               controller: name,
-              decoration: InputDecoration(hintText: '${box.get('name')}'),
+              decoration: InputDecoration(
+                  hintText: '${box.get('name')}',
+                  hintStyle: TextStyle(fontFamily: 'RaberB')),
             ),
           ),
           ElevatedButton(
@@ -52,7 +55,10 @@ class _SettingsPageState extends State<SettingsPage> {
               box.put('name', name.text);
               Get.snackbar('ناو گۆڕین', 'ناو گۆڕینەکە سەرکەوتوو بوو');
             },
-            child: Text('Edit'),
+            child: Text(
+              'Edit',
+              style: TextStyle(fontFamily: 'RaberB'),
+            ),
           ),
           TextButton(
             onPressed: () {
@@ -70,8 +76,8 @@ class _SettingsPageState extends State<SettingsPage> {
                           child: AutoSizeText(
                             'ئایا تۆ دڵنیای لە خاوێنکردنەوەی ئەو بەشە، چونکە هیچ کام لە بیرهێنانەوەکانی تێدا نامێنێت.',
                             textDirection: TextDirection.rtl,
-                            style: TextStyle(
-                                fontSize: 20, fontFamily: 'PeshangBold'),
+                            style:
+                                TextStyle(fontSize: 20, fontFamily: 'RaberB'),
                           ),
                         ),
                         Row(
@@ -81,12 +87,20 @@ class _SettingsPageState extends State<SettingsPage> {
                                 onPressed: () {
                                   Hive.box('reminderCardDatas').clear();
                                 },
-                                child: Text('بەڵێ')),
+                                child: Text('بەڵێ',
+                                    style: TextStyle(
+                                        color: Color.fromARGB(255, 98, 0, 255),
+                                        fontSize: 20,
+                                        fontFamily: 'RaberB'))),
                             TextButton(
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
-                                child: Text('نەخێر')),
+                                child: Text('نەخێر',
+                                    style: TextStyle(
+                                        color: Color.fromARGB(255, 98, 0, 255),
+                                        fontSize: 20,
+                                        fontFamily: 'RaberB'))),
                           ],
                         )
                       ],
@@ -96,6 +110,8 @@ class _SettingsPageState extends State<SettingsPage> {
             child: Text(
               'Clear All Today Reminder',
               style: TextStyle(
+                fontSize: 18,
+                fontFamily: 'RaberB',
                 color: Color.fromARGB(255, 98, 0, 255),
               ),
             ),
@@ -116,8 +132,8 @@ class _SettingsPageState extends State<SettingsPage> {
                           child: AutoSizeText(
                             'ئایا تۆ دڵنیای لە خاوێنکردنەوەی ئەو بەشە، چونکە هیچ کام لە بیرهێنانەوەکانی تێدا نامێنێت.',
                             textDirection: TextDirection.rtl,
-                            style: TextStyle(
-                                fontSize: 20, fontFamily: 'PeshangBold'),
+                            style:
+                                TextStyle(fontSize: 20, fontFamily: 'RaberB'),
                           ),
                         ),
                         Row(
@@ -127,12 +143,16 @@ class _SettingsPageState extends State<SettingsPage> {
                                 onPressed: () {
                                   Hive.box('dailyReminderCardDatas').clear();
                                 },
-                                child: Text('بەڵێ')),
+                                child: Text(
+                                  'بەڵێ',
+                                  style: TextStyle(fontFamily: 'RaberB'),
+                                )),
                             TextButton(
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
-                                child: Text('نەخێر')),
+                                child: Text('نەخێر',
+                                    style: TextStyle(fontFamily: 'RaberB'))),
                           ],
                         )
                       ],

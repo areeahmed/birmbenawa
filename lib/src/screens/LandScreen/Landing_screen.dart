@@ -54,7 +54,7 @@ class _MainPageScreenState extends State<MainPageScreen> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         selectedLabelStyle: const TextStyle(
-          fontFamily: 'PeshangBold',
+          fontFamily: 'RaberB',
         ),
         selectedItemColor: const Color.fromARGB(255, 98, 0, 255),
         unselectedItemColor: Colors.black,
@@ -166,7 +166,7 @@ class _MainPageScreenState extends State<MainPageScreen> {
                 child: Text(
                   title,
                   style: const TextStyle(
-                    fontFamily: 'PeshangBold',
+                    fontFamily: 'RaberB',
                     color: Colors.black,
                     fontSize: 16,
                   ),
