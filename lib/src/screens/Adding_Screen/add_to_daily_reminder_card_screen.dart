@@ -84,6 +84,12 @@ class _EditDailyReminderCardScreenState
                         controller: titleController,
                         decoration: InputDecoration(
                           hintText: 'ناونیشان',
+                          suffix: IconButton(
+                            icon: Icon(Icons.clear),
+                            onPressed: () {
+                              titleController.clear();
+                            },
+                          ),
                         ),
                       ),
                     ),
@@ -101,6 +107,12 @@ class _EditDailyReminderCardScreenState
                         controller: controllerData2,
                         decoration: InputDecoration(
                           hintText: 'زانیاری زیاتر',
+                          suffix: IconButton(
+                            icon: Icon(Icons.clear),
+                            onPressed: () {
+                              controllerData2.clear();
+                            },
+                          ),
                         ),
                       ),
                     ),
@@ -108,13 +120,6 @@ class _EditDailyReminderCardScreenState
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // Padding(
-                      //   padding: const EdgeInsets.only(left: 30.0),
-                      //   child: pickIconForMe(context),
-                      // ),
-                      // SizedBox(
-                      //   width: 3,
-                      // ),
                       Padding(
                         padding: const EdgeInsets.only(
                           top: 20,
@@ -237,28 +242,4 @@ class _EditDailyReminderCardScreenState
           ),
         ));
   }
-
-  // Widget pickIconForMe(BuildContext context) {
-  //   return CustomButtonWidget(
-  //     content: Icon(_icon),
-  //     customHeight: 50,
-  //     customWidth: 50,
-  //     ontap: () {
-  //       setState(() {
-  //         _pickIcon(context);
-  //       });
-  //     },
-  //   );
-  // }
-
-  // _pickIcon(context) async {
-  //   setState(() async {
-  //     IconData? icon = await FlutterIconPicker.showIconPicker(
-  //       iconSize: 30,
-  //       context,
-  //       iconPackModes: [IconPack.cupertino],
-  //     );
-  //     _icon = icon;
-  //   });
-  // }
 }

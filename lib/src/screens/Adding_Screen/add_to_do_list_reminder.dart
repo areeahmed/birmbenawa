@@ -59,7 +59,15 @@ class _EditShopingListReminderState extends State<EditShopingListReminder> {
                       child: TextFormField(
                         controller: title,
                         decoration: InputDecoration(
-                            hintText: 'ناونیشان', hintStyle: TextStyle()),
+                          hintText: 'ناونیشان',
+                          hintStyle: TextStyle(),
+                          suffix: IconButton(
+                            icon: Icon(Icons.clear),
+                            onPressed: () {
+                              title.clear();
+                            },
+                          ),
+                        ),
                         style: TextStyle(
                           fontFamily: 'PeshangBold',
                           fontSize: 20,
@@ -75,8 +83,15 @@ class _EditShopingListReminderState extends State<EditShopingListReminder> {
                       child: TextFormField(
                         controller: description,
                         decoration: InputDecoration(
-                            hintText: 'زانیاری زیاتر...',
-                            hintStyle: TextStyle()),
+                          hintText: 'زانیاری زیاتر...',
+                          hintStyle: TextStyle(),
+                          suffix: IconButton(
+                            icon: Icon(Icons.clear),
+                            onPressed: () {
+                              description.clear();
+                            },
+                          ),
+                        ),
                         style: TextStyle(
                           fontFamily: 'PeshangBold',
                           fontSize: 20,

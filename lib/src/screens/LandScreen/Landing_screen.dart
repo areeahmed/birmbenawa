@@ -186,33 +186,55 @@ class _MainPageScreenState extends State<MainPageScreen> {
           return Center(
             child: Container(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    width: 200,
-                    margin: EdgeInsets.only(top: 20, bottom: 20),
-                    child: Text(
-                        'ئایا دڵنیای لە دەرچوونی تەواوەتیت لە بەرنامەکە؟',
-                        style: TextStyle(fontFamily: 'PeshangBold')),
+                  Icon(
+                    Icons.warning,
+                    size: 100,
+                    color: Colors.orangeAccent,
+                  ),
+                  Center(
+                    child: Container(
+                      width: 300,
+                      margin: EdgeInsets.only(top: 20, bottom: 20, left: 70),
+                      child: Text(
+                          'ئایا دڵنیای لە دەرچوونی تەواوەتیت لە بەرنامەکە؟',
+                          style: TextStyle(
+                              fontFamily: 'PeshangBold', fontSize: 20)),
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      ElevatedButton(
-                          onPressed: () async {
-                            await FirebaseAuth.instance.signOut();
-                            await Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => MyApp()));
-                          },
-                          child: Text(
-                            'بەڵێ',
-                            style: TextStyle(fontFamily: 'PeshangBold'),
-                          )),
-                      ElevatedButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: Text('نەخێر',
-                              style: TextStyle(fontFamily: 'PeshangBold')))
+                      Container(
+                        height: 60,
+                        width: 120,
+                        child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                primary: Color.fromARGB(255, 98, 0, 255)),
+                            onPressed: () async {
+                              await FirebaseAuth.instance.signOut();
+                              await Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                      builder: (context) => MyApp()));
+                            },
+                            child: Text(
+                              'بەڵێ',
+                              style: TextStyle(fontFamily: 'PeshangBold'),
+                            )),
+                      ),
+                      Container(
+                        height: 60,
+                        width: 120,
+                        child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                primary: Color.fromARGB(255, 98, 0, 255)),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: Text('نەخێر',
+                                style: TextStyle(fontFamily: 'PeshangBold'))),
+                      )
                     ],
                   )
                 ],

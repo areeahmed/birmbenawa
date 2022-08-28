@@ -75,6 +75,12 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                         controller: titleController,
                         decoration: InputDecoration(
                           hintText: 'ناونیشان',
+                          suffix: IconButton(
+                            icon: Icon(Icons.clear),
+                            onPressed: () {
+                              titleController.clear();
+                            },
+                          ),
                         ),
                       ),
                     ),
@@ -91,6 +97,12 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                         textDirection: TextDirection.rtl,
                         controller: controllerData2,
                         decoration: InputDecoration(
+                          suffix: IconButton(
+                            icon: Icon(Icons.clear),
+                            onPressed: () {
+                              controllerData2.clear();
+                            },
+                          ),
                           hintText: 'زانیاری زیاتر',
                         ),
                       ),

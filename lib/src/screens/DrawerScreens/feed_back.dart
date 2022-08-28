@@ -83,6 +83,8 @@ class _FeedBackScreenState extends State<FeedBackScreen> {
                 height: 60,
                 width: 200,
                 child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      primary: Color.fromARGB(255, 98, 0, 255)),
                   onPressed: () {
                     launchEmail(
                         toEmail: 'birmbenawa@gmail.com', // Developer Team email
@@ -92,7 +94,6 @@ class _FeedBackScreenState extends State<FeedBackScreen> {
                     //TODO show the dialog and tell the user to be patent for response
                   },
                   child: Icon(Icons.send),
-                  style: ButtonStyle(),
                 ))
           ],
         ),

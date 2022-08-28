@@ -79,6 +79,12 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
                         controller: nameOfTookDebtController,
                         decoration: InputDecoration(
                           hintText: 'ناوی کەسی پارە بەخشەر',
+                          suffix: IconButton(
+                            icon: Icon(Icons.clear),
+                            onPressed: () {
+                              nameOfTookDebtController.clear();
+                            },
+                          ),
                         ),
                       ),
                     ),
@@ -114,25 +120,6 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
                                 }
                               });
                             }),
-                        // child: DropdownButtonFormField(
-                        //     value: items.first,
-                        //     items: [
-                        //       DropdownMenuItem(
-                        //           value: 'IQD',
-                        //           child: Text('IQD'),
-                        //           onTap: (() {
-                        //             typeOfDebtMoney = 'IQD';
-                        //           })),
-                        //       DropdownMenuItem(
-                        //           value: '\$',
-                        //           child: Text('\$'),
-                        //           onTap: (() {
-                        //             typeOfDebtMoney = '\$';
-                        //           })),
-                        //     ],
-                        //     onChanged: (value) {
-                        //       typeOfDebtMoney = value as String;
-                        //     }),
                       ),
                       Container(
                         height: 50,
@@ -150,6 +137,12 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
                             controller: moneyController,
                             decoration: InputDecoration(
                               hintText: 'بڕی قەرزەکە',
+                              suffix: IconButton(
+                                icon: Icon(Icons.clear),
+                                onPressed: () {
+                                  moneyController.clear();
+                                },
+                              ),
                             ),
                           ),
                         ),
