@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:msh_checkbox/msh_checkbox.dart';
 import 'package:roundcheckbox/roundcheckbox.dart';
 
 class ShopingReminderPage extends StatefulWidget {
