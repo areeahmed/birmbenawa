@@ -1,6 +1,5 @@
 import 'package:birmbenawa/src/models/Screen/todo_data_model.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
-import 'package:birmbenawa/src/provider/shop_list_remider_model.dart';
 import 'package:birmbenawa/src/screens/Adding_Screen/add_to_do_list_reminder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -16,8 +15,6 @@ class ShopingReminderPage extends StatefulWidget {
 }
 
 class _ShopingReminderPageState extends State<ShopingReminderPage> {
-  ShopingListRemiderModelClass shopingListReminderModelClass =
-      ShopingListRemiderModelClass();
   Map<String, bool> checkBoxListValue = {};
   bool isChecked = false;
   @override
@@ -81,6 +78,15 @@ class _ShopingReminderPageState extends State<ShopingReminderPage> {
                             ],
                           ),
                           child: Container(
+                            margin: EdgeInsets.only(top: 2),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                      blurRadius: 1,
+                                      spreadRadius: 1,
+                                      offset: Offset(-1, 1))
+                                ]),
                             child: ListTile(
                               leading: Icon(
                                 Icons.label,

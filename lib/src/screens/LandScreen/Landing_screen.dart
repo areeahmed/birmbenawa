@@ -144,9 +144,7 @@ class _MainPageScreenState extends State<MainPageScreen> {
             Navigator.of(context)
                 .push(MaterialPageRoute(builder: (context) => OtherAppsPage()));
           } else if (id == 5) {
-            await FirebaseAuth.instance.signOut();
-            await Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => MyApp()));
+            showBottomSheet(context);
           } else if (id == 6) {
             Navigator.of(context).push(
                 MaterialPageRoute(builder: ((context) => FeedBackScreen())));
@@ -179,6 +177,49 @@ class _MainPageScreenState extends State<MainPageScreen> {
         ),
       ),
     );
+  }
+
+  showBottomSheet(context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return Center(
+            child: Container(
+              child: Column(
+                children: [
+                  Container(
+                    width: 200,
+                    margin: EdgeInsets.only(top: 20, bottom: 20),
+                    child: Text(
+                        'ئایا دڵنیای لە دەرچوونی تەواوەتیت لە بەرنامەکە؟',
+                        style: TextStyle(fontFamily: 'PeshangBold')),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      ElevatedButton(
+                          onPressed: () async {
+                            await FirebaseAuth.instance.signOut();
+                            await Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => MyApp()));
+                          },
+                          child: Text(
+                            'بەڵێ',
+                            style: TextStyle(fontFamily: 'PeshangBold'),
+                          )),
+                      ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Text('نەخێر',
+                              style: TextStyle(fontFamily: 'PeshangBold')))
+                    ],
+                  )
+                ],
+              ),
+            ),
+          );
+        });
   }
 }
 

@@ -1,8 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/models/Screen/reminder_card_data.dart';
-import 'package:birmbenawa/src/provider/navigating_between_screens.dart';
-import 'package:birmbenawa/src/provider/used_too_mutch.dart';
+import 'package:birmbenawa/src/widgets/used_too_mutch.dart';
 import 'package:birmbenawa/src/screens/Adding_Screen/add_to_remider_card_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -15,7 +14,6 @@ class Reminderpage extends StatefulWidget {
 }
 
 class _ReminderPageState extends State<Reminderpage> {
-  NaviagtingBetweenScreens navigateBetweenScreens = NaviagtingBetweenScreens();
   ImageProcess imageProcess = ImageProcess();
   UsedTooMutch usedTooMutch = UsedTooMutch();
   @override

@@ -1,4 +1,3 @@
-import 'package:birmbenawa/src/provider/colorPicker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconpicker/flutter_iconpicker.dart';
 
@@ -11,9 +10,9 @@ class ReminderScreenModel extends StatefulWidget {
 
 class _ReminderScreenModelState extends State<ReminderScreenModel> {
   IconData? icon = Icons.person;
-  String? time; //! requeared
-  bool? pm; //! requeared
-  bool? am; //! requeared
+  String? time;
+  bool? pm;
+  bool? am;
   String? title;
   Icon? _icon;
   String? titleOfTheCard;
@@ -80,21 +79,6 @@ class _ReminderScreenModelState extends State<ReminderScreenModel> {
     );
   }
 
-  /* SHOW the picked icon will be showen here
-  Widget PickedIconCard() {
-    return Container(
-      padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
-      child: Column(
-        children: const [
-          Icon(
-            Icons.person,
-            size: 50,
-          ),
-        ],
-      ),
-    );
-  }*/
-
 //* SHOW a title and a discription of the card that the user want to be reminded
   Widget TitleAndDiscriptionOfTheCardWidget() {
     return Container(
@@ -145,58 +129,6 @@ class _ReminderScreenModelState extends State<ReminderScreenModel> {
               ),
             ],
           ),
-        ),
-      ],
-    );
-  }
-
-  Widget pickCustomColorOfTheCardDialogCompWidget() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ColorPicker(
-              color: const Color.fromARGB(255, 146, 242, 255),
-            ),
-            const SizedBox(width: 10),
-            ColorPicker(
-              color: const Color.fromARGB(255, 255, 135, 175),
-            ),
-            const SizedBox(width: 10),
-            ColorPicker(
-              color: const Color.fromARGB(255, 255, 118, 118),
-            ),
-            const SizedBox(width: 10),
-            ColorPicker(
-              color: const Color.fromARGB(255, 119, 61, 255),
-            ),
-          ],
-        ),
-        const SizedBox(height: 10),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ColorPicker(
-              color: const Color.fromARGB(255, 129, 255, 133),
-            ),
-            const SizedBox(width: 10),
-            ColorPicker(
-              color: Colors.yellow,
-            ),
-            const SizedBox(width: 10),
-            ColorPicker(
-              color: const Color.fromARGB(255, 255, 190, 92),
-            ),
-            const SizedBox(width: 10),
-            ColorPicker(
-              color: const Color.fromARGB(255, 255, 58, 229),
-            ),
-          ],
         ),
       ],
     );

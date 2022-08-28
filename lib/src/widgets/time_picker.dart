@@ -1,4 +1,4 @@
-import 'package:birmbenawa/src/models/time_provider.dart';
+import 'package:birmbenawa/src/provider/time_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
