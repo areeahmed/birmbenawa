@@ -46,6 +46,7 @@ dependencies:
   flutter_local_notifications: ^9.8.0+1
   rxdart: ^0.27.5
   http: ^0.13.5
+  roundcheckbox: ^2.0.5
 
 dev_dependencies:
   flutter_test:

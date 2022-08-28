@@ -92,3 +92,5 @@ I was faced an Error Said ( Box not found. Did you forget to call Hive.openBox()
 
 after using Hive when we restart our application or when we run our program the program was give an error
 ( Box not found. Did you forget to call Hive.openBox()? ), so i fixed this after i opened box's above run app, to this issus was because of opening box's after running app.
+
+the package MSHCheckBoxButton has and bug, and it was the value won't be reinitialized.
