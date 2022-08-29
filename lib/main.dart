@@ -12,6 +12,7 @@ import 'package:provider/provider.dart';
 import 'src/myapp.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
+//transfar
 void main() async {
   // initializing the [ WidgetsFlutterBinding ] it is for the [Firebase authentication ]
   WidgetsFlutterBinding.ensureInitialized();
