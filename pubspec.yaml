@@ -10,16 +10,12 @@ environment:
   sdk: ">=2.17.5 <3.0.0"
 
 dependencies:
-  flutter_launcher_icons: "^0.9.2"
   flutter:
-    sdk: flutter
-  flutter_localizations:
     sdk: flutter
   intro_slider: ^3.0.9
   introduction_screen: ^3.0.1
   url_launcher: ^6.1.5
   font_awesome_flutter: ^10.1.0
-  flutter_iconpicker: ^3.1.4+1
   firebase_auth: ^3.6.1
   firebase_core: ^1.20.0
   cloud_firestore: ^3.4.1
@@ -27,13 +23,10 @@ dependencies:
   hive_flutter: ^1.1.0
   path_provider: ^2.0.11
   provider: ^6.0.3
-  hidden_drawer_menu: ^3.0.1
-  android_alarm_manager_plus: ^2.0.6+1
   google_fonts: ^3.0.1
   dropdown_button2: ^1.7.2
   auto_size_text_field: ^2.1.0
   animated_toggle_switch: ^0.5.2
-  flutter_material_color_picker: ^1.1.0+2
   auto_size_text: ^3.0.0
   adaptive_action_sheet: ^2.0.2
   get: ^4.6.5
@@ -41,7 +34,6 @@ dependencies:
   custom_bottom_sheet: ^1.1.2
   flutter_slidable: ^2.0.0
   internet_connection_checker: ^0.0.1+4
-  overlay_support: ^2.0.1
   http: ^0.13.5
   roundcheckbox: ^2.0.5
 

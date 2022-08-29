@@ -13,7 +13,6 @@ class Reminderpage extends StatefulWidget {
 }
 
 class _ReminderPageState extends State<Reminderpage> {
-  @override
   ImageProcess imageProcess = ImageProcess();
   @override
   Widget build(BuildContext context) {
