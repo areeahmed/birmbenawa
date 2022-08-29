@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:msh_checkbox/msh_checkbox.dart';
+import 'package:roundcheckbox/roundcheckbox.dart';
 
 class ShopingReminderPage extends StatefulWidget {
   const ShopingReminderPage({Key? key}) : super(key: key);
@@ -110,23 +110,20 @@ class _ShopingReminderPageState extends State<ShopingReminderPage> {
                                         decoration: TextDecoration.lineThrough)
                                     : TextStyle(fontFamily: 'RaberB'),
                               ),
-                              trailing: MSHCheckbox(
-                                size: 30,
-                                value: _data[key] ?? false,
-                                checkedColor: Color.fromARGB(255, 98, 0, 255),
-                                style: MSHCheckboxStyle.fillFade,
-                                onChanged: (selected) {
-                                  setState(() {
-                                    if (_data[key] == null) {
-                                      _data[key] = true;
-                                    }
-                                    _data[key] = !_data[key];
-                                    bool checked = _data[key];
+                              trailing: RoundCheckBox(
+                                  checkedColor: Color.fromARGB(255, 98, 0, 255),
+                                  size: 35,
+                                  isChecked: _data[key],
+                                  onTap: ((select) {
+                                    setState(() {
+                                      if (_data[key] == null) {
+                                        _data[key] = true;
+                                      }
+                                      _data[key] = !_data[key];
 
-                                    box.put(key, _data);
-                                  });
-                                },
-                              ),
+                                      box.put(key, _data);
+                                    });
+                                  })),
                             ),
                           ),
                         );
