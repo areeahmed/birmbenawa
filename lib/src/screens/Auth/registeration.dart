@@ -34,7 +34,7 @@ class _RegisterationWidgetState extends State<RegisterationWidget> {
                   padding: EdgeInsets.only(top: 0),
                   child: const Text(
                     'Sign Up',
-                    style: TextStyle(fontFamily: 'PeshangBold', fontSize: 22),
+                    style: TextStyle(fontFamily: 'RaberB', fontSize: 22),
                   ),
                 ),
                 TextFieldBoxWidget(),
@@ -152,7 +152,7 @@ class _RegisterationWidgetState extends State<RegisterationWidget> {
       decoration: InputDecoration(
           border: InputBorder.none,
           labelStyle: TextStyle(
-            fontFamily: 'PeshangBold',
+            fontFamily: 'RaberR',
             color: Color.fromARGB(255, 98, 0, 255),
           ),
           prefixIcon: Icon(

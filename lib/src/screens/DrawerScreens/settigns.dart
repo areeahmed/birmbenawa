@@ -182,8 +182,8 @@ class _SettingsPageState extends State<SettingsPage> {
                           child: AutoSizeText(
                             'ئایا تۆ دڵنیای لە خاوێنکردنەوەی ئەو بەشە، چونکە هیچ کام لە بیرهێنانەوەکانی تێدا نامێنێت.',
                             textDirection: TextDirection.rtl,
-                            style: TextStyle(
-                                fontSize: 20, fontFamily: 'PeshangBold'),
+                            style:
+                                TextStyle(fontSize: 20, fontFamily: 'RaberR'),
                           ),
                         ),
                         Row(

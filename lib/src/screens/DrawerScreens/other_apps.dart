@@ -34,7 +34,7 @@ class OtherAppsPage extends StatelessWidget {
                   textDirection: TextDirection.rtl,
                   child: Text(
                     'لە ئێستا دا هیچ بەرنامەیەک بەردەست نییە بەڵام بەم زووانە بەردەست دەبێت',
-                    style: TextStyle(fontFamily: 'PeshangBold', fontSize: 18),
+                    style: TextStyle(fontFamily: 'RaberR', fontSize: 18),
                   ),
                 ),
               ),

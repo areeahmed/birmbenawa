@@ -39,7 +39,7 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
           backgroundColor: Color.fromARGB(255, 98, 0, 255),
           title: Text(
             'دانانی ئاگادارکردنەوەی ئەمڕۆ',
-            style: TextStyle(fontFamily: 'PeshangBold'),
+            style: TextStyle(fontFamily: 'RaberB'),
           ),
           centerTitle: true,
         ),
@@ -68,7 +68,7 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                       child: TextField(
                         textDirection: TextDirection.rtl,
                         style: TextStyle(
-                          fontFamily: 'PeshangBold',
+                          fontFamily: 'RaberB',
                           fontSize: 20,
                         ),
                         controller: titleController,
@@ -173,7 +173,7 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                       },
                       child: Text(
                         'خەزن کردن',
-                        style: TextStyle(fontFamily: 'PeshangBold'),
+                        style: TextStyle(fontFamily: 'RaberB'),
                       ))
                 ],
               ),

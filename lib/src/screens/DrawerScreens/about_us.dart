@@ -35,7 +35,7 @@ class AboutUsPage extends StatelessWidget {
                 //
                 textDirection: TextDirection.rtl,
                 'ئاری احمد ابراهیم',
-                style: TextStyle(fontSize: 20, fontFamily: 'PeshangBold'),
+                style: TextStyle(fontSize: 20, fontFamily: 'RaberB'),
               ),
               //* description
               const SizedBox(height: 35),
@@ -53,7 +53,7 @@ class AboutUsPage extends StatelessWidget {
                   'سڵاو بەکارهێنەری خۆشەویست، هیوادارم ئەم بەرنامەیەی منت بە دڵ بێت، سوودی زۆری هەبێت بۆ بەڕێزتان و یارمەتیدەر بێت لە ڕێکخستنی کاری ڕۆژانەت',
                   style: TextStyle(
                     fontSize: 14,
-                    fontFamily: 'PeshangBold',
+                    fontFamily: 'RaberR',
                     color: Color.fromARGB(255, 109, 108, 108),
                   ),
                 ),
@@ -62,7 +62,7 @@ class AboutUsPage extends StatelessWidget {
               const SizedBox(height: 70),
               const Text(
                 'بۆ پەیوەندی کردن',
-                style: TextStyle(fontFamily: 'PeshangBold', fontSize: 16),
+                style: TextStyle(fontFamily: 'RaberB', fontSize: 16),
               ),
               //* contact icon
               SocialContactDeveloper(instagramIconPath: instagramIconPath),
