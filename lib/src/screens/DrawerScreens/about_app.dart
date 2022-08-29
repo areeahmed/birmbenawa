@@ -37,7 +37,7 @@ class _AboutAppPageState extends State<AboutAppPage> {
             ),
             Text(
               '(Birmbenawa)بیرم بێنەوە',
-              style: TextStyle(fontSize: 24, fontFamily: 'PeshangBold'),
+              style: TextStyle(fontSize: 24, fontFamily: 'RaberB'),
             ),
             Center(
               child: Container(
@@ -46,7 +46,7 @@ class _AboutAppPageState extends State<AboutAppPage> {
                   child: Text(
                     'ئەم بەرنامەیە بۆ ئەوەیە شتە گرینگەکانت بیربێنێتەوە',
                     textDirection: TextDirection.rtl,
-                    style: TextStyle(fontSize: 16, fontFamily: 'PeshangBold'),
+                    style: TextStyle(fontSize: 16, fontFamily: 'RaberR'),
                   )),
             )
           ],

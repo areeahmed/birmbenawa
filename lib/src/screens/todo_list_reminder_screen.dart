@@ -97,6 +97,7 @@ class _ShopingReminderPageState extends State<ShopingReminderPage> {
                                 todo.title!,
                                 style: _data[key] ?? false
                                     ? TextStyle(
+                                        fontFamily: 'RaberR',
                                         color: Colors.grey.shade400,
                                         decoration: TextDecoration.lineThrough)
                                     : null,
@@ -105,10 +106,10 @@ class _ShopingReminderPageState extends State<ShopingReminderPage> {
                                 todo.description!,
                                 style: _data[key] ?? false
                                     ? TextStyle(
-                                        fontFamily: 'RaberB',
+                                        fontFamily: 'RaberR',
                                         color: Colors.grey.shade300,
                                         decoration: TextDecoration.lineThrough)
-                                    : TextStyle(fontFamily: 'RaberB'),
+                                    : TextStyle(fontFamily: 'RaberR'),
                               ),
                               trailing: RoundCheckBox(
                                   checkedColor: Color.fromARGB(255, 98, 0, 255),

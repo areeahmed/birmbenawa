@@ -31,7 +31,7 @@ class _EditShopingListReminderState extends State<EditShopingListReminder> {
         title: Text(
           'دانانی لیست',
           style: TextStyle(
-            fontFamily: 'PeshangBold',
+            fontFamily: 'RaberB',
           ),
         ),
       ),
@@ -69,7 +69,7 @@ class _EditShopingListReminderState extends State<EditShopingListReminder> {
                           ),
                         ),
                         style: TextStyle(
-                          fontFamily: 'PeshangBold',
+                          fontFamily: 'RaberR',
                           fontSize: 20,
                         ),
                         textDirection: TextDirection.rtl,
@@ -93,7 +93,7 @@ class _EditShopingListReminderState extends State<EditShopingListReminder> {
                           ),
                         ),
                         style: TextStyle(
-                          fontFamily: 'PeshangBold',
+                          fontFamily: 'RaberR',
                           fontSize: 20,
                         ),
                         textDirection: TextDirection.rtl,
@@ -115,7 +115,7 @@ class _EditShopingListReminderState extends State<EditShopingListReminder> {
                       },
                       child: Text(
                         'خەزن کردن',
-                        style: TextStyle(fontFamily: 'PeshangBold'),
+                        style: TextStyle(fontFamily: 'RaberB'),
                       ))
                 ],
               ),

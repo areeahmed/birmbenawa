@@ -49,7 +49,7 @@ class _EditDailyReminderCardScreenState
           backgroundColor: Color.fromARGB(255, 98, 0, 255),
           title: Text(
             'دانانی ئاگادارکردنەوەی ڕۆژانە',
-            style: TextStyle(fontFamily: 'PeshangBold'),
+            style: TextStyle(fontFamily: 'RaberR'),
           ),
           centerTitle: true,
         ),
@@ -78,7 +78,7 @@ class _EditDailyReminderCardScreenState
                       child: TextField(
                         textDirection: TextDirection.rtl,
                         style: TextStyle(
-                          fontFamily: 'PeshangBold',
+                          fontFamily: 'RaberR',
                           fontSize: 20,
                         ),
                         controller: titleController,
@@ -102,7 +102,7 @@ class _EditDailyReminderCardScreenState
                     child: Directionality(
                       textDirection: TextDirection.rtl,
                       child: TextField(
-                        style: TextStyle(fontFamily: 'PeshangBold'),
+                        style: TextStyle(fontFamily: 'RaberR'),
                         textDirection: TextDirection.rtl,
                         controller: controllerData2,
                         decoration: InputDecoration(
@@ -234,7 +234,7 @@ class _EditDailyReminderCardScreenState
                       },
                       child: Text(
                         'خەزن کردن',
-                        style: TextStyle(fontFamily: 'PeshangBold'),
+                        style: TextStyle(fontFamily: 'RaberR'),
                       ))
                 ],
               ),

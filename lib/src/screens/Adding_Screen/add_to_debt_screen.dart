@@ -73,7 +73,7 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
                         keyboardType: TextInputType.name,
                         textDirection: TextDirection.rtl,
                         style: TextStyle(
-                          fontFamily: 'PeshangBold',
+                          fontFamily: 'RaberR',
                           fontSize: 20,
                         ),
                         controller: nameOfTookDebtController,
@@ -131,8 +131,8 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
                           textDirection: TextDirection.rtl,
                           child: TextFormField(
                             keyboardType: TextInputType.number,
-                            style: TextStyle(
-                                fontFamily: 'PeshangBold', fontSize: 20),
+                            style:
+                                TextStyle(fontFamily: 'RaberR', fontSize: 20),
                             textDirection: TextDirection.rtl,
                             controller: moneyController,
                             decoration: InputDecoration(
@@ -199,7 +199,7 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
                         },
                         child: Text(
                           'خەزن کردن',
-                          style: TextStyle(fontFamily: 'PeshangBold'),
+                          style: TextStyle(fontFamily: 'RaberR'),
                         )),
                   )
                 ],

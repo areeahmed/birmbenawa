@@ -1,7 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/models/Screen/reminder_card_data.dart';
-import 'package:birmbenawa/src/models/notification_api.dart';
 import 'package:birmbenawa/src/screens/Adding_Screen/add_to_remider_card_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -14,19 +13,6 @@ class Reminderpage extends StatefulWidget {
 }
 
 class _ReminderPageState extends State<Reminderpage> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    NotificationApi.init();
-    listenNotifications();
-  }
-
-  void listenNotifications() =>
-      NotificationApi.onNotifications.stream.listen(onClickedNotification);
-  void onClickedNotification(String? payload) =>
-      debugPrint('the payload is: ' + payload.toString());
-  @override
   ImageProcess imageProcess = ImageProcess();
   @override
   Widget build(BuildContext context) {
@@ -131,27 +117,6 @@ class _ReminderPageState extends State<Reminderpage> {
                                                   _data[key] = true;
                                                 }
                                                 _data[key] = !_data[key];
-                                                if (_data[key] == true) {
-                                                  DateTime time =
-                                                      DateTime.now().toLocal();
-                                                  // this is for adding a scheduled notification
-                                                  DateTime scheduledDate =
-                                                      DateTime(
-                                                    time.year,
-                                                    time.month,
-                                                    time.day,
-                                                    reminderCardData.houre,
-                                                    reminderCardData.minute,
-                                                    0,
-                                                    0,
-                                                    0,
-                                                  );
-                                                  NotificationApi
-                                                      .showNotification(
-                                                          scheduledDate:
-                                                              scheduledDate);
-                                                  //-----------------------
-                                                }
                                               });
                                             })
                                       ],

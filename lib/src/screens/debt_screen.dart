@@ -94,8 +94,7 @@ class _DebtScreenViewState extends State<DebtScreenView> {
                                     Text(
                                       user,
                                       style: TextStyle(
-                                          fontFamily: 'PeshangBold',
-                                          fontSize: 20),
+                                          fontFamily: 'RaberR', fontSize: 20),
                                     ),
                                     Icon(debtCardDataModel.typeOfDebt == 1
                                         ? Icons.arrow_back
@@ -103,8 +102,7 @@ class _DebtScreenViewState extends State<DebtScreenView> {
                                     Text(
                                       '${debtCardDataModel.nameTookDebt}',
                                       style: TextStyle(
-                                          fontFamily: 'PeshangBold',
-                                          fontSize: 20),
+                                          fontFamily: 'RaberR', fontSize: 20),
                                     ),
                                   ],
                                 ),
@@ -122,7 +120,7 @@ class _DebtScreenViewState extends State<DebtScreenView> {
                                     Text(
                                       '${debtCardDataModel.debt}',
                                       style: TextStyle(
-                                          fontFamily: 'PeshangBold',
+                                          fontFamily: 'RaberR',
                                           fontSize: 20,
                                           color:
                                               debtCardDataModel.typeOfDebt == 1
@@ -132,8 +130,7 @@ class _DebtScreenViewState extends State<DebtScreenView> {
                                     Text(
                                       '${debtCardDataModel.year} / ${debtCardDataModel.month} / ${debtCardDataModel.day}',
                                       style: TextStyle(
-                                          fontFamily: 'PeshangBold',
-                                          fontSize: 20),
+                                          fontFamily: 'RaberB', fontSize: 20),
                                     )
                                   ],
                                 )

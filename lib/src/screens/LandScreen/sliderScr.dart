@@ -106,8 +106,8 @@ class LandScreenSlides extends StatelessWidget {
   //* this is a methode for Returning the decoration of title of the slider page
   PageDecoration getPageDecoration() => const PageDecoration(
         titleTextStyle: TextStyle(
-            fontSize: 28, fontWeight: FontWeight.bold, fontFamily: 'KurdBold'),
-        bodyTextStyle: TextStyle(fontSize: 20, fontFamily: 'KurdBold'),
+            fontSize: 28, fontWeight: FontWeight.bold, fontFamily: 'RaberB'),
+        bodyTextStyle: TextStyle(fontSize: 20, fontFamily: 'RaberR'),
         bodyPadding: EdgeInsets.all(16),
         imagePadding: EdgeInsets.all(24),
         pageColor: Colors.white,
