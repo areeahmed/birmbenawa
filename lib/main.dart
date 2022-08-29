@@ -31,32 +31,6 @@ void main() async {
   final todoList = await Hive.openBox('todo');
   final userInfo = await Hive.openBox('user');
 
-  //an instance for local notification plugin
-  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
-
-  //Android init
-  //initialization the plugin. app_icon needs to be a added as a drawable resource to the Android head project
-  const AndroidInitializationSettings initializationSettingsAndroid =
-      AndroidInitializationSettings('logo');
-
-  final IOSInitializationSettings initializationSettingsIOS =
-      IOSInitializationSettings(
-          onDidReceiveLocalNotification: ((id, title, body, payload) {
-    print('on forground: $id');
-    print(title);
-    print(body);
-    print(payload);
-  }));
-
-  final InitializationSettings initializationSettings = InitializationSettings(
-    android: initializationSettingsAndroid,
-    iOS: initializationSettingsIOS,
-  );
-
-  await flutterLocalNotificationsPlugin.initialize(initializationSettings,
-      onSelectNotification: (value) => print('tapped : ' + value.toString()));
-
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (context) => TimeProvider()),

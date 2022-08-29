@@ -1,8 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/models/Screen/reminder_card_data.dart';
+import 'package:birmbenawa/src/models/notification_api.dart';
 import 'package:birmbenawa/src/screens/Adding_Screen/add_to_remider_card_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -172,8 +174,14 @@ class _ReminderPageState extends State<Reminderpage> {
         heroTag: 'fab1',
         backgroundColor: const Color.fromARGB(255, 98, 0, 255),
         onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: ((context) => EditReminderCardScreen())));
+          //TODO it should show the notification
+          NotificationApi.showNotification(
+            title: 'Ari Ahmed',
+            body: 'hello dear developer',
+            payload: 'ari.ahmed',
+          );
+          // Navigator.of(context).push(MaterialPageRoute(
+          //     builder: ((context) => EditReminderCardScreen())));
         },
         child: const Icon(Icons.notification_add),
       ),
