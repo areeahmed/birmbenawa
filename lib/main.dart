@@ -10,7 +10,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:provider/provider.dart';
 import 'src/myapp.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 void main() async {
   // initializing the [ WidgetsFlutterBinding ] it is for the [Firebase authentication ]
