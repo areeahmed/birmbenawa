@@ -1,6 +1,7 @@
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/models/image_screens.dart';
 import 'package:birmbenawa/src/models/Screen/reminder_card_data.dart';
+import 'package:birmbenawa/src/models/notification_api.dart';
 import 'package:birmbenawa/src/provider/time_provider.dart';
 import 'package:birmbenawa/src/widgets/time_picker.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,6 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
   Color selectedColor2 = Colors.grey.shade200;
 
   Icon _icon = Icon(Icons.add);
-
   //* title - description - time - and save it
   //TODO find the way to increment the key of hive db
   // TODO you can add the packages that you found in Pub.dev
@@ -132,17 +132,45 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                         primary: Color.fromARGB(255, 98, 0, 255),
                       ),
                       onPressed: () {
-                        ReminderCardData reminderCardData = ReminderCardData(
-                          titleController.text,
-                          controllerData2.text,
-                          context.read<TimeProvider>().hour,
-                          context.read<TimeProvider>().minute,
-                          context.read<TimeProvider>().pmOrAm,
-                          true,
-                        );
-                        final box = Hive.box('reminderCardDatas');
-                        box.add(reminderCardData.toMap());
-                        Navigator.of(context).pop();
+                        if (controllerData2.text != '' &&
+                            titleController.text != '') {
+                          // snackbar to tell the user that the process is done successfully.
+                          final snackBar = SnackBar(
+                            content: Text(
+                              'Successfully Added',
+                              style: TextStyle(fontSize: 24),
+                            ),
+                            backgroundColor: Colors.green,
+                          );
+                          // showing snackbar at the bottom of the screen.
+                          ScaffoldMessenger.of(context)
+                            ..removeCurrentMaterialBanner()
+                            ..showSnackBar(snackBar);
+                          //--------------------------------
+                          ReminderCardData reminderCardData = ReminderCardData(
+                            titleController.text,
+                            controllerData2.text,
+                            context.read<TimeProvider>().hour,
+                            context.read<TimeProvider>().minute,
+                            context.read<TimeProvider>().pmOrAm,
+                            true,
+                          );
+                          final box = Hive.box('reminderCardDatas');
+                          box.add(reminderCardData.toMap());
+                          Navigator.of(context).pop();
+                        } else {
+                          final snackBar = SnackBar(
+                            content: Text(
+                              'Something is Missing',
+                              style: TextStyle(fontSize: 24),
+                            ),
+                            backgroundColor: Colors.red,
+                          );
+                          // showing snackbar at the bottom of the screen.
+                          ScaffoldMessenger.of(context)
+                            ..removeCurrentMaterialBanner()
+                            ..showSnackBar(snackBar);
+                        }
                       },
                       child: Text(
                         'خەزن کردن',
