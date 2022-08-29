@@ -31,33 +31,37 @@ class _DebtScreenViewState extends State<DebtScreenView> {
           return box.isEmpty
               ? Container(
                   color: Colors.white,
-                  child: Center(
-                      child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(imageProcess.empty),
-                      SizedBox(
-                        height: 12,
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(bottom: 25),
-                        child: Text(
-                          'ئەم بەشە بەتاڵە لە ئێستا دا',
-                          style: TextStyle(fontFamily: 'RaberB', fontSize: 20),
+                  child: SingleChildScrollView(
+                    reverse: true,
+                    child: Center(
+                        child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(imageProcess.empty),
+                        SizedBox(
+                          height: 12,
                         ),
-                      ),
-                      Transform.rotate(
-                        angle: 6.6,
-                        child: Image.asset(
-                          'assets/images/arrow.png',
-                          height: 200,
-                          fit: BoxFit.cover,
-                          scale: 6,
-                          opacity: AlwaysStoppedAnimation(200),
+                        Container(
+                          margin: EdgeInsets.only(bottom: 25),
+                          child: Text(
+                            'ئەم بەشە بەتاڵە لە ئێستا دا',
+                            style:
+                                TextStyle(fontFamily: 'RaberB', fontSize: 20),
+                          ),
                         ),
-                      ),
-                    ],
-                  )),
+                        Transform.rotate(
+                          angle: 6.6,
+                          child: Image.asset(
+                            'assets/images/arrow.png',
+                            height: 200,
+                            fit: BoxFit.cover,
+                            scale: 6,
+                            opacity: AlwaysStoppedAnimation(200),
+                          ),
+                        ),
+                      ],
+                    )),
+                  ),
                 )
               : Center(
                   child: ListView.builder(
