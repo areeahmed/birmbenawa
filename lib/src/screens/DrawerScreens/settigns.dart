@@ -40,11 +40,14 @@ class _SettingsPageState extends State<SettingsPage> {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: TextFormField(
-              controller: name,
-              decoration: InputDecoration(
-                  hintText: '${box.get('name')}',
-                  hintStyle: TextStyle(fontFamily: 'RaberB')),
+            child: Directionality(
+              textDirection: TextDirection.rtl,
+              child: TextFormField(
+                controller: name,
+                decoration: InputDecoration(
+                    hintText: '${box.get('name')}',
+                    hintStyle: TextStyle(fontFamily: 'RaberB')),
+              ),
             ),
           ),
           ElevatedButton(
@@ -52,11 +55,41 @@ class _SettingsPageState extends State<SettingsPage> {
               primary: Color.fromARGB(255, 98, 0, 255),
             ),
             onPressed: () async {
-              box.put('name', name.text);
-              Get.snackbar('ناو گۆڕین', 'ناو گۆڕینەکە سەرکەوتوو بوو');
+              if (name.text == '') {
+                final snackBar = SnackBar(
+                  content: Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: Text(
+                      'بوورە هیچ داتایەک نییە تاوەکوو بیگۆڕن',
+                      style: TextStyle(fontSize: 24, fontFamily: 'RaberR'),
+                    ),
+                  ),
+                  backgroundColor: Colors.red,
+                );
+                // showing snackbar at the bottom of the screen.
+                ScaffoldMessenger.of(context)
+                  ..removeCurrentMaterialBanner()
+                  ..showSnackBar(snackBar);
+              } else {
+                box.put('name', name.text);
+                final snackBar = SnackBar(
+                  content: Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: Text(
+                      'ناوەکە بە سەرکەوتوویی گۆڕدرا',
+                      style: TextStyle(fontSize: 24, fontFamily: 'RaberR'),
+                    ),
+                  ),
+                  backgroundColor: Colors.green,
+                );
+                // showing snackbar at the bottom of the screen.
+                ScaffoldMessenger.of(context)
+                  ..removeCurrentMaterialBanner()
+                  ..showSnackBar(snackBar);
+              }
             },
             child: Text(
-              'Edit',
+              'گۆڕین',
               style: TextStyle(fontFamily: 'RaberB'),
             ),
           ),
@@ -110,7 +143,7 @@ class _SettingsPageState extends State<SettingsPage> {
             child: Text(
               'Clear All Today Reminder',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 20,
                 fontFamily: 'RaberB',
                 color: Color.fromARGB(255, 98, 0, 255),
               ),
@@ -145,14 +178,20 @@ class _SettingsPageState extends State<SettingsPage> {
                                 },
                                 child: Text(
                                   'بەڵێ',
-                                  style: TextStyle(fontFamily: 'RaberB'),
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 98, 0, 255),
+                                      fontSize: 20,
+                                      fontFamily: 'RaberB'),
                                 )),
                             TextButton(
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
                                 child: Text('نەخێر',
-                                    style: TextStyle(fontFamily: 'RaberB'))),
+                                    style: TextStyle(
+                                        color: Color.fromARGB(255, 98, 0, 255),
+                                        fontSize: 20,
+                                        fontFamily: 'RaberB'))),
                           ],
                         )
                       ],
@@ -162,6 +201,8 @@ class _SettingsPageState extends State<SettingsPage> {
             child: Text(
               'Clear All Daily Reminder',
               style: TextStyle(
+                fontFamily: 'RaberB',
+                fontSize: 20,
                 color: Color.fromARGB(255, 98, 0, 255),
               ),
             ),
@@ -193,12 +234,20 @@ class _SettingsPageState extends State<SettingsPage> {
                                 onPressed: () {
                                   Hive.box('todo').clear();
                                 },
-                                child: Text('بەڵێ')),
+                                child: Text('بەڵێ',
+                                    style: TextStyle(
+                                        color: Color.fromARGB(255, 98, 0, 255),
+                                        fontSize: 20,
+                                        fontFamily: 'RaberB'))),
                             TextButton(
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
-                                child: Text('نەخێر')),
+                                child: Text('نەخێر',
+                                    style: TextStyle(
+                                        color: Color.fromARGB(255, 98, 0, 255),
+                                        fontSize: 20,
+                                        fontFamily: 'RaberB'))),
                           ],
                         )
                       ],
@@ -208,6 +257,8 @@ class _SettingsPageState extends State<SettingsPage> {
             child: Text(
               'Clear All TODO',
               style: TextStyle(
+                fontFamily: 'RaberB',
+                fontSize: 20,
                 color: Color.fromARGB(255, 98, 0, 255),
               ),
             ),
@@ -228,8 +279,8 @@ class _SettingsPageState extends State<SettingsPage> {
                           child: AutoSizeText(
                             'ئایا تۆ دڵنیای لە خاوێنکردنەوەی ئەو بەشە، چونکە هیچ کام لە بیرهێنانەوەکانی تێدا نامێنێت.',
                             textDirection: TextDirection.rtl,
-                            style: TextStyle(
-                                fontSize: 20, fontFamily: 'PeshangBold'),
+                            style:
+                                TextStyle(fontSize: 20, fontFamily: 'RaberB'),
                           ),
                         ),
                         Row(
@@ -239,12 +290,20 @@ class _SettingsPageState extends State<SettingsPage> {
                                 onPressed: () {
                                   Hive.box('debt').clear();
                                 },
-                                child: Text('بەڵێ')),
+                                child: Text('بەڵێ',
+                                    style: TextStyle(
+                                        color: Color.fromARGB(255, 98, 0, 255),
+                                        fontSize: 20,
+                                        fontFamily: 'RaberB'))),
                             TextButton(
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
-                                child: Text('نەخێر')),
+                                child: Text('نەخێر',
+                                    style: TextStyle(
+                                        color: Color.fromARGB(255, 98, 0, 255),
+                                        fontSize: 20,
+                                        fontFamily: 'RaberB'))),
                           ],
                         )
                       ],
@@ -254,6 +313,8 @@ class _SettingsPageState extends State<SettingsPage> {
             child: Text(
               'Clear All Debt',
               style: TextStyle(
+                fontFamily: 'RaberB',
+                fontSize: 20,
                 color: Color.fromARGB(255, 98, 0, 255),
               ),
             ),

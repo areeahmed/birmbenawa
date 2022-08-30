@@ -1,6 +1,7 @@
 import 'package:birmbenawa/src/models/Screen/todo_data_model.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/screens/Adding_Screen/add_to_do_list_reminder.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
@@ -35,9 +36,7 @@ class _ShopingReminderPageState extends State<ShopingReminderPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(imageProcess.empty),
-                        SizedBox(
-                          height: 12,
-                        ),
+                        SizedBox(height: 12),
                         Container(
                           margin: EdgeInsets.only(bottom: 25),
                           child: Text(
@@ -63,8 +62,13 @@ class _ShopingReminderPageState extends State<ShopingReminderPage> {
                     )),
                   )
                 : Center(
-                    child: ListView.builder(
+                    child: ListView.separated(
                       itemCount: box.length,
+                      separatorBuilder: ((context, index) {
+                        return Divider(
+                          thickness: 2,
+                        );
+                      }),
                       itemBuilder: ((context, index) {
                         final key = keys[index];
                         Map<dynamic, dynamic> _data = box.getAt(index);
@@ -86,13 +90,8 @@ class _ShopingReminderPageState extends State<ShopingReminderPage> {
                           child: Container(
                             margin: EdgeInsets.only(top: 2),
                             decoration: BoxDecoration(
-                                color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                      blurRadius: 1,
-                                      spreadRadius: 1,
-                                      offset: Offset(-1, 1))
-                                ]),
+                              color: Colors.white,
+                            ),
                             child: ListTile(
                               leading: Icon(
                                 Icons.label,
@@ -104,19 +103,21 @@ class _ShopingReminderPageState extends State<ShopingReminderPage> {
                                 todo.title!,
                                 style: _data[key] ?? false
                                     ? TextStyle(
-                                        fontFamily: 'RaberR',
+                                        fontFamily: 'RaberB',
                                         color: Colors.grey.shade400,
                                         decoration: TextDecoration.lineThrough)
-                                    : null,
+                                    : TextStyle(
+                                        fontFamily: 'RaberB', fontSize: 20),
                               ),
                               subtitle: Text(
                                 todo.description!,
                                 style: _data[key] ?? false
                                     ? TextStyle(
-                                        fontFamily: 'RaberR',
-                                        color: Colors.grey.shade300,
+                                        fontFamily: 'RaberB',
+                                        color: Colors.grey.shade400,
                                         decoration: TextDecoration.lineThrough)
-                                    : TextStyle(fontFamily: 'RaberR'),
+                                    : TextStyle(
+                                        fontFamily: 'RaberB', fontSize: 18),
                               ),
                               trailing: RoundCheckBox(
                                   checkedColor: Color.fromARGB(255, 98, 0, 255),

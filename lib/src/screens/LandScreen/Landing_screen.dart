@@ -41,12 +41,24 @@ class _MainPageScreenState extends State<MainPageScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        backgroundColor: Colors.white,
+        titleTextStyle: TextStyle(
+            color: Color.fromARGB(255, 98, 0, 255),
+            fontSize: 20,
+            fontFamily: 'RaberB'),
+        title: currentIndexPage == 0
+            ? Text('ئەمڕۆ')
+            : currentIndexPage == 1
+                ? Text('ڕۆژانە')
+                : currentIndexPage == 2
+                    ? Text('تاسکەکانم')
+                    : currentIndexPage == 3
+                        ? Text('قەرزەکان')
+                        : Text(' '),
         iconTheme: const IconThemeData(
           color: Color.fromARGB(255, 98, 0, 255),
         ),
-        elevation: 0,
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(206, 211, 210, 210).withAlpha(0),
       ),
       body: IndexedStack(
         index: currentIndexPage,

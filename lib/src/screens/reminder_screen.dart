@@ -120,7 +120,9 @@ class _ReminderPageState extends State<Reminderpage> {
                                         ),
                                         Text(
                                           reminderCardData.title,
-                                          style: TextStyle(fontSize: 20),
+                                          style: TextStyle(
+                                              fontSize: 30,
+                                              fontFamily: 'RaberB'),
                                         ),
                                         Switch.adaptive(
                                             activeColor:
@@ -171,7 +173,9 @@ class _ReminderPageState extends State<Reminderpage> {
                                             child: AutoSizeText(
                                               reminderCardData
                                                   .descriptionOfCard,
-                                              style: TextStyle(fontSize: 20),
+                                              style: TextStyle(
+                                                  fontSize: 25,
+                                                  fontFamily: 'RaberR'),
                                               maxLines: 2,
                                             ),
                                           ),
@@ -187,7 +191,9 @@ class _ReminderPageState extends State<Reminderpage> {
                                       children: [
                                         Text(
                                           '${reminderCardData.houre}:${reminderCardData.minute}',
-                                          style: TextStyle(fontSize: 40),
+                                          style: TextStyle(
+                                              fontSize: 40,
+                                              fontFamily: 'RaberB'),
                                         ),
                                       ],
                                     )

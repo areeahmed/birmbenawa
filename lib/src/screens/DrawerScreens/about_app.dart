@@ -46,7 +46,7 @@ class _AboutAppPageState extends State<AboutAppPage> {
                   child: Text(
                     'ئەم بەرنامەیە بۆ ئەوەیە شتە گرینگەکانت بیربێنێتەوە',
                     textDirection: TextDirection.rtl,
-                    style: TextStyle(fontSize: 16, fontFamily: 'RaberR'),
+                    style: TextStyle(fontSize: 20, fontFamily: 'RaberR'),
                   )),
             )
           ],
