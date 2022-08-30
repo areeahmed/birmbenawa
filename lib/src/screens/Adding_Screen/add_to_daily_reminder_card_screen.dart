@@ -35,13 +35,13 @@ class _EditDailyReminderCardScreenState
   bool isDailyReminder = true;
   Color selectedColor = Colors.grey.shade100;
   IconData? _icon;
+  late ReminderCardData reminderCardData;
   @override
   ImageProcess process = ImageProcess();
   ImageScreen imageScreen = ImageScreen();
   TextEditingController titleController = TextEditingController();
   TextEditingController controllerData2 = TextEditingController();
   Widget build(BuildContext context) {
-    ReminderCardData reminderCardData;
     FocusScopeNode currentFocus = FocusScope.of(context);
     Color selectedColor = Colors.grey.shade100;
     return Scaffold(
@@ -138,13 +138,55 @@ class _EditDailyReminderCardScreenState
                         borderRadius: BorderRadius.circular(10),
                         isSelected: isSelectedvalue,
                         children: [
-                          Text('sat'),
-                          Text('sun'),
-                          Text('mon'),
-                          Text('tue'),
-                          Text('wed'),
-                          Text('thr'),
-                          Text('fri'),
+                          Text(
+                            'شەممە',
+                            style: TextStyle(
+                              fontFamily: 'RaberB',
+                              fontSize: 15,
+                            ),
+                          ),
+                          Text(
+                            '       ١\n شەممە',
+                            style: TextStyle(
+                              fontFamily: 'RaberB',
+                              fontSize: 15,
+                            ),
+                          ),
+                          Text(
+                            '       ٢\n شەممە',
+                            style: TextStyle(
+                              fontFamily: 'RaberB',
+                              fontSize: 15,
+                            ),
+                          ),
+                          Text(
+                            '       ٣\n شەممە',
+                            style: TextStyle(
+                              fontFamily: 'RaberB',
+                              fontSize: 15,
+                            ),
+                          ),
+                          Text(
+                            '       ٤\n شەممە',
+                            style: TextStyle(
+                              fontFamily: 'RaberB',
+                              fontSize: 15,
+                            ),
+                          ),
+                          Text(
+                            '       ٥\n شەممە',
+                            style: TextStyle(
+                              fontFamily: 'RaberB',
+                              fontSize: 15,
+                            ),
+                          ),
+                          Text(
+                            'هەینی',
+                            style: TextStyle(
+                              fontFamily: 'RaberB',
+                              fontSize: 15,
+                            ),
+                          ),
                         ],
                         onPressed: (int index) {
                           setState(() {
@@ -200,7 +242,7 @@ class _EditDailyReminderCardScreenState
                                 });
                                 break;
                             }
-                            debugPrint('${isSelectedvalue[index]}');
+                            debugPrint('${isSelectedvalue[index]} : $index');
                           });
                         }),
                   ),
@@ -226,7 +268,8 @@ class _EditDailyReminderCardScreenState
                             fri: context.read<IsDaysChecked>().friDay,
                           );
                           debugPrint(
-                              '${selectedColor},${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().satDay}');
+                            '${selectedColor},${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().sunDay}, ${context.read<IsDaysChecked>().monDay}, ${context.read<IsDaysChecked>().tueDay}, ${context.read<IsDaysChecked>().wedDay}, ${context.read<IsDaysChecked>().thrDay}, ${context.read<IsDaysChecked>().friDay}',
+                          );
                           final box = Hive.box('dailyReminderCardDatas');
                           box.add(reminderCardData.toMap());
                           Navigator.of(context).pop();

@@ -72,6 +72,13 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
                         DailyReminderCardData dailyReminderCardData =
                             DailyReminderCardData.fromMap(
                                 _data as Map<dynamic, dynamic>);
+                        print('${dailyReminderCardData.sat}');
+                        print('${dailyReminderCardData.sun}');
+                        print('${dailyReminderCardData.mon}');
+                        print('${dailyReminderCardData.tue}');
+                        print('${dailyReminderCardData.wed}');
+                        print('${dailyReminderCardData.thr}');
+                        print('${dailyReminderCardData.fri}');
                         return Slidable(
                           endActionPane: ActionPane(
                             motion: StretchMotion(),
@@ -110,26 +117,115 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
                                         size: 40,
                                         color: Color.fromARGB(255, 98, 0, 255),
                                       ),
-                                      Text(
-                                        dailyReminderCardData.title,
-                                        style: TextStyle(fontSize: 20),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 12.0),
+                                        child: Text(
+                                          dailyReminderCardData.title,
+                                          style: TextStyle(fontSize: 20),
+                                        ),
                                       ),
-                                      Switch.adaptive(
-                                          activeColor:
-                                              Color.fromARGB(255, 98, 0, 255),
-                                          inactiveThumbColor:
-                                              Color.fromARGB(255, 155, 98, 248),
-                                          inactiveTrackColor: Color.fromARGB(
-                                              255, 201, 167, 255),
-                                          value: _data[key] ?? false,
-                                          onChanged: (value) {
-                                            setState(() {
-                                              if (_data[key] == null) {
-                                                _data[key] = true;
-                                              }
-                                              _data[key] = !_data[key];
-                                            });
-                                          })
+                                      Column(
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              //! days here
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(3.0),
+                                                child: dailyReminderCardData
+                                                            .sat ==
+                                                        true
+                                                    ? Text(
+                                                        'شەممە',
+                                                        style: daysONStyle(),
+                                                      )
+                                                    : Container(),
+                                              ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(3.0),
+                                                child: dailyReminderCardData
+                                                            .sun ==
+                                                        true
+                                                    ? Text(
+                                                        '١ شەممە',
+                                                        style: daysONStyle(),
+                                                      )
+                                                    : Container(),
+                                              ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(3.0),
+                                                child: dailyReminderCardData
+                                                            .mon ==
+                                                        true
+                                                    ? Text(
+                                                        '٢ شەممە',
+                                                        style: daysONStyle(),
+                                                      )
+                                                    : Container(),
+                                              ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(3.0),
+                                                child: dailyReminderCardData
+                                                            .tue ==
+                                                        true
+                                                    ? Text(
+                                                        '٣ شەممە',
+                                                        style: daysONStyle(),
+                                                      )
+                                                    : Container(),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(3.0),
+                                                child: dailyReminderCardData
+                                                            .wed ==
+                                                        true
+                                                    ? Text(
+                                                        '٤ شەممە',
+                                                        style: daysONStyle(),
+                                                      )
+                                                    : Container(),
+                                              ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(3.0),
+                                                child: dailyReminderCardData
+                                                            .thr ==
+                                                        true
+                                                    ? Text(
+                                                        '٥ شەممە',
+                                                        style: daysONStyle(),
+                                                      )
+                                                    : Container(),
+                                              ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(3.0),
+                                                child: dailyReminderCardData
+                                                            .fri ==
+                                                        true
+                                                    ? Text(
+                                                        'هەینی',
+                                                        style: daysONStyle(),
+                                                      )
+                                                    : Container(),
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      ),
                                     ],
                                   ),
                                   SizedBox(
@@ -139,7 +235,7 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Container(
-                                        padding: EdgeInsets.all(3),
+                                        padding: EdgeInsets.only(right: 150),
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(3),
@@ -164,6 +260,22 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
+                                      Switch.adaptive(
+                                          activeColor:
+                                              Color.fromARGB(255, 98, 0, 255),
+                                          inactiveThumbColor:
+                                              Color.fromARGB(255, 155, 98, 248),
+                                          inactiveTrackColor: Color.fromARGB(
+                                              255, 201, 167, 255),
+                                          value: _data[key] ?? false,
+                                          onChanged: (value) {
+                                            setState(() {
+                                              if (_data[key] == null) {
+                                                _data[key] = true;
+                                              }
+                                              _data[key] = !_data[key];
+                                            });
+                                          }),
                                       Text(
                                         '${dailyReminderCardData.houre}:${dailyReminderCardData.minute}',
                                         style: TextStyle(fontSize: 40),
@@ -198,5 +310,13 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
                 builder: (context) => EditDailyReminderCardScreen(),
               ));
             }));
+  }
+
+  TextStyle daysONStyle() {
+    return TextStyle(color: Colors.pink);
+  }
+
+  TextStyle daysOFFStyle() {
+    return TextStyle(color: Colors.pink);
   }
 }
