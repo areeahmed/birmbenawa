@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/models/Screen/reminder_card_data.dart';
 import 'package:birmbenawa/src/screens/Adding_Screen/add_to_remider_card_screen.dart';
+import 'package:birmbenawa/src/service/local_notification_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -13,6 +14,16 @@ class Reminderpage extends StatefulWidget {
 }
 
 class _ReminderPageState extends State<Reminderpage> {
+  late final LocalNotificationService service;
+
+  @override
+  void initState() {
+    service = LocalNotificationService();
+    service.initialize();
+    // TODO: implement initState
+    super.initState();
+  }
+
   ImageProcess imageProcess = ImageProcess();
   @override
   Widget build(BuildContext context) {
@@ -178,11 +189,16 @@ class _ReminderPageState extends State<Reminderpage> {
       floatingActionButton: FloatingActionButton(
         heroTag: 'fab1',
         backgroundColor: const Color.fromARGB(255, 98, 0, 255),
-        onPressed: () {
+        onPressed: () async {
           //TODO it should show the notification
-
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: ((context) => EditReminderCardScreen())));
+          await service.showScheduledNotification(
+            id: 0,
+            title: 'Local Notification Says: ',
+            body: 'Hello this is Simple Local Notification',
+            seconds: 2,
+          );
+          // Navigator.of(context).push(MaterialPageRoute(
+          //     builder: ((context) => EditReminderCardScreen())));
         },
         child: const Icon(Icons.notification_add),
       ),
