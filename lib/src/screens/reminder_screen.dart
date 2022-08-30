@@ -79,6 +79,7 @@ class _ReminderPageState extends State<Reminderpage> {
                           ReminderCardData reminderCardData =
                               ReminderCardData.fromMap(
                                   _data as Map<dynamic, dynamic>);
+
                           return Slidable(
                             endActionPane: ActionPane(
                               motion: StretchMotion(),
@@ -129,13 +130,25 @@ class _ReminderPageState extends State<Reminderpage> {
                                             inactiveTrackColor: Color.fromARGB(
                                                 255, 201, 167, 255),
                                             value: _data[key] ?? true,
-                                            onChanged: (value) {
+                                            onChanged: (value) async {
+                                              DateTime now = DateTime.now();
+
+                                              await service.showNotification(
+                                                id: 0,
+                                                title:
+                                                    'Local Notification Says: ',
+                                                body:
+                                                    'Hello this is Simple Local Notification',
+                                              );
+
                                               setState(() {
                                                 if (_data[key] == null) {
                                                   _data[key] = true;
                                                 }
                                                 _data[key] = !_data[key];
                                               });
+                                              print(
+                                                  '${now.hour} : ${now.minute} [ ${_data[key]} ]');
                                             })
                                       ],
                                     ),
@@ -189,16 +202,11 @@ class _ReminderPageState extends State<Reminderpage> {
       floatingActionButton: FloatingActionButton(
         heroTag: 'fab1',
         backgroundColor: const Color.fromARGB(255, 98, 0, 255),
-        onPressed: () async {
+        onPressed: () {
           //TODO it should show the notification
-          await service.showScheduledNotification(
-            id: 0,
-            title: 'Local Notification Says: ',
-            body: 'Hello this is Simple Local Notification',
-            seconds: 2,
-          );
-          // Navigator.of(context).push(MaterialPageRoute(
-          //     builder: ((context) => EditReminderCardScreen())));
+
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: ((context) => EditReminderCardScreen())));
         },
         child: const Icon(Icons.notification_add),
       ),

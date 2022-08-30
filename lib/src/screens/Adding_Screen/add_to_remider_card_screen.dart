@@ -152,7 +152,7 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                             context.read<TimeProvider>().hour,
                             context.read<TimeProvider>().minute,
                             context.read<TimeProvider>().pmOrAm,
-                            true,
+                            false,
                           );
                           final box = Hive.box('reminderCardDatas');
                           box.add(reminderCardData.toMap());

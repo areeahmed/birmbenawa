@@ -50,6 +50,7 @@ class LocalNotificationService {
     );
   }
 
+  // method for simple local notification
   Future<void> showNotification({
     required int id,
     String? title,
@@ -82,6 +83,7 @@ class LocalNotificationService {
     );
   }
 
+  // show schedule notification for specific time -- not working yet
   Future<void> showScheduledForSpecificTimeNotification({
     required int id,
     required String? title,
