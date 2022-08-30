@@ -91,7 +91,7 @@ class _DebtScreenViewState extends State<DebtScreenView> {
                           ),
                           child: Container(
                             color: Colors.grey.shade200,
-                            margin: EdgeInsets.only(bottom: 5),
+                            margin: EdgeInsets.only(bottom: 5, top: 5),
                             child: Column(
                               children: [
                                 Row(

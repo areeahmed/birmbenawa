@@ -105,13 +105,39 @@ class _EditShopingListReminderState extends State<EditShopingListReminder> {
                         primary: Color.fromARGB(255, 98, 0, 255),
                       ),
                       onPressed: () {
-                        TODO todo = TODO(
-                            title: title.text,
-                            description: description.text,
-                            isChecked: true);
-                        final box = Hive.box('todo');
-                        box.add(todo.toMap());
-                        Navigator.of(context).pop();
+                        if (title.text == '' || description.text == '') {
+                          final snackBar = SnackBar(
+                            content: Text(
+                              'Something is Missing',
+                              style: TextStyle(fontSize: 24),
+                            ),
+                            backgroundColor: Colors.red,
+                          );
+                          // showing snackbar at the bottom of the screen.
+                          ScaffoldMessenger.of(context)
+                            ..removeCurrentMaterialBanner()
+                            ..showSnackBar(snackBar);
+                        } else {
+                          TODO todo = TODO(
+                              title: title.text,
+                              description: description.text,
+                              isChecked: true);
+                          final box = Hive.box('todo');
+                          box.add(todo.toMap());
+                          Navigator.of(context).pop();
+                          final snackBar = SnackBar(
+                            content: Text(
+                              'Added',
+                              style: TextStyle(fontSize: 24),
+                            ),
+                            backgroundColor: Colors.green,
+                          );
+
+                          // showing snackbar at the bottom of the screen.
+                          ScaffoldMessenger.of(context)
+                            ..removeCurrentMaterialBanner()
+                            ..showSnackBar(snackBar);
+                        }
                       },
                       child: Text(
                         'خەزن کردن',

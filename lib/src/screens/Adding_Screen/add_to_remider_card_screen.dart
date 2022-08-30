@@ -96,14 +96,14 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                         textDirection: TextDirection.rtl,
                         controller: controllerData2,
                         decoration: InputDecoration(
-                          suffix: IconButton(
-                            icon: Icon(Icons.clear),
-                            onPressed: () {
-                              controllerData2.clear();
-                            },
-                          ),
-                          hintText: 'زانیاری زیاتر',
-                        ),
+                            suffix: IconButton(
+                              icon: Icon(Icons.clear),
+                              onPressed: () {
+                                controllerData2.clear();
+                              },
+                            ),
+                            hintText: 'زانیاری زیاتر',
+                            hintStyle: TextStyle(fontFamily: 'RaberB')),
                       ),
                     ),
                   ),
@@ -121,7 +121,10 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                           left: 30,
                           bottom: 12,
                         ),
-                        child: TimePicker(),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 50.0),
+                          child: TimePicker(),
+                        ),
                       ),
                     ],
                   ),

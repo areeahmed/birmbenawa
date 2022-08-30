@@ -14,8 +14,6 @@ class FeedBackScreen extends StatefulWidget {
 class _FeedBackScreenState extends State<FeedBackScreen> {
   @override
   Widget build(BuildContext context) {
-    TextEditingController nameOfUser = TextEditingController();
-    TextEditingController emailOfUser = TextEditingController();
     TextEditingController subjectOfUser = TextEditingController();
     TextEditingController messageOfUser = TextEditingController();
     String logoPath = 'assets/images/slider/logoNoBackground.png';
@@ -86,12 +84,29 @@ class _FeedBackScreenState extends State<FeedBackScreen> {
                   style: ElevatedButton.styleFrom(
                       primary: Color.fromARGB(255, 98, 0, 255)),
                   onPressed: () {
-                    launchEmail(
-                        toEmail: 'birmbenawa@gmail.com', // Developer Team email
-                        subject: subjectOfUser.text,
-                        message: messageOfUser.text);
-                    // TODO send the feed back with email to us
-                    //TODO show the dialog and tell the user to be patent for response
+                    if (subjectOfUser.text == '' || messageOfUser.text == '') {
+                      final snackBar = SnackBar(
+                        content: Directionality(
+                          textDirection: TextDirection.rtl,
+                          child: Text(
+                            'ببوورە دەبێت خانەکان بە وردی پڕ بکەیتەوە',
+                            style:
+                                TextStyle(fontSize: 24, fontFamily: 'RaberR'),
+                          ),
+                        ),
+                        backgroundColor: Colors.red,
+                      );
+                      // showing snackbar at the bottom of the screen.
+                      ScaffoldMessenger.of(context)
+                        ..removeCurrentMaterialBanner()
+                        ..showSnackBar(snackBar);
+                    } else {
+                      launchEmail(
+                          toEmail:
+                              'birmbenawa@gmail.com', // Developer Team email
+                          subject: subjectOfUser.text,
+                          message: messageOfUser.text);
+                    }
                   },
                   child: Icon(Icons.send),
                 ))

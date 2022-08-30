@@ -178,24 +178,52 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
                           primary: Color.fromARGB(255, 98, 0, 255),
                         ),
                         onPressed: () {
-                          if (nameOfTookDebtController.text == '') {
-                            nameOfTookDebtController.text = 'Unknown';
+                          if (nameOfTookDebtController.text == '' ||
+                              moneyController.text == '' ||
+                              isSelectedvalue == false) {
+                            final snackBar = SnackBar(
+                              content: Text(
+                                'Faild',
+                                style: TextStyle(fontSize: 24),
+                              ),
+                              backgroundColor: Colors.red,
+                            );
+
+                            // showing snackbar at the bottom of the screen.
+                            ScaffoldMessenger.of(context)
+                              ..removeCurrentMaterialBanner()
+                              ..showSnackBar(snackBar);
+                          } else {
+                            DebtCardDataModel debtCardDataModel =
+                                DebtCardDataModel(
+                                    typeOfDebtMoney: typeOfDebtMoney,
+                                    year:
+                                        context.read<DatePickerProvider>().year,
+                                    month: context
+                                        .read<DatePickerProvider>()
+                                        .month,
+                                    day: context.read<DatePickerProvider>().day,
+                                    nameTookDebt: nameOfTookDebtController.text,
+                                    debt: int.parse(moneyController.text),
+                                    typeOfDebt: _value);
+                            debugPrint(
+                                'Name: ${nameOfTookDebtController.text}, Type Of Debt Money: $typeOfDebtMoney , The Value: $_value');
+                            final box = Hive.box('debt');
+                            box.add(debtCardDataModel.toMap());
+                            Navigator.of(context).pop();
+                            final snackBar = SnackBar(
+                              content: Text(
+                                'Added',
+                                style: TextStyle(fontSize: 24),
+                              ),
+                              backgroundColor: Colors.green,
+                            );
+
+                            // showing snackbar at the bottom of the screen.
+                            ScaffoldMessenger.of(context)
+                              ..removeCurrentMaterialBanner()
+                              ..showSnackBar(snackBar);
                           }
-                          DebtCardDataModel debtCardDataModel =
-                              DebtCardDataModel(
-                                  typeOfDebtMoney: typeOfDebtMoney,
-                                  year: context.read<DatePickerProvider>().year,
-                                  month:
-                                      context.read<DatePickerProvider>().month,
-                                  day: context.read<DatePickerProvider>().day,
-                                  nameTookDebt: nameOfTookDebtController.text,
-                                  debt: int.parse(moneyController.text),
-                                  typeOfDebt: _value);
-                          debugPrint(
-                              'Name: ${nameOfTookDebtController.text}, Type Of Debt Money: $typeOfDebtMoney , The Value: $_value');
-                          final box = Hive.box('debt');
-                          box.add(debtCardDataModel.toMap());
-                          Navigator.of(context).pop();
                         },
                         child: Text(
                           'خەزن کردن',
