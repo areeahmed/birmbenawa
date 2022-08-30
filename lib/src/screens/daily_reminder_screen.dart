@@ -46,14 +46,17 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
                                   TextStyle(fontFamily: 'RaberB', fontSize: 20),
                             ),
                           ),
-                          Transform.rotate(
-                            angle: 6.6,
-                            child: Image.asset(
-                              'assets/images/arrow.png',
-                              height: 200,
-                              fit: BoxFit.cover,
-                              scale: 6,
-                              opacity: AlwaysStoppedAnimation(200),
+                          Container(
+                            margin: EdgeInsets.only(bottom: 30),
+                            child: Transform.rotate(
+                              angle: 6.6,
+                              child: Image.asset(
+                                'assets/images/arrow.png',
+                                height: 200,
+                                fit: BoxFit.cover,
+                                scale: 6,
+                                opacity: AlwaysStoppedAnimation(200),
+                              ),
                             ),
                           ),
                         ],
