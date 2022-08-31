@@ -52,9 +52,9 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
                               angle: 6.6,
                               child: Image.asset(
                                 'assets/images/arrow.png',
-                                height: 200,
+                                height: 180,
                                 fit: BoxFit.cover,
-                                scale: 6,
+                                scale: 7,
                                 opacity: AlwaysStoppedAnimation(200),
                               ),
                             ),

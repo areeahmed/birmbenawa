@@ -21,7 +21,6 @@ class EditReminderCardScreen extends StatefulWidget {
 class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
   bool isDailyReminder = true;
   Color selectedColor2 = Colors.grey.shade200;
-
   Icon _icon = Icon(Icons.add);
   //* title - description - time - and save it
   //TODO find the way to increment the key of hive db
@@ -69,7 +68,7 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                         textDirection: TextDirection.rtl,
                         style: TextStyle(
                           fontFamily: 'RaberB',
-                          fontSize: 20,
+                          fontSize: 24,
                         ),
                         controller: titleController,
                         decoration: InputDecoration(
@@ -92,7 +91,7 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                     child: Directionality(
                       textDirection: TextDirection.rtl,
                       child: TextField(
-                        style: TextStyle(fontFamily: 'PeshangBold'),
+                        style: TextStyle(fontFamily: 'RaberB', fontSize: 24),
                         textDirection: TextDirection.rtl,
                         controller: controllerData2,
                         decoration: InputDecoration(
@@ -103,7 +102,8 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                               },
                             ),
                             hintText: 'زانیاری زیاتر',
-                            hintStyle: TextStyle(fontFamily: 'RaberB')),
+                            hintStyle:
+                                TextStyle(fontFamily: 'RaberB', fontSize: 24)),
                       ),
                     ),
                   ),
@@ -129,55 +129,70 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                     ],
                   ),
                   //TODO add an Icon picker ( Button to open Icon Dialog )
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Color.fromARGB(255, 98, 0, 255),
-                      ),
-                      onPressed: () {
-                        if (controllerData2.text != '' &&
-                            titleController.text != '') {
-                          // snackbar to tell the user that the process is done successfully.
-                          final snackBar = SnackBar(
-                            content: Text(
-                              'Successfully Added',
-                              style: TextStyle(fontSize: 24),
-                            ),
-                            backgroundColor: Colors.green,
-                          );
-                          // showing snackbar at the bottom of the screen.
-                          ScaffoldMessenger.of(context)
-                            ..removeCurrentMaterialBanner()
-                            ..showSnackBar(snackBar);
-                          //--------------------------------
-                          ReminderCardData reminderCardData = ReminderCardData(
-                            titleController.text,
-                            controllerData2.text,
-                            context.read<TimeProvider>().hour,
-                            context.read<TimeProvider>().minute,
-                            context.read<TimeProvider>().pmOrAm,
-                            false,
-                          );
-                          final box = Hive.box('reminderCardDatas');
-                          box.add(reminderCardData.toMap());
-                          Navigator.of(context).pop();
-                        } else {
-                          final snackBar = SnackBar(
-                            content: Text(
-                              'Something is Missing',
-                              style: TextStyle(fontSize: 24),
-                            ),
-                            backgroundColor: Colors.red,
-                          );
-                          // showing snackbar at the bottom of the screen.
-                          ScaffoldMessenger.of(context)
-                            ..removeCurrentMaterialBanner()
-                            ..showSnackBar(snackBar);
-                        }
-                      },
-                      child: Text(
-                        'خەزن کردن',
-                        style: TextStyle(fontFamily: 'RaberB'),
-                      ))
+                  Container(
+                    width: 200,
+                    height: 60,
+                    child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromARGB(255, 98, 0, 255),
+                        ),
+                        onPressed: () {
+                          if (controllerData2.text != '' &&
+                              titleController.text != '') {
+                            // snackbar to tell the user that the process is done successfully.
+                            final snackBar = SnackBar(
+                              duration: Duration(milliseconds: 800),
+                              content: Directionality(
+                                textDirection: TextDirection.rtl,
+                                child: Text(
+                                  'جێبەجێکرا',
+                                  style: TextStyle(
+                                      fontSize: 24, fontFamily: 'RaberR'),
+                                ),
+                              ),
+                              backgroundColor: Colors.green,
+                            );
+                            // showing snackbar at the bottom of the screen.
+                            ScaffoldMessenger.of(context)
+                              ..removeCurrentMaterialBanner()
+                              ..showSnackBar(snackBar);
+                            //--------------------------------
+                            ReminderCardData reminderCardData =
+                                ReminderCardData(
+                              titleController.text,
+                              controllerData2.text,
+                              context.read<TimeProvider>().hour,
+                              context.read<TimeProvider>().minute,
+                              context.read<TimeProvider>().pmOrAm,
+                              false,
+                            );
+                            final box = Hive.box('reminderCardDatas');
+                            box.add(reminderCardData.toMap());
+                            Navigator.of(context).pop();
+                          } else {
+                            final snackBar = SnackBar(
+                              duration: Duration(milliseconds: 800),
+                              content: Directionality(
+                                textDirection: TextDirection.rtl,
+                                child: Text(
+                                  'خانەکان بە دروستی پڕبکەوە تکایە',
+                                  style: TextStyle(
+                                      fontSize: 24, fontFamily: 'RaberR'),
+                                ),
+                              ),
+                              backgroundColor: Colors.red,
+                            );
+                            // showing snackbar at the bottom of the screen.
+                            ScaffoldMessenger.of(context)
+                              ..removeCurrentMaterialBanner()
+                              ..showSnackBar(snackBar);
+                          }
+                        },
+                        child: Text(
+                          'خەزن کردن',
+                          style: TextStyle(fontFamily: 'RaberB', fontSize: 20),
+                        )),
+                  )
                 ],
               ),
             ),

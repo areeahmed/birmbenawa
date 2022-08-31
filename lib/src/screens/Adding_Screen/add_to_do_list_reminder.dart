@@ -107,9 +107,13 @@ class _EditShopingListReminderState extends State<EditShopingListReminder> {
                       onPressed: () {
                         if (title.text == '' || description.text == '') {
                           final snackBar = SnackBar(
-                            content: Text(
-                              'Something is Missing',
-                              style: TextStyle(fontSize: 24),
+                            content: Directionality(
+                              textDirection: TextDirection.rtl,
+                              child: Text(
+                                'خانەکان بە دروستی پڕبکەوە تکایە',
+                                style: TextStyle(
+                                    fontSize: 24, fontFamily: 'RaberR'),
+                              ),
                             ),
                             backgroundColor: Colors.red,
                           );
@@ -126,13 +130,16 @@ class _EditShopingListReminderState extends State<EditShopingListReminder> {
                           box.add(todo.toMap());
                           Navigator.of(context).pop();
                           final snackBar = SnackBar(
-                            content: Text(
-                              'Added',
-                              style: TextStyle(fontSize: 24),
+                            content: Directionality(
+                              textDirection: TextDirection.rtl,
+                              child: Text(
+                                'جێبەجێکرا',
+                                style: TextStyle(
+                                    fontSize: 24, fontFamily: 'RaberR'),
+                              ),
                             ),
                             backgroundColor: Colors.green,
                           );
-
                           // showing snackbar at the bottom of the screen.
                           ScaffoldMessenger.of(context)
                             ..removeCurrentMaterialBanner()
