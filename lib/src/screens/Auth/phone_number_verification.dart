@@ -64,17 +64,56 @@ class _PhoneNumberVerificationWidgetState
         customHeight: 46,
         customWidth: 200,
         ontap: () async {
-          setState(() {
-            smsCodeControllerCollectionInString = firstNumnberController.text +
-                secondNumberController.text +
-                thirdNumberController.text +
-                fourthNumberController.text +
-                fifthNumberController.text +
-                sixthNumberController.text;
-          });
+          if (firstNumnberController.text == '' ||
+              secondNumberController.text == '' ||
+              thirdNumberController.text == '' ||
+              fourthNumberController.text == '' ||
+              fifthNumberController.text == '' ||
+              sixthNumberController.text == '') {
+            final snackBar = SnackBar(
+              duration: Duration(milliseconds: 800),
+              content: Directionality(
+                textDirection: TextDirection.rtl,
+                child: Text(
+                  'خانەکان بە دروستی پڕبکەوە تکایە',
+                  style: TextStyle(fontSize: 24, fontFamily: 'RaberR'),
+                ),
+              ),
+              backgroundColor: Colors.red,
+            );
+            // showing snackbar at the bottom of the screen.
+            ScaffoldMessenger.of(context)
+              ..removeCurrentMaterialBanner()
+              ..showSnackBar(snackBar);
+          } else {
+            setState(() {
+              final snackBar = SnackBar(
+                duration: Duration(milliseconds: 800),
+                content: Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: Text(
+                    'جێبەجێکرا',
+                    style: TextStyle(fontSize: 24, fontFamily: 'RaberR'),
+                  ),
+                ),
+                backgroundColor: Colors.green,
+              );
+              // showing snackbar at the bottom of the screen.
+              ScaffoldMessenger.of(context)
+                ..removeCurrentMaterialBanner()
+                ..showSnackBar(snackBar);
+              smsCodeControllerCollectionInString =
+                  firstNumnberController.text +
+                      secondNumberController.text +
+                      thirdNumberController.text +
+                      fourthNumberController.text +
+                      fifthNumberController.text +
+                      sixthNumberController.text;
+            });
 
-          authClass.sendVerificationCode(
-              context, verificationId, smsCodeControllerCollectionInString!);
+            authClass.sendVerificationCode(
+                context, verificationId, smsCodeControllerCollectionInString!);
+          }
         },
         itemText: 'Sign In',
       ),

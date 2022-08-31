@@ -13,7 +13,6 @@ class RegisterationWidget extends StatefulWidget {
 class _RegisterationWidgetState extends State<RegisterationWidget> {
   final box = Hive.box('user');
   Auth _auth = Auth();
-  String userName = '';
   TextEditingController phoneNumberController = TextEditingController();
   TextEditingController userFullName = TextEditingController();
   final String signUpPath = 'assets/images/slider/SignUp.png';
@@ -47,10 +46,6 @@ class _RegisterationWidgetState extends State<RegisterationWidget> {
     );
   }
 
-  // //! navigating to another screen
-  // void goToHome(context) => Navigator.of(context).push(
-  //     MaterialPageRoute(builder: (context) => ));
-
   //! the Person Icon a the top of the screen check the icon
   Widget AppLogInShowingInTheAppBar() {
     return Container(
@@ -70,16 +65,49 @@ class _RegisterationWidgetState extends State<RegisterationWidget> {
         customHeight: 46,
         customWidth: 200,
         ontap: () {
-          box.put('name', userFullName.text);
-          box.put('phone', phoneNumberController.text);
-          _auth.verifyPhoneNumber(context, phoneNumberController.text);
+          if (userFullName.text == '' || phoneNumberController.text == '') {
+            final snackBar = SnackBar(
+              duration: Duration(milliseconds: 800),
+              content: Directionality(
+                textDirection: TextDirection.rtl,
+                child: Text(
+                  'خانەکان بە دروستی پڕبکەوە تکایە',
+                  style: TextStyle(fontSize: 24, fontFamily: 'RaberR'),
+                ),
+              ),
+              backgroundColor: Colors.red,
+            );
+            // showing snackbar at the bottom of the screen.
+            ScaffoldMessenger.of(context)
+              ..removeCurrentMaterialBanner()
+              ..showSnackBar(snackBar);
+          } else {
+            final snackBar = SnackBar(
+              duration: Duration(milliseconds: 800),
+              content: Directionality(
+                textDirection: TextDirection.rtl,
+                child: Text(
+                  'جێبەجێکرا',
+                  style: TextStyle(fontSize: 24, fontFamily: 'RaberR'),
+                ),
+              ),
+              backgroundColor: Colors.green,
+            );
+            // showing snackbar at the bottom of the screen.
+            ScaffoldMessenger.of(context)
+              ..removeCurrentMaterialBanner()
+              ..showSnackBar(snackBar);
+            box.put('name', userFullName.text);
+            box.put('phone', phoneNumberController.text);
+            _auth.verifyPhoneNumber(context, phoneNumberController.text);
+          }
         },
         itemText: 'Sign Up',
       ),
     );
   }
 
-  //! Input Box Phone Number and Password
+  //! Input Box Phone Number and Name
   Widget TextFieldBoxWidget() {
     return Container(
       decoration: BoxDecoration(
@@ -125,6 +153,7 @@ class _RegisterationWidgetState extends State<RegisterationWidget> {
     required String hintTextView,
   }) {
     return TextField(
+      keyboardType: TextInputType.number,
       controller: phoneNumberController,
       decoration: InputDecoration(
           border: InputBorder.none,
@@ -162,7 +191,6 @@ class _RegisterationWidgetState extends State<RegisterationWidget> {
           prefixIconColor: Color.fromARGB(255, 98, 0, 255),
           labelText: labelTextView,
           hintText: hintTextView),
-      onChanged: (text) {},
     );
   }
 }
