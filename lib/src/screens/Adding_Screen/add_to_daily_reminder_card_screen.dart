@@ -34,9 +34,6 @@ class _EditDailyReminderCardScreenState
     false
   ];
   bool isDailyReminder = true;
-  Color selectedColor = Colors.grey.shade100;
-  IconData? _icon;
-  late ReminderCardData reminderCardData;
   @override
   ImageProcess process = ImageProcess();
   ImageScreen imageScreen = ImageScreen();
@@ -79,7 +76,7 @@ class _EditDailyReminderCardScreenState
                       child: TextField(
                         textDirection: TextDirection.rtl,
                         style: TextStyle(
-                          fontFamily: 'RaberR',
+                          fontFamily: 'RaberB',
                           fontSize: 20,
                         ),
                         controller: titleController,
@@ -103,7 +100,7 @@ class _EditDailyReminderCardScreenState
                     child: Directionality(
                       textDirection: TextDirection.rtl,
                       child: TextField(
-                        style: TextStyle(fontFamily: 'RaberR'),
+                        style: TextStyle(fontFamily: 'RaberB'),
                         textDirection: TextDirection.rtl,
                         controller: controllerData2,
                         decoration: InputDecoration(
@@ -130,160 +127,43 @@ class _EditDailyReminderCardScreenState
                       ),
                     ],
                   ),
-                  Padding(
-                    padding: EdgeInsets.all(12),
-                    child: Container(
-                      width: 200,
-                      child: ToggleButtons(
-                          direction: Axis.vertical,
-                          borderColor: Colors.purple,
-                          selectedBorderColor: Colors.pink,
-                          selectedColor: Colors.pink,
-                          borderRadius: BorderRadius.circular(10),
-                          isSelected: isSelectedvalue,
-                          children: [
-                            Text(
-                              'شەممە',
-                              style: TextStyle(
-                                fontFamily: 'RaberB',
-                                fontSize: 24,
-                              ),
-                            ),
-                            Text(
-                              '       ١\n شەممە',
-                              style: TextStyle(
-                                fontFamily: 'RaberB',
-                                fontSize: 24,
-                              ),
-                            ),
-                            Text(
-                              '       ٢\n شەممە',
-                              style: TextStyle(
-                                fontFamily: 'RaberB',
-                                fontSize: 24,
-                              ),
-                            ),
-                            Text(
-                              '       ٣\n شەممە',
-                              style: TextStyle(
-                                fontFamily: 'RaberB',
-                                fontSize: 24,
-                              ),
-                            ),
-                            Text(
-                              '       ٤\n شەممە',
-                              style: TextStyle(
-                                fontFamily: 'RaberB',
-                                fontSize: 24,
-                              ),
-                            ),
-                            Text(
-                              '       ٥\n شەممە',
-                              style: TextStyle(
-                                fontFamily: 'RaberB',
-                                fontSize: 24,
-                              ),
-                            ),
-                            Text(
-                              'هەینی',
-                              style: TextStyle(
-                                fontFamily: 'RaberB',
-                                fontSize: 24,
-                              ),
-                            ),
-                          ],
-                          onPressed: (int index) {
-                            setState(() {
-                              isSelectedvalue[index] = !isSelectedvalue[index];
-                              switch (index) {
-                                case 0:
-                                  setState(() {
-                                    context
-                                        .read<IsDaysChecked>()
-                                        .satChanges(sat: true);
-                                  });
-                                  break;
-                                case 1:
-                                  setState(() {
-                                    context
-                                        .read<IsDaysChecked>()
-                                        .sunChanges(sun: true);
-                                  });
-                                  break;
-                                case 2:
-                                  setState(() {
-                                    context
-                                        .read<IsDaysChecked>()
-                                        .monChanges(mon: true);
-                                  });
-                                  break;
-                                case 3:
-                                  setState(() {
-                                    context
-                                        .read<IsDaysChecked>()
-                                        .tueChanges(tue: true);
-                                  });
-                                  break;
-                                case 4:
-                                  setState(() {
-                                    context
-                                        .read<IsDaysChecked>()
-                                        .wedChanges(wed: true);
-                                  });
-                                  break;
-                                case 5:
-                                  setState(() {
-                                    context
-                                        .read<IsDaysChecked>()
-                                        .thrChanges(thr: true);
-                                  });
-                                  break;
-                                case 6:
-                                  setState(() {
-                                    context
-                                        .read<IsDaysChecked>()
-                                        .friChanges(fri: true);
-                                  });
-                                  break;
-                              }
-                              debugPrint('${isSelectedvalue[index]} : $index');
-                            });
-                          }),
-                    ),
-                  ),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Color.fromARGB(255, 98, 0, 255),
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          DailyReminderCardData reminderCardData =
-                              DailyReminderCardData(
-                            title: titleController.text,
-                            descriptionOfCard: controllerData2.text,
-                            houre: context.read<TimeProvider>().hour,
-                            minute: context.read<TimeProvider>().minute,
-                            pmOrAm: context.read<TimeProvider>().pmOrAm,
-                            sat: context.read<IsDaysChecked>().satDay,
-                            sun: context.read<IsDaysChecked>().sunDay,
-                            mon: context.read<IsDaysChecked>().monDay,
-                            tue: context.read<IsDaysChecked>().tueDay,
-                            wed: context.read<IsDaysChecked>().wedDay,
-                            thr: context.read<IsDaysChecked>().thrDay,
-                            fri: context.read<IsDaysChecked>().friDay,
-                          );
-                          debugPrint(
-                            '${selectedColor},${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().sunDay}, ${context.read<IsDaysChecked>().monDay}, ${context.read<IsDaysChecked>().tueDay}, ${context.read<IsDaysChecked>().wedDay}, ${context.read<IsDaysChecked>().thrDay}, ${context.read<IsDaysChecked>().friDay}',
-                          );
-                          final box = Hive.box('dailyReminderCardDatas');
-                          box.add(reminderCardData.toMap());
-                          Navigator.of(context).pop();
-                        });
-                      },
-                      child: Text(
-                        'خەزن کردن',
-                        style: TextStyle(fontFamily: 'RaberR'),
-                      ))
+                  Container(
+                    width: 200,
+                    height: 60,
+                    child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromARGB(255, 98, 0, 255),
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            DailyReminderCardData reminderCardData =
+                                DailyReminderCardData(
+                              title: titleController.text,
+                              descriptionOfCard: controllerData2.text,
+                              houre: context.read<TimeProvider>().hour,
+                              minute: context.read<TimeProvider>().minute,
+                              pmOrAm: context.read<TimeProvider>().pmOrAm,
+                              sat: context.read<IsDaysChecked>().satDay,
+                              sun: context.read<IsDaysChecked>().sunDay,
+                              mon: context.read<IsDaysChecked>().monDay,
+                              tue: context.read<IsDaysChecked>().tueDay,
+                              wed: context.read<IsDaysChecked>().wedDay,
+                              thr: context.read<IsDaysChecked>().thrDay,
+                              fri: context.read<IsDaysChecked>().friDay,
+                            );
+                            debugPrint(
+                              '${selectedColor},${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().sunDay}, ${context.read<IsDaysChecked>().monDay}, ${context.read<IsDaysChecked>().tueDay}, ${context.read<IsDaysChecked>().wedDay}, ${context.read<IsDaysChecked>().thrDay}, ${context.read<IsDaysChecked>().friDay}',
+                            );
+                            final box = Hive.box('dailyReminderCardDatas');
+                            box.add(reminderCardData.toMap());
+                            Navigator.of(context).pop();
+                          });
+                        },
+                        child: Text(
+                          'خەزن کردن',
+                          style: TextStyle(fontFamily: 'RaberB', fontSize: 20),
+                        )),
+                  )
                 ],
               ),
             ),
@@ -291,13 +171,116 @@ class _EditDailyReminderCardScreenState
         ));
   }
 
-  void customBottomSheet(BuildContext context) {
-    SlideDialog.showSlideDialog(
-      context: context,
-      backgroundColor: Colors.white,
-      pillColor: Colors.yellow,
-      transitionDuration: Duration(milliseconds: 300),
-      child: Text('Your code'),
-    );
-  }
+  // Future showDialog(context) async {
+  //   await AlertDialog(
+  //     title: Text('Pick a day'),
+  //     content: Padding(
+  //       padding: EdgeInsets.all(12),
+  //       child: Container(
+  //         width: 200,
+  //         child: ToggleButtons(
+  //             direction: Axis.vertical,
+  //             borderColor: Colors.purple,
+  //             selectedBorderColor: Colors.pink,
+  //             selectedColor: Colors.pink,
+  //             borderRadius: BorderRadius.circular(10),
+  //             isSelected: isSelectedvalue,
+  //             children: [
+  //               Text(
+  //                 'شەممە',
+  //                 style: TextStyle(
+  //                   fontFamily: 'RaberB',
+  //                   fontSize: 24,
+  //                 ),
+  //               ),
+  //               Text(
+  //                 '       ١\n شەممە',
+  //                 style: TextStyle(
+  //                   fontFamily: 'RaberB',
+  //                   fontSize: 24,
+  //                 ),
+  //               ),
+  //               Text(
+  //                 '       ٢\n شەممە',
+  //                 style: TextStyle(
+  //                   fontFamily: 'RaberB',
+  //                   fontSize: 24,
+  //                 ),
+  //               ),
+  //               Text(
+  //                 '       ٣\n شەممە',
+  //                 style: TextStyle(
+  //                   fontFamily: 'RaberB',
+  //                   fontSize: 24,
+  //                 ),
+  //               ),
+  //               Text(
+  //                 '       ٤\n شەممە',
+  //                 style: TextStyle(
+  //                   fontFamily: 'RaberB',
+  //                   fontSize: 24,
+  //                 ),
+  //               ),
+  //               Text(
+  //                 '       ٥\n شەممە',
+  //                 style: TextStyle(
+  //                   fontFamily: 'RaberB',
+  //                   fontSize: 24,
+  //                 ),
+  //               ),
+  //               Text(
+  //                 'هەینی',
+  //                 style: TextStyle(
+  //                   fontFamily: 'RaberB',
+  //                   fontSize: 24,
+  //                 ),
+  //               ),
+  //             ],
+  //             onPressed: (int index) {
+  //               setState(() {
+  //                 isSelectedvalue[index] = !isSelectedvalue[index];
+  //                 switch (index) {
+  //                   case 0:
+  //                     setState(() {
+  //                       context.read<IsDaysChecked>().satChanges(sat: true);
+  //                     });
+  //                     break;
+  //                   case 1:
+  //                     setState(() {
+  //                       context.read<IsDaysChecked>().sunChanges(sun: true);
+  //                     });
+  //                     break;
+  //                   case 2:
+  //                     setState(() {
+  //                       context.read<IsDaysChecked>().monChanges(mon: true);
+  //                     });
+  //                     break;
+  //                   case 3:
+  //                     setState(() {
+  //                       context.read<IsDaysChecked>().tueChanges(tue: true);
+  //                     });
+  //                     break;
+  //                   case 4:
+  //                     setState(() {
+  //                       context.read<IsDaysChecked>().wedChanges(wed: true);
+  //                     });
+  //                     break;
+  //                   case 5:
+  //                     setState(() {
+  //                       context.read<IsDaysChecked>().thrChanges(thr: true);
+  //                     });
+  //                     break;
+  //                   case 6:
+  //                     setState(() {
+  //                       context.read<IsDaysChecked>().friChanges(fri: true);
+  //                     });
+  //                     break;
+  //                 }
+  //                 debugPrint('${isSelectedvalue[index]} : $index');
+  //               });
+  //             }),
+  //       ),
+  //     ),
+  //   );
+  // }
 }

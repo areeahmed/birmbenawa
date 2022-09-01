@@ -37,13 +37,10 @@ class _TimePickerState extends State<TimePicker> {
       () {
         time = newDate!;
         pmOrAm = time.hour > 12 ? 'PM' : 'AM';
-        //! check the result of provider
       },
     );
   }
 
-  //TODO: Return Hour and Minute to dialog
-  //TODO: create a function that will do all process
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -53,7 +50,7 @@ class _TimePickerState extends State<TimePicker> {
           onTap: () => pickTime(context),
           child: Text(
             getText(), //! Return to reminder screen
-            style: const TextStyle(fontSize: 50, fontFamily: 'RaberR'),
+            style: const TextStyle(fontSize: 50, fontFamily: 'RaberB'),
           ),
         ),
         SizedBox(

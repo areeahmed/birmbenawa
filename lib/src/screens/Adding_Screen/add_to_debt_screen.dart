@@ -175,7 +175,7 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          primary: Color.fromARGB(255, 98, 0, 255),
+                          backgroundColor: Color.fromARGB(255, 98, 0, 255),
                         ),
                         onPressed: () {
                           if (nameOfTookDebtController.text == '' ||

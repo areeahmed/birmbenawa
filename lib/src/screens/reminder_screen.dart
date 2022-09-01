@@ -94,15 +94,6 @@ class _ReminderPageState extends State<Reminderpage> {
                               ],
                             ),
                             child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey,
-                                      offset: Offset(-2, 2),
-                                    ),
-                                  ],
-                                ),
                                 padding: EdgeInsets.all(10),
                                 margin: EdgeInsets.only(bottom: 10),
                                 width: 450,
@@ -112,17 +103,19 @@ class _ReminderPageState extends State<Reminderpage> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Icon(
-                                          Icons.label,
-                                          size: 40,
-                                          color:
-                                              Color.fromARGB(255, 98, 0, 255),
-                                        ),
                                         Text(
-                                          reminderCardData.title,
+                                          '${reminderCardData.houre.toString().padLeft(2, '0')}:${reminderCardData.minute.toString().padLeft(2, '0')}',
                                           style: TextStyle(
                                               fontSize: 30,
                                               fontFamily: 'RaberB'),
+                                        ),
+                                        Container(
+                                          child: Text(
+                                            reminderCardData.title,
+                                            style: TextStyle(
+                                                fontSize: 22,
+                                                fontFamily: 'RaberB'),
+                                          ),
                                         ),
                                         Switch.adaptive(
                                             activeColor:
@@ -132,71 +125,16 @@ class _ReminderPageState extends State<Reminderpage> {
                                             inactiveTrackColor: Color.fromARGB(
                                                 255, 201, 167, 255),
                                             value: _data[key] ?? true,
-                                            onChanged: (value) async {
-                                              // DateTime now = DateTime.now();
-
-                                              // await service.showNotification(
-                                              //   id: 0,
-                                              //   title:
-                                              //       'Local Notification Says: ',
-                                              //   body:
-                                              //       'Hello this is Simple Local Notification',
-                                              // );
-
+                                            onChanged: (value) {
                                               setState(() {
                                                 if (_data[key] == null) {
                                                   _data[key] = true;
                                                 }
                                                 _data[key] = !_data[key];
                                               });
-                                              // print(
-                                              //     '${now.hour} : ${now.minute} [ ${_data[key]} ]');
                                             })
                                       ],
                                     ),
-                                    SizedBox(
-                                      height: 3,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                          padding: EdgeInsets.all(3),
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(3),
-                                          ),
-                                          width: 300,
-                                          height: 70,
-                                          child: Center(
-                                            child: AutoSizeText(
-                                              reminderCardData
-                                                  .descriptionOfCard,
-                                              style: TextStyle(
-                                                  fontSize: 25,
-                                                  fontFamily: 'RaberR'),
-                                              maxLines: 2,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          '${reminderCardData.houre}:${reminderCardData.minute}',
-                                          style: TextStyle(
-                                              fontSize: 40,
-                                              fontFamily: 'RaberB'),
-                                        ),
-                                      ],
-                                    )
                                   ],
                                 )),
                           );

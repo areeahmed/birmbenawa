@@ -72,13 +72,6 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
                         DailyReminderCardData dailyReminderCardData =
                             DailyReminderCardData.fromMap(
                                 _data as Map<dynamic, dynamic>);
-                        print('${dailyReminderCardData.sat}');
-                        print('${dailyReminderCardData.sun}');
-                        print('${dailyReminderCardData.mon}');
-                        print('${dailyReminderCardData.tue}');
-                        print('${dailyReminderCardData.wed}');
-                        print('${dailyReminderCardData.thr}');
-                        print('${dailyReminderCardData.fri}');
                         return Slidable(
                           endActionPane: ActionPane(
                             motion: StretchMotion(),
@@ -93,173 +86,31 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
                             ],
                           ),
                           child: Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey,
-                                      blurRadius: 1,
-                                      spreadRadius: 1,
-                                      offset: Offset(-2, 2),
-                                    ),
-                                  ]),
-                              padding: EdgeInsets.all(20),
+                              padding: EdgeInsets.all(10),
                               margin: EdgeInsets.only(bottom: 10),
-                              width: 400,
+                              width: 450,
                               child: Column(
                                 children: [
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Icon(
-                                        Icons.label,
-                                        size: 40,
-                                        color: Color.fromARGB(255, 98, 0, 255),
+                                      Text(
+                                        '${dailyReminderCardData.houre}:${dailyReminderCardData.minute}',
+                                        style: TextStyle(
+                                          fontSize: 30,
+                                          fontFamily: 'RaberB',
+                                        ),
                                       ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 12.0),
+                                      Container(
                                         child: Text(
                                           dailyReminderCardData.title,
-                                          style: TextStyle(fontSize: 20),
-                                        ),
-                                      ),
-                                      Column(
-                                        children: [
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              //! days here
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(3.0),
-                                                child: dailyReminderCardData
-                                                            .sat ==
-                                                        true
-                                                    ? Text(
-                                                        'شەممە',
-                                                        style: daysONStyle(),
-                                                      )
-                                                    : Container(),
-                                              ),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(3.0),
-                                                child: dailyReminderCardData
-                                                            .sun ==
-                                                        true
-                                                    ? Text(
-                                                        '١ شەممە',
-                                                        style: daysONStyle(),
-                                                      )
-                                                    : Container(),
-                                              ),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(3.0),
-                                                child: dailyReminderCardData
-                                                            .mon ==
-                                                        true
-                                                    ? Text(
-                                                        '٢ شەممە',
-                                                        style: daysONStyle(),
-                                                      )
-                                                    : Container(),
-                                              ),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(3.0),
-                                                child: dailyReminderCardData
-                                                            .tue ==
-                                                        true
-                                                    ? Text(
-                                                        '٣ شەممە',
-                                                        style: daysONStyle(),
-                                                      )
-                                                    : Container(),
-                                              ),
-                                            ],
-                                          ),
-                                          Row(
-                                            children: [
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(3.0),
-                                                child: dailyReminderCardData
-                                                            .wed ==
-                                                        true
-                                                    ? Text(
-                                                        '٤ شەممە',
-                                                        style: daysONStyle(),
-                                                      )
-                                                    : Container(),
-                                              ),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(3.0),
-                                                child: dailyReminderCardData
-                                                            .thr ==
-                                                        true
-                                                    ? Text(
-                                                        '٥ شەممە',
-                                                        style: daysONStyle(),
-                                                      )
-                                                    : Container(),
-                                              ),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(3.0),
-                                                child: dailyReminderCardData
-                                                            .fri ==
-                                                        true
-                                                    ? Text(
-                                                        'هەینی',
-                                                        style: daysONStyle(),
-                                                      )
-                                                    : Container(),
-                                              ),
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 3,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        padding: EdgeInsets.only(right: 150),
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(3),
-                                        ),
-                                        width: 300,
-                                        height: 70,
-                                        child: Center(
-                                          child: AutoSizeText(
-                                            dailyReminderCardData
-                                                .descriptionOfCard,
-                                            style: TextStyle(fontSize: 20),
-                                            maxLines: 2,
+                                          style: TextStyle(
+                                            fontSize: 22,
+                                            fontFamily: 'RaberB',
                                           ),
                                         ),
                                       ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
                                       Switch.adaptive(
                                           activeColor:
                                               Color.fromARGB(255, 98, 0, 255),
@@ -276,12 +127,80 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
                                               _data[key] = !_data[key];
                                             });
                                           }),
-                                      Text(
-                                        '${dailyReminderCardData.houre}:${dailyReminderCardData.minute}',
-                                        style: TextStyle(fontSize: 40),
-                                      ),
                                     ],
                                   ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      //! days here
+                                      Padding(
+                                        padding: const EdgeInsets.all(0.0),
+                                        child: dailyReminderCardData.sat == true
+                                            ? Text(
+                                                'شەممە',
+                                                style: daysONStyle(),
+                                              )
+                                            : Container(),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(0.0),
+                                        child: dailyReminderCardData.sun == true
+                                            ? Text(
+                                                '١ شەممە',
+                                                style: daysONStyle(),
+                                              )
+                                            : Container(),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(0.0),
+                                        child: dailyReminderCardData.mon == true
+                                            ? Text(
+                                                '٢ شەممە',
+                                                style: daysONStyle(),
+                                              )
+                                            : Container(),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(0.0),
+                                        child: dailyReminderCardData.tue == true
+                                            ? Text(
+                                                '٣ شەممە',
+                                                style: daysONStyle(),
+                                              )
+                                            : Container(),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(0.0),
+                                        child: dailyReminderCardData.wed == true
+                                            ? Text(
+                                                '٤ شەممە',
+                                                style: daysONStyle(),
+                                              )
+                                            : Container(),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(0.0),
+                                        child: dailyReminderCardData.thr == true
+                                            ? Text(
+                                                '٥ شەممە',
+                                                style: daysONStyle(),
+                                              )
+                                            : Container(),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(0.0),
+                                        child: dailyReminderCardData.fri == true
+                                            ? Text(
+                                                'هەینی',
+                                                style: daysONStyle(),
+                                              )
+                                            : Container(),
+                                      ),
+                                    ],
+                                  )
                                 ],
                               )),
                         );

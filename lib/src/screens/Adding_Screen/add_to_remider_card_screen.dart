@@ -128,6 +128,10 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                       ),
                     ],
                   ),
+
+                  SizedBox(
+                    height: 12,
+                  ),
                   //TODO add an Icon picker ( Button to open Icon Dialog )
                   Container(
                     width: 200,
