@@ -1,3 +1,7 @@
+import 'dart:io';
+
+import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:birmbenawa/src/Notifications/notifications.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/models/Screen/reminder_card_data.dart';
 import 'package:birmbenawa/src/screens/Adding_Screen/add_to_remider_card_screen.dart';
@@ -12,6 +16,107 @@ class Reminderpage extends StatefulWidget {
 }
 
 class _ReminderPageState extends State<Reminderpage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    AwesomeNotifications().isNotificationAllowed().then((isAllowed) => {
+          // requesting a permission from user to allow the app send to his/her notification
+          // if the notification was not allowed for the app so this dialog will be shown.
+          // this dialog tell the user that our app would like to send notifications to you.
+          if (!isAllowed)
+            {
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: Text(
+                    'ڕێگەپێدان بە هاتنی ئاگادارکەرەوە',
+                    style: TextStyle(
+                      fontFamily: 'RaberB',
+                    ),
+                  ),
+                  content: Text(
+                    'بەرنامەکەی ئێمە داوای ڕێگەپێدان دەکات تاوەکو ئاگادارکەرەوەت بۆ بنێرێت',
+                    style: TextStyle(
+                      fontFamily: 'RaberB',
+                    ),
+                  ),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text(
+                        'نەخێر، ڕێگەنادەم',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontFamily: 'RaberB',
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        // here we don't need the value so we just added under score
+                        AwesomeNotifications()
+                            .requestPermissionToSendNotifications()
+                            .then((_) => Navigator.pop(context));
+                      },
+                      child: Text(
+                        'بەڵێ، ڕێگە دەدەم',
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 98, 0, 255),
+                          fontFamily: 'RaberB',
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            }
+        });
+
+    //this will be show the snackbar that tell the user that the notification has been created
+
+    // AwesomeNotifications().createdStream.listen((notification) {
+    //   ScaffoldMessenger.of(context).showSnackBar(
+    //     SnackBar(
+    //       content: Text(
+    //         '',
+    //       ),
+    //     ),
+    //   );
+    // });
+
+    // when the notification come there will be some action to navigate the current screen
+
+    // AwesomeNotifications().actionStream.listen((notification) {
+
+    // this if will check if the platform is IOS if it was so should the bag decremented by 1
+
+    //   if (notification.channelKey == 'basic_channel' && Platform.isIOS) {
+    //     AwesomeNotifications().getGlobalBadgeCounter().then(
+    //           (value) =>
+    //               AwesomeNotifications().setGlobalBadgeCounter(value - 1),
+    //         );
+    //   }
+    //   Navigator.pushAndRemoveUntil(
+    //       context,
+    //       MaterialPageRoute(builder: (_) => Reminderpage()),
+    //       (route) => route.isFirst);
+    // });
+  }
+
+  // this to dispose the notification streams
+  // @override
+  // void dispose() {
+  //   AwesomeNotifications().actionSink.close();
+  //   AwesomeNotifications().createdSink.close();
+  //   // TODO: implement dispose
+  //   super.dispose();
+  // }
+
   ImageProcess imageProcess = ImageProcess();
   @override
   Widget build(BuildContext context) {
@@ -136,7 +241,8 @@ class _ReminderPageState extends State<Reminderpage> {
         backgroundColor: const Color.fromARGB(255, 98, 0, 255),
         onPressed: () {
           //TODO it should show the notification
-
+          // createNotification(
+          //     id: 1, givenTitle: 'App Developer', givenBody: 'Hello Sir');
           Navigator.of(context).push(MaterialPageRoute(
               builder: ((context) => EditReminderCardScreen())));
         },

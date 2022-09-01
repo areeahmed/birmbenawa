@@ -20,13 +20,12 @@ class ReminderCardData {
   String pmOrAm;
   @HiveField(5)
   bool isChecked; // will be shown
-  // bool? sat;
-  // bool? sun;
-  // bool? mon;
-  // bool? tue;
-  // bool? thr;
-  // bool? wed;
-  // bool? fri;
+  @HiveField(6)
+  int year;
+  @HiveField(7)
+  int month;
+  @HiveField(8)
+  int day;
   ReminderCardData(
     this.title,
     this.descriptionOfCard,
@@ -34,6 +33,9 @@ class ReminderCardData {
     this.minute,
     this.pmOrAm,
     this.isChecked,
+    this.year,
+    this.month,
+    this.day,
   );
 
   ReminderCardData copyWith({
@@ -43,6 +45,9 @@ class ReminderCardData {
     int? minute,
     String? pmOrAm,
     bool? isChecked,
+    int? year,
+    int? month,
+    int? day,
   }) {
     return ReminderCardData(
       title ?? this.title,
@@ -51,6 +56,9 @@ class ReminderCardData {
       minute ?? this.minute,
       pmOrAm ?? this.pmOrAm,
       isChecked ?? this.isChecked,
+      year ?? this.year,
+      month ?? this.month,
+      day ?? this.day,
     );
   }
 
@@ -63,6 +71,9 @@ class ReminderCardData {
     result.addAll({'minute': minute});
     result.addAll({'pmOrAm': pmOrAm});
     result.addAll({'isChecked': isChecked});
+    result.addAll({'year': year});
+    result.addAll({'month': month});
+    result.addAll({'day': day});
 
     return result;
   }
@@ -75,6 +86,9 @@ class ReminderCardData {
       map['minute']?.toInt() ?? 0,
       map['pmOrAm'] ?? '',
       map['isChecked'] ?? false,
+      map['year']?.toInt() ?? 0,
+      map['month']?.toInt() ?? 0,
+      map['day']?.toInt() ?? 0,
     );
   }
 
@@ -85,7 +99,7 @@ class ReminderCardData {
 
   @override
   String toString() {
-    return 'ReminderCardData(title: $title, descriptionOfCard: $descriptionOfCard, houre: $houre, minute: $minute, pmOrAm: $pmOrAm, isChecked: $isChecked)';
+    return 'ReminderCardData(title: $title, descriptionOfCard: $descriptionOfCard, houre: $houre, minute: $minute, pmOrAm: $pmOrAm, isChecked: $isChecked, year: $year, month: $month, day: $day)';
   }
 
   @override
@@ -98,7 +112,10 @@ class ReminderCardData {
         other.houre == houre &&
         other.minute == minute &&
         other.pmOrAm == pmOrAm &&
-        other.isChecked == isChecked;
+        other.isChecked == isChecked &&
+        other.year == year &&
+        other.month == month &&
+        other.day == day;
   }
 
   @override
@@ -108,6 +125,9 @@ class ReminderCardData {
         houre.hashCode ^
         minute.hashCode ^
         pmOrAm.hashCode ^
-        isChecked.hashCode;
+        isChecked.hashCode ^
+        year.hashCode ^
+        month.hashCode ^
+        day.hashCode;
   }
 }

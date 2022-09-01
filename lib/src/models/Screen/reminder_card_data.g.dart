@@ -23,13 +23,16 @@ class ReminderCardDataAdapter extends TypeAdapter<ReminderCardData> {
       fields[3] as int,
       fields[4] as String,
       fields[5] as bool,
+      fields[6] as int,
+      fields[7] as int,
+      fields[8] as int,
     );
   }
 
   @override
   void write(BinaryWriter writer, ReminderCardData obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(9)
       ..writeByte(0)
       ..write(obj.title)
       ..writeByte(1)
@@ -41,7 +44,13 @@ class ReminderCardDataAdapter extends TypeAdapter<ReminderCardData> {
       ..writeByte(4)
       ..write(obj.pmOrAm)
       ..writeByte(5)
-      ..write(obj.isChecked);
+      ..write(obj.isChecked)
+      ..writeByte(6)
+      ..write(obj.year)
+      ..writeByte(7)
+      ..write(obj.month)
+      ..writeByte(8)
+      ..write(obj.day);
   }
 
   @override

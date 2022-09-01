@@ -1,3 +1,4 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:birmbenawa/firebase_options.dart';
 import 'package:birmbenawa/src/models/Screen/todo_data_model.dart';
 import 'package:birmbenawa/src/myapp.dart';
@@ -13,6 +14,30 @@ import 'package:provider/provider.dart';
 
 //transfar
 void main() async {
+  AwesomeNotifications().initialize(
+    'resource://drawable/res_ic_stat_birmbenawa',
+    [
+      NotificationChannel(
+        channelKey: 'basic_channel',
+        channelDescription: '',
+        channelName: 'Basic Notification',
+        // the android notification icon color
+        defaultColor: Colors.purple.shade300,
+        importance: NotificationImportance.High,
+        channelShowBadge: true,
+      ),
+      NotificationChannel(
+        channelKey: 'scheduled_channel',
+        channelName: 'Scheduled Notification',
+        channelDescription: '',
+        defaultColor: Colors.purple.shade300,
+        importance: NotificationImportance.High,
+        channelShowBadge: true,
+        locked: true,
+        soundSource: 'resource://raw/res_notification_soubd',
+      ),
+    ],
+  );
   // initializing the [ WidgetsFlutterBinding ] it is for the [Firebase authentication ]
   WidgetsFlutterBinding.ensureInitialized();
   // [ appDocumentDirectory ] is for documentation for [ Hive DataBase ]
@@ -30,7 +55,6 @@ void main() async {
   final shopingListBox = await Hive.openBox('debt');
   final todoList = await Hive.openBox('todo');
   final userInfo = await Hive.openBox('user');
-
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (context) => TimeProvider()),

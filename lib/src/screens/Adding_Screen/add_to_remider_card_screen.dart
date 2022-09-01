@@ -1,6 +1,8 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/models/image_screens.dart';
 import 'package:birmbenawa/src/models/Screen/reminder_card_data.dart';
+import 'package:birmbenawa/src/provider/date_picker_provider.dart';
 import 'package:birmbenawa/src/provider/time_provider.dart';
 import 'package:birmbenawa/src/widgets/time_picker.dart';
 import 'package:calender_picker/calender_picker.dart';
@@ -9,6 +11,7 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+import 'package:timezone/timezone.dart';
 
 class EditReminderCardScreen extends StatefulWidget {
   EditReminderCardScreen({
@@ -31,6 +34,7 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
   //* title - description - time - and save it
   //TODO find the way to increment the key of hive db
   // TODO you can add the packages that you found in Pub.dev
+
   @override
   TextEditingController titleController = TextEditingController();
   TextEditingController controllerData2 = TextEditingController();
@@ -38,7 +42,7 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
     FocusScopeNode currentFocus = FocusScope.of(context);
     ImageProcess process = ImageProcess();
     ImageScreen imageScreen = ImageScreen();
-
+    Locale arabic = Locale('ar', 'AR');
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 98, 0, 255),
@@ -96,14 +100,19 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                       ],
                     ),
                   ),
+
                   CalenderPicker(
                     dateTime,
+                    locale: arabic.toString(),
                     daysCount: days,
                     // ignore: avoid_print
                     enableMultiSelection: false,
-                    // ignore: avoid_print
-                    //TODO save the value to the provider the value is date
-                    multiSelectionListener: (value) => print(value),
+                    onDateChange: (selectedDate) {
+                      context.read<DatePickerProvider>().changeDate(
+                          yearNow: selectedDate.year,
+                          monthNow: selectedDate.month,
+                          dayNow: selectedDate.day);
+                    },
                     selectionColor: const Color.fromARGB(255, 98, 0, 255),
                     selectedTextColor: Colors.white,
                   ),
@@ -220,6 +229,9 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                               context.read<TimeProvider>().minute,
                               context.read<TimeProvider>().pmOrAm,
                               false,
+                              context.read<DatePickerProvider>().year,
+                              context.read<DatePickerProvider>().month,
+                              context.read<DatePickerProvider>().day,
                             );
                             final box = Hive.box('reminderCardDatas');
                             box.add(reminderCardData.toMap());
