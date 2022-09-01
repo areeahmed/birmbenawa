@@ -3,9 +3,12 @@ import 'package:birmbenawa/src/models/image_screens.dart';
 import 'package:birmbenawa/src/models/Screen/reminder_card_data.dart';
 import 'package:birmbenawa/src/provider/time_provider.dart';
 import 'package:birmbenawa/src/widgets/time_picker.dart';
+import 'package:calender_picker/calender_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class EditReminderCardScreen extends StatefulWidget {
   EditReminderCardScreen({
@@ -19,6 +22,9 @@ class EditReminderCardScreen extends StatefulWidget {
 }
 
 class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
+  DateTime dateTime = DateTime.now();
+
+  int days = 31;
   bool isDailyReminder = true;
   Color selectedColor2 = Colors.grey.shade200;
   Icon _icon = Icon(Icons.add);
@@ -37,7 +43,7 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 98, 0, 255),
           title: Text(
-            'دانانی ئاگادارکردنەوەی ئەمڕۆ',
+            'دانانی ئاگادارکردنەوەی دیاریکراو',
             style: TextStyle(fontFamily: 'RaberB'),
           ),
           centerTitle: true,
@@ -51,10 +57,55 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
               color: Colors.white,
               child: Column(
                 children: [
-                  Image.asset(
-                    imageScreen.editScreen,
-                    height: 250,
-                    width: 250,
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Row(
+                      children: [
+                        const Expanded(
+                            child: Text(
+                          'ڕۆژێک هەڵبژێرە',
+                          style: TextStyle(
+                              fontFamily: 'RaberB',
+                              color: Colors.black87,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
+                        )),
+                        GestureDetector(
+                          onTap: () => showModalBottomSheet(
+                              context: context,
+                              builder: (context) {
+                                return SfDateRangePicker(
+                                  selectionMode:
+                                      DateRangePickerSelectionMode.range,
+                                  view: DateRangePickerView.month,
+                                  onSelectionChanged: _onSelectionChanged,
+                                );
+                              }),
+                          child: Container(
+                              decoration: BoxDecoration(
+                                  color: const Color(0XFFEDF3FF),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: const Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Icon(
+                                  Icons.calendar_today,
+                                  color: Color.fromARGB(255, 98, 0, 255),
+                                ),
+                              )),
+                        )
+                      ],
+                    ),
+                  ),
+                  CalenderPicker(
+                    dateTime,
+                    daysCount: days,
+                    // ignore: avoid_print
+                    enableMultiSelection: false,
+                    // ignore: avoid_print
+                    //TODO save the value to the provider the value is date
+                    multiSelectionListener: (value) => print(value),
+                    selectionColor: const Color.fromARGB(255, 98, 0, 255),
+                    selectedTextColor: Colors.white,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
@@ -202,5 +253,39 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
             ),
           ),
         ));
+  }
+
+  different({DateTime? first, DateTime? last}) async {
+    if (first == null) {
+      first = DateTime(2300);
+    }
+    if (last == null) {
+      last = DateTime(3000);
+    }
+    int data = last.difference(first).inDays;
+    // ignore: avoid_print
+
+    setState(() {
+      data++;
+      days = data;
+      // ignore: avoid_print
+      print(data);
+    });
+  }
+
+  void _onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
+    if (args.value is PickerDateRange) {
+      setState(() {
+        dateTime = args.value.startDate;
+
+        if (args.value.endDate != null) {
+          different(first: args.value.startDate, last: args.value.endDate);
+          // ignore: avoid_print
+          print(args.value.startDate);
+          // ignore: avoid_print
+          print(args.value.endDate);
+        }
+      });
+    }
   }
 }

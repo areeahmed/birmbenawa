@@ -37,7 +37,7 @@ class _MainPageScreenState extends State<MainPageScreen> {
   ];
   @override
   Widget build(BuildContext context) {
-    const String logoPath = 'assets/images/slider/logo.png';
+    const String logoPath = 'assets/logo.png';
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -47,7 +47,7 @@ class _MainPageScreenState extends State<MainPageScreen> {
             fontSize: 20,
             fontFamily: 'RaberB'),
         title: currentIndexPage == 0
-            ? Text('ئەمڕۆ')
+            ? Text('ئاگادارکردنەوەی دیاریکراو')
             : currentIndexPage == 1
                 ? Text('ڕۆژانە')
                 : currentIndexPage == 2
@@ -78,7 +78,7 @@ class _MainPageScreenState extends State<MainPageScreen> {
             icon: Icon(
               Icons.notification_add,
             ),
-            label: 'ئەمرۆ',
+            label: 'دیاریکراو',
           ),
           BottomNavigationBarItem(
             icon: Icon(
