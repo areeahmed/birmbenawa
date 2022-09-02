@@ -1,5 +1,7 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:birmbenawa/src/provider/notification_data_prvider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 Future<void> createNotification({
   required int id,
@@ -72,27 +74,20 @@ Future<void> createSpecificScheduledNotification(
   );
 }
 
-class NotificationDailyWeekAndTime {
-  final int dayOfTheWeek;
-  final TimeOfDay timeOfDay;
-  final String givenTitle;
-  final String givenBody;
-  NotificationDailyWeekAndTime({
-    required this.dayOfTheWeek,
-    required this.timeOfDay,
-    required this.givenTitle,
-    required this.givenBody,
-  });
-}
-
-Future<void> createDailyScheduledNotification(
-    NotificationDailyWeekAndTime notificationDailySchedule) async {
+Future<void> createDailyScheduledNotification({
+  required int dayOfTheWeek,
+  required int hour,
+  required int minute,
+  required String givenTitle,
+  required String givenBody,
+}) async {
+  TimeOfDay time = TimeOfDay(hour: hour, minute: minute);
   await AwesomeNotifications().createNotification(
     content: NotificationContent(
-      title: notificationDailySchedule.givenTitle,
+      title: givenTitle,
       id: createUniqueId(),
-      channelKey: 'scheduled_channel',
-      body: notificationDailySchedule.givenBody,
+      channelKey: 'daily_scheduled_channel',
+      body: givenBody,
       notificationLayout: NotificationLayout.Default,
     ),
     actionButtons: [
@@ -102,12 +97,16 @@ Future<void> createDailyScheduledNotification(
       ),
     ],
     schedule: NotificationCalendar(
-      weekday: notificationDailySchedule.dayOfTheWeek,
-      hour: notificationDailySchedule.timeOfDay.hour,
-      minute: notificationDailySchedule.timeOfDay.minute,
+      weekday: dayOfTheWeek,
+      hour: hour,
+      minute: minute,
       second: 0,
       millisecond: 0,
       repeats: true,
     ),
   );
+}
+
+Future<void> cancelAllNotification() async {
+  await AwesomeNotifications().cancelAll();
 }
