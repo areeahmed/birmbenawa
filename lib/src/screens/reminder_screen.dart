@@ -224,6 +224,22 @@ class _ReminderPageState extends State<Reminderpage> {
                                                   _data[key] = true;
                                                 }
                                                 _data[key] = !_data[key];
+                                                NotificationWeekAndTime
+                                                    notificationWeekAndTime =
+                                                    NotificationWeekAndTime(
+                                                  year: reminderCardData.year,
+                                                  month: reminderCardData.month,
+                                                  day: reminderCardData.day,
+                                                  hour: reminderCardData.houre,
+                                                  minute:
+                                                      reminderCardData.minute,
+                                                  givenTitle:
+                                                      reminderCardData.title,
+                                                  givenBody: reminderCardData
+                                                      .descriptionOfCard,
+                                                );
+                                                createSpecificScheduledNotification(
+                                                    notificationWeekAndTime);
                                               });
                                             })
                                       ],
@@ -242,7 +258,7 @@ class _ReminderPageState extends State<Reminderpage> {
         onPressed: () {
           //TODO it should show the notification
           // createNotification(
-          //     id: 1, givenTitle: 'App Developer', givenBody: 'Hello Sir');
+          //     givenTitle: 'App Developer', givenBody: 'Hello Sir');
           Navigator.of(context).push(MaterialPageRoute(
               builder: ((context) => EditReminderCardScreen())));
         },

@@ -1,4 +1,5 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:birmbenawa/src/Notifications/notifications.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/models/image_screens.dart';
 import 'package:birmbenawa/src/models/Screen/reminder_card_data.dart';
@@ -112,6 +113,7 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                           yearNow: selectedDate.year,
                           monthNow: selectedDate.month,
                           dayNow: selectedDate.day);
+                      print(selectedDate);
                     },
                     selectionColor: const Color.fromARGB(255, 98, 0, 255),
                     selectedTextColor: Colors.white,
@@ -221,6 +223,16 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                               ..removeCurrentMaterialBanner()
                               ..showSnackBar(snackBar);
                             //--------------------------------
+                            NotificationWeekAndTime notificationWeekAndTime =
+                                NotificationWeekAndTime(
+                              year: context.read<DatePickerProvider>().year,
+                              month: context.read<DatePickerProvider>().month,
+                              day: context.read<DatePickerProvider>().day,
+                              hour: context.read<TimeProvider>().hour,
+                              minute: context.read<TimeProvider>().minute,
+                              givenTitle: titleController.text,
+                              givenBody: controllerData2.text,
+                            );
                             ReminderCardData reminderCardData =
                                 ReminderCardData(
                               titleController.text,
@@ -233,6 +245,8 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                               context.read<DatePickerProvider>().month,
                               context.read<DatePickerProvider>().day,
                             );
+                            createSpecificScheduledNotification(
+                                notificationWeekAndTime);
                             final box = Hive.box('reminderCardDatas');
                             box.add(reminderCardData.toMap());
                             Navigator.of(context).pop();

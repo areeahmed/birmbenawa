@@ -20,13 +20,16 @@ Future<void> createNotification({
   );
 }
 
+int createUniqueId() {
+  return DateTime.now().millisecondsSinceEpoch.remainder(5.remainder(3));
+}
+
 class NotificationWeekAndTime {
   final int year;
   final int month;
   final int day;
   final int hour;
   final int minute;
-  final int givenId;
   final String givenTitle;
   final String givenBody;
   NotificationWeekAndTime({
@@ -35,7 +38,6 @@ class NotificationWeekAndTime {
     required this.day,
     required this.hour,
     required this.minute,
-    required this.givenId,
     required this.givenTitle,
     required this.givenBody,
   });
@@ -45,7 +47,8 @@ Future<void> createSpecificScheduledNotification(
     NotificationWeekAndTime notificationSchedule) async {
   await AwesomeNotifications().createNotification(
     content: NotificationContent(
-      id: notificationSchedule.givenId,
+      title: notificationSchedule.givenTitle,
+      id: createUniqueId(),
       channelKey: 'scheduled_channel',
       body: notificationSchedule.givenBody,
       notificationLayout: NotificationLayout.Default,
