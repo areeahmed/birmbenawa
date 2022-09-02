@@ -36,6 +36,16 @@ void main() async {
         locked: true,
         soundSource: 'resource://raw/res_notification_soubd',
       ),
+      NotificationChannel(
+        channelKey: 'daily_scheduled_channel',
+        channelName: 'Daily Scheduled Notification',
+        channelDescription: '',
+        defaultColor: Colors.purple.shade300,
+        importance: NotificationImportance.High,
+        channelShowBadge: true,
+        locked: true,
+        soundSource: 'resource://raw/res_notification_soubd',
+      ),
     ],
   );
   // initializing the [ WidgetsFlutterBinding ] it is for the [Firebase authentication ]

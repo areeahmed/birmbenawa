@@ -78,7 +78,6 @@ class _ReminderPageState extends State<Reminderpage> {
         });
 
     //this will be show the snackbar that tell the user that the notification has been created
-
     // AwesomeNotifications().createdStream.listen((notification) {
     //   ScaffoldMessenger.of(context).showSnackBar(
     //     SnackBar(
@@ -90,11 +89,8 @@ class _ReminderPageState extends State<Reminderpage> {
     // });
 
     // when the notification come there will be some action to navigate the current screen
-
     // AwesomeNotifications().actionStream.listen((notification) {
-
     // this if will check if the platform is IOS if it was so should the bag decremented by 1
-
     //   if (notification.channelKey == 'basic_channel' && Platform.isIOS) {
     //     AwesomeNotifications().getGlobalBadgeCounter().then(
     //           (value) =>
@@ -165,89 +161,100 @@ class _ReminderPageState extends State<Reminderpage> {
                   )
                 : Center(
                     child: ListView.builder(
-                        itemCount: box.length,
-                        itemBuilder: ((context, index) {
-                          final key = keys[index];
-                          Map<dynamic, dynamic> _data = box.getAt(index);
-                          ReminderCardData reminderCardData =
-                              ReminderCardData.fromMap(
-                                  _data as Map<dynamic, dynamic>);
+                      itemCount: box.length,
+                      itemBuilder: ((context, index) {
+                        final key = keys[index];
+                        Map<dynamic, dynamic> _data = box.getAt(index);
+                        ReminderCardData reminderCardData =
+                            ReminderCardData.fromMap(
+                                _data as Map<dynamic, dynamic>);
 
-                          return Slidable(
-                            endActionPane: ActionPane(
-                              motion: StretchMotion(),
+                        return Slidable(
+                          endActionPane: ActionPane(
+                            motion: StretchMotion(),
+                            children: [
+                              SlidableAction(
+                                onPressed: (context) {
+                                  box.delete(key);
+                                },
+                                backgroundColor: Colors.red,
+                                icon: Icons.delete,
+                              )
+                            ],
+                          ),
+                          child: Container(
+                            padding: EdgeInsets.all(10),
+                            margin: EdgeInsets.only(bottom: 10),
+                            width: 450,
+                            child: Column(
                               children: [
-                                SlidableAction(
-                                  onPressed: (context) {
-                                    box.delete(key);
-                                  },
-                                  backgroundColor: Colors.red,
-                                  icon: Icons.delete,
-                                )
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      '${reminderCardData.houre.toString().padLeft(2, '0')}:${reminderCardData.minute.toString().padLeft(2, '0')}',
+                                      style: TextStyle(
+                                          fontSize: 30, fontFamily: 'RaberB'),
+                                    ),
+                                    Container(
+                                      child: Text(
+                                        reminderCardData.title,
+                                        style: TextStyle(
+                                            fontSize: 22, fontFamily: 'RaberB'),
+                                      ),
+                                    ),
+                                    Switch.adaptive(
+                                        activeColor:
+                                            Color.fromARGB(255, 98, 0, 255),
+                                        inactiveThumbColor:
+                                            Color.fromARGB(255, 155, 98, 248),
+                                        inactiveTrackColor:
+                                            Color.fromARGB(255, 201, 167, 255),
+                                        value: _data[key] ?? true,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            if (_data[key] == null) {
+                                              _data[key] = true;
+                                            }
+                                            _data[key] = !_data[key];
+                                            NotificationWeekAndTime
+                                                notificationWeekAndTime =
+                                                NotificationWeekAndTime(
+                                              year: reminderCardData.year,
+                                              month: reminderCardData.month,
+                                              day: reminderCardData.day,
+                                              hour: reminderCardData.houre,
+                                              minute: reminderCardData.minute,
+                                              givenTitle:
+                                                  reminderCardData.title,
+                                              givenBody: reminderCardData
+                                                  .descriptionOfCard,
+                                            );
+                                            createSpecificScheduledNotification(
+                                              notificationWeekAndTime,
+                                            );
+                                          });
+                                        })
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Date: ${reminderCardData.day} / ${reminderCardData.month} / ${reminderCardData.year}',
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ],
                             ),
-                            child: Container(
-                                padding: EdgeInsets.all(10),
-                                margin: EdgeInsets.only(bottom: 10),
-                                width: 450,
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          '${reminderCardData.houre.toString().padLeft(2, '0')}:${reminderCardData.minute.toString().padLeft(2, '0')}',
-                                          style: TextStyle(
-                                              fontSize: 30,
-                                              fontFamily: 'RaberB'),
-                                        ),
-                                        Container(
-                                          child: Text(
-                                            reminderCardData.title,
-                                            style: TextStyle(
-                                                fontSize: 22,
-                                                fontFamily: 'RaberB'),
-                                          ),
-                                        ),
-                                        Switch.adaptive(
-                                            activeColor:
-                                                Color.fromARGB(255, 98, 0, 255),
-                                            inactiveThumbColor: Color.fromARGB(
-                                                255, 155, 98, 248),
-                                            inactiveTrackColor: Color.fromARGB(
-                                                255, 201, 167, 255),
-                                            value: _data[key] ?? true,
-                                            onChanged: (value) {
-                                              setState(() {
-                                                if (_data[key] == null) {
-                                                  _data[key] = true;
-                                                }
-                                                _data[key] = !_data[key];
-                                                NotificationWeekAndTime
-                                                    notificationWeekAndTime =
-                                                    NotificationWeekAndTime(
-                                                  year: reminderCardData.year,
-                                                  month: reminderCardData.month,
-                                                  day: reminderCardData.day,
-                                                  hour: reminderCardData.houre,
-                                                  minute:
-                                                      reminderCardData.minute,
-                                                  givenTitle:
-                                                      reminderCardData.title,
-                                                  givenBody: reminderCardData
-                                                      .descriptionOfCard,
-                                                );
-                                                createSpecificScheduledNotification(
-                                                    notificationWeekAndTime);
-                                              });
-                                            })
-                                      ],
-                                    ),
-                                  ],
-                                )),
-                          );
-                        })),
+                          ),
+                        );
+                      }),
+                    ),
                   );
           }),
         ),

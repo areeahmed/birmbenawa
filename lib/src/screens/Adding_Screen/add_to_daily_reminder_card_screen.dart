@@ -6,6 +6,7 @@ import 'package:birmbenawa/src/models/Screen/reminder_card_data.dart';
 import 'package:birmbenawa/src/provider/time_provider.dart';
 import 'package:birmbenawa/src/widgets/time_picker.dart';
 import 'package:custom_bottom_sheet/custom_bottom_sheet.dart';
+import 'package:day_picker/day_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
@@ -22,17 +23,32 @@ class EditDailyReminderCardScreen extends StatefulWidget {
       _EditDailyReminderCardScreenState();
 }
 
+List<DayInWeek> _days = [
+  DayInWeek(
+    "Sat",
+  ),
+  DayInWeek(
+    "Sun",
+  ),
+  DayInWeek(
+    "Mon",
+  ),
+  DayInWeek(
+    "Tue",
+  ),
+  DayInWeek(
+    "Wed",
+  ),
+  DayInWeek(
+    "Thu",
+  ),
+  DayInWeek(
+    "Fri",
+  ),
+];
+
 class _EditDailyReminderCardScreenState
     extends State<EditDailyReminderCardScreen> {
-  List<bool> isSelectedvalue = [
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false
-  ];
   bool isDailyReminder = true;
   @override
   ImageProcess process = ImageProcess();
@@ -60,10 +76,29 @@ class _EditDailyReminderCardScreenState
               color: Colors.white,
               child: Column(
                 children: [
-                  Image.asset(
-                    imageScreen.editScreen,
-                    height: 250,
-                    width: 250,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SelectWeekDays(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      days: _days,
+                      border: false,
+                      boxDecoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30.0),
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          colors: [
+                            Color.fromARGB(255, 98, 0, 255),
+                            const Color(0xFFBB75FB)
+                          ],
+                          tileMode: TileMode
+                              .repeated, // repeats the gradient over the canvas
+                        ),
+                      ),
+                      onSelect: (stringDays) {
+                        print(stringDays);
+                      },
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
@@ -170,117 +205,4 @@ class _EditDailyReminderCardScreenState
           ),
         ));
   }
-
-  // Future showDialog(context) async {
-  //   await AlertDialog(
-  //     title: Text('Pick a day'),
-  //     content: Padding(
-  //       padding: EdgeInsets.all(12),
-  //       child: Container(
-  //         width: 200,
-  //         child: ToggleButtons(
-  //             direction: Axis.vertical,
-  //             borderColor: Colors.purple,
-  //             selectedBorderColor: Colors.pink,
-  //             selectedColor: Colors.pink,
-  //             borderRadius: BorderRadius.circular(10),
-  //             isSelected: isSelectedvalue,
-  //             children: [
-  //               Text(
-  //                 'شەممە',
-  //                 style: TextStyle(
-  //                   fontFamily: 'RaberB',
-  //                   fontSize: 24,
-  //                 ),
-  //               ),
-  //               Text(
-  //                 '       ١\n شەممە',
-  //                 style: TextStyle(
-  //                   fontFamily: 'RaberB',
-  //                   fontSize: 24,
-  //                 ),
-  //               ),
-  //               Text(
-  //                 '       ٢\n شەممە',
-  //                 style: TextStyle(
-  //                   fontFamily: 'RaberB',
-  //                   fontSize: 24,
-  //                 ),
-  //               ),
-  //               Text(
-  //                 '       ٣\n شەممە',
-  //                 style: TextStyle(
-  //                   fontFamily: 'RaberB',
-  //                   fontSize: 24,
-  //                 ),
-  //               ),
-  //               Text(
-  //                 '       ٤\n شەممە',
-  //                 style: TextStyle(
-  //                   fontFamily: 'RaberB',
-  //                   fontSize: 24,
-  //                 ),
-  //               ),
-  //               Text(
-  //                 '       ٥\n شەممە',
-  //                 style: TextStyle(
-  //                   fontFamily: 'RaberB',
-  //                   fontSize: 24,
-  //                 ),
-  //               ),
-  //               Text(
-  //                 'هەینی',
-  //                 style: TextStyle(
-  //                   fontFamily: 'RaberB',
-  //                   fontSize: 24,
-  //                 ),
-  //               ),
-  //             ],
-  //             onPressed: (int index) {
-  //               setState(() {
-  //                 isSelectedvalue[index] = !isSelectedvalue[index];
-  //                 switch (index) {
-  //                   case 0:
-  //                     setState(() {
-  //                       context.read<IsDaysChecked>().satChanges(sat: true);
-  //                     });
-  //                     break;
-  //                   case 1:
-  //                     setState(() {
-  //                       context.read<IsDaysChecked>().sunChanges(sun: true);
-  //                     });
-  //                     break;
-  //                   case 2:
-  //                     setState(() {
-  //                       context.read<IsDaysChecked>().monChanges(mon: true);
-  //                     });
-  //                     break;
-  //                   case 3:
-  //                     setState(() {
-  //                       context.read<IsDaysChecked>().tueChanges(tue: true);
-  //                     });
-  //                     break;
-  //                   case 4:
-  //                     setState(() {
-  //                       context.read<IsDaysChecked>().wedChanges(wed: true);
-  //                     });
-  //                     break;
-  //                   case 5:
-  //                     setState(() {
-  //                       context.read<IsDaysChecked>().thrChanges(thr: true);
-  //                     });
-  //                     break;
-  //                   case 6:
-  //                     setState(() {
-  //                       context.read<IsDaysChecked>().friChanges(fri: true);
-  //                     });
-  //                     break;
-  //                 }
-  //                 debugPrint('${isSelectedvalue[index]} : $index');
-  //               });
-  //             }),
-  //       ),
-  //     ),
-  //   );
-  // }
 }

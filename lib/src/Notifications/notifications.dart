@@ -71,3 +71,43 @@ Future<void> createSpecificScheduledNotification(
     ),
   );
 }
+
+class NotificationDailyWeekAndTime {
+  final int dayOfTheWeek;
+  final TimeOfDay timeOfDay;
+  final String givenTitle;
+  final String givenBody;
+  NotificationDailyWeekAndTime({
+    required this.dayOfTheWeek,
+    required this.timeOfDay,
+    required this.givenTitle,
+    required this.givenBody,
+  });
+}
+
+Future<void> createDailyScheduledNotification(
+    NotificationDailyWeekAndTime notificationDailySchedule) async {
+  await AwesomeNotifications().createNotification(
+    content: NotificationContent(
+      title: notificationDailySchedule.givenTitle,
+      id: createUniqueId(),
+      channelKey: 'scheduled_channel',
+      body: notificationDailySchedule.givenBody,
+      notificationLayout: NotificationLayout.Default,
+    ),
+    actionButtons: [
+      NotificationActionButton(
+        key: 'MARK_DONE',
+        label: 'Mark Done',
+      ),
+    ],
+    schedule: NotificationCalendar(
+      weekday: notificationDailySchedule.dayOfTheWeek,
+      hour: notificationDailySchedule.timeOfDay.hour,
+      minute: notificationDailySchedule.timeOfDay.minute,
+      second: 0,
+      millisecond: 0,
+      repeats: true,
+    ),
+  );
+}
