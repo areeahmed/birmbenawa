@@ -38,7 +38,7 @@ class ReminderCardDataAdapter extends TypeAdapter<ReminderCardData> {
       ..writeByte(1)
       ..write(obj.descriptionOfCard)
       ..writeByte(2)
-      ..write(obj.houre)
+      ..write(obj.hour)
       ..writeByte(3)
       ..write(obj.minute)
       ..writeByte(4)

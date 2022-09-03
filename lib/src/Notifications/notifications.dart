@@ -74,20 +74,30 @@ Future<void> createSpecificScheduledNotification(
   );
 }
 
-Future<void> createDailyScheduledNotification({
-  required int dayOfTheWeek,
-  required int hour,
-  required int minute,
-  required String givenTitle,
-  required String givenBody,
-}) async {
-  TimeOfDay time = TimeOfDay(hour: hour, minute: minute);
+class NotificationWeekAndTimeRepeated {
+  final int dayOfTheWeek;
+  final int hour;
+  final int minute;
+  final String givenTitle;
+  final String givenBody;
+
+  NotificationWeekAndTimeRepeated({
+    required this.dayOfTheWeek,
+    required this.hour,
+    required this.minute,
+    required this.givenTitle,
+    required this.givenBody,
+  });
+}
+
+Future<void> createDailyScheduledNotification(
+    NotificationWeekAndTimeRepeated notificationWeekAndTimeRepeated) async {
   await AwesomeNotifications().createNotification(
     content: NotificationContent(
-      title: givenTitle,
+      title: notificationWeekAndTimeRepeated.givenTitle,
       id: createUniqueId(),
       channelKey: 'daily_scheduled_channel',
-      body: givenBody,
+      body: notificationWeekAndTimeRepeated.givenBody,
       notificationLayout: NotificationLayout.Default,
     ),
     actionButtons: [
@@ -97,9 +107,9 @@ Future<void> createDailyScheduledNotification({
       ),
     ],
     schedule: NotificationCalendar(
-      weekday: dayOfTheWeek,
-      hour: hour,
-      minute: minute,
+      weekday: notificationWeekAndTimeRepeated.dayOfTheWeek,
+      hour: notificationWeekAndTimeRepeated.hour,
+      minute: notificationWeekAndTimeRepeated.minute,
       second: 0,
       millisecond: 0,
       repeats: true,

@@ -11,31 +11,20 @@ class DailyReminderCardData {
   @HiveField(1) // will be shown
   String descriptionOfCard;
   @HiveField(2) // will be shown
-  int houre;
+  int hour;
   @HiveField(3) // will be shown
   int minute;
   @HiveField(4) // will be shown
   String pmOrAm;
-  bool? sat;
-  bool? sun;
-  bool? mon;
-  bool? tue;
-  bool? thr;
-  bool? wed;
-  bool? fri;
+  @HiveField(5)
+  int dayOfWeek;
   DailyReminderCardData({
     required this.title,
     required this.descriptionOfCard,
-    required this.houre,
+    required this.hour,
     required this.minute,
     required this.pmOrAm,
-    this.sat,
-    this.sun,
-    this.mon,
-    this.tue,
-    this.thr,
-    this.wed,
-    this.fri,
+    required this.dayOfWeek,
   });
 
   DailyReminderCardData copyWith({
@@ -44,27 +33,15 @@ class DailyReminderCardData {
     int? houre,
     int? minute,
     String? pmOrAm,
-    bool? sat,
-    bool? sun,
-    bool? mon,
-    bool? tue,
-    bool? thr,
-    bool? wed,
-    bool? fri,
+    int? dayOfWeek,
   }) {
     return DailyReminderCardData(
       title: title ?? this.title,
       descriptionOfCard: descriptionOfCard ?? this.descriptionOfCard,
-      houre: houre ?? this.houre,
+      hour: houre ?? this.hour,
       minute: minute ?? this.minute,
       pmOrAm: pmOrAm ?? this.pmOrAm,
-      sat: sat ?? this.sat,
-      sun: sun ?? this.sun,
-      mon: mon ?? this.mon,
-      tue: tue ?? this.tue,
-      thr: thr ?? this.thr,
-      wed: wed ?? this.wed,
-      fri: fri ?? this.fri,
+      dayOfWeek: dayOfWeek ?? this.dayOfWeek,
     );
   }
 
@@ -73,30 +50,10 @@ class DailyReminderCardData {
 
     result.addAll({'title': title});
     result.addAll({'descriptionOfCard': descriptionOfCard});
-    result.addAll({'houre': houre});
+    result.addAll({'houre': hour});
     result.addAll({'minute': minute});
     result.addAll({'pmOrAm': pmOrAm});
-    if (sat != null) {
-      result.addAll({'sat': sat});
-    }
-    if (sun != null) {
-      result.addAll({'sun': sun});
-    }
-    if (mon != null) {
-      result.addAll({'mon': mon});
-    }
-    if (tue != null) {
-      result.addAll({'tue': tue});
-    }
-    if (thr != null) {
-      result.addAll({'thr': thr});
-    }
-    if (wed != null) {
-      result.addAll({'wed': wed});
-    }
-    if (fri != null) {
-      result.addAll({'fri': fri});
-    }
+    result.addAll({'dayOfWeek': dayOfWeek});
 
     return result;
   }
@@ -105,16 +62,10 @@ class DailyReminderCardData {
     return DailyReminderCardData(
       title: map['title'] ?? '',
       descriptionOfCard: map['descriptionOfCard'] ?? '',
-      houre: map['houre']?.toInt() ?? 0,
+      hour: map['houre']?.toInt() ?? 0,
       minute: map['minute']?.toInt() ?? 0,
       pmOrAm: map['pmOrAm'] ?? '',
-      sat: map['sat'],
-      sun: map['sun'],
-      mon: map['mon'],
-      tue: map['tue'],
-      thr: map['thr'],
-      wed: map['wed'],
-      fri: map['fri'],
+      dayOfWeek: map['dayOfWeek']?.toInt() ?? 0,
     );
   }
 
@@ -125,7 +76,7 @@ class DailyReminderCardData {
 
   @override
   String toString() {
-    return 'DailyReminderCardData(title: $title, descriptionOfCard: $descriptionOfCard, houre: $houre, minute: $minute, pmOrAm: $pmOrAm, sat: $sat, sun: $sun, mon: $mon, tue: $tue, thr: $thr, wed: $wed, fri: $fri)';
+    return 'DailyReminderCardData(title: $title, descriptionOfCard: $descriptionOfCard, houre: $hour, minute: $minute, pmOrAm: $pmOrAm, dayOfWeek: $dayOfWeek)';
   }
 
   @override
@@ -135,31 +86,19 @@ class DailyReminderCardData {
     return other is DailyReminderCardData &&
         other.title == title &&
         other.descriptionOfCard == descriptionOfCard &&
-        other.houre == houre &&
+        other.hour == hour &&
         other.minute == minute &&
         other.pmOrAm == pmOrAm &&
-        other.sat == sat &&
-        other.sun == sun &&
-        other.mon == mon &&
-        other.tue == tue &&
-        other.thr == thr &&
-        other.wed == wed &&
-        other.fri == fri;
+        other.dayOfWeek == dayOfWeek;
   }
 
   @override
   int get hashCode {
     return title.hashCode ^
         descriptionOfCard.hashCode ^
-        houre.hashCode ^
+        hour.hashCode ^
         minute.hashCode ^
         pmOrAm.hashCode ^
-        sat.hashCode ^
-        sun.hashCode ^
-        mon.hashCode ^
-        tue.hashCode ^
-        thr.hashCode ^
-        wed.hashCode ^
-        fri.hashCode;
+        dayOfWeek.hashCode;
   }
 }

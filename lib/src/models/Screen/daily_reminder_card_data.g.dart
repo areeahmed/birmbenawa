@@ -19,26 +19,29 @@ class DailyReminderCardDataAdapter extends TypeAdapter<DailyReminderCardData> {
     return DailyReminderCardData(
       title: fields[0] as String,
       descriptionOfCard: fields[1] as String,
-      houre: fields[2] as int,
+      hour: fields[2] as int,
       minute: fields[3] as int,
       pmOrAm: fields[4] as String,
+      dayOfWeek: fields[5] as int,
     );
   }
 
   @override
   void write(BinaryWriter writer, DailyReminderCardData obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.title)
       ..writeByte(1)
       ..write(obj.descriptionOfCard)
       ..writeByte(2)
-      ..write(obj.houre)
+      ..write(obj.hour)
       ..writeByte(3)
       ..write(obj.minute)
       ..writeByte(4)
-      ..write(obj.pmOrAm);
+      ..write(obj.pmOrAm)
+      ..writeByte(5)
+      ..write(obj.dayOfWeek);
   }
 
   @override

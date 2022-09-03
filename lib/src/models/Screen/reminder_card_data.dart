@@ -13,7 +13,7 @@ class ReminderCardData {
   @HiveField(1) // will be shown
   String descriptionOfCard;
   @HiveField(2) // will be shown
-  int houre;
+  int hour;
   @HiveField(3) // will be shown
   int minute;
   @HiveField(4) // will be shown
@@ -29,7 +29,7 @@ class ReminderCardData {
   ReminderCardData(
     this.title,
     this.descriptionOfCard,
-    this.houre,
+    this.hour,
     this.minute,
     this.pmOrAm,
     this.isChecked,
@@ -52,7 +52,7 @@ class ReminderCardData {
     return ReminderCardData(
       title ?? this.title,
       descriptionOfCard ?? this.descriptionOfCard,
-      houre ?? this.houre,
+      houre ?? this.hour,
       minute ?? this.minute,
       pmOrAm ?? this.pmOrAm,
       isChecked ?? this.isChecked,
@@ -67,7 +67,7 @@ class ReminderCardData {
 
     result.addAll({'title': title});
     result.addAll({'descriptionOfCard': descriptionOfCard});
-    result.addAll({'houre': houre});
+    result.addAll({'houre': hour});
     result.addAll({'minute': minute});
     result.addAll({'pmOrAm': pmOrAm});
     result.addAll({'isChecked': isChecked});
@@ -99,7 +99,7 @@ class ReminderCardData {
 
   @override
   String toString() {
-    return 'ReminderCardData(title: $title, descriptionOfCard: $descriptionOfCard, houre: $houre, minute: $minute, pmOrAm: $pmOrAm, isChecked: $isChecked, year: $year, month: $month, day: $day)';
+    return 'ReminderCardData(title: $title, descriptionOfCard: $descriptionOfCard, houre: $hour, minute: $minute, pmOrAm: $pmOrAm, isChecked: $isChecked, year: $year, month: $month, day: $day)';
   }
 
   @override
@@ -109,7 +109,7 @@ class ReminderCardData {
     return other is ReminderCardData &&
         other.title == title &&
         other.descriptionOfCard == descriptionOfCard &&
-        other.houre == houre &&
+        other.hour == hour &&
         other.minute == minute &&
         other.pmOrAm == pmOrAm &&
         other.isChecked == isChecked &&
@@ -122,7 +122,7 @@ class ReminderCardData {
   int get hashCode {
     return title.hashCode ^
         descriptionOfCard.hashCode ^
-        houre.hashCode ^
+        hour.hashCode ^
         minute.hashCode ^
         pmOrAm.hashCode ^
         isChecked.hashCode ^

@@ -1,8 +1,10 @@
+import 'package:birmbenawa/src/Notifications/notifications.dart';
 import 'package:birmbenawa/src/models/Screen/daily_reminder_card_data.dart';
 import 'package:birmbenawa/src/models/days_checked_provider.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/models/image_screens.dart';
 import 'package:birmbenawa/src/models/Screen/reminder_card_data.dart';
+import 'package:birmbenawa/src/provider/notification_data_prvider.dart';
 import 'package:birmbenawa/src/provider/time_provider.dart';
 import 'package:birmbenawa/src/widgets/time_picker.dart';
 import 'package:custom_bottom_sheet/custom_bottom_sheet.dart';
@@ -23,32 +25,18 @@ class EditDailyReminderCardScreen extends StatefulWidget {
       _EditDailyReminderCardScreenState();
 }
 
-List<DayInWeek> _days = [
-  DayInWeek(
-    "Sat",
-  ),
-  DayInWeek(
-    "Sun",
-  ),
-  DayInWeek(
-    "Mon",
-  ),
-  DayInWeek(
-    "Tue",
-  ),
-  DayInWeek(
-    "Wed",
-  ),
-  DayInWeek(
-    "Thu",
-  ),
-  DayInWeek(
-    "Fri",
-  ),
-];
-
 class _EditDailyReminderCardScreenState
     extends State<EditDailyReminderCardScreen> {
+  List<String> weekdays = [
+    'Mon',
+    'Tue',
+    'Wed',
+    'Thu',
+    'Fri',
+    'Sat',
+    'Sun',
+  ];
+  int selectedDay = 0;
   bool isDailyReminder = true;
   @override
   ImageProcess process = ImageProcess();
@@ -76,30 +64,6 @@ class _EditDailyReminderCardScreenState
               color: Colors.white,
               child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SelectWeekDays(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      days: _days,
-                      border: false,
-                      boxDecoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30.0),
-                        gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          colors: [
-                            Color.fromARGB(255, 98, 0, 255),
-                            const Color(0xFFBB75FB)
-                          ],
-                          tileMode: TileMode
-                              .repeated, // repeats the gradient over the canvas
-                        ),
-                      ),
-                      onSelect: (stringDays) {
-                        print(stringDays);
-                      },
-                    ),
-                  ),
                   Padding(
                     padding: const EdgeInsets.only(
                       left: 18,
@@ -150,6 +114,14 @@ class _EditDailyReminderCardScreenState
                       ),
                     ),
                   ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      await pickSchedule(context);
+                    },
+                    child: Text(
+                      'Days',
+                    ),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -171,24 +143,26 @@ class _EditDailyReminderCardScreenState
                         ),
                         onPressed: () {
                           setState(() {
+                            NotificationWeekAndTimeRepeated
+                                notificationWeekAndTimeRepeated =
+                                NotificationWeekAndTimeRepeated(
+                              dayOfTheWeek: selectedDay,
+                              hour: context.read<TimeProvider>().hour,
+                              minute: context.read<TimeProvider>().minute,
+                              givenTitle: titleController.text,
+                              givenBody: controllerData2.text,
+                            );
                             DailyReminderCardData reminderCardData =
                                 DailyReminderCardData(
                               title: titleController.text,
                               descriptionOfCard: controllerData2.text,
-                              houre: context.read<TimeProvider>().hour,
+                              hour: context.read<TimeProvider>().hour,
                               minute: context.read<TimeProvider>().minute,
                               pmOrAm: context.read<TimeProvider>().pmOrAm,
-                              sat: context.read<IsDaysChecked>().satDay,
-                              sun: context.read<IsDaysChecked>().sunDay,
-                              mon: context.read<IsDaysChecked>().monDay,
-                              tue: context.read<IsDaysChecked>().tueDay,
-                              wed: context.read<IsDaysChecked>().wedDay,
-                              thr: context.read<IsDaysChecked>().thrDay,
-                              fri: context.read<IsDaysChecked>().friDay,
+                              dayOfWeek: selectedDay,
                             );
-                            debugPrint(
-                              '${selectedColor},${context.read<IsDaysChecked>().satDay}, ${context.read<IsDaysChecked>().sunDay}, ${context.read<IsDaysChecked>().monDay}, ${context.read<IsDaysChecked>().tueDay}, ${context.read<IsDaysChecked>().wedDay}, ${context.read<IsDaysChecked>().thrDay}, ${context.read<IsDaysChecked>().friDay}',
-                            );
+                            createDailyScheduledNotification(
+                                notificationWeekAndTimeRepeated);
                             final box = Hive.box('dailyReminderCardDatas');
                             box.add(reminderCardData.toMap());
                             Navigator.of(context).pop();
@@ -204,5 +178,45 @@ class _EditDailyReminderCardScreenState
             ),
           ),
         ));
+  }
+
+  Future<int?> pickSchedule(
+    BuildContext context,
+  ) async {
+    TimeOfDay? timeOfDay;
+    DateTime now = DateTime.now();
+
+    await showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text(
+              'ڕۆژێک هەڵبژێرە',
+              textAlign: TextAlign.center,
+            ),
+            content: Wrap(
+              alignment: WrapAlignment.center,
+              spacing: 3,
+              children: [
+                for (int index = 0; index < weekdays.length; index++)
+                  ElevatedButton(
+                    onPressed: () {
+                      selectedDay = index + 1;
+
+                      Navigator.pop(context);
+                    },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(
+                        Color.fromARGB(255, 98, 0, 255),
+                      ),
+                    ),
+                    child: Text(
+                      weekdays[index],
+                    ),
+                  ),
+              ],
+            ),
+          );
+        });
   }
 }

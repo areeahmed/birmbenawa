@@ -193,7 +193,7 @@ class _ReminderPageState extends State<Reminderpage> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      '${reminderCardData.houre.toString().padLeft(2, '0')}:${reminderCardData.minute.toString().padLeft(2, '0')}',
+                                      '${reminderCardData.hour.toString().padLeft(2, '0')}:${reminderCardData.minute.toString().padLeft(2, '0')}',
                                       style: TextStyle(
                                           fontSize: 30, fontFamily: 'RaberB'),
                                     ),
@@ -224,7 +224,7 @@ class _ReminderPageState extends State<Reminderpage> {
                                               year: reminderCardData.year,
                                               month: reminderCardData.month,
                                               day: reminderCardData.day,
-                                              hour: reminderCardData.houre,
+                                              hour: reminderCardData.hour,
                                               minute: reminderCardData.minute,
                                               givenTitle:
                                                   reminderCardData.title,
