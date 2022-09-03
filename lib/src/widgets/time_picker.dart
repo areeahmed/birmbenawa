@@ -9,6 +9,7 @@ class TimePicker extends StatefulWidget {
   State<TimePicker> createState() => _TimePickerState();
 }
 
+// this widget is to pick a time and the time will be send it with provider
 class _TimePickerState extends State<TimePicker> {
   String pmOrAm = 'AM';
   String? hours;
