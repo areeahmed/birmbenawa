@@ -4,8 +4,7 @@
 Birmbenawa is an application used to remind you important things that you need to remember
 
 # Logo
-
-![Birmbenawa](https://user-images.githubusercontent.com/59537867/180637841-baa9fa24-29e6-40ef-b244-2c7620af9f21.png)
+![logo](https://user-images.githubusercontent.com/59537867/188266244-d5e4f74a-acf7-4afa-921b-b128a7ce092c.png)
 
 ## Screenshots
 
