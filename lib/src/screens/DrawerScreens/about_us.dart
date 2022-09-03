@@ -39,10 +39,16 @@ class AboutUsPage extends StatelessWidget {
               ),
               //* description
               const SizedBox(height: 35),
-              Text(
-                textDirection: TextDirection.rtl,
-                'خوێندکارم لە زانکۆی سەڵاحەدین کۆلێژی زانست بەشی ئایتی',
-                style: TextStyle(fontSize: 14, fontFamily: 'PeshangBold'),
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 20.0,
+                  right: 20.0,
+                ),
+                child: Text(
+                  textDirection: TextDirection.rtl,
+                  'خوێندکارم لە زانکۆی سەڵاحەدین کۆلێژی زانست بەشی ئایتی',
+                  style: TextStyle(fontSize: 20, fontFamily: 'RaberB'),
+                ),
               ),
               //* messege
               const SizedBox(height: 40),
@@ -52,8 +58,8 @@ class AboutUsPage extends StatelessWidget {
                   textDirection: TextDirection.rtl,
                   'سڵاو بەکارهێنەری خۆشەویست، هیوادارم ئەم بەرنامەیەی منت بە دڵ بێت، سوودی زۆری هەبێت بۆ بەڕێزتان و یارمەتیدەر بێت لە ڕێکخستنی کاری ڕۆژانەت',
                   style: TextStyle(
-                    fontSize: 14,
-                    fontFamily: 'RaberR',
+                    fontSize: 18,
+                    fontFamily: 'RaberB',
                     color: Color.fromARGB(255, 109, 108, 108),
                   ),
                 ),
@@ -62,10 +68,45 @@ class AboutUsPage extends StatelessWidget {
               const SizedBox(height: 70),
               const Text(
                 'بۆ پەیوەندی کردن',
-                style: TextStyle(fontFamily: 'RaberB', fontSize: 16),
+                style: TextStyle(fontFamily: 'RaberB', fontSize: 20),
               ),
               //* contact icon
               SocialContactDeveloper(instagramIconPath: instagramIconPath),
+
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Text(
+                  'کارەکانم',
+                  selectionColor: Color.fromARGB(255, 98, 0, 255),
+                  style: TextStyle(fontFamily: 'RaberB', fontSize: 20),
+                ),
+              ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  GestureDetector(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                      height: 160,
+                      width: 160,
+                    ),
+                  ),
+                  GestureDetector(
+                    child: Container(
+                      height: 160,
+                      width: 160,
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
               //* goback button
             ],
           ),
