@@ -44,6 +44,11 @@ dependencies:
   day_picker: ^2.1.1
   syncfusion_flutter_datepicker: ^20.2.46
   flutter_launcher_icons: ^0.10.0
+  flutter_native_splash: ^2.2.8
+
+flutter_native_splash:
+  color: "#ffffff" #white color
+  image: assets/logoNoBackground.png
 
 dev_dependencies:
   flutter_test:
