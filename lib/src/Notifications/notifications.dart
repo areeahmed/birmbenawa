@@ -16,17 +16,13 @@ Future<void> createNotification({
       title: '${Emojis.time_watch}: $givenTitle',
       body: givenBody,
       bigPicture: 'assets://assets/notification_reminder_image',
-      //TODO check the notification type and find out witch one is will be possible
       notificationLayout: NotificationLayout.Default,
     ),
   );
 }
 
-int createUniqueId() {
-  return DateTime.now().millisecondsSinceEpoch.remainder(5.remainder(3));
-}
-
 class NotificationWeekAndTime {
+  final int? id;
   final int year;
   final int month;
   final int day;
@@ -35,6 +31,7 @@ class NotificationWeekAndTime {
   final String givenTitle;
   final String givenBody;
   NotificationWeekAndTime({
+    this.id,
     required this.year,
     required this.month,
     required this.day,
@@ -50,7 +47,7 @@ Future<void> createSpecificScheduledNotification(
   await AwesomeNotifications().createNotification(
     content: NotificationContent(
       title: notificationSchedule.givenTitle,
-      id: createUniqueId(),
+      id: notificationSchedule.id!,
       channelKey: 'scheduled_channel',
       body: notificationSchedule.givenBody,
       notificationLayout: NotificationLayout.Default,
@@ -75,6 +72,7 @@ Future<void> createSpecificScheduledNotification(
 }
 
 class NotificationWeekAndTimeRepeated {
+  final int? id;
   final int dayOfTheWeek;
   final int hour;
   final int minute;
@@ -82,6 +80,7 @@ class NotificationWeekAndTimeRepeated {
   final String givenBody;
 
   NotificationWeekAndTimeRepeated({
+    this.id,
     required this.dayOfTheWeek,
     required this.hour,
     required this.minute,
@@ -95,7 +94,7 @@ Future<void> createDailyScheduledNotification(
   await AwesomeNotifications().createNotification(
     content: NotificationContent(
       title: notificationWeekAndTimeRepeated.givenTitle,
-      id: createUniqueId(),
+      id: notificationWeekAndTimeRepeated.id!,
       channelKey: 'daily_scheduled_channel',
       body: notificationWeekAndTimeRepeated.givenBody,
       notificationLayout: NotificationLayout.Default,
@@ -115,6 +114,11 @@ Future<void> createDailyScheduledNotification(
       repeats: true,
     ),
   );
+}
+
+// to cancel the specific notification
+Future<void> cancelNotification({required int id}) async {
+  await AwesomeNotifications().cancel(id);
 }
 
 Future<void> cancelAllNotification() async {
