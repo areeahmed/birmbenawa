@@ -211,8 +211,7 @@ class _MainPageScreenState extends State<MainPageScreen> {
                       margin: EdgeInsets.only(top: 20, bottom: 20, left: 70),
                       child: Text(
                           'ئایا دڵنیای لە دەرچوونی تەواوەتیت لە بەرنامەکە؟',
-                          style: TextStyle(
-                              fontFamily: 'PeshangBold', fontSize: 20)),
+                          style: TextStyle(fontFamily: 'RaberB', fontSize: 20)),
                     ),
                   ),
                   Row(
@@ -232,7 +231,7 @@ class _MainPageScreenState extends State<MainPageScreen> {
                             },
                             child: Text(
                               'بەڵێ',
-                              style: TextStyle(fontFamily: 'PeshangBold'),
+                              style: TextStyle(fontFamily: 'RaberB'),
                             )),
                       ),
                       Container(
@@ -245,7 +244,7 @@ class _MainPageScreenState extends State<MainPageScreen> {
                               Navigator.of(context).pop();
                             },
                             child: Text('نەخێر',
-                                style: TextStyle(fontFamily: 'PeshangBold'))),
+                                style: TextStyle(fontFamily: 'RaberB'))),
                       )
                     ],
                   )

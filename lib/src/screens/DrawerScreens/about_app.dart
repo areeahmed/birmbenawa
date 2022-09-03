@@ -10,7 +10,7 @@ class AboutAppPage extends StatefulWidget {
 //TODO compelete this screen as posable as soon
 //* this screen is for information about app like app version and owner and year of developed
 class _AboutAppPageState extends State<AboutAppPage> {
-  final String logoPath = 'assets/images/slider/logoNoBackground.png';
+  final String logoPath = 'assets/logoNoBackground.png';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
