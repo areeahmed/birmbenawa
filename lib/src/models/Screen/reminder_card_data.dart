@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 part 'reminder_card_data.g.dart';
@@ -26,6 +25,8 @@ class ReminderCardData {
   int month;
   @HiveField(8)
   int day;
+  @HiveField(9)
+  int? notificationId;
   ReminderCardData(
     this.title,
     this.descriptionOfCard,
@@ -36,29 +37,32 @@ class ReminderCardData {
     this.year,
     this.month,
     this.day,
+    this.notificationId,
   );
 
   ReminderCardData copyWith({
     String? title,
     String? descriptionOfCard,
-    int? houre,
+    int? hour,
     int? minute,
     String? pmOrAm,
     bool? isChecked,
     int? year,
     int? month,
     int? day,
+    int? notificationId,
   }) {
     return ReminderCardData(
       title ?? this.title,
       descriptionOfCard ?? this.descriptionOfCard,
-      houre ?? this.hour,
+      hour ?? this.hour,
       minute ?? this.minute,
       pmOrAm ?? this.pmOrAm,
       isChecked ?? this.isChecked,
       year ?? this.year,
       month ?? this.month,
       day ?? this.day,
+      notificationId ?? this.notificationId,
     );
   }
 
@@ -67,13 +71,16 @@ class ReminderCardData {
 
     result.addAll({'title': title});
     result.addAll({'descriptionOfCard': descriptionOfCard});
-    result.addAll({'houre': hour});
+    result.addAll({'hour': hour});
     result.addAll({'minute': minute});
     result.addAll({'pmOrAm': pmOrAm});
     result.addAll({'isChecked': isChecked});
     result.addAll({'year': year});
     result.addAll({'month': month});
     result.addAll({'day': day});
+    if (notificationId != null) {
+      result.addAll({'notificationId': notificationId});
+    }
 
     return result;
   }
@@ -82,13 +89,14 @@ class ReminderCardData {
     return ReminderCardData(
       map['title'] ?? '',
       map['descriptionOfCard'] ?? '',
-      map['houre']?.toInt() ?? 0,
+      map['hour']?.toInt() ?? 0,
       map['minute']?.toInt() ?? 0,
       map['pmOrAm'] ?? '',
       map['isChecked'] ?? false,
       map['year']?.toInt() ?? 0,
       map['month']?.toInt() ?? 0,
       map['day']?.toInt() ?? 0,
+      map['notificationId']?.toInt(),
     );
   }
 
@@ -99,7 +107,7 @@ class ReminderCardData {
 
   @override
   String toString() {
-    return 'ReminderCardData(title: $title, descriptionOfCard: $descriptionOfCard, houre: $hour, minute: $minute, pmOrAm: $pmOrAm, isChecked: $isChecked, year: $year, month: $month, day: $day)';
+    return 'ReminderCardData(title: $title, descriptionOfCard: $descriptionOfCard, hour: $hour, minute: $minute, pmOrAm: $pmOrAm, isChecked: $isChecked, year: $year, month: $month, day: $day, notificationId: $notificationId)';
   }
 
   @override
@@ -115,7 +123,8 @@ class ReminderCardData {
         other.isChecked == isChecked &&
         other.year == year &&
         other.month == month &&
-        other.day == day;
+        other.day == day &&
+        other.notificationId == notificationId;
   }
 
   @override
@@ -128,6 +137,7 @@ class ReminderCardData {
         isChecked.hashCode ^
         year.hashCode ^
         month.hashCode ^
-        day.hashCode;
+        day.hashCode ^
+        notificationId.hashCode;
   }
 }

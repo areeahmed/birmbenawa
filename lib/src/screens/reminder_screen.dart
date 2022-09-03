@@ -109,7 +109,6 @@ class _ReminderPageState extends State<Reminderpage> {
   // void dispose() {
   //   AwesomeNotifications().actionSink.close();
   //   AwesomeNotifications().createdSink.close();
-  //   // TODO: implement dispose
   //   super.dispose();
   // }
 
@@ -176,6 +175,8 @@ class _ReminderPageState extends State<Reminderpage> {
                               SlidableAction(
                                 onPressed: (context) {
                                   box.delete(key);
+                                  cancelNotification(
+                                      id: reminderCardData.notificationId!);
                                 },
                                 backgroundColor: Colors.red,
                                 icon: Icons.delete,
@@ -218,22 +219,30 @@ class _ReminderPageState extends State<Reminderpage> {
                                               _data[key] = true;
                                             }
                                             _data[key] = !_data[key];
-                                            NotificationWeekAndTime
-                                                notificationWeekAndTime =
-                                                NotificationWeekAndTime(
-                                              year: reminderCardData.year,
-                                              month: reminderCardData.month,
-                                              day: reminderCardData.day,
-                                              hour: reminderCardData.hour,
-                                              minute: reminderCardData.minute,
-                                              givenTitle:
-                                                  reminderCardData.title,
-                                              givenBody: reminderCardData
-                                                  .descriptionOfCard,
-                                            );
-                                            createSpecificScheduledNotification(
-                                              notificationWeekAndTime,
-                                            );
+                                            if (_data[key] == true) {
+                                              NotificationWeekAndTime
+                                                  notificationWeekAndTime =
+                                                  NotificationWeekAndTime(
+                                                id: reminderCardData
+                                                    .notificationId,
+                                                year: reminderCardData.year,
+                                                month: reminderCardData.month,
+                                                day: reminderCardData.day,
+                                                hour: reminderCardData.hour,
+                                                minute: reminderCardData.minute,
+                                                givenTitle:
+                                                    reminderCardData.title,
+                                                givenBody: reminderCardData
+                                                    .descriptionOfCard,
+                                              );
+                                              createSpecificScheduledNotification(
+                                                notificationWeekAndTime,
+                                              );
+                                            } else if (_data[key] == false) {
+                                              cancelNotification(
+                                                  id: reminderCardData
+                                                      .notificationId!);
+                                            }
                                           });
                                         })
                                   ],

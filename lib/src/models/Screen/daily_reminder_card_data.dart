@@ -18,6 +18,8 @@ class DailyReminderCardData {
   String pmOrAm;
   @HiveField(5)
   int dayOfWeek;
+  @HiveField(6)
+  int? notificationId;
   DailyReminderCardData({
     required this.title,
     required this.descriptionOfCard,
@@ -25,23 +27,26 @@ class DailyReminderCardData {
     required this.minute,
     required this.pmOrAm,
     required this.dayOfWeek,
+    this.notificationId,
   });
 
   DailyReminderCardData copyWith({
     String? title,
     String? descriptionOfCard,
-    int? houre,
+    int? hour,
     int? minute,
     String? pmOrAm,
     int? dayOfWeek,
+    int? notificationId,
   }) {
     return DailyReminderCardData(
       title: title ?? this.title,
       descriptionOfCard: descriptionOfCard ?? this.descriptionOfCard,
-      hour: houre ?? this.hour,
+      hour: hour ?? this.hour,
       minute: minute ?? this.minute,
       pmOrAm: pmOrAm ?? this.pmOrAm,
       dayOfWeek: dayOfWeek ?? this.dayOfWeek,
+      notificationId: notificationId ?? this.notificationId,
     );
   }
 
@@ -50,10 +55,13 @@ class DailyReminderCardData {
 
     result.addAll({'title': title});
     result.addAll({'descriptionOfCard': descriptionOfCard});
-    result.addAll({'houre': hour});
+    result.addAll({'hour': hour});
     result.addAll({'minute': minute});
     result.addAll({'pmOrAm': pmOrAm});
     result.addAll({'dayOfWeek': dayOfWeek});
+    if (notificationId != null) {
+      result.addAll({'notificationId': notificationId});
+    }
 
     return result;
   }
@@ -62,10 +70,11 @@ class DailyReminderCardData {
     return DailyReminderCardData(
       title: map['title'] ?? '',
       descriptionOfCard: map['descriptionOfCard'] ?? '',
-      hour: map['houre']?.toInt() ?? 0,
+      hour: map['hour']?.toInt() ?? 0,
       minute: map['minute']?.toInt() ?? 0,
       pmOrAm: map['pmOrAm'] ?? '',
       dayOfWeek: map['dayOfWeek']?.toInt() ?? 0,
+      notificationId: map['notificationId']?.toInt(),
     );
   }
 
@@ -76,7 +85,7 @@ class DailyReminderCardData {
 
   @override
   String toString() {
-    return 'DailyReminderCardData(title: $title, descriptionOfCard: $descriptionOfCard, houre: $hour, minute: $minute, pmOrAm: $pmOrAm, dayOfWeek: $dayOfWeek)';
+    return 'DailyReminderCardData(title: $title, descriptionOfCard: $descriptionOfCard, hour: $hour, minute: $minute, pmOrAm: $pmOrAm, dayOfWeek: $dayOfWeek, notificationId: $notificationId)';
   }
 
   @override
@@ -89,7 +98,8 @@ class DailyReminderCardData {
         other.hour == hour &&
         other.minute == minute &&
         other.pmOrAm == pmOrAm &&
-        other.dayOfWeek == dayOfWeek;
+        other.dayOfWeek == dayOfWeek &&
+        other.notificationId == notificationId;
   }
 
   @override
@@ -99,6 +109,7 @@ class DailyReminderCardData {
         hour.hashCode ^
         minute.hashCode ^
         pmOrAm.hashCode ^
-        dayOfWeek.hashCode;
+        dayOfWeek.hashCode ^
+        notificationId.hashCode;
   }
 }

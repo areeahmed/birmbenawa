@@ -169,6 +169,9 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
                               SlidableAction(
                                 onPressed: (context) {
                                   box.delete(key);
+                                  cancelNotification(
+                                      id: dailyReminderCardData
+                                          .notificationId!);
                                 },
                                 backgroundColor: Colors.red,
                                 icon: Icons.delete,
@@ -215,99 +218,37 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
                                                 _data[key] = true;
                                               }
                                               _data[key] = !_data[key];
-                                              NotificationWeekAndTimeRepeated
-                                                  notificationWeekAndTimeRepeated =
-                                                  NotificationWeekAndTimeRepeated(
-                                                dayOfTheWeek:
-                                                    dailyReminderCardData
-                                                        .dayOfWeek,
-                                                hour:
-                                                    dailyReminderCardData.hour,
-                                                minute: dailyReminderCardData
-                                                    .minute,
-                                                givenTitle:
-                                                    dailyReminderCardData.title,
-                                                givenBody: dailyReminderCardData
-                                                    .descriptionOfCard,
-                                              );
-                                              createDailyScheduledNotification(
-                                                  notificationWeekAndTimeRepeated);
+                                              if (_data[key] == true) {
+                                                NotificationWeekAndTimeRepeated
+                                                    notificationWeekAndTimeRepeated =
+                                                    NotificationWeekAndTimeRepeated(
+                                                  id: dailyReminderCardData
+                                                      .notificationId,
+                                                  dayOfTheWeek:
+                                                      dailyReminderCardData
+                                                          .dayOfWeek,
+                                                  hour: dailyReminderCardData
+                                                      .hour,
+                                                  minute: dailyReminderCardData
+                                                      .minute,
+                                                  givenTitle:
+                                                      dailyReminderCardData
+                                                          .title,
+                                                  givenBody:
+                                                      dailyReminderCardData
+                                                          .descriptionOfCard,
+                                                );
+                                                createDailyScheduledNotification(
+                                                    notificationWeekAndTimeRepeated);
+                                              } else if (_data[key] == false) {
+                                                cancelNotification(
+                                                    id: dailyReminderCardData
+                                                        .notificationId!);
+                                              }
                                             });
                                           }),
                                     ],
                                   ),
-                                  // Row(
-                                  //   mainAxisAlignment:
-                                  //       MainAxisAlignment.spaceAround,
-                                  //   crossAxisAlignment:
-                                  //       CrossAxisAlignment.center,
-                                  //   children: [
-                                  //     //! days here
-                                  //     Padding(
-                                  //       padding: const EdgeInsets.all(0.0),
-                                  //       child: dailyReminderCardData.sat == true
-                                  //           ? Text(
-                                  //               'شەممە',
-                                  //               style: daysONStyle(),
-                                  //             )
-                                  //           : Container(),
-                                  //     ),
-                                  //     Padding(
-                                  //       padding: const EdgeInsets.all(0.0),
-                                  //       child: dailyReminderCardData.sun == true
-                                  //           ? Text(
-                                  //               '١ شەممە',
-                                  //               style: daysONStyle(),
-                                  //             )
-                                  //           : Container(),
-                                  //     ),
-                                  //     Padding(
-                                  //       padding: const EdgeInsets.all(0.0),
-                                  //       child: dailyReminderCardData.mon == true
-                                  //           ? Text(
-                                  //               '٢ شەممە',
-                                  //               style: daysONStyle(),
-                                  //             )
-                                  //           : Container(),
-                                  //     ),
-                                  //     Padding(
-                                  //       padding: const EdgeInsets.all(0.0),
-                                  //       child: dailyReminderCardData.tue == true
-                                  //           ? Text(
-                                  //               '٣ شەممە',
-                                  //               style: daysONStyle(),
-                                  //             )
-                                  //           : Container(),
-                                  //     ),
-                                  //     Padding(
-                                  //       padding: const EdgeInsets.all(0.0),
-                                  //       child: dailyReminderCardData.wed == true
-                                  //           ? Text(
-                                  //               '٤ شەممە',
-                                  //               style: daysONStyle(),
-                                  //             )
-                                  //           : Container(),
-                                  //     ),
-                                  //     Padding(
-                                  //       padding: const EdgeInsets.all(0.0),
-                                  //       child: dailyReminderCardData.thr == true
-                                  //           ? Text(
-                                  //               '٥ شەممە',
-                                  //               style: daysONStyle(),
-                                  //             )
-                                  //           : Container(),
-                                  //     ),
-                                  //     Padding(
-                                  //       padding: const EdgeInsets.all(0.0),
-                                  //       child: dailyReminderCardData.fri == true
-                                  //           ? Text(
-                                  //               'هەینی',
-                                  //               style: daysONStyle(),
-                                  //             )
-                                  //           : Container(),
-                                  //     ),
-                                  //   ],
-                                  // )
                                 ],
                               )),
                         );
@@ -316,34 +257,15 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
                   );
           }),
         ),
-        // ReminderCardData remidnerCardData = Rem
-        //* Appbar ( LogoIcon - NameOfPageText - DarwerIcon)
-
-        //* Text for greeting the user ( Hello Name of the user that we get from << RegisterPage >>)
-
-        //* ListViewBuilder ==> Showing the cards that user will create and the screen show ( No Card is Created if the list was empty )
-
-        //* Button Action to create a Card
-
-        //* Cards contains ==> ( Title - Description - Time - Icon - color - remining time for reminding)
         floatingActionButton: FloatingActionButton(
             child: const Icon(FontAwesomeIcons.calendarDays),
             heroTag: 'fab2',
             backgroundColor: const Color.fromARGB(255, 98, 0, 255),
             onPressed: () {
               // cancelAllNotification();
-              // Hive.box('dailyReminderCardDatas').clear();
               Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => EditDailyReminderCardScreen(),
               ));
             }));
-  }
-
-  TextStyle daysONStyle() {
-    return TextStyle(color: Colors.pink);
-  }
-
-  TextStyle daysOFFStyle() {
-    return TextStyle(color: Colors.pink);
   }
 }

@@ -146,6 +146,7 @@ class _EditDailyReminderCardScreenState
                             NotificationWeekAndTimeRepeated
                                 notificationWeekAndTimeRepeated =
                                 NotificationWeekAndTimeRepeated(
+                              id: createUniqueId(), //TODO save this id to the hive
                               dayOfTheWeek: selectedDay,
                               hour: context.read<TimeProvider>().hour,
                               minute: context.read<TimeProvider>().minute,
@@ -154,6 +155,7 @@ class _EditDailyReminderCardScreenState
                             );
                             DailyReminderCardData reminderCardData =
                                 DailyReminderCardData(
+                              notificationId: createUniqueId(),
                               title: titleController.text,
                               descriptionOfCard: controllerData2.text,
                               hour: context.read<TimeProvider>().hour,
@@ -218,5 +220,9 @@ class _EditDailyReminderCardScreenState
             ),
           );
         });
+  }
+
+  int createUniqueId() {
+    return DateTime.now().millisecondsSinceEpoch.remainder(5.remainder(3));
   }
 }

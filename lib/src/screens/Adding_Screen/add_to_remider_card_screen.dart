@@ -225,6 +225,7 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                             //--------------------------------
                             NotificationWeekAndTime notificationWeekAndTime =
                                 NotificationWeekAndTime(
+                              id: createUniqueId(),
                               year: context.read<DatePickerProvider>().year,
                               month: context.read<DatePickerProvider>().month,
                               day: context.read<DatePickerProvider>().day,
@@ -244,6 +245,7 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                               context.read<DatePickerProvider>().year,
                               context.read<DatePickerProvider>().month,
                               context.read<DatePickerProvider>().day,
+                              createUniqueId(),
                             );
                             createSpecificScheduledNotification(
                                 notificationWeekAndTime);
@@ -313,5 +315,9 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
         }
       });
     }
+  }
+
+  int createUniqueId() {
+    return DateTime.now().millisecondsSinceEpoch.remainder(5.remainder(3));
   }
 }
