@@ -13,7 +13,6 @@ class PhoneNumberVerificationWidget extends StatefulWidget {
 
   @override
   State<PhoneNumberVerificationWidget> createState() =>
-      // ignore: no_logic_in_create_state
       _PhoneNumberVerificationWidgetState(
         verificationId: verificationId,
       );
@@ -81,7 +80,6 @@ class _PhoneNumberVerificationWidgetState
               ),
               backgroundColor: Colors.red,
             );
-            // showing snackbar at the bottom of the screen.
             ScaffoldMessenger.of(context)
               ..removeCurrentMaterialBanner()
               ..showSnackBar(snackBar);
@@ -98,7 +96,6 @@ class _PhoneNumberVerificationWidgetState
                 ),
                 backgroundColor: Colors.green,
               );
-              // showing snackbar at the bottom of the screen.
               ScaffoldMessenger.of(context)
                 ..removeCurrentMaterialBanner()
                 ..showSnackBar(snackBar);

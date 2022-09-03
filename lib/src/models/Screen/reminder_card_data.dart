@@ -9,16 +9,16 @@ part 'reminder_card_data.g.dart';
 class ReminderCardData {
   @HiveField(0)
   String title;
-  @HiveField(1) // will be shown
+  @HiveField(1)
   String descriptionOfCard;
-  @HiveField(2) // will be shown
+  @HiveField(2)
   int hour;
-  @HiveField(3) // will be shown
+  @HiveField(3)
   int minute;
-  @HiveField(4) // will be shown
+  @HiveField(4)
   String pmOrAm;
   @HiveField(5)
-  bool isChecked; // will be shown
+  bool isChecked;
   @HiveField(6)
   int year;
   @HiveField(7)

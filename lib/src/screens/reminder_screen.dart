@@ -21,9 +21,6 @@ class _ReminderPageState extends State<Reminderpage> {
     // TODO: implement initState
     super.initState();
     AwesomeNotifications().isNotificationAllowed().then((isAllowed) => {
-          // requesting a permission from user to allow the app send to his/her notification
-          // if the notification was not allowed for the app so this dialog will be shown.
-          // this dialog tell the user that our app would like to send notifications to you.
           if (!isAllowed)
             {
               showDialog(
@@ -57,7 +54,6 @@ class _ReminderPageState extends State<Reminderpage> {
                     ),
                     TextButton(
                       onPressed: () {
-                        // here we don't need the value so we just added under score
                         AwesomeNotifications()
                             .requestPermissionToSendNotifications()
                             .then((_) => Navigator.pop(context));
@@ -115,7 +111,6 @@ class _ReminderPageState extends State<Reminderpage> {
   ImageProcess imageProcess = ImageProcess();
   @override
   Widget build(BuildContext context) {
-    // final cardDataBox = Hive.box('reminderCardDatas');
     return Scaffold(
       body: Container(
         color: Colors.white,
@@ -272,9 +267,6 @@ class _ReminderPageState extends State<Reminderpage> {
         heroTag: 'fab1',
         backgroundColor: const Color.fromARGB(255, 98, 0, 255),
         onPressed: () {
-          //TODO it should show the notification
-          // createNotification(
-          //     givenTitle: 'App Developer', givenBody: 'Hello Sir');
           Navigator.of(context).push(MaterialPageRoute(
               builder: ((context) => EditReminderCardScreen())));
         },

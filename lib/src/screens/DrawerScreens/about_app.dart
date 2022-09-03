@@ -7,8 +7,6 @@ class AboutAppPage extends StatefulWidget {
   State<AboutAppPage> createState() => _AboutAppPageState();
 }
 
-//TODO compelete this screen as posable as soon
-//* this screen is for information about app like app version and owner and year of developed
 class _AboutAppPageState extends State<AboutAppPage> {
   final String logoPath = 'assets/logoNoBackground.png';
   @override
@@ -48,7 +46,27 @@ class _AboutAppPageState extends State<AboutAppPage> {
                     textDirection: TextDirection.rtl,
                     style: TextStyle(fontSize: 20, fontFamily: 'RaberR'),
                   )),
-            )
+            ),
+            Center(
+              child: Container(
+                  height: 30,
+                  width: 300,
+                  child: Text(
+                    'ڤێرژنی بەرنامە: 1.0.0',
+                    textDirection: TextDirection.rtl,
+                    style: TextStyle(fontSize: 20, fontFamily: 'RaberR'),
+                  )),
+            ),
+            Center(
+              child: Container(
+                  height: 30,
+                  width: 300,
+                  child: Text(
+                    ' بەرواری دروستبوونی: 3/9/2022',
+                    textDirection: TextDirection.rtl,
+                    style: TextStyle(fontSize: 20, fontFamily: 'RaberR'),
+                  )),
+            ),
           ],
         ),
       ),

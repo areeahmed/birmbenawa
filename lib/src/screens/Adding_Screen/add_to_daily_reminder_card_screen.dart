@@ -1,14 +1,9 @@
 import 'package:birmbenawa/src/Notifications/notifications.dart';
 import 'package:birmbenawa/src/models/Screen/daily_reminder_card_data.dart';
-import 'package:birmbenawa/src/models/days_checked_provider.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/models/image_screens.dart';
-import 'package:birmbenawa/src/models/Screen/reminder_card_data.dart';
-import 'package:birmbenawa/src/provider/notification_data_prvider.dart';
 import 'package:birmbenawa/src/provider/time_provider.dart';
 import 'package:birmbenawa/src/widgets/time_picker.dart';
-import 'package:custom_bottom_sheet/custom_bottom_sheet.dart';
-import 'package:day_picker/day_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
@@ -114,14 +109,6 @@ class _EditDailyReminderCardScreenState
                       ),
                     ),
                   ),
-                  ElevatedButton(
-                    onPressed: () async {
-                      await pickSchedule(context);
-                    },
-                    child: Text(
-                      'Days',
-                    ),
-                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -135,6 +122,26 @@ class _EditDailyReminderCardScreenState
                     ],
                   ),
                   Container(
+                    margin: EdgeInsets.only(top: 10, bottom: 10),
+                    width: 200,
+                    height: 60,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color.fromARGB(255, 98, 0, 255),
+                      ),
+                      onPressed: () async {
+                        await pickSchedule(context);
+                      },
+                      child: Text(
+                        'ڕۆژەکان',
+                        style: TextStyle(
+                          fontFamily: 'RaberB',
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
                     width: 200,
                     height: 60,
                     child: ElevatedButton(
@@ -146,7 +153,7 @@ class _EditDailyReminderCardScreenState
                             NotificationWeekAndTimeRepeated
                                 notificationWeekAndTimeRepeated =
                                 NotificationWeekAndTimeRepeated(
-                              id: createUniqueId(), //TODO save this id to the hive
+                              id: createUniqueId(),
                               dayOfTheWeek: selectedDay,
                               hour: context.read<TimeProvider>().hour,
                               minute: context.read<TimeProvider>().minute,

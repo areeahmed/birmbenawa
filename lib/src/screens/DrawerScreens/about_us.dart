@@ -6,8 +6,6 @@ class AboutUsPage extends StatelessWidget {
   final String logoPath = 'assets/images/slider/logoNoBackground.png';
   const AboutUsPage({Key? key}) : super(key: key);
 
-//* About us screen for now is completed
-//* this screen is for information about developer of the application and his social media
   @override
   Widget build(BuildContext context) {
     final url = Uri.decodeComponent('https://www.facebook.com/aree.ahmed.311');
@@ -27,17 +25,14 @@ class AboutUsPage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              //* circle image
               OwnerAvatar(ownerPicturePath: ownerPicturePath),
               const SizedBox(height: 35),
-              //* name
               Text(
                 //
                 textDirection: TextDirection.rtl,
                 'ئاری احمد ابراهیم',
                 style: TextStyle(fontSize: 20, fontFamily: 'RaberB'),
               ),
-              //* description
               const SizedBox(height: 35),
               Padding(
                 padding: const EdgeInsets.only(
@@ -50,7 +45,6 @@ class AboutUsPage extends StatelessWidget {
                   style: TextStyle(fontSize: 20, fontFamily: 'RaberB'),
                 ),
               ),
-              //* messege
               const SizedBox(height: 40),
               Padding(
                 padding: const EdgeInsets.only(left: 40.0, right: 40.0),
@@ -64,24 +58,20 @@ class AboutUsPage extends StatelessWidget {
                   ),
                 ),
               ),
-              //* text contact
               const SizedBox(height: 70),
               const Text(
                 'بۆ پەیوەندی کردن',
                 style: TextStyle(fontFamily: 'RaberB', fontSize: 20),
               ),
-              //* contact icon
               SocialContactDeveloper(instagramIconPath: instagramIconPath),
-
               Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: Text(
-                  'کارەکانم',
+                  'شارەزاییم',
                   selectionColor: Color.fromARGB(255, 98, 0, 255),
                   style: TextStyle(fontFamily: 'RaberB', fontSize: 20),
                 ),
               ),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -107,7 +97,6 @@ class AboutUsPage extends StatelessWidget {
                   ),
                 ],
               ),
-              //* goback button
             ],
           ),
         ),
@@ -165,7 +154,6 @@ class AboutUsPage extends StatelessWidget {
           ),
           child: IconButton(
             onPressed: () {
-              // https://www.instagram.com/ari_ahmed_ibrahim/
               final url = 'https://www.instagram.com/ari_ahmed_ibrahim/';
               launchUrl(url);
             },

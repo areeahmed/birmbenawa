@@ -46,7 +46,6 @@ class _RegisterationWidgetState extends State<RegisterationWidget> {
     );
   }
 
-  //! the Person Icon a the top of the screen check the icon
   Widget AppLogInShowingInTheAppBar() {
     return Container(
         padding: const EdgeInsets.fromLTRB(60, 0, 60, 0),
@@ -56,7 +55,6 @@ class _RegisterationWidgetState extends State<RegisterationWidget> {
         ));
   }
 
-  //! Sign In Button ( Sign Up )
   Widget SignInButtonWidget() {
     return Container(
       margin: const EdgeInsets.all(10),
@@ -77,7 +75,6 @@ class _RegisterationWidgetState extends State<RegisterationWidget> {
               ),
               backgroundColor: Colors.red,
             );
-            // showing snackbar at the bottom of the screen.
             ScaffoldMessenger.of(context)
               ..removeCurrentMaterialBanner()
               ..showSnackBar(snackBar);
@@ -93,7 +90,6 @@ class _RegisterationWidgetState extends State<RegisterationWidget> {
               ),
               backgroundColor: Colors.green,
             );
-            // showing snackbar at the bottom of the screen.
             ScaffoldMessenger.of(context)
               ..removeCurrentMaterialBanner()
               ..showSnackBar(snackBar);
@@ -107,7 +103,6 @@ class _RegisterationWidgetState extends State<RegisterationWidget> {
     );
   }
 
-  //! Input Box Phone Number and Name
   Widget TextFieldBoxWidget() {
     return Container(
       decoration: BoxDecoration(

@@ -5,8 +5,6 @@ class OtherAppsPage extends StatelessWidget {
   final String logoPath = 'assets/images/slider/logoNoBackground.png';
   const OtherAppsPage({Key? key}) : super(key: key);
 
-  //* here we will add other apps when we builded another apps.
-  //* this is for other apps if the developer created another apps
   @override
   Widget build(BuildContext context) {
     ImageProcess imageProcess = ImageProcess();

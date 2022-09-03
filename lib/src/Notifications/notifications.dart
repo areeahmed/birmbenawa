@@ -1,7 +1,4 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
-import 'package:birmbenawa/src/provider/notification_data_prvider.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 Future<void> createNotification({
   required int id,

@@ -11,8 +11,6 @@ class SettingsPage extends StatefulWidget {
   State<SettingsPage> createState() => _SettingsPageState();
 }
 
-//TODO adding 2 setting here 1 - app setting 2- profile setting
-//* this is for settigns screen not builded yet
 class _SettingsPageState extends State<SettingsPage> {
   void initState() {
     // TODO: implement initState
@@ -66,7 +64,6 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                   backgroundColor: Colors.red,
                 );
-                // showing snackbar at the bottom of the screen.
                 ScaffoldMessenger.of(context)
                   ..removeCurrentMaterialBanner()
                   ..showSnackBar(snackBar);
@@ -82,7 +79,6 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                   backgroundColor: Colors.green,
                 );
-                // showing snackbar at the bottom of the screen.
                 ScaffoldMessenger.of(context)
                   ..removeCurrentMaterialBanner()
                   ..showSnackBar(snackBar);

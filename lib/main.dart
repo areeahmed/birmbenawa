@@ -4,12 +4,9 @@ import 'package:birmbenawa/src/models/Screen/todo_data_model.dart';
 import 'package:birmbenawa/src/myapp.dart';
 import 'package:birmbenawa/src/provider/card_data_provider.dart';
 import 'package:birmbenawa/src/provider/date_picker_provider.dart';
-import 'package:birmbenawa/src/models/days_checked_provider.dart';
 import 'package:birmbenawa/src/provider/time_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_native_splash/cli_commands.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:provider/provider.dart';
@@ -71,11 +68,8 @@ void main() async {
     providers: [
       ChangeNotifierProvider(create: (context) => TimeProvider()),
       ChangeNotifierProvider(create: ((context) => CardDataProvider())),
-      ChangeNotifierProvider(create: (context) => IsDaysChecked()),
       ChangeNotifierProvider(create: (context) => DatePickerProvider()),
     ],
     child: MyApp(),
   ));
-
-  // this is the safest Project for Undoing commit any thing happen undo commit until here or delete the local project and clone this commit
 }

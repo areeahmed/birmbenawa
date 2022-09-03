@@ -117,7 +117,6 @@ class _EditShopingListReminderState extends State<EditShopingListReminder> {
                             ),
                             backgroundColor: Colors.red,
                           );
-                          // showing snackbar at the bottom of the screen.
                           ScaffoldMessenger.of(context)
                             ..removeCurrentMaterialBanner()
                             ..showSnackBar(snackBar);
@@ -140,7 +139,6 @@ class _EditShopingListReminderState extends State<EditShopingListReminder> {
                             ),
                             backgroundColor: Colors.green,
                           );
-                          // showing snackbar at the bottom of the screen.
                           ScaffoldMessenger.of(context)
                             ..removeCurrentMaterialBanner()
                             ..showSnackBar(snackBar);

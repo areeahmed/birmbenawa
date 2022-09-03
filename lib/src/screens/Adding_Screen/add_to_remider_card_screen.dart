@@ -1,4 +1,3 @@
-import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:birmbenawa/src/Notifications/notifications.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/models/image_screens.dart';
@@ -8,11 +7,9 @@ import 'package:birmbenawa/src/provider/time_provider.dart';
 import 'package:birmbenawa/src/widgets/time_picker.dart';
 import 'package:calender_picker/calender_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
-import 'package:timezone/timezone.dart';
 
 class EditReminderCardScreen extends StatefulWidget {
   EditReminderCardScreen({
@@ -32,9 +29,6 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
   bool isDailyReminder = true;
   Color selectedColor2 = Colors.grey.shade200;
   Icon _icon = Icon(Icons.add);
-  //* title - description - time - and save it
-  //TODO find the way to increment the key of hive db
-  // TODO you can add the packages that you found in Pub.dev
 
   @override
   TextEditingController titleController = TextEditingController();
@@ -101,12 +95,10 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                       ],
                     ),
                   ),
-
                   CalenderPicker(
                     dateTime,
                     locale: arabic.toString(),
                     daysCount: days,
-                    // ignore: avoid_print
                     enableMultiSelection: false,
                     onDateChange: (selectedDate) {
                       context.read<DatePickerProvider>().changeDate(
@@ -190,11 +182,9 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
                       ),
                     ],
                   ),
-
                   SizedBox(
                     height: 12,
                   ),
-                  //TODO add an Icon picker ( Button to open Icon Dialog )
                   Container(
                     width: 200,
                     height: 60,
@@ -291,12 +281,10 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
       last = DateTime(3000);
     }
     int data = last.difference(first).inDays;
-    // ignore: avoid_print
 
     setState(() {
       data++;
       days = data;
-      // ignore: avoid_print
       print(data);
     });
   }
@@ -308,9 +296,7 @@ class _EditReminderCardScreenState extends State<EditReminderCardScreen> {
 
         if (args.value.endDate != null) {
           different(first: args.value.startDate, last: args.value.endDate);
-          // ignore: avoid_print
           print(args.value.startDate);
-          // ignore: avoid_print
           print(args.value.endDate);
         }
       });

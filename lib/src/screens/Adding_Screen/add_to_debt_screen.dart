@@ -4,10 +4,8 @@ import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/models/image_screens.dart';
 import 'package:birmbenawa/src/widgets/date_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
 
 class EditDebtScreen extends StatefulWidget {
   EditDebtScreen({Key? key}) : super(key: key);
@@ -17,8 +15,6 @@ class EditDebtScreen extends StatefulWidget {
 }
 
 class _EditDebtScreenState extends State<EditDebtScreen> {
-  //* title - description - time - and save it
-  // TODO you can add the packages that you found in Pub.dev
   @override
   TextEditingController nameOfTookDebtController = TextEditingController();
   TextEditingController moneyController = TextEditingController();

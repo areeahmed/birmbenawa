@@ -2,8 +2,6 @@ import 'package:birmbenawa/src/screens/Auth/registeration.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
-//* Dear Programmer This screen is a land screen and the user will see those screens at first of downloading application
-//* Dear Programmer those screens is a slider for showing futures that this application will do
 class LandScreenSlides extends StatelessWidget {
   const LandScreenSlides({
     Key? key,
@@ -21,8 +19,6 @@ class LandScreenSlides extends StatelessWidget {
       child: IntroductionScreen(
         rtl: true,
         pages: [
-          //* this is the all slides of my application
-          //* it contains my Icons and titles and descriptions
           PageViewModel(
             title: 'Birmbenawa',
             body: 'Birmbenawa بەخێرهاتی بۆ بەرنامەی ',
@@ -54,7 +50,6 @@ class LandScreenSlides extends StatelessWidget {
             decoration: getPageDecoration(),
           ),
         ],
-        //* this is a button to continue the process of the sliding the screen to the new slide
         done: const Text(
           'Start',
           style: TextStyle(
@@ -62,8 +57,6 @@ class LandScreenSlides extends StatelessWidget {
             color: Color.fromARGB(255, 98, 0, 255),
           ),
         ),
-
-        //* navigating to Home page screen
         onDone: () => goToHome(context),
         showSkipButton: true,
         skip: const Text(
@@ -96,14 +89,12 @@ class LandScreenSlides extends StatelessWidget {
   void goToHome(context) => Navigator.of(context)
       .push(MaterialPageRoute(builder: (context) => RegisterationWidget()));
 
-  //* this is a methode for Returning an Image with centered just by giving a path in String Type.
   Widget buildImage(String path) => Center(
         widthFactor: 350,
         child: Image.asset(
           path,
         ),
       );
-  //* this is a methode for Returning the decoration of title of the slider page
   PageDecoration getPageDecoration() => const PageDecoration(
         titleTextStyle: TextStyle(
             fontSize: 28, fontWeight: FontWeight.bold, fontFamily: 'RaberB'),

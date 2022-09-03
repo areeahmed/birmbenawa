@@ -1,7 +1,6 @@
 import 'package:birmbenawa/src/models/Screen/todo_data_model.dart';
 import 'package:birmbenawa/src/models/image_process_model.dart';
 import 'package:birmbenawa/src/screens/Adding_Screen/add_to_do_list_reminder.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
@@ -145,7 +144,6 @@ class _ShopingReminderPageState extends State<ShopingReminderPage> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color.fromARGB(255, 98, 0, 255),
         onPressed: () {
-          // Hive.box('todo').clear();
           Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => EditShopingListReminder()));
         },

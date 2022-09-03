@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:birmbenawa/src/Notifications/notifications.dart';
 import 'package:birmbenawa/src/models/Screen/daily_reminder_card_data.dart';
@@ -22,9 +21,6 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
     // TODO: implement initState
     super.initState();
     AwesomeNotifications().isNotificationAllowed().then((isAllowed) => {
-          // requesting a permission from user to allow the app send to his/her notification
-          // if the notification was not allowed for the app so this dialog will be shown.
-          // this dialog tell the user that our app would like to send notifications to you.
           if (!isAllowed)
             {
               showDialog(
@@ -58,7 +54,6 @@ class _DailyReminderPageState extends State<DailyReminderPage> {
                     ),
                     TextButton(
                       onPressed: () {
-                        // here we don't need the value so we just added under score
                         AwesomeNotifications()
                             .requestPermissionToSendNotifications()
                             .then((_) => Navigator.pop(context));

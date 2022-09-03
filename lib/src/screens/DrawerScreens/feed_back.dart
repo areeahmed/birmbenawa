@@ -96,14 +96,12 @@ class _FeedBackScreenState extends State<FeedBackScreen> {
                         ),
                         backgroundColor: Colors.red,
                       );
-                      // showing snackbar at the bottom of the screen.
                       ScaffoldMessenger.of(context)
                         ..removeCurrentMaterialBanner()
                         ..showSnackBar(snackBar);
                     } else {
                       launchEmail(
-                          toEmail:
-                              'birmbenawa@gmail.com', // Developer Team email
+                          toEmail: 'birmbenawa@gmail.com',
                           subject: subjectOfUser.text,
                           message: messageOfUser.text);
                     }
@@ -125,8 +123,6 @@ class _FeedBackScreenState extends State<FeedBackScreen> {
       'subject': subject,
       'body': message,
     });
-    // final url =
-    //     'mailto:$toEmail?subject=${Uri.encodeFull(subject)}&body=${Uri.encodeFull(message)}';
     if (await canLaunchUrl(url)) {
       await launchUrl(url);
     }
