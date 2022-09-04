@@ -21,83 +21,69 @@ class AboutUsPage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.white,
       ),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              OwnerAvatar(ownerPicturePath: ownerPicturePath),
-              const SizedBox(height: 35),
-              Text(
-                //
-                textDirection: TextDirection.rtl,
-                'ئاری احمد ابراهیم',
-                style: TextStyle(fontSize: 20, fontFamily: 'RaberB'),
-              ),
-              const SizedBox(height: 35),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 20.0,
-                  right: 20.0,
-                ),
-                child: Text(
+      body: Container(
+        color: Colors.white,
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                OwnerAvatar(ownerPicturePath: ownerPicturePath),
+                const SizedBox(height: 35),
+                Text(
+                  //
                   textDirection: TextDirection.rtl,
-                  'خوێندکارم لە زانکۆی سەڵاحەدین کۆلێژی زانست بەشی ئایتی',
+                  'ئاری احمد ابراهیم',
                   style: TextStyle(fontSize: 20, fontFamily: 'RaberB'),
                 ),
-              ),
-              const SizedBox(height: 40),
-              Padding(
-                padding: const EdgeInsets.only(left: 40.0, right: 40.0),
-                child: Text(
-                  textDirection: TextDirection.rtl,
-                  'سڵاو بەکارهێنەری خۆشەویست، هیوادارم ئەم بەرنامەیەی منت بە دڵ بێت، سوودی زۆری هەبێت بۆ بەڕێزتان و یارمەتیدەر بێت لە ڕێکخستنی کاری ڕۆژانەت',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontFamily: 'RaberB',
-                    color: Color.fromARGB(255, 109, 108, 108),
+                const SizedBox(height: 35),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 20.0,
+                    right: 20.0,
+                  ),
+                  child: Text(
+                    textDirection: TextDirection.rtl,
+                    'خوێندکارم لە زانکۆی سەڵاحەدین کۆلێژی زانست بەشی ئایتی',
+                    style: TextStyle(fontSize: 20, fontFamily: 'RaberB'),
                   ),
                 ),
-              ),
-              const SizedBox(height: 70),
-              const Text(
-                'بۆ پەیوەندی کردن',
-                style: TextStyle(fontFamily: 'RaberB', fontSize: 20),
-              ),
-              SocialContactDeveloper(instagramIconPath: instagramIconPath),
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Text(
-                  'شارەزاییم',
-                  selectionColor: Color.fromARGB(255, 98, 0, 255),
+                const SizedBox(height: 40),
+                Padding(
+                  padding: const EdgeInsets.only(left: 40.0, right: 40.0),
+                  child: Text(
+                    textDirection: TextDirection.rtl,
+                    'سڵاو بەکارهێنەری خۆشەویست، هیوادارم ئەم بەرنامەیەی منت بە دڵ بێت، سوودی زۆری هەبێت بۆ بەڕێزتان و یارمەتیدەر بێت لە ڕێکخستنی کاری ڕۆژانەت',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontFamily: 'RaberB',
+                      color: Color.fromARGB(255, 109, 108, 108),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+                Text(
+                  'سوپاسێکی تایبەت بۆ ',
                   style: TextStyle(fontFamily: 'RaberB', fontSize: 20),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  GestureDetector(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(24),
-                      ),
-                      height: 160,
-                      width: 160,
-                    ),
+                Container(
+                  height: 100,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100),
                   ),
-                  GestureDetector(
-                    child: Container(
-                      height: 160,
-                      width: 160,
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(24),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
+                  foregroundDecoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('assets/Rwanga_logo.png'))),
+                ),
+                const SizedBox(height: 70),
+                const Text(
+                  'بۆ پەیوەندی کردن',
+                  style: TextStyle(fontFamily: 'RaberB', fontSize: 20),
+                ),
+                SocialContactDeveloper(instagramIconPath: instagramIconPath),
+              ],
+            ),
           ),
         ),
       ),
@@ -136,7 +122,7 @@ class AboutUsPage extends StatelessWidget {
           ),
           child: IconButton(
             onPressed: () {
-              final url = 'https://www.facebook.com/aree.ahmed.311';
+              final url = 'https://www.facebook.com/ariahmed86/';
               launchUrl(url);
             },
             icon: Icon(

@@ -12,6 +12,7 @@ import 'package:birmbenawa/src/screens/todo_list_reminder_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class MainPageScreen extends StatefulWidget {
   String? userName;
@@ -51,7 +52,7 @@ class _MainPageScreenState extends State<MainPageScreen> {
             : currentIndexPage == 1
                 ? Text('ڕۆژانە')
                 : currentIndexPage == 2
-                    ? Text('تاسکەکانم')
+                    ? Text('ئەرکەکانم')
                     : currentIndexPage == 3
                         ? Text('قەرزەکان')
                         : Text(' '),
@@ -90,7 +91,7 @@ class _MainPageScreenState extends State<MainPageScreen> {
             icon: Icon(
               Icons.list,
             ),
-            label: 'لیست',
+            label: 'ئەرکەکانم',
           ),
           BottomNavigationBarItem(
             icon: Icon(
@@ -133,6 +134,32 @@ class _MainPageScreenState extends State<MainPageScreen> {
               currentPage == DrawerSections.signOut ? true : false),
           menuItem(6, 'Feed Back', Icons.feedback,
               currentPage == DrawerSections.feedback ? true : false),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              IconButton(
+                onPressed: () {
+                  final url = 'https://www.facebook.com/birmbenawa/';
+                  launchUrl(url);
+                },
+                icon: Icon(
+                  FontAwesomeIcons.facebook,
+                  color: Color.fromARGB(255, 98, 0, 255),
+                ),
+              ),
+              IconButton(
+                onPressed: () {
+                  //TODO get the link of instagram
+                  final url = 'https://www.instagram.com/birmbenawaapp/';
+                  launchUrl(url);
+                },
+                icon: Icon(
+                  FontAwesomeIcons.instagram,
+                  color: Color.fromARGB(255, 98, 0, 255),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
@@ -253,6 +280,14 @@ class _MainPageScreenState extends State<MainPageScreen> {
             ),
           );
         });
+  }
+
+  launchUrl(String url) async {
+    if (await canLaunchUrlString(url)) {
+      await launchUrlString(url, mode: LaunchMode.platformDefault);
+    } else {
+      throw 'Could not launch the $url';
+    }
   }
 }
 
