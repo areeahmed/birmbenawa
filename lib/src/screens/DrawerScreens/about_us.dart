@@ -67,21 +67,56 @@ class AboutUsPage extends StatelessWidget {
                   'سوپاسێکی تایبەت بۆ ',
                   style: TextStyle(fontFamily: 'RaberB', fontSize: 20),
                 ),
-                Container(
-                  height: 100,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
+                GestureDetector(
+                  onTap: () {
+                    final url = 'https://www.facebook.com/RwangaFdn';
+                    launchUrl(url);
+                  },
+                  child: Container(
+                    height: 100,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    foregroundDecoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/Rwanga_logo.png'))),
                   ),
-                  foregroundDecoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage('assets/Rwanga_logo.png'))),
                 ),
-                const SizedBox(height: 70),
+                const SizedBox(height: 5),
                 const Text(
-                  'بۆ پەیوەندی کردن',
+                  'بۆ پەیوەندی کردن بە من',
                   style: TextStyle(fontFamily: 'RaberB', fontSize: 20),
                 ),
                 SocialContactDeveloper(instagramIconPath: instagramIconPath),
+                SizedBox(
+                  height: 12,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Powered by:',
+                      style: TextStyle(fontFamily: 'RaberB', fontSize: 20),
+                    ),
+                    TextButton(
+                      onPressed: (() {
+                        final url = 'https://www.facebook.com/techno.team.it';
+                        launchUrl(url);
+                      }),
+                      child: Text(
+                        'Techno Team',
+                        style: TextStyle(
+                            color: Colors.purple,
+                            fontFamily: 'RaberB',
+                            fontSize: 20),
+                      ),
+                    ),
+                    Icon(
+                      FontAwesomeIcons.peopleGroup,
+                      color: Colors.purple,
+                    )
+                  ],
+                )
               ],
             ),
           ),
