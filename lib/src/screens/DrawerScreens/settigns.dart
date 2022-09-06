@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:birmbenawa/src/Notifications/notifications.dart';
 import 'package:custom_bottom_sheet/custom_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -125,6 +126,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               TextButton(
                                   onPressed: () {
                                     Hive.box('reminderCardDatas').clear();
+                                    cancelAllNotification();
                                   },
                                   child: Text('بەڵێ',
                                       style: TextStyle(
@@ -149,69 +151,10 @@ class _SettingsPageState extends State<SettingsPage> {
                 );
               },
               child: Text(
-                'لابردنی هەموو ئاگادارکرنەوە دیاریکراوەکان',
+                'لابردنی هەموو ئاگادارکرنەوەکان',
                 style: TextStyle(
                   fontSize: 20,
                   fontFamily: 'RaberB',
-                  color: Color.fromARGB(255, 98, 0, 255),
-                ),
-              ),
-            ),
-            TextButton(
-              onPressed: () {
-                SlideDialog.showSlideDialog(
-                  context: context,
-                  backgroundColor: Colors.white,
-                  pillColor: Colors.yellow,
-                  transitionDuration: Duration(milliseconds: 300),
-                  child: Container(
-                      width: 300,
-                      child: Column(
-                        children: [
-                          Directionality(
-                            textDirection: TextDirection.rtl,
-                            child: AutoSizeText(
-                              'ئایا تۆ دڵنیای لە خاوێنکردنەوەی ئەو بەشە، چونکە هیچ کام لە بیرهێنانەوەکانی تێدا نامێنێت.',
-                              textDirection: TextDirection.rtl,
-                              style:
-                                  TextStyle(fontSize: 20, fontFamily: 'RaberB'),
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              TextButton(
-                                  onPressed: () {
-                                    Hive.box('dailyReminderCardDatas').clear();
-                                  },
-                                  child: Text(
-                                    'بەڵێ',
-                                    style: TextStyle(
-                                        color: Color.fromARGB(255, 98, 0, 255),
-                                        fontSize: 20,
-                                        fontFamily: 'RaberB'),
-                                  )),
-                              TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                  child: Text('نەخێر',
-                                      style: TextStyle(
-                                          color:
-                                              Color.fromARGB(255, 98, 0, 255),
-                                          fontSize: 20,
-                                          fontFamily: 'RaberB'))),
-                            ],
-                          )
-                        ],
-                      )),
-                );
-              },
-              child: Text(
-                'لابردنی هەموو ئاگادارکردنەوەکانی بەشی ڕۆژانە',
-                style: TextStyle(
-                  fontFamily: 'RaberB',
-                  fontSize: 20,
                   color: Color.fromARGB(255, 98, 0, 255),
                 ),
               ),

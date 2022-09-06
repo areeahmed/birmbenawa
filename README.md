@@ -1,9 +1,12 @@
 
 # Birmbenawa
 
-Birmbenawa is an application used to remind you important things that you need to remember
+Birmbenawa is an application used to remind you important things that you need to remember.
+
+Thanks for Rwanga Foundation ( Weocde bootcamp Staff ) and Special thanks to our couch Mr. Hoshyar.
 
 # Logo
+
 ![logo](https://user-images.githubusercontent.com/59537867/188266244-d5e4f74a-acf7-4afa-921b-b128a7ce092c.png)
 
 ## Screenshots
@@ -12,31 +15,43 @@ Birmbenawa is an application used to remind you important things that you need t
 
 ## Features
 
-- Shadowed Toggle Button
+- Remind you something important at the specific time and date
+- Daily Reminder this feature is will remind you daily important things like Having Work, School, College,...etc.
+- TODO list write your todo list and do it and then check the work as done.
+- Debt Reminder this feature is to remind you when and who debt money from you, or you debt money from them.  
+
+## What technology's that I have used
+
+Hardware:
+I used a Personal Computer ( PC ) for writing the programs and showing simulator, and some time I used my own device ( Mobile Device ) for showing the application.
+
+Software:
+I used Visual Studio Code as an IDE and Figma for designing UIlUX for the application and Adobe Photoshop for designing the Read Me pictures.
 
 ## TODO
 
+- [x]  adding intro_slider and introduction_screen package for showing the sliders.
 - [x]  Creating some welcome slides.
+- [x]  adding Firbase auth - core - firestore for saving data and registration screen.
 - [x]  creating register screen and connect it to a firebase ( name & PhoneNumber)
-- [x]  In Reminder screen showing cards and flaoting button
-- [x]  flaoting button will show a dialog
-- [x]  dialog containe 2 Input user ( title and more detail), TimePicker, and IconPicker
-- [x]  Daily Task containe flaoting button showing the dialog
-- [x]  dialog containe 2 Input User ( title & more detail ), timePicker, IconPicker, DaysPicker.
-- [x]  List of task shows a list of tasks that need to be done and this list is a ExpantionTile
-- [x]  the ExpantionTile in the List Screen is have a Title, Description, Icon and list of task ( checkBox and TextField )
-- [x]  Debt Screen this screen is tell you how much you debted from people and how much you gave to them
-- [ ]  Debt screen containe Card ( Name of Person, Price ( Took, gave ), and Unitl when, color ( if you red - if another one green ) ) and checkBox.
-- [ ]  Buy Screen is containe ( card image - name - last things in screen order - online or not) - ListViewBuilder
-- [ ]  Chat screen ( List - SendButton - Reminder Button - CheckBox )
-- [ ]  settings containe setting of app and profile edit
-- [ ]  about app screen ( information about app).
-- [x]  about us screen show information about app developer
-- [x]  add provider to the project.
-- [ ]  use provider and class to make your code cleaner and remove Constructor
-- [ ]  change the drawer type to the new type.
-- [ ]  add a alarm
-A brief description of what this project does and who it's for
+- [x]  Verification code that will send to user with SMS.
+- [x]  In Reminder screen showing list of reminders
+- [x]  check if the screens are null or not, if null telling the user that the screen are null.
+- [x]  floating button to navigate to add new reminder if it is Specific, daily, todo list or Debt list .
+- [x]  adding Hive local database to the project to save remider data.
+- [x]  Create adding new specific reminder contain selecting date with using calender and time using time picker, title and Description.
+- [x]  adding calender range and date in the adding new specific reminder, to select specific date.
+- [x]  title and description to know what is the title and description of reminder, and will be shown in the notification.
+- [x]  A time picker to the specific and daily reminder to pick a time that user want to get reminded.
+- [x]  Saving data to the Hive database with using model and provider in all reminder and list screens.
+- [x]  Reminder Card should contain the Date, Time, Title, Body, and Toggle Button.
+- [x]  Toggle button will Turn On/Off the Notification that will come when the time setup for.
+- [x]  make the all cards Slidable and the slidable action is for deleting the card and canceling specific notification.
+- [x]  the adding new daily screen contain title and description and days of the week that user want to get reminded.
+- [x]  In the adding new debt info screen adding name and how much and type of money ( Dollar or Dinar) type of debt ( gave or took ) and date.
+- [x]  drawer screen ( Settings - about us - about app - other app - sign out - feedback )
+- [x]  adding url_launcher package to open the link of social media.
+- [x]  settings add textfield for the user to change his/her name if he/she wrote wrong during the sign up and TextButton for clearing and canceling all notifications.
 
 ## Badges
 
@@ -44,17 +59,13 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
 
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
 
-## Demo
-
-Insert gif or link to demo
-
 ## Authors
 
 - [@Ari Ahmed](https://github.com/areeahmed)
 
 ## 🚀 About Me
 
-I' am a flutter & Dart leaner, Web Designer, and having basic knowledge about C++, C#, Python
+I' am a Mobile Application Developer, Web Designer, and having basic knowledge about C++, C#, Python
 
 # Hi, I'm Ari! 👋
 
@@ -67,13 +78,15 @@ this is my first Flutter & Dart project that i have learned in Rwanga BootCamp.
 
 ## Other Common Github Profile Sections
 
-👩‍💻 I'm currently working on Birmbenawa ( Wecode BootCap Rwanga )
+👩‍💻 I'm currently working on Birmbenawa ( Wecode BootCamp Rwanga )
 
-🧠 I'm currently learning Dart and Flutter and Python
+🧠 I'm currently learning Mobile Application development and Python language
 
 ## 🛠 Skills
 
 Dart, Flutter, Python, CSS, HTML5, C++, C#, SQL
+Developing Database System Casher
+Developing Mobile application
 
 ## License
 
