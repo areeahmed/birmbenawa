@@ -15,7 +15,6 @@ Thanks for Rwanga Foundation ( Weocde bootcamp Staff ) and Special thanks to our
 
 ![second pic](https://user-images.githubusercontent.com/59537867/188736056-3adf9d4a-37e5-44d1-99a4-81a68da2ee8d.png)
 
-
 ## Features
 
 - Remind you something important at the specific time and date
