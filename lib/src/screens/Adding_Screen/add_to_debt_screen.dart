@@ -178,6 +178,7 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
                               moneyController.text == '' ||
                               isSelectedvalue == false) {
                             final snackBar = SnackBar(
+                              duration: Duration(milliseconds: 800),
                               content: Text(
                                 'Faild',
                                 style: TextStyle(fontSize: 24),
@@ -208,6 +209,7 @@ class _EditDebtScreenState extends State<EditDebtScreen> {
                             box.add(debtCardDataModel.toMap());
                             Navigator.of(context).pop();
                             final snackBar = SnackBar(
+                              duration: Duration(milliseconds: 800),
                               content: Text(
                                 'Added',
                                 style: TextStyle(fontSize: 24),

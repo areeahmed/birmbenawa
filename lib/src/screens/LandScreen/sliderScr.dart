@@ -32,8 +32,8 @@ class LandScreenSlides extends StatelessWidget {
             decoration: getPageDecoration(),
           ),
           PageViewModel(
-            title: 'لیستی کڕینەکان',
-            body: 'لیستی کڕینی کەل و پەلت بیردەخاتەوە',
+            title: 'لیستی ئەرکەکانم',
+            body: 'لیستی ئەرکەکانت بیردەخاتەوە',
             image: buildImage(ShopPath),
             decoration: getPageDecoration(),
           ),

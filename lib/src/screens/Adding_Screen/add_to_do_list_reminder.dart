@@ -107,6 +107,7 @@ class _EditShopingListReminderState extends State<EditShopingListReminder> {
                       onPressed: () {
                         if (title.text == '' || description.text == '') {
                           final snackBar = SnackBar(
+                            duration: Duration(milliseconds: 800),
                             content: Directionality(
                               textDirection: TextDirection.rtl,
                               child: Text(
@@ -129,6 +130,7 @@ class _EditShopingListReminderState extends State<EditShopingListReminder> {
                           box.add(todo.toMap());
                           Navigator.of(context).pop();
                           final snackBar = SnackBar(
+                            duration: Duration(milliseconds: 800),
                             content: Directionality(
                               textDirection: TextDirection.rtl,
                               child: Text(

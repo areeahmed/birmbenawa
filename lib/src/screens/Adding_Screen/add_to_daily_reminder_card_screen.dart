@@ -150,31 +150,66 @@ class _EditDailyReminderCardScreenState
                         ),
                         onPressed: () {
                           setState(() {
-                            NotificationWeekAndTimeRepeated
-                                notificationWeekAndTimeRepeated =
-                                NotificationWeekAndTimeRepeated(
-                              id: createUniqueId(),
-                              dayOfTheWeek: selectedDay,
-                              hour: context.read<TimeProvider>().hour,
-                              minute: context.read<TimeProvider>().minute,
-                              givenTitle: titleController.text,
-                              givenBody: controllerData2.text,
-                            );
-                            DailyReminderCardData reminderCardData =
-                                DailyReminderCardData(
-                              notificationId: createUniqueId(),
-                              title: titleController.text,
-                              descriptionOfCard: controllerData2.text,
-                              hour: context.read<TimeProvider>().hour,
-                              minute: context.read<TimeProvider>().minute,
-                              pmOrAm: context.read<TimeProvider>().pmOrAm,
-                              dayOfWeek: selectedDay,
-                            );
-                            createDailyScheduledNotification(
-                                notificationWeekAndTimeRepeated);
-                            final box = Hive.box('dailyReminderCardDatas');
-                            box.add(reminderCardData.toMap());
-                            Navigator.of(context).pop();
+                            if (titleController.text == '') {
+                              final snackBar = SnackBar(
+                                duration: Duration(milliseconds: 800),
+                                content: Directionality(
+                                  textDirection: TextDirection.rtl,
+                                  child: Text(
+                                    'خانەکان بە دروستی پڕبکەوە تکایە',
+                                    style: TextStyle(
+                                        fontSize: 24, fontFamily: 'RaberR'),
+                                  ),
+                                ),
+                                backgroundColor: Colors.red,
+                              );
+                              // showing snackbar at the bottom of the screen.
+                              ScaffoldMessenger.of(context)
+                                ..removeCurrentMaterialBanner()
+                                ..showSnackBar(snackBar);
+                            } else {
+                              final snackBar = SnackBar(
+                                duration: Duration(milliseconds: 800),
+                                content: Directionality(
+                                  textDirection: TextDirection.rtl,
+                                  child: Text(
+                                    'جێبەجێکرا',
+                                    style: TextStyle(
+                                        fontSize: 24, fontFamily: 'RaberR'),
+                                  ),
+                                ),
+                                backgroundColor: Colors.green,
+                              );
+                              // showing snackbar at the bottom of the screen.
+                              ScaffoldMessenger.of(context)
+                                ..removeCurrentMaterialBanner()
+                                ..showSnackBar(snackBar);
+                              NotificationWeekAndTimeRepeated
+                                  notificationWeekAndTimeRepeated =
+                                  NotificationWeekAndTimeRepeated(
+                                id: createUniqueId(),
+                                dayOfTheWeek: selectedDay,
+                                hour: context.read<TimeProvider>().hour,
+                                minute: context.read<TimeProvider>().minute,
+                                givenTitle: titleController.text,
+                                givenBody: controllerData2.text,
+                              );
+                              DailyReminderCardData reminderCardData =
+                                  DailyReminderCardData(
+                                notificationId: createUniqueId(),
+                                title: titleController.text,
+                                descriptionOfCard: controllerData2.text,
+                                hour: context.read<TimeProvider>().hour,
+                                minute: context.read<TimeProvider>().minute,
+                                pmOrAm: context.read<TimeProvider>().pmOrAm,
+                                dayOfWeek: selectedDay,
+                              );
+                              createDailyScheduledNotification(
+                                  notificationWeekAndTimeRepeated);
+                              final box = Hive.box('dailyReminderCardDatas');
+                              box.add(reminderCardData.toMap());
+                              Navigator.of(context).pop();
+                            }
                           });
                         },
                         child: Text(
