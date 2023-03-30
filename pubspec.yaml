@@ -54,7 +54,7 @@ flutter_icons:
   ios: true
   image_path: "assets/logo.png"
   adaptive_icon_background: "#ffffff"
-  adaptive_icon_foreground: "assets/logo_foreground.png"
+  adaptive_icon_foreground: "assets/logoNoBackground.png"
 
 dev_dependencies:
   flutter_test:

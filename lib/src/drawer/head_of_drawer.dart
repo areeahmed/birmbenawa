@@ -19,38 +19,18 @@ class _MyHeaderDraweState extends State<MyHeaderDrawer> {
 
   @override
   Widget build(BuildContext context) {
-    String name = Hive.box('user').get('name') ?? 'null';
-    String phone = Hive.box('user').get('phone') ?? 'null';
-    return Container(
-        width: double.infinity,
-        height: 200,
-        decoration: BoxDecoration(
-          image: DecorationImage(image: AssetImage('assets/images/banner.jpg')),
+    return Column(
+      children: [
+        Container(
+          width: double.infinity,
+          height: 200,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/logoNoBackground.png')),
+          ),
+          padding: EdgeInsets.only(top: 20.0),
         ),
-        padding: EdgeInsets.only(top: 20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 8,
-            ),
-            Text(
-              name,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 30,
-                fontFamily: 'RaberB',
-              ),
-            ),
-            Text(
-              '0$phone',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                fontFamily: 'RaberR',
-              ),
-            ),
-          ],
-        ));
+      ],
+    );
   }
 }
