@@ -47,7 +47,7 @@ class _EditShopingListReminderState extends State<EditShopingListReminder> {
               child: Column(
                 children: [
                   Container(
-                    child: Image.asset('assets/images/List_Of_Task.png'),
+                    child: Image.asset('assets/images/slider/List_Of_Task.png'),
                   ),
                   SizedBox(
                     height: 8,

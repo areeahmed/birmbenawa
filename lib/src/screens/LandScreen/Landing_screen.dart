@@ -130,9 +130,7 @@ class _MainPageScreenState extends State<MainPageScreen> {
               currentPage == DrawerSections.aboutUs ? true : false),
           menuItem(4, 'بەرنامەکانی تر', FontAwesomeIcons.boxArchive,
               currentPage == DrawerSections.otherApps ? true : false),
-          menuItem(5, 'Sign Out', FontAwesomeIcons.arrowRightFromBracket,
-              currentPage == DrawerSections.signOut ? true : false),
-          menuItem(6, 'Feed Back', Icons.feedback,
+          menuItem(5, 'Feed Back', Icons.feedback,
               currentPage == DrawerSections.feedback ? true : false),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -183,8 +181,6 @@ class _MainPageScreenState extends State<MainPageScreen> {
             Navigator.of(context)
                 .push(MaterialPageRoute(builder: (context) => OtherAppsPage()));
           } else if (id == 5) {
-            showBottomSheet(context);
-          } else if (id == 6) {
             Navigator.of(context).push(
                 MaterialPageRoute(builder: ((context) => FeedBackScreen())));
           }
@@ -296,6 +292,5 @@ enum DrawerSections {
   aboutApp,
   aboutUs,
   otherApps,
-  signOut,
   feedback,
 }

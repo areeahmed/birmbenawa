@@ -1,4 +1,4 @@
-import 'package:birmbenawa/src/screens/Auth/registeration.dart';
+import 'package:birmbenawa/src/screens/LandScreen/Landing_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
@@ -87,7 +87,7 @@ class LandScreenSlides extends StatelessWidget {
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)));
 
   void goToHome(context) => Navigator.of(context)
-      .push(MaterialPageRoute(builder: (context) => RegisterationWidget()));
+      .push(MaterialPageRoute(builder: (context) => MainPageScreen()));
 
   Widget buildImage(String path) => Center(
         widthFactor: 350,

@@ -9,32 +9,9 @@ class MyApp extends StatelessWidget {
   // here we will check if user logged in before or not if logged in so it will go to main Screen else will go to registeration Screen
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<User?>(
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              home: Scaffold(
-                  body: Center(child: CircularProgressIndicator.adaptive())),
-            );
-          } else if (snapshot.hasError) {
-            return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              home: Scaffold(
-                  body: Center(child: Text(snapshot.error.toString()))),
-            );
-          } else if (snapshot.data == null) {
-            return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              home: LandScreenSlides(),
-            );
-          }
-          return MaterialApp(
-            // this single line belowe is to remove the debug banner
-            debugShowCheckedModeBanner: false,
-            home: MainPageScreen(),
-          );
-        });
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: LandScreenSlides(),
+    );
   }
 }
